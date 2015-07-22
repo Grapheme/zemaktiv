@@ -35,7 +35,7 @@ return array(
 
 
     'seo' => [
-        'default_title'       => 'default title',
+        'default_title'       => 'Вяземские сады',
         'default_description' => '',
         'default_keywords'    => '',
     ],
