@@ -71,4 +71,7 @@ return array(
         'theme_path' => URL::to('/theme/mobile/dist'),
     ],
 
+    'land_statuses' => [
+        'Без подряда', 'С подрядом', 'Участок с домом'
+    ]
 );

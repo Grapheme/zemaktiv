@@ -53,7 +53,7 @@ class AuthAccount {
      */
 	public static function isAdminLoggined(){
 		
-		if(self::getGroupID() == 1):
+		if(self::getGroupID() == 2):
 			return TRUE;
 		else:
 			return FALSE;
@@ -65,7 +65,7 @@ class AuthAccount {
      */
 	public static function isUserLoggined(){
 		
-		if(self::getGroupID() == 2):
+		if(self::getGroupID() == 3):
 			return TRUE;
 		else:
 			return FALSE;

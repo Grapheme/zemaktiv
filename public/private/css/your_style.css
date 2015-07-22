@@ -821,7 +821,6 @@ nav > ul > li > a > i > em {
 
 nav ul li a {
     display: block;
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }

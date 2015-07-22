@@ -46,7 +46,6 @@ Route::get('logout', array('before' => 'auth', 'as' => 'logout', 'uses' => 'Glob
 Route::pattern('lang', implode('|', array_keys(Config::get('app.locales'))))
     ->defaults('lang', Config::get('app.locale'))
 ;
-
 #################################################################
 
 /***********************************************************************/
