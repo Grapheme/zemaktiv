@@ -129,6 +129,8 @@
 			margin: 0 auto;
 
 			ul {
+				display: inline-block;
+				vertical-align: top;
 				margin: 0;
 				padding: 0;
 				list-style: none;
@@ -170,15 +172,14 @@
 							position: relative;
 							z-index: 2;
 						}
-					}
 
-					&.active .item__link,
-					.item__link:hover {
-						color: #fff;
+						&:hover, &.active {
+							color: #fff;
 
-						&:before {
-							opacity: 1;
-							transform: translateY(0);
+							&:before {
+								opacity: 1;
+								transform: translateY(0);
+							}
 						}
 					}
 
