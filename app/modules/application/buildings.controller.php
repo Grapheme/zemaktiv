@@ -66,6 +66,7 @@ class BuildingsController extends BaseController {
             $build->title = Input::get('title');
             $build->description = Input::get('description');
             $build->number = Input::get('number');
+            $build->land_area = Input::get('land_area');
             $build->area = Input::get('area');
             $build->material = Input::get('material');
             $build->communication = Input::get('communication');
@@ -107,6 +108,7 @@ class BuildingsController extends BaseController {
             $build->title = Input::get('title');
             $build->description = Input::get('description');
             $build->number = Input::get('number');
+            $build->land_area = Input::get('land_area');
             $build->area = Input::get('area');
             $build->material = Input::get('material');
             $build->communication = Input::get('communication');

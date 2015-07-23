@@ -4,7 +4,7 @@ class Buildings extends \BaseModel {
 
     protected $table = 'buildings';
     protected $guarded = array('id', '_method', '_token');
-    protected $fillable = array('title', 'description', 'number', 'area', 'material', 'communication', 'price',
+    protected $fillable = array('title', 'description', 'number', 'area', 'land_area', 'material', 'communication', 'price',
         'coordinates', 'photo_id', 'gallery_id', 'sold');
     public static $rules = array('title' => 'required', 'number' => 'required', 'price' => 'required',
         'coordinates' => 'required');
