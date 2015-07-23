@@ -7,11 +7,19 @@
 <header class="header js-header">
     <div class="header__top">
         <div class="top__big">
-            <a href="#" class="big__logo"></a>
+        @if (Request::is('/'))
+            <div class="big__logo"></div>
+        @else
+            <a class="big__logo" href="{{ pageurl('') }}"></a>
+        @endif
             <a class="big__right"></a>
         </div>
         <div class="top__min">
-            <a href="#" class="min__item item-apple"></a>
+        @if (Request::is('/'))
+            <div class="min__item item-apple"></div>
+        @else
+            <a class="min__item item-apple" href="{{ pageurl('') }}"></a>
+        @endif
             <a href="#" class="min__item item-title">Коттеджный посёлок</a>
             <a href="#" class="min__item item-name"></a>
             <a href="#" class="min__item item-text"></a>

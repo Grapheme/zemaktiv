@@ -9,7 +9,7 @@
 @stop
 @section('content')
     <?php
-        $buildings = Buildings::orderBy('number','ASC')->with('photo', 'gallery.photos')->paginate(1);
+        $buildings = Buildings::orderBy('number','ASC')->with('photo', 'gallery.photos')->paginate(5);
     ?>
     <main class="main js-main">
         <div class="us-page">
