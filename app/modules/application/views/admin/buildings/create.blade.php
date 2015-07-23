@@ -28,6 +28,12 @@
                         </label>
                     </section>
                     <section>
+                        <label class="label">Площадь участка (сотка)</label>
+                        <label class="input">
+                            {{ Form::text('land_area') }}
+                        </label>
+                    </section>
+                    <section>
                         <label class="label">Материалы</label>
                         <label class="input">
                             {{ Form::text('material') }}
