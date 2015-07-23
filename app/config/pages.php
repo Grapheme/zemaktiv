@@ -2,7 +2,7 @@
 
 return array(
 
-    'seo' => ['title', 'description', 'keywords'],
+    'seo' => ['title', 'description', 'keywords', 'h1'],
 
     'versions' => 0,
 
