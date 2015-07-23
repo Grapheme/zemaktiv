@@ -1,6 +1,6 @@
 <?
 /**
- * MENU_PLACEMENTS: main_menu=Основное меню|additional_menu=Дополнительное меню|footer_menu=Меню в подвале
+ * MENU_PLACEMENTS: main_menu=Основное меню|footer_menu=Меню в подвале
  */
 ?>
 <!DOCTYPE html>
@@ -24,7 +24,6 @@
         @show
 
         @section('footer')
-            {{-- @file_get_contents(Helper::inclayout('footer')) --}}
             @include(Helper::layout('footer'))
         @show
 

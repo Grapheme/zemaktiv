@@ -1,6 +1,6 @@
 <?
 /**
- * TITLE: Главная страница
+ * TITLE: Готовые дома
  * AVAILABLE_ONLY_IN_ADVANCED_MODE
  */
 ?>
