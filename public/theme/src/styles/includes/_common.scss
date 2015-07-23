@@ -32,3 +32,40 @@ html {
 		padding-top: 305rem / $fs;
 	}
 }
+
+.pagination {
+	text-align: center;
+	margin: 0;
+	padding: 25rem / $fs 0 60rem / $fs;
+	list-style: none;
+	font-size: 20rem / $fs;
+
+	li {
+		display: inline-block;
+		margin: 0 2rem / $fs;
+
+		span, a {
+			display: inline-block;
+			width: 25rem / $fs;
+			line-height: 25rem / $fs;
+			height: 25rem / $fs;
+			color: inherit;
+			text-decoration: none;
+		}
+
+		a {
+			color: #3facd9;
+			transition: all .2s ease;
+
+			&:hover {
+				color: #111;
+			}
+		}
+
+		&.active {
+			span, a {
+				background: $borderColor;
+			}
+		}
+	}
+}
