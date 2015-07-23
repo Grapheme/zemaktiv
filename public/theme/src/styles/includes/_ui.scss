@@ -80,6 +80,33 @@
 		}
 	}
 
+	&.btn-transparent {
+		color: #fff;
+		border: 2px solid #fff;
+
+		&:before {
+			background: #fff;
+		}
+
+		&:hover {
+			color: #111;
+		}
+	}
+
+	&.btn-blue {
+		color: #fff;
+		background: #476cb4;
+		border: 2px solid #476cb4;
+
+		&:before {
+			background: #fff;
+		}
+
+		&:hover {
+			color: #476cb4;
+		}
+	}
+
 	span {
 		position: relative;
 		z-index: 2;

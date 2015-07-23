@@ -20,6 +20,12 @@
 				z-index: 3;
 			}
 		}
+
+		.header__menu {
+			&:before {
+				transform: translateY(100%);
+			}
+		}
 	}
 
 	.header__top {
@@ -117,14 +123,31 @@
 	}
 
 	.header__menu {
-		height: 50px;
-		line-height: 50px;
+		position: relative;
+		overflow: hidden;
+		height: 50rem / $fs;
+		line-height: 50rem / $fs;
 		border-bottom: 1px solid $borderColor;
 		text-align: center;
 		font-family: 'pf_agora_slab_pro';
 		font-weight: 500;
 
+
+		&:before {
+			content: "";
+			position: absolute;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: #f5f1ed;
+			transition: all .5s ease;
+		}
+
 		.menu__nav {
+			position: relative;
+			z-index: 2;
 			width: 1300rem / $fs;
 			margin: 0 auto;
 
@@ -172,14 +195,15 @@
 							position: relative;
 							z-index: 2;
 						}
+					}
 
-						&:hover, &.active {
-							color: #fff;
+					.item__link:hover,
+					&.active .item__link {
+						color: #fff;
 
-							&:before {
-								opacity: 1;
-								transform: translateY(0);
-							}
+						&:before {
+							opacity: 1;
+							transform: translateY(0);
 						}
 					}
 
