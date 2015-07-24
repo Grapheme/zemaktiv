@@ -31,11 +31,11 @@
 
 <main class="main js-main">
 @if(count($sliders))
-    <div class="index-slider">
+    <div class="index-slider js-index-slider">
         <div class="slider__list">
         @foreach($sliders as $slider)
             @if(isset($slider['photo_name']) && File::exists(Config::get('site.galleries_photo_dir').'/'.$slider['photo_name']))
-            <div style="background-image: url({{ asset(Config::get('site.galleries_photo_public_dir').'/'.$slider['photo_name']) }});" class="list__item">
+            <div style="background-image: url({{ asset(Config::get('site.galleries_photo_public_dir').'/'.$slider['photo_name']) }});" class="list__item js-slide">
                 <div class="wrapper">
                     <div class="item-content">
                         <div class="item__title">
