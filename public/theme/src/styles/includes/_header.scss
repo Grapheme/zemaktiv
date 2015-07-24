@@ -30,7 +30,7 @@
 
 	.header__top {
 		position: relative;
-		height: 255rem / $fs;
+		height: 160rem / $fs;
 		border-bottom: 1px solid $borderColor;
 		-webkit-perspective: 1500px;
 		overflow: hidden;
@@ -46,10 +46,10 @@
 				position: absolute;
 				display: inline-block;
 				top: 50%;
-				left: 0;
-				margin-top: -(138/2/$fs)+rem;
-				width: 217rem / $fs;
-				height: 138rem / $fs;
+				left: 5%;
+				margin-top: -(100/2/$fs)+rem;
+				width: 165rem / $fs;
+				height: 100rem / $fs;
 				background: url(../images/header/logo_big.png) center center / 100% auto no-repeat;
 			}
 

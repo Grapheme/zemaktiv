@@ -7,7 +7,7 @@ window.Garden = {};
 Garden.header = function() {
 	var headerStatus;
 	var setHeader = function() {
-		if($(window).scrollTop() >= 205) {
+		if($(window).scrollTop() >= 110) {
 			if(headerStatus != 'min') {
 				$('.js-header, .js-main').addClass('header-min');
 				headerStatus = 'min';
