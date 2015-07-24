@@ -432,7 +432,7 @@ html {
     display: table; }
 
 .main.header-min {
-  padding-top: 19.0625rem; }
+  padding-top: 13.125rem; }
 
 .pagination {
   text-align: center;
@@ -519,7 +519,7 @@ html {
 
 .header .header__top {
   position: relative;
-  height: 15.9375rem;
+  height: 10rem;
   border-bottom: 1px solid #f1f1f1;
   -webkit-perspective: 1500px;
   overflow: hidden; }
@@ -533,10 +533,10 @@ html {
       position: absolute;
       display: inline-block;
       top: 50%;
-      left: 0;
-      margin-top: -4.3125rem;
-      width: 13.5625rem;
-      height: 8.625rem;
+      left: 5%;
+      margin-top: -3.125rem;
+      width: 10.3125rem;
+      height: 6.25rem;
       background: url(../images/header/logo_big.png) center center/100% auto no-repeat; }
     .header .header__top .top__big .big__right {
       position: absolute;
