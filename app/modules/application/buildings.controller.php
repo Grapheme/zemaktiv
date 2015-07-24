@@ -1,13 +1,13 @@
 <?php
 
+
 class BuildingsController extends BaseController {
 
     public static $name = 'buildings';
     public static $group = 'application';
 
     /****************************************************************************/
-    public static function returnRoutes($prefix = null) {
-
+    public static function returnRoutes() {
         $class = __CLASS__;
         Route::group(array('before' => 'auth', 'prefix' => 'admin'), function () use ($class) {
             Route::resource('buildings', $class,
