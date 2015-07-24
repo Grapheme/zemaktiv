@@ -69,3 +69,58 @@ html {
 		}
 	}
 }
+
+.half-page {
+	overflow: hidden;
+
+	.wrapper {
+		position: relative;
+	}
+
+	.page__left,
+	.page__right {
+		box-sizing: border-box;
+		padding-top: 80rem / $fs;
+	}
+
+	.page__left {
+		float: left;
+		width: 63%;
+		padding-right: 70rem / $fs;
+		border-right: 1px solid $borderColor;
+	}
+
+	.page__right {
+		float: left;
+		width: 37%;
+		border-left: 1px solid $borderColor;
+		margin-left: -1px;
+
+		.benefits__item {
+			border-bottom: 1px solid $borderColor;
+			padding: 40rem / $fs 0 100rem / $fs 70rem / $fs;
+
+			&:first-child {
+				padding-top: 0;
+			}
+
+			&:last-child {
+				border-bottom: none;
+			}
+		}
+	}
+}
+
+.us-article {
+	h2 {
+		font-family: 'pf_agora_slab_pro';
+		font-size: 24rem / $fs;
+		font-weight: 800;
+		line-height: 1.2;
+		margin: 50rem / $fs 0 30rem / $fs;
+	}
+
+	p {
+		line-height: 1.5;
+	}
+}

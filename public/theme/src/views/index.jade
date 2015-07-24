@@ -1,20 +1,26 @@
 extends templates/layout
 
 block content
-	.index-slider
+	.index-slider.js-index-slider
 		.slider__list
-			.list__item(style="background-image: url('images/tmp/index-slider1.jpg');")
+			.list__item.js-slide(style="background-image: url('images/tmp/index-slider1.jpg');")
 				.wrapper
 					.item-content
 						.item__title Сегодня участки с действующими<br>Коммуникациями с выгодой<br>до 200 000 рублей
 						.item__btns
 							a(href="#").us-btn.btn-transparent
 								span Выбрать участок
-			.list__item
-		ul.slider__dots
-			li
-			li.active
-			li
+			.list__item.js-slide(style="background-image: url('images/tmp/index-slider2.jpg');")
+				.wrapper
+					.item-content
+						.item__title Сегодня участки с действующими<br>Коммуникациями с выгодой<br>до 200 000 рублей
+						.item__btns
+							a(href="#").us-btn.btn-transparent
+								span Выбрать участок
+		ul.slider__dots.js-dots
+			//- li
+			//- li.active
+			//- li
 	.index-block
 		.wrapper
 			.block__map-icon
@@ -64,4 +70,4 @@ block content
 	.index-gallery
 		.gallery__line
 			each i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14]
-				a(href="#").line__item(style="background-image: url(images/tmp/index-bottom-slider1.jpg);")
+				a.line__item(href="#" style="background-image: url(images/tmp/index-bottom-slider1.jpg);")
