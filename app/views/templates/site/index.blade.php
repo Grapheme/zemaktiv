@@ -52,7 +52,7 @@
             @endif
         @endforeach
         </div>
-        <ul class="slider__dots"></ul>
+        <ul class="slider__dots js-dots"></ul>
     </div>
 @endif
     <div class="index-block">
