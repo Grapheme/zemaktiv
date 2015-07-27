@@ -46,9 +46,25 @@ Garden.indexSlider = function() {
 	}
 	init();
 }
+Garden.ymap = function() {
+	if(!$('#contact-map').length) return;
+	ymaps.ready(init);
+    var myMap,
+    	myPlacemark;
+
+    function init(){     
+        myMap = new ymaps.Map("contact-map", {
+            center: [55.760768, 37.554879],
+            zoom: 16
+        });
+        myPlacemark = new ymaps.Placemark([55.760768, 37.554879], { content: '2-я Звенигородская улица' });
+        myMap.geoObjects.add(myPlacemark);
+    }
+}
 Garden.init = function() {
 	this.header();
 	this.indexSlider();
+	this.ymap();
 }
 $(function(){
 	Garden.init();
