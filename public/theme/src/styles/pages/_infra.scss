@@ -1,0 +1,207 @@
+.infra-page {
+	position: relative;
+	overflow: hidden;
+
+	.page__left {
+		position: relative;
+		z-index: 2;
+		background: rgba(255, 255, 255, .85);
+
+		&:before {
+			content: "";
+			position: absolute;
+			left: -300rem;
+			width: 300rem;
+			top: 0;
+			bottom: 0;
+			background: rgba(255, 255, 255, .85);
+		}
+	}
+}
+
+.infra-map {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	bottom: 0;
+	left: -325rem / $fs;
+	right: -325rem / $fs;
+	background: #ccc;
+	transform: translateX(325rem / $fs);
+}
+
+.places-list {
+	padding: 25rem / $fs 0 100rem / $fs;
+	overflow: hidden;
+	font-size: 0;
+
+	.list__item {
+		display: inline-block;
+		vertical-align: top;
+		width: 25%;
+		text-align: center;
+		cursor: pointer;
+
+		&:hover {
+			.item__image {
+				&:before {
+					transform: scale(1);
+				}
+			}
+		}
+
+		.item__image {
+			position: relative;
+			height: 95rem / $fs;
+
+			.item__back,
+			.item__icon,
+			&:before {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				height: 95rem / $fs;
+				width: 95rem / $fs;
+				margin-left: -(95/2/$fs)+rem;
+				margin-top: -(95/2/$fs)+rem;
+				background-position: center center;
+				background-repeat: no-repeat;
+			}
+
+			&:before {
+				content: "";
+				z-index: 1;
+				background: #f15922;
+				border-radius: 85rem / $fs;
+				height: 85rem / $fs;
+				width: 85rem / $fs;
+				margin-left: -(85/2/$fs)+rem;
+				margin-top: -(85/2/$fs)+rem;
+				transform: scale(.8);
+				transition: all .2s ease;
+			}
+
+			.item__back {
+				z-index: 2;
+				background-size: auto 80%;
+
+				&.back-green {
+					background-image: url(../images/infra/back-green.png);
+				}
+
+				&.back-red {
+					background-image: url(../images/infra/back-red.png);
+				}
+
+				&.back-green-blue {
+					background-image: url(../images/infra/back-green-blue.png);
+				}
+
+				&.back-blue {
+					background-image: url(../images/infra/back-blue.png);
+				}
+
+				&.back-light-green {
+					background-image: url(../images/infra/back-light-green.png);
+				}
+			}
+
+			.item__icon {
+				z-index: 3;
+				border-radius: 95rem / $fs;
+				background-size: auto 70%;
+
+				&.icon-summer {
+					background-image: url(../images/infra/summer.png);
+				}
+
+				&.icon-children {
+					background-image: url(../images/infra/children.png);
+				}
+
+				&.icon-shop {
+					background-image: url(../images/infra/shop.png);
+				}
+
+				&.icon-church {
+					background-image: url(../images/infra/church.png);
+				}
+
+				&.icon-beach {
+					background-image: url(../images/infra/beach.png);
+				}
+			}
+		}
+
+		.item__desc {
+			font-family: 'pf_agora_slab_pro';
+			font-size: 16rem / $fs;
+			font-weight: 700;
+		}
+	}
+}
+
+.way-container {
+	padding-bottom: 90rem / $fs;
+
+	.way-list {
+		text-align: center;
+
+		.list__item {
+			position: relative;
+			display: inline-block;
+			vertical-align: top;
+			width: 180rem / $fs;
+			margin: 0 20rem / $fs;
+			cursor: pointer;
+
+			&:hover {
+				.item__image {
+					transform: scale(1);
+				}
+
+				.item__desc {
+					opacity: 1;
+				}
+			}
+
+			.item__image {
+				height: 180rem / $fs;
+				background-size: 100% auto;
+				background-position: center center;
+				background-repeat: no-repeat;
+				transform: scale(.7);
+				transition: all .5s ease;
+
+				&.image-bus {
+					background-image: url(../images/infra/bus.png);
+				}
+
+				&.image-car {
+					background-image: url(../images/infra/auto.png);
+				}
+			}
+
+			.item__desc {
+				font-family: 'pf_agora_slab_pro';
+				font-size: 20rem / $fs;
+				font-weight: 700;
+				margin-top: 10rem / $fs;
+				transition: all .5s ease;
+				opacity: 0;
+			}
+		}
+	}
+
+	.way-btns {
+		margin-top: 30rem / $fs;
+
+		.us-btn {
+			margin-left: -2px;
+
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+	}
+}

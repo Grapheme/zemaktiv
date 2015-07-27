@@ -21,6 +21,12 @@
 		}
 	}
 
+	&.title-red {
+		span {
+			background: #b970b1;
+		}
+	}
+
 	span {
 		display: inline-block;
 		vertical-align: top;

@@ -814,6 +814,8 @@ h2 {
     background: #6584c2; }
   .us-title.title-yellow span {
     background: #edbf62; }
+  .us-title.title-red span {
+    background: #b970b1; }
   .us-title span {
     display: inline-block;
     vertical-align: top;
@@ -1295,3 +1297,152 @@ h2 {
         content: "–";
         position: absolute;
         left: -0.9375rem; }
+
+.infra-page {
+  position: relative;
+  overflow: hidden; }
+  .infra-page .page__left {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.85); }
+    .infra-page .page__left:before {
+      content: "";
+      position: absolute;
+      left: -300rem;
+      width: 300rem;
+      top: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.85); }
+
+.infra-map {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  left: -20.3125rem;
+  right: -20.3125rem;
+  background: #ccc;
+  -webkit-transform: translateX(20.3125rem);
+      -ms-transform: translateX(20.3125rem);
+          transform: translateX(20.3125rem); }
+
+.places-list {
+  padding: 1.5625rem 0 6.25rem;
+  overflow: hidden;
+  font-size: 0; }
+  .places-list .list__item {
+    display: inline-block;
+    vertical-align: top;
+    width: 25%;
+    text-align: center;
+    cursor: pointer; }
+    .places-list .list__item:hover .item__image:before {
+      -webkit-transform: scale(1);
+          -ms-transform: scale(1);
+              transform: scale(1); }
+    .places-list .list__item .item__image {
+      position: relative;
+      height: 5.9375rem; }
+      .places-list .list__item .item__image .item__back,
+      .places-list .list__item .item__image .item__icon,
+      .places-list .list__item .item__image:before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 5.9375rem;
+        width: 5.9375rem;
+        margin-left: -2.96875rem;
+        margin-top: -2.96875rem;
+        background-position: center center;
+        background-repeat: no-repeat; }
+      .places-list .list__item .item__image:before {
+        content: "";
+        z-index: 1;
+        background: #f15922;
+        border-radius: 5.3125rem;
+        height: 5.3125rem;
+        width: 5.3125rem;
+        margin-left: -2.65625rem;
+        margin-top: -2.65625rem;
+        -webkit-transform: scale(0.8);
+            -ms-transform: scale(0.8);
+                transform: scale(0.8);
+        -webkit-transition: all 0.2s ease;
+                transition: all 0.2s ease; }
+      .places-list .list__item .item__image .item__back {
+        z-index: 2;
+        background-size: auto 80%; }
+        .places-list .list__item .item__image .item__back.back-green {
+          background-image: url(../images/infra/back-green.png); }
+        .places-list .list__item .item__image .item__back.back-red {
+          background-image: url(../images/infra/back-red.png); }
+        .places-list .list__item .item__image .item__back.back-green-blue {
+          background-image: url(../images/infra/back-green-blue.png); }
+        .places-list .list__item .item__image .item__back.back-blue {
+          background-image: url(../images/infra/back-blue.png); }
+        .places-list .list__item .item__image .item__back.back-light-green {
+          background-image: url(../images/infra/back-light-green.png); }
+      .places-list .list__item .item__image .item__icon {
+        z-index: 3;
+        border-radius: 5.9375rem;
+        background-size: auto 70%; }
+        .places-list .list__item .item__image .item__icon.icon-summer {
+          background-image: url(../images/infra/summer.png); }
+        .places-list .list__item .item__image .item__icon.icon-children {
+          background-image: url(../images/infra/children.png); }
+        .places-list .list__item .item__image .item__icon.icon-shop {
+          background-image: url(../images/infra/shop.png); }
+        .places-list .list__item .item__image .item__icon.icon-church {
+          background-image: url(../images/infra/church.png); }
+        .places-list .list__item .item__image .item__icon.icon-beach {
+          background-image: url(../images/infra/beach.png); }
+    .places-list .list__item .item__desc {
+      font-family: 'pf_agora_slab_pro';
+      font-size: 1rem;
+      font-weight: 700; }
+
+.way-container {
+  padding-bottom: 5.625rem; }
+  .way-container .way-list {
+    text-align: center; }
+    .way-container .way-list .list__item {
+      position: relative;
+      display: inline-block;
+      vertical-align: top;
+      width: 11.25rem;
+      margin: 0 1.25rem;
+      cursor: pointer; }
+      .way-container .way-list .list__item:hover .item__image {
+        -webkit-transform: scale(1);
+            -ms-transform: scale(1);
+                transform: scale(1); }
+      .way-container .way-list .list__item:hover .item__desc {
+        opacity: 1; }
+      .way-container .way-list .list__item .item__image {
+        height: 11.25rem;
+        background-size: 100% auto;
+        background-position: center center;
+        background-repeat: no-repeat;
+        -webkit-transform: scale(0.7);
+            -ms-transform: scale(0.7);
+                transform: scale(0.7);
+        -webkit-transition: all 0.5s ease;
+                transition: all 0.5s ease; }
+        .way-container .way-list .list__item .item__image.image-bus {
+          background-image: url(../images/infra/bus.png); }
+        .way-container .way-list .list__item .item__image.image-car {
+          background-image: url(../images/infra/auto.png); }
+      .way-container .way-list .list__item .item__desc {
+        font-family: 'pf_agora_slab_pro';
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-top: 0.625rem;
+        -webkit-transition: all 0.5s ease;
+                transition: all 0.5s ease;
+        opacity: 0; }
+  .way-container .way-btns {
+    margin-top: 1.875rem; }
+    .way-container .way-btns .us-btn {
+      margin-left: -2px; }
+      .way-container .way-btns .us-btn:first-child {
+        margin-left: 0; }
