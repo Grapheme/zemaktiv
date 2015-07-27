@@ -381,7 +381,7 @@
                 }
 
                 function dotStr(index, value, admin_dot) {
-                    var rad_width = value.radius * 11;
+                    var rad_width = value.radius * 1;
                     var style_str = 'margin-top: -' + rad_width / 2 + 'px; ' +
                             'margin-left: -' + rad_width / 2 + 'px; ' +
                             'width: ' + rad_width + 'px; ' +
@@ -423,7 +423,7 @@
             });
         }
         $('.js-admin-map').smart_map([{
-            posX: 200, posY: 200, radius: 8
+            posX: 200, posY: 200, radius: 1
         }]);
     </script>
     <script type="text/javascript">
