@@ -69,7 +69,8 @@ class LandController extends BaseController {
             $land->number = Input::get('number');
             $land->area = Input::get('area');
             $land->price = Input::get('price');
-            $land->coordinates = Input::get('coordinates');
+            $land->coordinate_x = Input::get('coordinate_x');
+            $land->coordinate_y = Input::get('coordinate_y');
             $land->photo_id = Input::get('photo_id');
             $land->sold = 0;
             $land->save();
@@ -109,7 +110,8 @@ class LandController extends BaseController {
             $land->number = Input::get('number');
             $land->area = Input::get('area');
             $land->price = Input::get('price');
-            $land->coordinates = Input::get('coordinates');
+            $land->coordinate_x = Input::get('coordinate_x');
+            $land->coordinate_y = Input::get('coordinate_y');
             $land->photo_id = Input::get('photo_id');
             $land->sold = Input::has('sold') ? 1 : 0;
             $land->save();
