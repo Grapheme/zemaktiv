@@ -23,7 +23,7 @@
 			.block__link {
 
 				a {
-					color: #3facd9;
+					color: $linkColor;
 					text-decoration: none;
 					border-bottom: 1px solid;
 					transition: border .2s ease;

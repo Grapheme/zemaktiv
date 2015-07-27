@@ -15,6 +15,9 @@
   ],
   "dependencies": {
     "normalize-scss": "~3.0.3",
-    "jquery": "~2.1.4"
+    "jquery": "~2.1.4",
+    "autosize": "~3.0.8",
+    "jquery-validation": "~1.14.0",
+    "jquery-form": "~3.46.0"
   }
 }

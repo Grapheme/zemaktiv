@@ -5,7 +5,7 @@ block content
 		.wrapper
 			.page__left
 				.tabs-title
-					h1.us-title.title-green
+					h1.us-title.title-yellow
 						span О проекте
 					a(href="#").title__link О компании
 					a(href="#").title__link Документы
@@ -28,6 +28,14 @@ block content
 						li построили гостевую парковку на 15 места;
 						li спланировали пешеходную дорожку на главной аллее;
 						li создали парк на рельефе с лавочками и «зелеными комнатами»;
+				.us-news
+					h2 Новости
+					ul.news__list
+						each i in [1,2]
+							li.list__item
+								.item__date 11/07/15
+								.item__link
+									a(href="#").us-link Получены свидетельства на право собственности в коттеджном   поселке «вяземские сады - 3»
 			.page__right
 				.right__contacts
 					h2 Контакты
@@ -46,3 +54,18 @@ block content
 						span.block__left Адрес:
 						span.block__right 2-ая Звенигородская улица, дом 13, стр. 42, Москва, 123022 ст. м. «Улица 1905 года»
 				#contact-map
+				.right__form
+					h2 Обратная связь
+					form(action="json/form.json").js-contact-form
+						.form__input
+							input(name="name" placeholder="Имя")
+						.form__input
+							input(name="email" placeholder="E-mail")
+						.form__input
+							textarea(name="message" placeholder="Вопрос").js-autosize
+						.form__input
+							button.us-btn.btn-green(type="submit")
+								span Отправить
+						.form__input.js-response-text(style="display: none;")
+					.js-contact-success(style="display: none;")
+						.form__input Ваше сообщение успешно отправлено!

@@ -1,7 +1,7 @@
 .right__contacts {
 	padding-left: 50rem / $fs;
 
-	h2 {
+	h2:first-child {
 		margin-top: 0;
 		line-height: 65rem / $fs;
 	}
@@ -49,4 +49,81 @@
 	height: 400rem / $fs;
 	margin-top: 30rem / $fs;
 	width: 100%;
+}
+
+.right__form {
+	padding: 0 0 20rem / $fs 50rem / $fs;
+
+	.form__input {
+		margin-top: 20rem / $fs;
+
+		input, textarea {
+			width: 100%;
+			box-sizing: border-box;
+			border: 1px solid $borderColor;
+			resize: none;
+			transition: all .2s ease;
+
+			@include placeholder {
+			    color: #8c8c8c;
+			}
+
+			&:focus {
+				border: 1px solid #ccc;
+				outline: none;
+			}
+
+			&.error {
+				border: 1px solid red;
+			}
+		}
+
+		input {
+			height: 50rem / $fs;
+			padding: 0 15rem / $fs;
+		}
+
+		textarea {
+			min-height: 235rem / $fs;
+			padding: 15rem / $fs 15rem / $fs;
+		}
+
+		label.error {
+			display: inline-block;
+			vertical-align: top;
+			padding-top: 5rem / $fs;
+			font-size: 14rem / $fs;
+		}
+	}
+}
+
+.us-news {
+	padding-bottom: 20rem / $fs;
+}
+
+.news__list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+
+	.list__item {
+		margin-bottom: 20rem / $fs;
+		line-height: 1.5;
+
+		.item__date {
+			color: #8c8c8c;
+		}
+
+		.item__link {
+			a {
+				position: relative;
+
+				&:before {
+					content: "–";
+					position: absolute;
+					left: -15rem / $fs;
+				}
+			}
+		}
+	}
 }

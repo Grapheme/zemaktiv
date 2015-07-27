@@ -37,6 +37,10 @@ gulp.task('server', function() {
 gulp.task('scripts', function() {
   return gulp.src([
   		'bower_components/jquery/dist/jquery.min.js',
+  		'bower_components/autosize/dist/autosize.min.js',
+  		'bower_components/jquery-validation/dist/jquery.validate.min.js',
+  		'bower_components/jquery-form/jquery.form.js',
+  		app_path + '/scripts/config.js',
   		app_path + '/scripts/main.js'])
     .pipe(concat('main.concat.js'))
     .pipe(gulp.dest(build_path + '/scripts/'))

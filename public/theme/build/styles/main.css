@@ -399,14 +399,14 @@ th {
 @font-face {
   font-family: 'room';
   src: url("../fonts/glen_jan_-_room-medium-webfont.eot");
-  src: url("../fonts/glen_jan_-_room-medium-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/glen_jan_-_room-medium-webfont.woff2") format("woff2"), url("../fonts/glen_jan_-_room-medium-webfont.woff") format("woff"), url("../fonts/glen_jan_-_room-medium-webfont.ttf") format("truetype"), url("../fonts/glen_jan_-_room-medium-webfont.svg#roommedium") format("svg");
+  src: url("../fonts/glen_jan_-_room-medium-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/glen_jan_-_room-medium-webfont.woff") format("woff"), url("../fonts/glen_jan_-_room-medium-webfont.ttf") format("truetype"), url("../fonts/glen_jan_-_room-medium-webfont.svg#roommedium") format("svg");
   font-weight: 500;
   font-style: normal; }
 
 @font-face {
   font-family: 'room';
   src: url("../fonts/glen_jan_-_room-bold-webfont.eot");
-  src: url("../fonts/glen_jan_-_room-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/glen_jan_-_room-bold-webfont.woff2") format("woff2"), url("../fonts/glen_jan_-_room-bold-webfont.woff") format("woff"), url("../fonts/glen_jan_-_room-bold-webfont.ttf") format("truetype"), url("../fonts/glen_jan_-_room-bold-webfont.svg#roombold") format("svg");
+  src: url("../fonts/glen_jan_-_room-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/glen_jan_-_room-bold-webfont.woff") format("woff"), url("../fonts/glen_jan_-_room-bold-webfont.ttf") format("truetype"), url("../fonts/glen_jan_-_room-bold-webfont.svg#roombold") format("svg");
   font-weight: 700;
   font-style: normal; }
 
@@ -512,29 +512,32 @@ h2 {
   line-height: 1.2;
   margin: 3.125rem 0 1.875rem; }
 
-.us-article {
+.us-article:last-child {
   padding-bottom: 1.25rem; }
-  .us-article h3 {
-    font-weight: 400;
-    text-transform: uppercase;
-    margin: 3.125rem 0 0.625rem; }
-  .us-article p {
-    line-height: 1.5; }
-  .us-article ul {
-    line-height: 1.5;
-    list-style: none;
-    padding: 0.625rem 0 0;
-    margin: 0; }
-    .us-article ul li {
-      position: relative;
-      padding-left: 0.9375rem;
-      margin-bottom: 0.625rem; }
-      .us-article ul li:before {
-        content: "–";
-        position: absolute;
-        display: inline-block;
-        vertical-align: middle;
-        left: 0; }
+
+.us-article h3 {
+  font-weight: 400;
+  text-transform: uppercase;
+  margin: 3.125rem 0 0.625rem; }
+
+.us-article p {
+  line-height: 1.5; }
+
+.us-article ul {
+  line-height: 1.5;
+  list-style: none;
+  padding: 0.625rem 0 0;
+  margin: 0; }
+  .us-article ul li {
+    position: relative;
+    padding-left: 0.9375rem;
+    margin-bottom: 0.625rem; }
+    .us-article ul li:before {
+      content: "–";
+      position: absolute;
+      display: inline-block;
+      vertical-align: middle;
+      left: 0; }
 
 .download-block .block__item {
   margin: 1.25rem 0; }
@@ -561,6 +564,15 @@ h2 {
               transition: all 0.2s ease; }
     .download-block .block__item .item__link:hover span {
       border-bottom: 1px solid transparent; }
+
+.us-link {
+  color: #3facd9;
+  text-decoration: none;
+  border-bottom: 1px solid;
+  -webkit-transition: all 0.2s ease;
+          transition: all 0.2s ease; }
+  .us-link:hover {
+    border-bottom: 1px solid transparent; }
 
 .header.header-min {
   position: fixed;
@@ -606,9 +618,9 @@ h2 {
       display: inline-block;
       top: 50%;
       left: 5%;
-      margin-top: -3.125rem;
-      width: 10.3125rem;
-      height: 6.25rem;
+      margin-top: -4.25rem;
+      width: 7.2rem;
+      height: 8.5rem;
       background: url(../images/header/logo_big.png) center center/100% auto no-repeat; }
     .header .header__top .top__big .big__right {
       position: absolute;
@@ -800,6 +812,8 @@ h2 {
     background: #49c5b2; }
   .us-title.title-blue span {
     background: #6584c2; }
+  .us-title.title-yellow span {
+    background: #edbf62; }
   .us-title span {
     display: inline-block;
     vertical-align: top;
@@ -822,7 +836,8 @@ h2 {
   text-decoration: none;
   overflow: hidden;
   -webkit-transition: all 0.2s ease;
-          transition: all 0.2s ease; }
+          transition: all 0.2s ease;
+  outline: none; }
   .us-btn:before {
     content: "";
     position: absolute;
@@ -1190,7 +1205,7 @@ h2 {
 
 .right__contacts {
   padding-left: 3.125rem; }
-  .right__contacts h2 {
+  .right__contacts h2:first-child {
     margin-top: 0;
     line-height: 4.0625rem; }
   .right__contacts .contacts__office {
@@ -1225,3 +1240,58 @@ h2 {
   height: 25rem;
   margin-top: 1.875rem;
   width: 100%; }
+
+.right__form {
+  padding: 0 0 1.25rem 3.125rem; }
+  .right__form .form__input {
+    margin-top: 1.25rem; }
+    .right__form .form__input input, .right__form .form__input textarea {
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #f1f1f1;
+      resize: none;
+      -webkit-transition: all 0.2s ease;
+              transition: all 0.2s ease; }
+      .right__form .form__input input::-webkit-input-placeholder, .right__form .form__input textarea::-webkit-input-placeholder {
+        color: #8c8c8c; }
+      .right__form .form__input input:-moz-placeholder, .right__form .form__input textarea:-moz-placeholder {
+        color: #8c8c8c; }
+      .right__form .form__input input::-moz-placeholder, .right__form .form__input textarea::-moz-placeholder {
+        color: #8c8c8c; }
+      .right__form .form__input input:-ms-input-placeholder, .right__form .form__input textarea:-ms-input-placeholder {
+        color: #8c8c8c; }
+      .right__form .form__input input:focus, .right__form .form__input textarea:focus {
+        border: 1px solid #ccc;
+        outline: none; }
+      .right__form .form__input input.error, .right__form .form__input textarea.error {
+        border: 1px solid red; }
+    .right__form .form__input input {
+      height: 3.125rem;
+      padding: 0 0.9375rem; }
+    .right__form .form__input textarea {
+      min-height: 14.6875rem;
+      padding: 0.9375rem 0.9375rem; }
+    .right__form .form__input label.error {
+      display: inline-block;
+      vertical-align: top;
+      padding-top: 0.3125rem;
+      font-size: 0.875rem; }
+
+.us-news {
+  padding-bottom: 1.25rem; }
+
+.news__list {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+  .news__list .list__item {
+    margin-bottom: 1.25rem;
+    line-height: 1.5; }
+    .news__list .list__item .item__date {
+      color: #8c8c8c; }
+    .news__list .list__item .item__link a {
+      position: relative; }
+      .news__list .list__item .item__link a:before {
+        content: "–";
+        position: absolute;
+        left: -0.9375rem; }

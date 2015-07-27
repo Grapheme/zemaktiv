@@ -1,4 +1,34 @@
+window.Help = {};
 window.Garden = {};
+Help.ajaxSubmit = function(form, callbacks) {
+    var response_cont = $(form).find('.js-response-text'),
+        options = { 
+        beforeSubmit: function(){
+            response_cont.hide();
+            $(form).find('[type="submit"]').addClass('loading')
+                .attr('disabled', 'disabled');
+        }, 
+        success: function(data){
+            if(data.status && data.redirect && data.redirect != '') {
+                window.location.href = data.redirect;
+            }
+            if(callbacks && callbacks.success && data.status) {
+                callbacks.success(data);
+            }
+            if(data.responseText) {
+            	response_cont.show().text(data.responseText);
+            }
+            $(form).find('[type="submit"]').removeClass('loading')
+                .removeAttr('disabled');
+        },
+        error: function(data) {
+            response_cont.show().text('Ошибка на сервере, попробуйте позже');
+            $(form).find('[type="submit"]').removeClass('loading')
+                .removeAttr('disabled');
+        }
+    };
+    $(form).ajaxSubmit(options);
+}
 Garden.header = function() {
 	var headerStatus;
 	var setHeader = function() {
@@ -46,6 +76,38 @@ Garden.indexSlider = function() {
 	}
 	init();
 }
+Garden.autosize = function() {
+	if($('.js-autosize').length) {
+		autosize($('.js-autosize'));
+	}
+}
+Garden.contactForm = function() {
+	if(!$('.js-contact-form').length) return;
+	var form = $('.js-contact-form');
+	form.validate({
+	    rules: {
+	        name: {
+	            required: true
+	        },
+	        email: {
+	            required: true,
+	            email: true
+	        },
+	        message: {
+	            required: true
+	        },
+	    },
+	    submitHandler: function(form) {
+	        Help.ajaxSubmit(form, {
+	            success: function() {
+	                $(form).slideUp();
+	                $('.js-contact-success').slideDown();
+	            }
+	        });
+	        return false;
+	    }
+	});
+}
 Garden.ymap = function() {
 	if(!$('#contact-map').length) return;
 	ymaps.ready(init);
@@ -65,6 +127,8 @@ Garden.init = function() {
 	this.header();
 	this.indexSlider();
 	this.ymap();
+	this.autosize();
+	this.contactForm();
 }
 $(function(){
 	Garden.init();

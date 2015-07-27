@@ -1,3 +1,10 @@
 $fs: 16;
 $borderColor: #f1f1f1;
 $minWidth: 1300rem / $fs;
+$linkColor: #3facd9;
+@mixin placeholder {
+  &::-webkit-input-placeholder { @content }
+  &:-moz-placeholder           { @content }
+  &::-moz-placeholder          { @content }
+  &:-ms-input-placeholder      { @content }
+}
