@@ -5,7 +5,9 @@
             overflow: auto;
             z-index: 1;
         }
-
+        .modal-backdrop {
+            z-index: 1;
+        }
         .map-container .container_12 {
             position: relative;
             height: 663px;
