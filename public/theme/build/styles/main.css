@@ -707,7 +707,7 @@ h2 {
   .header .header__menu .menu__nav {
     position: relative;
     z-index: 2;
-    width: 81.25rem;
+    width: 81.875rem;
     margin: 0 auto; }
     .header .header__menu .menu__nav ul {
       display: inline-block;
@@ -1213,8 +1213,11 @@ h2 {
 .index-gallery {
   overflow: hidden; }
   .index-gallery .gallery__line {
-    width: 100rem;
-    white-space: nowrap; }
+    position: relative;
+    left: 0;
+    white-space: nowrap;
+    -webkit-transition: all 0.2s linear;
+            transition: all 0.2s linear; }
     .index-gallery .gallery__line .line__item {
       display: inline-block;
       vertical-align: top;

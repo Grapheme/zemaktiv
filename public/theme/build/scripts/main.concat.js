@@ -1483,6 +1483,81 @@ Garden.fancybox = function() {
 		padding: 0
 	});
 }
+Garden.lineGallery = function() {
+	var parent = $('.js-line-gallery');
+	if(!parent.length) return;
+	var activeDir,
+		activeSpeed,
+		thisTimeout,
+		slideLine = parent.find('.js-line'),
+		startedSlide = false;
+	var slide = function() {
+		var amount = activeSpeed/15 * activeDir,
+			activeLeft = parseInt(slideLine.css('transform').split(',')[4]),
+			fullWidth = 0,
+			thisLeft = 0;
+		slideLine.children('a').each(function(){
+			fullWidth = fullWidth + $(this).width();
+		});
+		fullWidth = fullWidth - parent.width();
+		if(activeLeft + amount <= 0) {
+			if(activeLeft + amount < -fullWidth) {
+				thisLeft = -fullWidth;
+			} else {
+				thisLeft = activeLeft + amount;
+			}
+		}
+		slideLine.css({
+			'transform': 'translateX(' + thisLeft + 'px)'
+		});
+		thisTimeout = setTimeout(function(){
+			slide();
+		}, 200);
+		/* WITHOUT TRANSFORM
+		var amount = activeSpeed/25 * activeDir,
+			activeLeft = parseInt(slideLine.css('left')),
+			fullWidth = 0,
+			thisLeft = 0;
+		slideLine.children('a').each(function(){
+			fullWidth = fullWidth + $(this).width();
+		});
+		fullWidth = fullWidth - parent.width();
+		if(activeLeft + amount <= 0) {
+			if(activeLeft + amount < -fullWidth) {
+				thisLeft = -fullWidth;
+			} else {
+				thisLeft = activeLeft + amount;
+			}
+		}
+		slideLine.css({
+			'left': thisLeft
+		});
+		*/
+	}
+	var stopSlide = function() {
+		clearTimeout(thisTimeout);
+		startedSlide = false;
+	}
+	var hover = function(e) {
+		var middle = parent.width() / 2;
+		activeSpeed = Math.abs(e.pageX - middle);
+		if(e.pageX > middle) {
+			activeDir = -1;
+		} else {
+			activeDir = 1;
+		}
+	}
+	parent.on('mousemove', function(e){
+		hover(e);
+		if(!startedSlide) {
+			startedSlide = true;
+			slide();
+		}
+	});
+	parent.on('mouseleave', function(){
+		stopSlide();
+	});
+}
 Garden.init = function() {
 	this.header();
 	this.indexSlider();
@@ -1491,6 +1566,7 @@ Garden.init = function() {
 	this.contactForm();
 	this.infraMap();
 	this.fancybox();
+	this.lineGallery();
 	//this.smartHover();
 }
 $(function(){

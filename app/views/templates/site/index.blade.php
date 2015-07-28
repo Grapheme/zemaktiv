@@ -112,10 +112,10 @@
         </div>
     </div>
 @if(count($gallery))
-    <div class="index-gallery">
-        <div class="gallery__line">
+    <div class="index-gallery js-line-gallery">
+        <div class="gallery__line js-line">
         @foreach($gallery as $photo)
-            <a href="javascript:void(0);" style="background-image: url({{ asset(Config::get('site.galleries_photo_public_dir').'/'.$photo) }});" class="line__item"></a>
+            <a href="{{ asset(Config::get('site.galleries_photo_public_dir').'/'.$photo) }}" style="background-image: url({{ asset(Config::get('site.galleries_photo_public_dir').'/'.$photo) }});" class="js-fancybox line__item"></a>
         @endforeach
         </div>
     </div>

@@ -314,8 +314,10 @@
 	overflow: hidden;
 
 	.gallery__line {
-		width: 100rem;
+		position: relative;
+		left: 0;
 		white-space: nowrap;
+		transition: all .2s linear;
 
 		.line__item {
 			display: inline-block;
