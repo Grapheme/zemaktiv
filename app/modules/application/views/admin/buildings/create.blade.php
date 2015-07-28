@@ -2,7 +2,7 @@
 @section('style')
 @stop
 @section('content')
-    @include($module['tpl'].'.buildings.menu')
+    @include($module['tpl'].'buildings.menu')
     {{ Form::open(array('route'=>'buildings.store','class'=>'smart-form','id'=>'buildings-form','role'=>'form','method'=>'post')) }}
     <div class="row">
         <section class="col col-6">

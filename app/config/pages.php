@@ -32,28 +32,27 @@ return array(
         $block_tpls = [
 
             'first' => [
-                'title' => 'Первый тип блока',
+                'title' => 'Контакты',
                 'fields' => [
-                    'text' => [
-                        'title' => 'Заголовок',
+                    'office' => [
+                        'title' => 'Офис',
                         'type' => 'text',
                     ],
-                    'image' => [
-                        'title' => 'Картинка',
-                        'type' => 'image',
-                    ],
-                ],
-            ],
-            'second' => [
-                'title' => 'Второй тип блока',
-                'fields' => [
-                    'text' => [
-                        'title' => 'Заголовок',
+                    'otdel' => [
+                        'title' => 'Отдел продаж',
                         'type' => 'text',
                     ],
-                    'content' => [
-                        'title' => 'Текст',
-                        'type' => 'textarea',
+                    'email' => [
+                        'title' => 'Email',
+                        'type' => 'text',
+                    ],
+                    'times' => [
+                        'title' => 'Часы работы',
+                        'type' => 'text',
+                    ],
+                    'address' => [
+                        'title' => 'Адрес',
+                        'type' => 'text',
                     ],
                 ],
             ],

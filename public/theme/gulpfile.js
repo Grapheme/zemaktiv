@@ -65,7 +65,9 @@ gulp.task('wiredep', function () {
 
 gulp.task('jade', function() {
 	gulp.src(app_path + '/views/*.jade')
-		.pipe(jade())
+		.pipe(jade({
+			pretty: true
+		}))
 		.pipe(gulp.dest(build_path))
 		.pipe(connect.reload());
 });
