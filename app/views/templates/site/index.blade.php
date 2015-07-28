@@ -23,10 +23,7 @@
             endif;
         endforeach;
     endif;
-    $gallery = array();
-    if($buildings_photos = Buildings::where('photo_id','>',0)->orderByRaw("RAND()")->take(25)->lists('photo_id')):
-        $gallery = Photo::whereIn('id', $buildings_photos)->lists('name');
-    endif;
+    $gallery = Gallery::where('id', 3)->first()->photos;
 ?>
 
 <main class="main js-main">
@@ -43,7 +40,7 @@
                         </div>
                         @if(!empty($slider['link']))
                         <div class="item__btns">
-                            <a href="{{ $slider['link'] }}" class="us-btn btn-transparent"><span>Выбрать участок</span></a>
+                            <a href="{{ $slider['link'] }}" class="us-btn btn-transparent"><span>{{ $slider['link_title'] }}</span></a>
                         </div>
                         @endif
                     </div>
@@ -63,7 +60,7 @@
         </div>
     </div>
     <div class="index-filter">
-        <a href="{{ pageurl('choice-land') }}" class="filter__item">
+        <a href="{{ pageurl('buildings') }}" class="filter__item">
             <div class="item__title">Готовые дома за 3.5 млн</div>
         </a>
         <a href="{{ pageurl('choice-land') }}" class="filter__item">
@@ -99,9 +96,9 @@
             <div class="wrapper">
                 <div class="block__title">Выбор участка</div>
                 <div class="block__text text-min">
-
+                    {{ $page->block('choice_land') }}
                 </div>
-                <div class="block__btn"><a href="#" class="us-btn btn-green"><span>Подбор участка</span></a></div>
+                <div class="block__btn"><a href="{{ pageurl('choice-land') }}" class="us-btn btn-green"><span>Выбор участка</span></a></div>
             </div>
         </div>
         <div class="block-line">
@@ -115,7 +112,7 @@
     <div class="index-gallery js-line-gallery">
         <div class="gallery__line js-line">
         @foreach($gallery as $photo)
-            <a href="{{ asset(Config::get('site.galleries_photo_public_dir').'/'.$photo) }}" style="background-image: url({{ asset(Config::get('site.galleries_photo_public_dir').'/'.$photo) }});" class="js-fancybox line__item"></a>
+            <a href="{{ asset(Config::get('site.galleries_photo_public_dir').'/'.$photo->name) }}" style="background-image: url({{ asset(Config::get('site.galleries_photo_public_dir').'/'.$photo->name) }});" class="js-fancybox line__item"></a>
         @endforeach
         </div>
     </div>
