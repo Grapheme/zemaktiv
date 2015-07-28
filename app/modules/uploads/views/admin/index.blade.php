@@ -50,7 +50,7 @@
 						</td>
 						<td class="text-center" style="vertical-align:middle; white-space:nowrap;">
 
-                            <span class="btn btn-warning copy-button" title="Скопировать путь до файла" data-clipboard-text="{{ $element->public_path() }}">
+                            <span class="btn btn-warning copy-button" title="Скопировать путь до файла" data-clipboard-text="{{ $element->path }}">
                                 <i class="fa fa-copy"></i>
                             </span>
 

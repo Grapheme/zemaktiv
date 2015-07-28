@@ -13,6 +13,7 @@ return array(
     'disable_url_modification' => 0,
 
     'uploads_dir' => public_path('uploads/files'),
+    'uploads_public_dir' => '/uploads/files',
 
     'uploads_photo_dir' => public_path('uploads'),
     'uploads_thumb_dir' => public_path('uploads/thumbs'),
