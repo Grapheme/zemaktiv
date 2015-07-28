@@ -24,8 +24,8 @@
         endforeach;
     endif;
     $gallery = array();
-    if(Gallery::where('name', 'Главная галерея')->exists()):
-        $gallery = Gallery::where('name', 'Главная галерея')->first()->photos;
+    if(Gallery::where('name', 'Галерея на главной')->exists()):
+        $gallery = Gallery::where('name', 'Галерея на главной')->first()->photos;
     endif;
 ?>
 
