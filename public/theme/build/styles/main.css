@@ -502,6 +502,8 @@ html {
     border-bottom: 1px dotted #3eadda;
     -webkit-transition: all 0.2s ease;
             transition: all 0.2s ease; }
+    .tabs-title .title__link:first-child {
+      margin-left: 0; }
     .tabs-title .title__link:hover {
       border-bottom: 1px dotted transparent; }
 
@@ -511,6 +513,14 @@ h2 {
   font-weight: 800;
   line-height: 1.2;
   margin: 3.125rem 0 1.875rem; }
+
+.page-full {
+  padding-top: 5rem; }
+
+.news-img {
+  margin-top: 2.5rem; }
+  .news-img img {
+    max-width: 100%; }
 
 .us-article:last-child {
   padding-bottom: 1.25rem; }
@@ -565,14 +575,8 @@ h2 {
     .download-block .block__item .item__link:hover span {
       border-bottom: 1px solid transparent; }
 
-.us-link {
-  color: #3facd9;
-  text-decoration: none;
-  border-bottom: 1px solid;
-  -webkit-transition: all 0.2s ease;
-          transition: all 0.2s ease; }
-  .us-link:hover {
-    border-bottom: 1px solid transparent; }
+.martop40 {
+  margin-top: 2.5rem !important; }
 
 .header.header-min {
   position: fixed;
@@ -890,6 +894,15 @@ h2 {
   .us-btn span {
     position: relative;
     z-index: 2; }
+
+.us-link {
+  color: #3facd9;
+  text-decoration: none;
+  border-bottom: 1px solid;
+  -webkit-transition: all 0.2s ease;
+          transition: all 0.2s ease; }
+  .us-link:hover {
+    border-bottom: 1px solid transparent; }
 
 .done .done__house {
   padding: 1.875rem 0 0.9375rem;

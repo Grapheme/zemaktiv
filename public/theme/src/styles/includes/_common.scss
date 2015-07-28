@@ -130,6 +130,10 @@ html {
 		border-bottom: 1px dotted #3eadda;
 		transition: all .2s ease;
 
+		&:first-child {
+			margin-left: 0;
+		}
+
 		&:hover {
 			border-bottom: 1px dotted transparent;
 		}
@@ -142,6 +146,18 @@ h2 {
 	font-weight: 800;
 	line-height: 1.2;
 	margin: 50rem / $fs 0 30rem / $fs;
+}
+
+.page-full {
+	padding-top: 80rem / $fs;
+}
+
+.news-img {
+	margin-top: 40rem / $fs;
+
+	img {
+		max-width: 100%;
+	}
 }
 
 .us-article {
@@ -223,13 +239,6 @@ h2 {
 	}	
 }
 
-.us-link {
-	color: $linkColor;
-	text-decoration: none;
-	border-bottom: 1px solid;
-	transition: all .2s ease;
-
-	&:hover {
-		border-bottom: 1px solid transparent;
-	}
+.martop40 {
+	margin-top: 40rem / $fs !important;
 }
