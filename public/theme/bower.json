@@ -18,6 +18,7 @@
     "jquery": "~2.1.4",
     "autosize": "~3.0.8",
     "jquery-validation": "~1.14.0",
-    "jquery-form": "~3.46.0"
+    "jquery-form": "~3.46.0",
+    "fancybox": "~2.1.5"
   }
 }

@@ -1,28 +1,27 @@
 extends templates/layout
 
 block content
-	.half-page
-		.wrapper
-			.page-full
-				.tabs-title
-					h1.us-title.title-yellow
-						span Новости
-					a(href="#").title__link О компании
-					a(href="#").title__link Документы
-					a(href="about.html").title__link О проекте
-				.us-news
-					ul.news__list.martop40
-						each i in [1,2,3,4,5]
-							li.list__item
-								.item__date 11/07/15
-								.item__link
-									a(href="one-news.html").us-link Получены свидетельства на право собственности в коттеджном   поселке «вяземские сады - 3»
-					ul.pagination
-						li.disabled
-							span «
-						li.active
-							span 1
-						li
-							a(href='#') 2
-						li
-							a(href='#', rel='next') »
+	.wrapper
+		.page-full
+			.tabs-title
+				h1.us-title.title-yellow
+					span Новости
+				a(href="#").title__link О компании
+				a(href="#").title__link Документы
+				a(href="about.html").title__link О проекте
+			.us-news
+				ul.news__list.martop40
+					each i in [1,2,3,4,5]
+						li.list__item
+							.item__date 11/07/15
+							.item__link
+								a(href="one-news.html").us-link Получены свидетельства на право собственности в коттеджном   поселке «вяземские сады - 3»
+				ul.pagination
+					li.disabled
+						span «
+					li.active
+						span 1
+					li
+						a(href='#') 2
+					li
+						a(href='#', rel='next') »

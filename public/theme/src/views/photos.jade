@@ -1,0 +1,14 @@
+extends templates/layout
+
+block content
+	.wrapper.relative
+		.wrapper-photos
+			h1.us-title.title-photos.page-full
+				span Фотографии
+	.block-photos
+		each i in [1,2,3,4,5,6]
+			each i in [1,2]
+				.photos__item
+					a.item__link.js-fancybox(rel="photos" href="images/tmp/index-slider#{i}.jpg")
+						span.link__back(style="background-image: url('images/tmp/index-slider#{i}.jpg');")
+						span.link__hover

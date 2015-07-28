@@ -76,6 +76,43 @@ Garden.indexSlider = function() {
 	}
 	init();
 }
+Garden.smartHover = function() {
+	if(!$('.js-shover').length) return;
+	var thisTimeout;
+	var active = false;
+	var setPosition = function(elem, e, close) {
+		clearTimeout(thisTimeout);
+		var circle = elem.find('.js-shover-circle');
+		var thisY = elem.offset().top/* - $(window).scrollTop()*/;
+		var thisX = elem.offset().left/* - $(window).scrollLeft()*/;
+		var elemY = e.pageY - thisY;
+		var elemX = e.pageX - thisX;
+		circle.css({
+			top: elemY,
+			left: elemX
+		});
+		if(close) {
+			circle.removeClass('active');
+		} else {
+			circle.removeClass('transition');
+			thisTimeout = setTimeout(function(){
+				circle.addClass('active transition');
+			}, 10);
+		}
+	}
+	$('.js-shover')
+		.on('mouseover', function(e){
+			var index = $(this).parent().index();
+			if(active !== index) {
+				setPosition($(this), e);
+			}
+			active = index;
+		})
+		.on('mouseout', function(e){
+			setPosition($(this), e, true);
+			active = false;
+		});
+}
 Garden.autosize = function() {
 	if($('.js-autosize').length) {
 		autosize($('.js-autosize'));
@@ -142,6 +179,11 @@ Garden.infraMap = function() {
 					    .remove('mapTools');
     }
 }
+Garden.fancybox = function() {
+	$('.js-fancybox').fancybox({
+		padding: 0
+	});
+}
 Garden.init = function() {
 	this.header();
 	this.indexSlider();
@@ -149,6 +191,8 @@ Garden.init = function() {
 	this.autosize();
 	this.contactForm();
 	this.infraMap();
+	this.fancybox();
+	//this.smartHover();
 }
 $(function(){
 	Garden.init();
