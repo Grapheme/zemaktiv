@@ -67,7 +67,7 @@
                     <div id="contact-map"></div>
                     <div class="right__form">
                         <h2>Обратная связь</h2>
-                        <form action="json/form.json" class="js-contact-form">
+                        {{ Form::open(array('route'=>'contact_feedback','class'=>'js-contact-form')) }}
                             <div class="form__input">
                                 <input name="name" placeholder="Имя">
                             </div>
@@ -81,7 +81,7 @@
                                 <button type="submit" class="us-btn btn-green"><span>Отправить</span></button>
                             </div>
                             <div style="display: none;" class="form__input js-response-text"></div>
-                        </form>
+                        {{ Form::close() }}
                         <div style="display: none;" class="js-contact-success">
                             <div class="form__input">Ваше сообщение успешно отправлено!</div>
                         </div>

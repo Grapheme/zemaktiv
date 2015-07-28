@@ -4,13 +4,12 @@
 	<meta charset="utf-8">
 </head>
 <body>
-	<div>
-		<p>
-            Сообщение: &lt;{{ $email }}&gt;
-            <hr/>
-			{{ Helper::nl2br($content) }}
-            <hr/>
-		</p>
-	</div>
+<div>
+	<p>
+		Посетитель: {{ @$name }} <br>
+		Email: {{ @$email }}<br>
+		Сообщение: <br>{{ $content }}
+	</p>
+</div>
 </body>
 </html>
