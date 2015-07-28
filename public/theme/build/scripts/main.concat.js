@@ -1499,6 +1499,9 @@ Garden.lineGallery = function() {
 		slideLine.children('a').each(function(){
 			fullWidth = fullWidth + $(this).width();
 		});
+		if(fullWidth <= parent.width()) {
+			return;
+		}
 		fullWidth = fullWidth - parent.width();
 		if(activeLeft + amount <= 0) {
 			if(activeLeft + amount < -fullWidth) {
