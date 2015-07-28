@@ -23,7 +23,10 @@
             endif;
         endforeach;
     endif;
-    $gallery = Gallery::where('id', 3)->first()->photos;
+    $gallery = array();
+    if(Gallery::where('id', 3)->exists()):
+        $gallery = Gallery::where('id', 3)->first()->photos;
+    endif;
 ?>
 
 <main class="main js-main">
