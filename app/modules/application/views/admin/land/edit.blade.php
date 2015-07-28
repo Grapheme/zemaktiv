@@ -109,7 +109,7 @@
     </style>
 @stop
 @section('content')
-    @include($module['tpl'].'.land.menu')
+    @include($module['tpl'].'land.menu')
     {{ Form::model($land,array('route'=>array('land.update',$land->id),'class'=>'smart-form','id'=>'land-form','role'=>'form','method'=>'put')) }}
     <div class="row">
         <section class="col col-6">

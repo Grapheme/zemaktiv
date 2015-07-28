@@ -13,7 +13,7 @@ class PublicNewsController extends BaseController {
     ## Routing rules of module
     public static function returnRoutes($prefix = null) {
 
-        return false;
+        return FALSE;
 
         $class = __CLASS__;
         ## УРЛЫ С ЯЗЫКОВЫМИ ПРЕФИКСАМИ ДОЛЖНЫ ИДТИ ПЕРЕД ОБЫЧНЫМИ!
@@ -29,22 +29,21 @@ class PublicNewsController extends BaseController {
                 });
             }
         }
-
         ## Генерим роуты без префикса, и назначаем before-фильтр i18n_url.
         ## Это позволяет нам делать редирект на урл с префиксом только для этих роутов, не затрагивая, например, /admin и /login
-        Route::group(array('before' => 'i18n_url'), function() {
+        Route::group(array('before' => ''), function() {
             Route::get('/news/{url}', array('as' => 'news_full', 'uses' => __CLASS__.'@showFullNews'));
             Route::get('/news/',      array('as' => 'news',      'uses' => __CLASS__.'@showNews'));
         });
     }
-    
+
     ## Shortcodes of module
     public static function returnShortCodes() {
 
         $tpl = static::returnTpl();
 
     	shortcode::add("news",
-        
+
             function($params = null) use ($tpl) {
 
                 #print_r($params); die;
@@ -177,7 +176,7 @@ class PublicNewsController extends BaseController {
                 return View::make($tpl.$params['tpl'], compact('news'));
     	    }
         );
-        
+
     }
 
     ## Actions of module (for distribution rights of users)
@@ -321,7 +320,6 @@ class PublicNewsController extends BaseController {
                     ->where('slug', $url)
                     ->with('meta.seo', 'meta.photo', 'meta.gallery.photos')
                     ->first();
-
                 ## Check SEO url & gettin' $url
                 ## and make 301 redirect if need it
                 if (@is_object($news->meta) && @is_object($news->meta->seo) && $news->meta->seo->url != '' && $news->meta->seo->url != $url) {
