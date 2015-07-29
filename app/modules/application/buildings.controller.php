@@ -72,7 +72,7 @@ class BuildingsController extends BaseController {
             $build->communication = Input::get('communication');
             $build->price = Input::get('price');
             $build->land_id = Input::get('land_id');
-            $build->photo_id = Input::get('photo_id');
+            $build->photo_id = (int)Input::get('photo_id');
             $build->sold = 0;
             $build->save();
 
@@ -114,7 +114,7 @@ class BuildingsController extends BaseController {
             $build->communication = Input::get('communication');
             $build->price = Input::get('price');
             $build->land_id = Input::get('land_id');
-            $build->photo_id = Input::get('photo_id');
+            $build->photo_id = (int)Input::get('photo_id');
             $build->sold = Input::has('sold') ? 1 : 0;
             $build->save();
 
