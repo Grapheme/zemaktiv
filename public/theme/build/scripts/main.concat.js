@@ -1664,8 +1664,15 @@ Garden.map = function() {
 			return false;
 		});
 	}
-	move();
-	tooltip();
+	var setMarks = function() {
+		//$.each(buildings);
+	}
+	var init = function() {
+		move();
+		tooltip();
+		setMarks();
+	}
+	init();
 }
 Garden.init = function() {
 	this.header();

@@ -13,6 +13,7 @@
 	?>
 
 	<script>
+		Dictionary = window.Dictionary || {};
 		var buildings = {
 		@if($buildings->count())
 	        @foreach($buildings as $build)
