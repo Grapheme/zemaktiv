@@ -1665,7 +1665,9 @@ Garden.map = function() {
 		});
 	}
 	var setMarks = function() {
-		//$.each(buildings);
+		$.each(Dictionary.buildings, function(index, value){
+			console.log(value);
+		});
 	}
 	var init = function() {
 		move();

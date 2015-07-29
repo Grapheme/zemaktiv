@@ -14,7 +14,7 @@
 
 	<script>
 		Dictionary = window.Dictionary || {};
-		var Dictionary.buildings = {
+		Dictionary.buildings = {
 		@if($buildings->count())
 	        @foreach($buildings as $build)
 	        	"{{ $build->id }}": {
