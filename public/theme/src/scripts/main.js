@@ -352,6 +352,10 @@ Garden.map = function() {
 			clearTimeout(closeTimeout);
 			if(id === activeId) return;
 			activeId = id;
+			var thisObj = Dictionary.buildings[id];
+			tooltip.find('.js-bnum').text(thisObj.number);
+			tooltip.find('.js-bprice').text(thisObj.price.formatMoney(2));
+			tooltip.find('.js-barea').text(thisObj.land_area);
 			var thisMark = $('.js-mark[data-id="' + id + '"]');
 			var markPos = thisMark.position();
 			tooltip.hide().removeClass('transition active');
@@ -408,13 +412,32 @@ Garden.map = function() {
 		$('.js-area-from').text($('#range-area').slider('values', 0));
 		$('.js-area-to').text($('#range-area').slider('values', 1));
 	}
+	var mapTabs = function() {
+		var showMap = function() {
+			$('.js-choise-filter').fadeOut();
+			$('.js-show-filter').fadeIn();
+			return false;
+		}
+		var showFilter = function() {
+			$('.js-choise-filter').fadeIn();
+			$('.js-show-filter').fadeOut();
+			return false;
+		}
+		$('.js-show-map').on('click', showMap);
+		$('.js-show-filter').on('click', showFilter);
+		showFilter();
+	}
 	var init = function() {
 		move();
 		setMarks();
 		tooltip();
 		filter();
+		mapTabs();
 	}
 	init();
+}
+Garden.checkbox = function() {
+	$('.js-checkbox').button();
 }
 Garden.init = function() {
 	this.header();
@@ -426,6 +449,7 @@ Garden.init = function() {
 	this.fancybox();
 	this.lineGallery();
 	this.map();
+	this.checkbox();
 	//this.speedUp();
 	//this.smartHover();
 }
