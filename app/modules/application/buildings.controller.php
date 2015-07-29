@@ -71,8 +71,7 @@ class BuildingsController extends BaseController {
             $build->material = Input::get('material');
             $build->communication = Input::get('communication');
             $build->price = Input::get('price');
-            $build->coordinate_x = Input::get('coordinate_x');
-            $build->coordinate_y = Input::get('coordinate_y');
+            $build->land_id = Input::get('land_id');
             $build->photo_id = Input::get('photo_id');
             $build->sold = 0;
             $build->save();
@@ -114,8 +113,7 @@ class BuildingsController extends BaseController {
             $build->material = Input::get('material');
             $build->communication = Input::get('communication');
             $build->price = Input::get('price');
-            $build->coordinate_x = Input::get('coordinate_x');
-            $build->coordinate_y = Input::get('coordinate_y');
+            $build->land_id = Input::get('land_id');
             $build->photo_id = Input::get('photo_id');
             $build->sold = Input::has('sold') ? 1 : 0;
             $build->save();

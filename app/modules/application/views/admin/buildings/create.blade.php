@@ -1,10 +1,10 @@
 @extends(Helper::acclayout())
 @section('style')
-    {{ HTML::style(Config::get('site.theme_path').'/styles/map.css') }}
 @stop
 @section('content')
     @include($module['tpl'].'buildings.menu')
     {{ Form::open(array('route'=>'buildings.store','class'=>'smart-form','id'=>'buildings-form','role'=>'form','method'=>'post')) }}
+    {{ Form::hidden('number', (int) Buildings::orderBy('number','DESC')->pluck('number') + 1) }}
     <div class="row">
         <section class="col col-6">
             <div class="well">
@@ -14,12 +14,6 @@
                         <label class="label">Название</label>
                         <label class="input">
                             {{ Form::text('title') }}
-                        </label>
-                    </section>
-                    <section>
-                        <label class="label">Номер</label>
-                        <label class="input">
-                            {{ Form::text('number') }}
                         </label>
                     </section>
                     <section>
@@ -52,33 +46,11 @@
                             {{ Form::text('price') }}
                         </label>
                     </section>
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <section class="map-container js-admin-map">
-                            <div class="container_12">
-                                <div class="map-block js-map-block">
-                                </div>
-                                <button type="button" class="btn btn-default" data-dismiss="modal" style="position:fixed; top:10px; left:10px;">
-                                    Закрыть
-                                </button>
-                            </div>
-                        </section>
-                    </div>
                     <section>
-                        <label class="label">Координата X</label>
-                        <label class="input">
-                            {{ Form::text('coordinate_x', NULL, array('class'=>'js-admin-map-x')) }}
+                        <label class="label">Номер участка</label>
+                        <label class="select">
+                            {{ Form::select('land_id', Land::lists('numberid')) }}
                         </label>
-                    </section>
-                    <section>
-                        <label class="label">Координата Y</label>
-                        <label class="input">
-                            {{ Form::text('coordinate_y', NULL, array('class'=>'js-admin-map-y')) }}
-                        </label>
-                    </section>
-                    <section>
-                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                            Показать карту
-                        </button>
                     </section>
                     <section>
                         <label class="label">Главное изображение</label>
@@ -121,15 +93,11 @@
             title: {required: true, maxlength: 100},
             number: {required: true, maxlength: 100},
             price: {required: true, maxlength: 100},
-            coordinate_x: { required: true, min: 0, max: 4200 },
-            coordinate_y: { required: true, min: 0, max: 2625 }
         };
         var validation_messages = {
             title: {required: "Укажите название"},
             number: {required: "Укажите номер"},
             price: {required: "Укажите цену"},
-            coordinate_x: {required: "Укажите координату X"},
-            coordinate_y: {required: "Укажите координату Y"}
         };
     </script>
 
@@ -137,12 +105,6 @@
 
     {{ HTML::script('private/js/vendor/redactor.min.js') }}
     {{ HTML::script('private/js/system/redactor-config.js') }}
-    {{ HTML::script(Config::get('site.theme_path').'/scripts/map.js') }}
-    <script type="text/javascript">
-        $('.js-admin-map').smart_map([{
-            posX: 200, posY: 200, radius: 1
-        }]);
-    </script>
     <script type="text/javascript">
         if (typeof pageSetUp === 'function') {
             pageSetUp();

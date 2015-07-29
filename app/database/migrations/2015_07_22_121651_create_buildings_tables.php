@@ -15,8 +15,7 @@ class CreateBuildingsTables extends Migration {
             $table->integer('number')->default(0)->unsigned()->nullable();
             $table->string('communication', 200)->nullable();
             $table->double('price')->default(0)->unsigned()->nullable();
-            $table->integer('coordinate_x')->default(0)->unsigned()->nullable();
-            $table->integer('coordinate_y')->default(0)->unsigned()->nullable();
+            $table->integer('land_id')->default(0)->unsigned()->nullable();
 
             $table->text('description')->nullable();
             $table->integer('photo_id')->unsigned()->nullable();

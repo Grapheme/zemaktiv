@@ -9,7 +9,7 @@
 @stop
 @section('content')
     <?php
-        $buildings = Buildings::orderBy('number','ASC')->with('photo', 'gallery.photos')->paginate(5);
+        $buildings = Buildings::orderBy('number','ASC')->with('land','photo', 'gallery.photos')->paginate(5);
     ?>
     <main class="main js-main">
         <div class="us-page">
@@ -73,7 +73,7 @@
                                 </div>
                             </div>
                             <div class="right__btns">
-                                <a href="{{ pageurl('gen-plan').'#'.$build->id }}" class="us-btn btn-white"><span>Посмотреть на генплане</span></a>
+                                <a href="{{ pageurl('gen-plan').'#'.$build->land->id }}" class="us-btn btn-white"><span>Посмотреть на генплане</span></a>
                                 <a href="#" class="us-btn btn-green"><span>Забронировать</span></a>
                             </div>
                         </div>
