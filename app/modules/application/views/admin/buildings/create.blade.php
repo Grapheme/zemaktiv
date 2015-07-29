@@ -49,7 +49,7 @@
                     <section>
                         <label class="label">Номер участка</label>
                         <label class="select">
-                            {{ Form::select('land_id', Land::lists('numberid')) }}
+                            {{ Form::select('land_id', Land::lists('number','id')) }}
                         </label>
                     </section>
                     <section>
