@@ -28,7 +28,6 @@
 	        @endforeach
 		@endif
 		};
-		console.log(buildings);
 	</script>
     {{ $page->draw_blocks() }}
 @stop
