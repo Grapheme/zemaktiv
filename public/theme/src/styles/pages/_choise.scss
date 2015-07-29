@@ -175,4 +175,56 @@
 			}
 		}
 	}
+
+	.choise-filter {
+		position: relative;
+		z-index: 3;
+		background: rgba(255, 255, 255, .9);
+		min-height: 90vh;
+		overflow: hidden;
+
+		.page__full {
+			position: relative;
+			margin-top: 80rem / $fs;
+		}
+
+		.choise__tomap {
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+
+		.filter__form {
+			width: 920rem / $fs;
+			margin-top: 30rem / $fs;
+
+			.form__left {
+				float: left;
+				width: 35%;
+			}
+
+			.form__right {
+				float: left;
+				width: 65%;
+
+				.right__block {
+					margin-top: 30rem / $fs;
+
+					.form__title {
+						margin-top: 0;
+					}
+				}
+			}
+
+			.form__title {
+				font-family: 'pf_agora_slab_pro';
+				font-weight: 700;
+				margin-top: 30rem / $fs;
+			}
+
+			.form__desc, .form__slider {
+				margin-top: 15rem / $fs;
+			}
+		}
+	}
 }

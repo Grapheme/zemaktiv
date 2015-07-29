@@ -835,7 +835,7 @@ h2 {
   .us-title.title-photos span {
     background: rgba(241, 88, 34, 0.84); }
   .us-title.title-choise span {
-    background: rgba(225, 91, 96, 0.84); }
+    background: rgba(221, 62, 68, 0.84); }
   .us-title span {
     display: inline-block;
     vertical-align: top;
@@ -1483,7 +1483,7 @@ h2 {
 .wrapper-photos {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 1.25rem;
   right: 0;
   z-index: 2;
   pointer-events: none; }
@@ -1686,3 +1686,35 @@ h2 {
       .wrapper-choise .wrapper-params .choise__toparams .toparams__desc {
         font-size: 0.9375rem;
         margin-top: 0.625rem; }
+  .wrapper-choise .choise-filter {
+    position: relative;
+    z-index: 3;
+    background: rgba(255, 255, 255, 0.9);
+    min-height: 90vh;
+    overflow: hidden; }
+    .wrapper-choise .choise-filter .page__full {
+      position: relative;
+      margin-top: 5rem; }
+    .wrapper-choise .choise-filter .choise__tomap {
+      position: absolute;
+      top: 0;
+      right: 0; }
+    .wrapper-choise .choise-filter .filter__form {
+      width: 57.5rem;
+      margin-top: 1.875rem; }
+      .wrapper-choise .choise-filter .filter__form .form__left {
+        float: left;
+        width: 35%; }
+      .wrapper-choise .choise-filter .filter__form .form__right {
+        float: left;
+        width: 65%; }
+        .wrapper-choise .choise-filter .filter__form .form__right .right__block {
+          margin-top: 1.875rem; }
+          .wrapper-choise .choise-filter .filter__form .form__right .right__block .form__title {
+            margin-top: 0; }
+      .wrapper-choise .choise-filter .filter__form .form__title {
+        font-family: 'pf_agora_slab_pro';
+        font-weight: 700;
+        margin-top: 1.875rem; }
+      .wrapper-choise .choise-filter .filter__form .form__desc, .wrapper-choise .choise-filter .filter__form .form__slider {
+        margin-top: 0.9375rem; }

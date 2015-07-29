@@ -23,7 +23,9 @@
 	        		land_area: {{ $build->land_area }},
 	        		material: "{{ $build->material }}",
 	        		communication: "{{ $build->communication }}",
-	        		price: {{ $build->price }}
+	        		price: {{ $build->price }},
+	        		coordinate_x: {{ $build->coordinate_x }},
+	        		coordinate_y: {{ $build->coordinate_y }}
 	        	},
 	        @endforeach
 		@endif

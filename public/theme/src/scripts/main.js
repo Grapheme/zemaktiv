@@ -286,6 +286,14 @@ Garden.map = function() {
 	var mapCont = $('.js-map-container');
 	var cursorPos = [];
 	var mapPos = [];
+	var prices = {
+		min: false,
+		max: 0
+	};
+	var areas = {
+		min: false,
+		max: 0
+	};
 	var move = function() {
 		var setCenter = function() {
 			var x = -(map.width()/2 - mapCont.width() / 2),
@@ -367,13 +375,44 @@ Garden.map = function() {
 	}
 	var setMarks = function() {
 		$.each(Dictionary.buildings, function(index, value){
-			console.log(value);
+			if(value.price > prices.max) prices.max = value.price;
+			if(value.price < prices.min || prices.min === false) prices.min = value.price;
+			if(value.land_area > areas.max) areas.max = value.land_area;
+			if(value.land_area < areas.min || areas.min === false) areas.min = value.land_area;
+			$('.js-map').append('<a class="image__mark js-mark" data-id="' + value.id + '" style="left: ' + value.coordinate_x + 'px; top: ' + value.coordinate_y + 'px;"></a>');
 		});
+	}
+	var filter = function() {
+		$('#range-price').slider({
+			range: true,
+			min: prices.min,
+			max: prices.max,
+			values: [prices.min, prices.max],
+			slide: function(event, ui) {
+				$('.js-price-from').text(ui.values[ 0 ]);
+				$('.js-price-to').text(ui.values[ 1 ]);
+			}
+		});
+		$('#range-area').slider({
+			range: true,
+			min: areas.min,
+			max: areas.max,
+			values: [areas.min, areas.max],
+			slide: function(event, ui) {
+				$('.js-area-from').text(ui.values[ 0 ]);
+				$('.js-area-to').text(ui.values[ 1 ]);
+			}
+		});
+		$('.js-price-from').text($('#range-price').slider('values', 0));
+		$('.js-price-to').text($('#range-price').slider('values', 1));
+		$('.js-area-from').text($('#range-area').slider('values', 0));
+		$('.js-area-to').text($('#range-area').slider('values', 1));
 	}
 	var init = function() {
 		move();
-		tooltip();
 		setMarks();
+		tooltip();
+		filter();
 	}
 	init();
 }
