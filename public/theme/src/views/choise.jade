@@ -1,0 +1,28 @@
+extends templates/layout
+
+block content
+	.wrapper-choise.js-choise-wrapper
+		.js-choise-map
+			.wrapper.relative
+				.wrapper-photos
+					h1.us-title.title-choise.page-full
+						span Выбор участка
+				.wrapper-params
+					a(href="#").choise__toparams
+						span.toparams__title Подбор по параметрам
+						span.toparams__desc Цена и площадь
+			.choise__map.js-map-container
+				.map__image.js-map
+					.image__mark(style="left: 2000px; top: 1500px;" data-id="4").js-mark
+					.image__mark(style="left: 2200px; top: 1500px;" data-id="5").js-mark
+					.image__tooltip.js-tooltip
+						a(href="#").tooltip__close.js-close
+						.tooltip__title Участок №42
+						.tooltip__subtitle Вторая очередь
+						ul.tooltip__list
+							li.list__item 13, 95 соток
+							li.list__item Без подряда
+							li.list__item 850 000 руб.
+						.tooltip__btn
+							a(href="#").us-btn.btn-white
+								span Забронировать

@@ -43,6 +43,11 @@ Garden.header = function() {
 				headerStatus = 'big';
 			}
 		}
+		if(!$('.js-header').hasClass('transition')) {
+			setTimeout(function(){
+				$('.js-header').addClass('transition');
+			}, 10);
+		}
 	}
 	$(window).on('scroll', setHeader);
 	setHeader();
@@ -262,6 +267,107 @@ Garden.lineGallery = function() {
 		stopSlide();
 	});
 }
+Garden.speedUp = function() {
+	var body = $('body'),
+	    timer;
+	$(window).on('scroll', function() {
+		clearTimeout(timer);
+		if(!body.hasClass('disable-hover')) {
+			body.addClass('disable-hover');
+		}
+		timer = setTimeout(function(){
+			body.removeClass('disable-hover');
+		}, 200);
+	});
+}
+Garden.map = function() {
+	if(!$('.js-choise-wrapper').length) return;
+	var map = $('.js-map');
+	var mapCont = $('.js-map-container');
+	var cursorPos = [];
+	var mapPos = [];
+	var move = function() {
+		var setCenter = function() {
+			var x = -(map.width()/2 - mapCont.width() / 2),
+				y = -(map.height()/2 - mapCont.height() / 2);
+			setMapPos(x, y);
+			map.addClass('active');
+			setTimeout(function(){
+				map.addClass('transition');
+			}, 100);
+		}
+		var setMapPos = function(x, y) {
+			map.css('transform', 'translate(' + x + 'px, ' + y + 'px)');
+		}
+		var moveMap = function(pageX, pageY) {
+			var xDiff = pageX - cursorPos[0],
+				yDiff = pageY - cursorPos[1],
+				xNew = xDiff + mapPos[0],
+				yNew = yDiff + mapPos[1];
+			if(xNew > 0) xNew = 0;
+			if(yNew > 0) yNew = 0;
+			if(xNew < -(map.width() - mapCont.width())) xNew = -(map.width() - mapCont.width());
+			if(yNew < -(map.height() - mapCont.height())) yNew = -(map.height() - mapCont.height());
+			setMapPos(xNew, yNew);
+		}
+		var mousedown = false;
+		map.on('mousedown', function(e){
+			mousedown = true;
+			cursorPos = [e.pageX, e.pageY]
+			mapX = parseInt(map.css('transform').split(',')[4]);
+			mapY = parseInt(map.css('transform').split(',')[5]);
+			mapPos = [mapX, mapY];
+		});
+		$(document).on('mousemove', function(e){
+			if(mousedown) {
+				moveMap(e.pageX, e.pageY);
+				return false;
+			}
+		});
+		$(document).on('mouseup', function(){
+			mousedown = false;
+		});
+		setCenter();
+	}
+	var tooltip = function() {
+		var tooltip = $('.js-tooltip');
+		var closeTimeout;
+		var activeId;
+		var close = function() {
+			activeId = false;
+			tooltip.removeClass('active');
+			closeTimeout = setTimeout(function(){
+				tooltip.removeClass('transition').hide();
+			}, 500);
+		}
+		var show = function(id) {
+			clearTimeout(closeTimeout);
+			if(id === activeId) return;
+			activeId = id;
+			var thisMark = $('.js-mark[data-id="' + id + '"]');
+			var markPos = thisMark.position();
+			tooltip.hide().removeClass('transition active');
+			tooltip.css({
+				left: markPos.left,
+				bottom: $('.js-map').height() - markPos.top
+			}).show();
+			setTimeout(function(){
+				tooltip.addClass('transition active');
+			}, 10);
+		}
+		$(document).on('click', '.js-mark', function(){
+			var thisId = $(this).attr('data-id');
+			show(thisId);
+			return false;
+		});
+		$(document).on('click', '.js-tooltip .js-close', function(){
+			close();
+			return false;
+		});
+	}
+	move();
+	tooltip();
+}
 Garden.init = function() {
 	this.header();
 	this.indexSlider();
@@ -271,6 +377,8 @@ Garden.init = function() {
 	this.infraMap();
 	this.fancybox();
 	this.lineGallery();
+	this.map();
+	//this.speedUp();
 	//this.smartHover();
 }
 $(function(){
