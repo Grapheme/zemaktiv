@@ -1226,6 +1226,7 @@ h2 {
   .index-gallery .gallery__line {
     position: relative;
     left: 0;
+    font-size: 0;
     white-space: nowrap;
     -webkit-transition: all 0.2s linear;
             transition: all 0.2s linear; }

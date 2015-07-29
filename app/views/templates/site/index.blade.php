@@ -115,7 +115,7 @@
     <div class="index-gallery js-line-gallery">
         <div class="gallery__line js-line">
         @foreach($gallery as $photo)
-            <a href="{{ asset(Config::get('site.galleries_photo_public_dir').'/'.$photo->name) }}" style="background-image: url({{ asset(Config::get('site.galleries_photo_public_dir').'/'.$photo->name) }});" class="js-fancybox line__item"></a>
+            <a rel="gallery" href="{{ asset(Config::get('site.galleries_photo_public_dir').'/'.$photo->name) }}" style="background-image: url({{ asset(Config::get('site.galleries_photo_public_dir').'/'.$photo->name) }});" class="js-fancybox line__item"></a>
         @endforeach
         </div>
     </div>
