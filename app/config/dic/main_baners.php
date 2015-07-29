@@ -14,6 +14,10 @@ return array(
                     #'maxFiles' => 2,
                 ),
             ),
+            'link_title' => array(
+                'title' => 'Подпись ссыдки на ресурс',
+                'type' => 'text',
+            ),
             'link' => array(
                 'title' => 'Ссыдка на ресурс',
                 'type' => 'text',

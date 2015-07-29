@@ -1,6 +1,6 @@
 <?
 /**
- * TITLE: Расположение
+ * TITLE: Генеральный план
  * AVAILABLE_ONLY_IN_ADVANCED_MODE
  */
 ?>

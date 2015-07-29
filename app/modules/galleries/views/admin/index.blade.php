@@ -1,6 +1,4 @@
-@extends('templates.'.AuthAccount::getStartPage())
-
-
+@extends(Helper::acclayout())
 @section('content')
 
     <h1>Управление изображениями</h1>

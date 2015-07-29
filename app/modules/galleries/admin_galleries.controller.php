@@ -275,7 +275,7 @@ class AdminGalleriesController extends BaseController {
     
 	public function getEdit($id){
 		
-        $gallery = Gallery::where('id', $id)->first();
+        $gallery = Gallery::where('id', $id)->with('photos')->first();
 
 
 
