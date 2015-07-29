@@ -28,6 +28,22 @@
 		}
 	}
 
+	&.transition {
+		.top__big {
+			transition: opacity .5s ease;
+		}
+
+		.top__min {
+			transition: all .5s ease;
+		}
+
+		.header__menu {
+			&:before {
+				transition: all .5s ease;
+			}
+		}
+	}
+
 	.header__top {
 		position: relative;
 		height: 160rem / $fs;
@@ -44,7 +60,6 @@
 			margin: 0 auto;
 			margin-left: -(990/2/$fs)+rem;
 			z-index: 2;
-			transition: opacity .5s ease;
 
 			.big__logo {
 				position: absolute;
@@ -80,7 +95,6 @@
 			margin-left: -(990/2/$fs)+rem;
 			text-align: center;
 			font-size: 0;
-			transition: all .5s ease;
 			transform-style: preserve-3d;
 			transform: rotateX(90deg) translateZ(-50px);
 			opacity: 0;
@@ -131,7 +145,6 @@
 		overflow: hidden;
 		height: 50rem / $fs;
 		line-height: 50rem / $fs;
-		border-bottom: 1px solid $borderColor;
 		text-align: center;
 		font-family: 'pf_agora_slab_pro';
 		font-weight: 500;
@@ -146,7 +159,6 @@
 			right: 0;
 			bottom: 0;
 			background: #f5f1ed;
-			transition: all .5s ease;
 		}
 
 		.menu__nav {

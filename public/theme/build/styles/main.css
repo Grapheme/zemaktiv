@@ -418,6 +418,10 @@ html {
   -moz-osx-font-smoothing: grayscale;
   color: #111111; }
 
+.disable-hover,
+.disable-hover * {
+  pointer-events: none !important; }
+
 .wrapper {
   width: 62.5rem;
   padding: 0 1.25rem;
@@ -603,6 +607,18 @@ h2 {
         -ms-transform: translateY(100%);
             transform: translateY(100%); }
 
+.header.transition .top__big {
+  -webkit-transition: opacity 0.5s ease;
+          transition: opacity 0.5s ease; }
+
+.header.transition .top__min {
+  -webkit-transition: all 0.5s ease;
+          transition: all 0.5s ease; }
+
+.header.transition .header__menu:before {
+  -webkit-transition: all 0.5s ease;
+          transition: all 0.5s ease; }
+
 .header .header__top {
   position: relative;
   height: 10rem;
@@ -617,9 +633,7 @@ h2 {
     bottom: 0;
     margin: 0 auto;
     margin-left: -30.9375rem;
-    z-index: 2;
-    -webkit-transition: opacity 0.5s ease;
-            transition: opacity 0.5s ease; }
+    z-index: 2; }
     .header .header__top .top__big .big__logo {
       position: absolute;
       display: inline-block;
@@ -649,8 +663,6 @@ h2 {
     margin-left: -30.9375rem;
     text-align: center;
     font-size: 0;
-    -webkit-transition: all 0.5s ease;
-            transition: all 0.5s ease;
     -webkit-transform-style: preserve-3d;
             transform-style: preserve-3d;
     -webkit-transform: rotateX(90deg) translateZ(-50px);
@@ -689,7 +701,6 @@ h2 {
   overflow: hidden;
   height: 3.125rem;
   line-height: 3.125rem;
-  border-bottom: 1px solid #f1f1f1;
   text-align: center;
   font-family: 'pf_agora_slab_pro';
   font-weight: 500; }
@@ -701,9 +712,7 @@ h2 {
     left: 0;
     right: 0;
     bottom: 0;
-    background: #f5f1ed;
-    -webkit-transition: all 0.5s ease;
-            transition: all 0.5s ease; }
+    background: #f5f1ed; }
   .header .header__menu .menu__nav {
     position: relative;
     z-index: 2;
@@ -825,6 +834,8 @@ h2 {
     background: #b970b1; }
   .us-title.title-photos span {
     background: rgba(241, 88, 34, 0.84); }
+  .us-title.title-choise span {
+    background: rgba(225, 91, 96, 0.84); }
   .us-title span {
     display: inline-block;
     vertical-align: top;
@@ -1215,6 +1226,7 @@ h2 {
   .index-gallery .gallery__line {
     position: relative;
     left: 0;
+    font-size: 0;
     white-space: nowrap;
     -webkit-transition: all 0.2s linear;
             transition: all 0.2s linear; }
@@ -1534,3 +1546,143 @@ h2 {
         .block-photos .photos__item .item__link:hover .link__hover:before {
           -webkit-transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, 100%, 0);
                   transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, 100%, 0); }
+
+.wrapper-choise {
+  position: relative;
+  min-height: 90vh; }
+  .wrapper-choise .choise__map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 90vh;
+    overflow: hidden; }
+    .wrapper-choise .choise__map .map__image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 262.5rem;
+      height: 164.0625rem;
+      background: url(../images/map.jpg) 0 0/100% 100% no-repeat;
+      cursor: move;
+      -webkit-transform: translate(0, 0);
+          -ms-transform: translate(0, 0);
+              transform: translate(0, 0);
+      opacity: 0; }
+      .wrapper-choise .choise__map .map__image.transition {
+        -webkit-transition: -webkit-transform 0.1s ease-out;
+                transition: transform 0.1s ease-out; }
+      .wrapper-choise .choise__map .map__image.active {
+        opacity: 1; }
+      .wrapper-choise .choise__map .map__image .image__mark {
+        position: absolute;
+        width: 1.5625rem;
+        height: 1.5625rem;
+        border-radius: 1.5625rem;
+        margin-left: -0.78125rem;
+        margin-top: -0.78125rem;
+        background: rgba(221, 62, 68, 0.8);
+        cursor: pointer; }
+      .wrapper-choise .choise__map .map__image .image__tooltip {
+        display: none;
+        position: absolute;
+        z-index: 2;
+        margin-left: -9.0625rem;
+        margin-bottom: 1.25rem;
+        width: 18.125rem;
+        padding: 1.875rem 6.25rem 1.875rem 1.875rem;
+        box-sizing: border-box;
+        background: #fff;
+        cursor: default;
+        opacity: 0;
+        -webkit-transform: translateY(-10%);
+            -ms-transform: translateY(-10%);
+                transform: translateY(-10%); }
+        .wrapper-choise .choise__map .map__image .image__tooltip.transition {
+          -webkit-transition: all 0.5s ease;
+                  transition: all 0.5s ease; }
+        .wrapper-choise .choise__map .map__image .image__tooltip.active {
+          opacity: 1;
+          -webkit-transform: translateY(0);
+              -ms-transform: translateY(0);
+                  transform: translateY(0); }
+        .wrapper-choise .choise__map .map__image .image__tooltip:before {
+          content: "";
+          position: absolute;
+          bottom: -0.4375rem;
+          right: -3.125rem;
+          width: 6.75rem;
+          height: 7.8125rem;
+          background: url(../images/tooltip-apple.png) 0 0/100% auto no-repeat; }
+        .wrapper-choise .choise__map .map__image .image__tooltip:after {
+          content: "";
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          margin-left: -1.25rem;
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 1.25rem 1.25rem 0 1.25rem;
+          border-color: #fff transparent transparent transparent; }
+        .wrapper-choise .choise__map .map__image .image__tooltip .tooltip__close {
+          position: absolute;
+          display: inline-block;
+          top: 1.75rem;
+          right: 1.75rem;
+          height: 1.125rem;
+          width: 1.125rem; }
+          .wrapper-choise .choise__map .map__image .image__tooltip .tooltip__close:before, .wrapper-choise .choise__map .map__image .image__tooltip .tooltip__close:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            margin-top: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #111; }
+          .wrapper-choise .choise__map .map__image .image__tooltip .tooltip__close:before {
+            -webkit-transform: rotate(-45deg);
+                -ms-transform: rotate(-45deg);
+                    transform: rotate(-45deg); }
+          .wrapper-choise .choise__map .map__image .image__tooltip .tooltip__close:after {
+            -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                    transform: rotate(45deg); }
+        .wrapper-choise .choise__map .map__image .image__tooltip .tooltip__title {
+          font-family: 'pf_agora_slab_pro';
+          font-weight: 700; }
+        .wrapper-choise .choise__map .map__image .image__tooltip .tooltip__subtitle {
+          margin-top: 0.4375rem; }
+        .wrapper-choise .choise__map .map__image .image__tooltip .tooltip__list {
+          list-style: none;
+          margin: 1.0625rem 0;
+          padding: 0; }
+          .wrapper-choise .choise__map .map__image .image__tooltip .tooltip__list .list__item {
+            position: relative;
+            margin: 0.4375rem 0;
+            padding-left: 0.75rem; }
+            .wrapper-choise .choise__map .map__image .image__tooltip .tooltip__list .list__item:before {
+              content: "–";
+              position: absolute;
+              left: 0; }
+  .wrapper-choise .wrapper-params {
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    top: 5rem; }
+    .wrapper-choise .wrapper-params .choise__toparams {
+      display: inline-block;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 1.25rem;
+      border: 1px solid #fff;
+      text-decoration: none; }
+      .wrapper-choise .wrapper-params .choise__toparams span {
+        display: block; }
+      .wrapper-choise .wrapper-params .choise__toparams .toparams__title {
+        font-family: 'pf_agora_slab_pro';
+        font-weight: 700; }
+      .wrapper-choise .wrapper-params .choise__toparams .toparams__desc {
+        font-size: 0.9375rem;
+        margin-top: 0.625rem; }
