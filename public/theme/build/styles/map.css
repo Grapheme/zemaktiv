@@ -1,0 +1,104 @@
+.map-container {
+    overflow: auto;
+    z-index: 1;
+}
+.modal-backdrop {
+    z-index: 1;
+}
+.map-container .container_12 {
+    position: relative;
+    height: 663px;
+}
+
+.map-container .map-block {
+    position: relative;
+    margin: 0 auto;
+    top: 2.5rem;
+    /*width: 75rem;*/
+    width: 4200px;
+    /*height: 36.4375rem;*/
+    height: 2625px;
+    background: url('../images/map.jpg') no-repeat center center;
+    background-size: 4200px 2625px;
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+
+    background-color: #fff;
+}
+
+.map-container .map-dot {
+    position: absolute;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-left: -0.34375rem;
+    margin-top: -0.34375rem;
+    border-radius: 0.6875rem;
+    background: #1dcba4;
+}
+
+.map-container .map-dot .map-rad {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #b1b1b1;
+    opacity: .2;
+}
+
+.map-container .map-dot:hover .map-rad,
+.map-container .map-dot.active .map-rad {
+    background: #1dcba4;
+}
+
+.map-container .map-dot:hover .map-rad {
+    -webkit-transition: all .75s ease;
+    transition: all .75s ease;
+    -webkit-animation: mappulse .75s infinite;
+    animation: mappulse .75s infinite;
+}
+
+.map-container .map-desc {
+    position: absolute;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: #fff;
+    padding: 2.5rem 1.875rem 2.5rem 3.75rem;
+}
+
+.map-container .map-desc .desc-icon {
+    margin-right: 1.25rem;
+}
+
+.map-container .map-desc .desc-icon:last-child {
+    margin: 0;
+}
+
+.map-container .map-desc .title {
+    text-transform: uppercase;
+    font-size: 1.25em;
+    margin-top: 2.1875rem;
+}
+
+.map-container .map-desc .map-items {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-top: 2.1875rem;
+    height: 70%;
+}
+
+.map-container .map-desc .map-items li {
+    margin-bottom: 0.625rem;
+    padding-right: 3.125rem;
+    color: #7f8281;
+}
+
+.map-container .map-desc .sol-dots {
+    position: absolute;
+    bottom: 2.5rem;
+}
