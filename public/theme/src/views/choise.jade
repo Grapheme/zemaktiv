@@ -8,40 +8,84 @@ block content
 					h1.us-title.title-choise.page-full
 						span Выбор участка
 				.wrapper-params
-					a(href="#").choise__toparams
+					a(href="#").choise__toparams.js-show-filter(style="display: none")
 						span.toparams__title Подбор по параметрам
 						span.toparams__desc Цена и площадь
 			.choise__map.js-map-container
 				.map__image.js-map
-					.image__mark(style="left: 2000px; top: 1500px;" data-id="4").js-mark
-					.image__mark(style="left: 2200px; top: 1500px;" data-id="5").js-mark
+					//- .image__mark.js-mark(style="left: 2000px; top: 1500px;" data-id="4")
 					.image__tooltip.js-tooltip
 						a(href="#").tooltip__close.js-close
-						.tooltip__title Участок №42
-						.tooltip__subtitle Вторая очередь
+						.tooltip__title Участок №<span class="js-bnum"></span>
+						//- .tooltip__subtitle Вторая очередь
 						ul.tooltip__list
-							li.list__item 13, 95 соток
-							li.list__item Без подряда
-							li.list__item 850 000 руб.
+							li.list__item <span class="js-barea"></span> соток
+							//- li.list__item Без подряда
+							li.list__item <span class="js-bprice"></span> руб.
 						.tooltip__btn
-							a(href="#").us-btn.btn-white
+							a(href="#" data-id).js-book.us-btn.btn-white
 								span Забронировать
-		.js-choise-filter
+		.js-choise-filter.choise-filter
 			.wrapper
-				h1.us-title.title-choise.page-full
-					span Выбор участка
-				a(href="#").choise__toparams
-					span.toparams__title Подбор по параметрам
-					span.toparams__desc Цена и площадь
+				.page__full
+					h1.us-title.title-choise
+						span Выбор участка
+					a(href="#").choise__tomap.us-btn.btn-white.js-show-map
+						span Выбрать на генплане
+					.filter__form
+						.form__left
+							.form__title Участки
+							.left__check
+								input(name="withoutpod" id="withoutpod" type="checkbox" checked="checked").js-checkbox 
+								label(for="withoutpod") Без подряда
+							.left__check
+								input(name="withpod" id="withpod" type="checkbox" checked="checked").js-checkbox 
+								label(for="withpod") С подрядом
+							.left__check
+								input(name="withhouse" id="withhouse" type="checkbox" checked="checked").js-checkbox 
+								label(for="withhouse") Участок с домом
+						.form__right
+							.right__block
+								.form__title Цена, руб.
+								.form__desc от <span class="js-price-from"></span> до <span class="js-price-to"></span>
+								.form__slider
+									#range-price
+									input(name="pricefrom" type="hidden")
+									input(name="priceto" type="hidden")
+							.right__block
+								.form__title Площадь, сот.
+								.form__desc от <span class="js-area-from"></span> до <span class="js-area-to"></span>
+								.form__slider
+									#range-area
+									input(name="areafrom" type="hidden")
+									input(name="areato" type="hidden")
+							.right__btn
+								button(type="submit").us-btn.btn-green
+									span Подбор
+						.clearfix
 	script.
 		Dictionary = window.Dictionary || {};
-		var Dictionary.buildings = {
+		Dictionary.buildings = {
 				"1": {
 					id: 1,
-					number: 225,
-					land_area: 24,
-					material: "Газобетонные блоки",
-					communication: "Газ, Вода, Водоснабжение",
-					price: 4840145
+					number: 124,
+					land_area: 12,
+					price: 7800000,
+					coordinate_x: 2263,
+					coordinate_y: 1490,
+					sold: 0,
+					status: 2,
+					turn: 1
+				},
+				"2": {
+					id: 2,
+					number: 125,
+					land_area: 20,
+					price: 5600000,
+					coordinate_x: 2300,
+					coordinate_y: 1450,
+					sold: 1,
+					status: 2,
+					turn: 2
 				},
 			};

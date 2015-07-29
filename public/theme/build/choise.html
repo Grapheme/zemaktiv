@@ -44,41 +44,94 @@
             <div class="wrapper-photos">
               <h1 class="us-title title-choise page-full"><span>Выбор участка</span></h1>
             </div>
-            <div class="wrapper-params"><a href="#" class="choise__toparams"><span class="toparams__title">Подбор по параметрам</span><span class="toparams__desc">Цена и площадь</span></a></div>
+            <div class="wrapper-params"><a href="#" style="display: none" class="choise__toparams js-show-filter"><span class="toparams__title">Подбор по параметрам</span><span class="toparams__desc">Цена и площадь</span></a></div>
           </div>
           <div class="choise__map js-map-container">
             <div class="map__image js-map">
-              <div style="left: 2000px; top: 1500px;" data-id="4" class="image__mark js-mark"></div>
-              <div style="left: 2200px; top: 1500px;" data-id="5" class="image__mark js-mark"></div>
               <div class="image__tooltip js-tooltip"><a href="#" class="tooltip__close js-close"></a>
-                <div class="tooltip__title">Участок №42</div>
-                <div class="tooltip__subtitle">Вторая очередь</div>
+                <div class="tooltip__title">Участок №<span class="js-bnum"></span></div>
                 <ul class="tooltip__list">
-                  <li class="list__item">13, 95 соток</li>
-                  <li class="list__item">Без подряда</li>
-                  <li class="list__item">850 000 руб.</li>
+                  <li class="list__item"><span class="js-barea"></span> соток</li>
+                  <li class="list__item"><span class="js-bprice"></span> руб.</li>
                 </ul>
-                <div class="tooltip__btn"><a href="#" class="us-btn btn-white"><span>Забронировать</span></a></div>
+                <div class="tooltip__btn"><a href="#" data-id class="js-book us-btn btn-white"><span>Забронировать</span></a></div>
               </div>
             </div>
           </div>
         </div>
-        <div class="js-choise-filter">
+        <div class="js-choise-filter choise-filter">
           <div class="wrapper">
-            <h1 class="us-title title-choise page-full"><span>Выбор участка</span></h1><a href="#" class="choise__toparams"><span class="toparams__title">Подбор по параметрам</span><span class="toparams__desc">Цена и площадь</span></a>
+            <div class="page__full">
+              <h1 class="us-title title-choise"><span>Выбор участка</span></h1><a href="#" class="choise__tomap us-btn btn-white js-show-map"><span>Выбрать на генплане</span></a>
+              <div class="filter__form">
+                <div class="form__left">
+                  <div class="form__title">Участки</div>
+                  <div class="left__check">
+                    <input name="withoutpod" id="withoutpod" type="checkbox" checked="checked" class="js-checkbox">
+                    <label for="withoutpod">Без подряда</label>
+                  </div>
+                  <div class="left__check">
+                    <input name="withpod" id="withpod" type="checkbox" checked="checked" class="js-checkbox">
+                    <label for="withpod">С подрядом</label>
+                  </div>
+                  <div class="left__check">
+                    <input name="withhouse" id="withhouse" type="checkbox" checked="checked" class="js-checkbox">
+                    <label for="withhouse">Участок с домом</label>
+                  </div>
+                </div>
+                <div class="form__right">
+                  <div class="right__block">
+                    <div class="form__title">Цена, руб.</div>
+                    <div class="form__desc">от <span class="js-price-from"></span> до <span class="js-price-to"></span></div>
+                    <div class="form__slider">
+                      <div id="range-price"></div>
+                      <input name="pricefrom" type="hidden">
+                      <input name="priceto" type="hidden">
+                    </div>
+                  </div>
+                  <div class="right__block">
+                    <div class="form__title">Площадь, сот.</div>
+                    <div class="form__desc">от <span class="js-area-from"></span> до <span class="js-area-to"></span></div>
+                    <div class="form__slider">
+                      <div id="range-area"></div>
+                      <input name="areafrom" type="hidden">
+                      <input name="areato" type="hidden">
+                    </div>
+                  </div>
+                  <div class="right__btn">
+                    <button type="submit" class="us-btn btn-green"><span>Подбор</span></button>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       <script>
         Dictionary = window.Dictionary || {};
-        var Dictionary.buildings = {
+        Dictionary.buildings = {
         		"1": {
         			id: 1,
-        			number: 225,
-        			land_area: 24,
-        			material: "Газобетонные блоки",
-        			communication: "Газ, Вода, Водоснабжение",
-        			price: 4840145
+        			number: 124,
+        			land_area: 12,
+        			price: 7800000,
+        			coordinate_x: 2263,
+        			coordinate_y: 1490,
+        			sold: 0,
+        			status: 2,
+        			turn: 1
+        		},
+        		"2": {
+        			id: 2,
+        			number: 125,
+        			land_area: 20,
+        			price: 5600000,
+        			coordinate_x: 2300,
+        			coordinate_y: 1450,
+        			sold: 1,
+        			status: 2,
+        			turn: 2
         		},
         	};
       </script>

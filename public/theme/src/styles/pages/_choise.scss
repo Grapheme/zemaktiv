@@ -9,6 +9,7 @@
 		right: 0;
 		height: 90vh;
 		overflow: hidden;
+		backface-visibility: hidden;
 
 		.map__image {
 			position: absolute;
@@ -72,7 +73,7 @@
 					right: -50rem / $fs;
 					width: 108rem / $fs;
 					height: 125rem / $fs;
-					background: url(../images/tooltip-apple.png) 0 0 / 100% auto no-repeat;
+					background: url(../images/ui/tooltip-apple.png) 0 0 / 100% auto no-repeat;
 				}
 
 				&:after {
@@ -172,6 +173,140 @@
 			.toparams__desc {
 				font-size: 15rem / $fs;
 				margin-top: 10rem / $fs;
+			}
+		}
+	}
+
+	.choise-filter {
+		position: relative;
+		z-index: 3;
+		background: rgba(255, 255, 255, .9);
+		min-height: 90vh;
+		overflow: hidden;
+
+		.page__full {
+			position: relative;
+			margin-top: 80rem / $fs;
+		}
+
+		.choise__tomap {
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+
+		.filter__form {
+			width: 920rem / $fs;
+			margin-top: 30rem / $fs;
+
+			.form__left {
+				float: left;
+				width: 35%;
+
+				.form__title {
+					margin-bottom: 20rem / $fs;
+				}
+
+				.left__check {
+					margin-top: 13rem / $fs;
+
+					.ui-button {
+						position: relative;
+						border: none;
+						background: transparent;
+						padding-left: 27rem / $fs;
+
+						&:before {
+							content: "";
+							position: absolute;
+							left: 0;
+							top: -1rem / $fs;
+							width: 20rem / $fs;
+							height: 20rem / $fs;
+							box-sizing: border-box;
+							border: 2px solid #42b974;
+							border-radius: 2px;
+						}
+
+						&:after {
+							content: "";
+							position: absolute;
+							left: 7rem / $fs;
+							top: 6rem / $fs;
+							width: 6rem / $fs;
+							height: 6rem / $fs;
+							background: #42b974;
+							opacity: 0;
+							transform: scale(2);
+							transition: all .2s;
+						}
+
+						&.ui-state-active {
+							&:after {
+								opacity: 1;
+								transform: scale(1);
+							}
+						}
+					}
+
+					.ui-button-text {
+						padding: 0;
+						font-size: 16rem / $fs;
+						font-family: "room";
+						color: #111;
+					}
+				}
+			}
+
+			.form__right {
+				float: left;
+				width: 65%;
+
+				.right__block {
+					margin-top: 30rem / $fs;
+
+					.form__title {
+						margin-top: 0;
+					}
+				}
+
+				.right__btn {
+					margin-top: 50rem / $fs;
+				}
+			}
+
+			.form__title {
+				font-family: 'pf_agora_slab_pro';
+				font-weight: 700;
+				margin-top: 30rem / $fs;
+			}
+
+			.form__desc {
+				margin-top: 15rem / $fs;
+			}
+
+			.form__slider {
+				margin-top: 30rem / $fs;
+
+				.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+					background: url(../images/ui/green-apple.png) center center / contain no-repeat;
+					outline: none;
+					border: none;
+					width: 32rem / $fs;
+					height: 38rem / $fs;
+					margin-top: -38rem / $fs / 3;
+				}
+
+				.ui-slider-horizontal {
+					height: 5rem / $fs;
+					border-radius: 0;
+					border: none;
+					background: #e15b60;
+				}
+
+				.ui-slider .ui-slider-range {
+					background: #42b974;
+				}
 			}
 		}
 	}

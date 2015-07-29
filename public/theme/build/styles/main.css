@@ -835,7 +835,7 @@ h2 {
   .us-title.title-photos span {
     background: rgba(241, 88, 34, 0.84); }
   .us-title.title-choise span {
-    background: rgba(225, 91, 96, 0.84); }
+    background: rgba(221, 62, 68, 0.84); }
   .us-title span {
     display: inline-block;
     vertical-align: top;
@@ -1483,7 +1483,7 @@ h2 {
 .wrapper-photos {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 1.25rem;
   right: 0;
   z-index: 2;
   pointer-events: none; }
@@ -1556,7 +1556,9 @@ h2 {
     left: 0;
     right: 0;
     height: 90vh;
-    overflow: hidden; }
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden; }
     .wrapper-choise .choise__map .map__image {
       position: absolute;
       top: 0;
@@ -1613,7 +1615,7 @@ h2 {
           right: -3.125rem;
           width: 6.75rem;
           height: 7.8125rem;
-          background: url(../images/tooltip-apple.png) 0 0/100% auto no-repeat; }
+          background: url(../images/ui/tooltip-apple.png) 0 0/100% auto no-repeat; }
         .wrapper-choise .choise__map .map__image .image__tooltip:after {
           content: "";
           position: absolute;
@@ -1686,3 +1688,96 @@ h2 {
       .wrapper-choise .wrapper-params .choise__toparams .toparams__desc {
         font-size: 0.9375rem;
         margin-top: 0.625rem; }
+  .wrapper-choise .choise-filter {
+    position: relative;
+    z-index: 3;
+    background: rgba(255, 255, 255, 0.9);
+    min-height: 90vh;
+    overflow: hidden; }
+    .wrapper-choise .choise-filter .page__full {
+      position: relative;
+      margin-top: 5rem; }
+    .wrapper-choise .choise-filter .choise__tomap {
+      position: absolute;
+      top: 0;
+      right: 0; }
+    .wrapper-choise .choise-filter .filter__form {
+      width: 57.5rem;
+      margin-top: 1.875rem; }
+      .wrapper-choise .choise-filter .filter__form .form__left {
+        float: left;
+        width: 35%; }
+        .wrapper-choise .choise-filter .filter__form .form__left .form__title {
+          margin-bottom: 1.25rem; }
+        .wrapper-choise .choise-filter .filter__form .form__left .left__check {
+          margin-top: 0.8125rem; }
+          .wrapper-choise .choise-filter .filter__form .form__left .left__check .ui-button {
+            position: relative;
+            border: none;
+            background: transparent;
+            padding-left: 1.6875rem; }
+            .wrapper-choise .choise-filter .filter__form .form__left .left__check .ui-button:before {
+              content: "";
+              position: absolute;
+              left: 0;
+              top: -0.0625rem;
+              width: 1.25rem;
+              height: 1.25rem;
+              box-sizing: border-box;
+              border: 2px solid #42b974;
+              border-radius: 2px; }
+            .wrapper-choise .choise-filter .filter__form .form__left .left__check .ui-button:after {
+              content: "";
+              position: absolute;
+              left: 0.4375rem;
+              top: 0.375rem;
+              width: 0.375rem;
+              height: 0.375rem;
+              background: #42b974;
+              opacity: 0;
+              -webkit-transform: scale(2);
+                  -ms-transform: scale(2);
+                      transform: scale(2);
+              -webkit-transition: all 0.2s;
+                      transition: all 0.2s; }
+            .wrapper-choise .choise-filter .filter__form .form__left .left__check .ui-button.ui-state-active:after {
+              opacity: 1;
+              -webkit-transform: scale(1);
+                  -ms-transform: scale(1);
+                      transform: scale(1); }
+          .wrapper-choise .choise-filter .filter__form .form__left .left__check .ui-button-text {
+            padding: 0;
+            font-size: 1rem;
+            font-family: "room";
+            color: #111; }
+      .wrapper-choise .choise-filter .filter__form .form__right {
+        float: left;
+        width: 65%; }
+        .wrapper-choise .choise-filter .filter__form .form__right .right__block {
+          margin-top: 1.875rem; }
+          .wrapper-choise .choise-filter .filter__form .form__right .right__block .form__title {
+            margin-top: 0; }
+        .wrapper-choise .choise-filter .filter__form .form__right .right__btn {
+          margin-top: 3.125rem; }
+      .wrapper-choise .choise-filter .filter__form .form__title {
+        font-family: 'pf_agora_slab_pro';
+        font-weight: 700;
+        margin-top: 1.875rem; }
+      .wrapper-choise .choise-filter .filter__form .form__desc {
+        margin-top: 0.9375rem; }
+      .wrapper-choise .choise-filter .filter__form .form__slider {
+        margin-top: 1.875rem; }
+        .wrapper-choise .choise-filter .filter__form .form__slider .ui-state-default, .wrapper-choise .choise-filter .filter__form .form__slider .ui-widget-content .ui-state-default, .wrapper-choise .choise-filter .filter__form .form__slider .ui-widget-header .ui-state-default {
+          background: url(../images/ui/green-apple.png) center center/contain no-repeat;
+          outline: none;
+          border: none;
+          width: 2rem;
+          height: 2.375rem;
+          margin-top: -0.79167rem; }
+        .wrapper-choise .choise-filter .filter__form .form__slider .ui-slider-horizontal {
+          height: 0.3125rem;
+          border-radius: 0;
+          border: none;
+          background: #e15b60; }
+        .wrapper-choise .choise-filter .filter__form .form__slider .ui-slider .ui-slider-range {
+          background: #42b974; }

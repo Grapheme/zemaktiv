@@ -9,21 +9,24 @@
 @stop
 @section('content')
 	<?php
-	    $buildings = Buildings::orderBy('number','ASC')->with('photo', 'gallery.photos')->paginate(5);
+	    $lands = Land::all();
 	?>
 
 	<script>
 		Dictionary = window.Dictionary || {};
 		Dictionary.buildings = {
-		@if($buildings->count())
-	        @foreach($buildings as $build)
-	        	"{{ $build->id }}": {
-	        		id: {{ $build->id }},
-	        		number: {{ $build->number }},
-	        		land_area: {{ $build->land_area }},
-	        		material: "{{ $build->material }}",
-	        		communication: "{{ $build->communication }}",
-	        		price: {{ $build->price }}
+		@if($lands->count())
+	        @foreach($lands as $land)
+	        	"{{ $land->id }}": {
+	        		id: {{ $land->id }},
+	        		number: {{ $land->number }},
+	        		land_area: {{ $land->area }},
+	        		price: {{ $land->price }},
+	        		coordinate_x: {{ $land->coordinate_x }},
+	        		coordinate_y: {{ $land->coordinate_y }},
+	        		sold: {{ $land->sold }},
+	        		status: {{ $land->status }},
+	        		turn: {{ $land->turn }}
 	        	},
 	        @endforeach
 		@endif
