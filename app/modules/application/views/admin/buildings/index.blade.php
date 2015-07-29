@@ -17,7 +17,7 @@
                     @foreach($buildings as $index => $build)
                         <tr>
                             <td>{{ $index + 1 }}</td>
-                            <td>Участок №{{ $build->number }}. {{ $build->title }}</td>
+                            <td>Участок №{{ $build->land->number }}. {{ $build->title }}</td>
                             <td>{{ number_format($build->price, 2, '.', ' ') }} руб.</td>
                             <td class="text-center" style="white-space:nowrap;">
                                 @if(Allow::action('application','edit'))
