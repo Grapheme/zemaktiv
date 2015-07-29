@@ -73,7 +73,7 @@
                                 </div>
                             </div>
                             <div class="right__btns">
-                                <a href="{{ pageurl('gen-plan').'?land='.$build->id }}" class="us-btn btn-white"><span>Посмотреть на генплане</span></a>
+                                <a href="{{ pageurl('gen-plan').'#'.$build->id }}" class="us-btn btn-white"><span>Посмотреть на генплане</span></a>
                                 <a href="#" class="us-btn btn-green"><span>Забронировать</span></a>
                             </div>
                         </div>
