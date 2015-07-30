@@ -294,28 +294,35 @@ Garden.map = function() {
 		min: false,
 		max: 0
 	};
-	var move = function() {
-		var setCenter = function() {
-			var x = -(map.width()/2 - mapCont.width() / 2),
-				y = -(map.height()/2 - mapCont.height() / 2);
-			setMapPos(x, y);
+	var setMapPos = function(x, y) {
+		if(x > 0) x = 0;
+		if(y > 0) y = 0;
+		if(x < -(map.width() - mapCont.width())) x = -(map.width() - mapCont.width());
+		if(y < -(map.height() - mapCont.height())) y = -(map.height() - mapCont.height());
+		map.css('transform', 'translate(' + x + 'px, ' + y + 'px)');
+	}
+	var setMapCenter = function(newx, newy) {
+		if(newx && newy) {
+			var centerx = newx,
+				centery = newy;
+		} else {
+			var centerx = map.width()/2,
+				centery = map.height()/2;
 			map.addClass('active');
 			setTimeout(function(){
 				map.addClass('transition');
 			}, 100);
 		}
-		var setMapPos = function(x, y) {
-			map.css('transform', 'translate(' + x + 'px, ' + y + 'px)');
-		}
+		var x = -(centerx - mapCont.width() / 2),
+			y = -(centery - mapCont.height() / 2);
+		setMapPos(x, y);
+	}
+	var move = function() {
 		var moveMap = function(pageX, pageY) {
 			var xDiff = pageX - cursorPos[0],
 				yDiff = pageY - cursorPos[1],
 				xNew = xDiff + mapPos[0],
 				yNew = yDiff + mapPos[1];
-			if(xNew > 0) xNew = 0;
-			if(yNew > 0) yNew = 0;
-			if(xNew < -(map.width() - mapCont.width())) xNew = -(map.width() - mapCont.width());
-			if(yNew < -(map.height() - mapCont.height())) yNew = -(map.height() - mapCont.height());
 			setMapPos(xNew, yNew);
 		}
 		var mousedown = false;
@@ -335,50 +342,56 @@ Garden.map = function() {
 		$(document).on('mouseup', function(){
 			mousedown = false;
 		});
-		setCenter();
+		setMapCenter();
 	}
-	var tooltip = function() {
-		var tooltip = $('.js-tooltip');
-		var closeTimeout;
-		var activeId;
-		var close = function() {
-			activeId = false;
-			tooltip.removeClass('active');
-			closeTimeout = setTimeout(function(){
-				tooltip.removeClass('transition').hide();
+	var tooltip = {
+		tooltip: $('.js-tooltip'),
+		closeTimeout: false,
+		activeId: false,
+		close: function() {
+			var self = this;
+			self.activeId = false;
+			self.tooltip.removeClass('active');
+			self.closeTimeout = setTimeout(function(){
+				self.tooltip.removeClass('transition').hide();
 			}, 500);
-		}
-		var show = function(id) {
-			clearTimeout(closeTimeout);
-			if(id === activeId) return;
-			activeId = id;
+		},
+		show: function(id) {
+			var self = this;
+			clearTimeout(self.closeTimeout);
+			if(id === self.activeId) return;
+			self.activeId = id;
 			var thisObj = Dictionary.buildings[id];
-			tooltip.find('.js-bnum').text(thisObj.number);
-			tooltip.find('.js-bturn').text(thisObj.turn);
-			tooltip.find('.js-bprice').text(thisObj.price.formatMoney(2));
-			tooltip.find('.js-bcont').text(numToContract(thisObj.status));
-			tooltip.find('.js-barea').text(thisObj.land_area);
-			tooltip.find('.js-book').attr('data-id', thisObj.id);
+			self.tooltip.find('.js-bnum').text(thisObj.number);
+			self.tooltip.find('.js-bturn').text(thisObj.turn);
+			self.tooltip.find('.js-bprice').text(thisObj.price.formatMoney(2));
+			self.tooltip.find('.js-bcont').text(numToContract(thisObj.status));
+			self.tooltip.find('.js-barea').text(thisObj.land_area);
+			self.tooltip.find('.js-book').attr('data-id', thisObj.id);
 			var thisMark = $('.js-mark[data-id="' + id + '"]');
 			var markPos = thisMark.position();
-			tooltip.hide().removeClass('transition active');
-			tooltip.css({
+			setMapCenter(markPos.left, markPos.top - (mapCont.height()/100)*20);
+			self.tooltip.hide().removeClass('transition active');
+			self.tooltip.css({
 				left: markPos.left,
 				bottom: $('.js-map').height() - markPos.top
 			}).show();
 			setTimeout(function(){
-				tooltip.addClass('transition active');
+				self.tooltip.addClass('transition active');
 			}, 10);
+		},
+		init: function() {
+			var self = this;
+			$(document).on('click', '.js-mark', function(){
+				var thisId = $(this).attr('data-id');
+				self.show(thisId);
+				return false;
+			});
+			$(document).on('click', '.js-tooltip .js-close', function(){
+				self.close();
+				return false;
+			});
 		}
-		$(document).on('click', '.js-mark', function(){
-			var thisId = $(this).attr('data-id');
-			show(thisId);
-			return false;
-		});
-		$(document).on('click', '.js-tooltip .js-close', function(){
-			close();
-			return false;
-		});
 	}
 	var setMarks = function() {
 		$.each(Dictionary.buildings, function(index, value){
@@ -410,8 +423,8 @@ Garden.map = function() {
 			slide: function(event, ui) {
 				$('.js-area-from').text(ui.values[ 0 ]);
 				$('.js-area-to').text(ui.values[ 1 ]);
-				$('[name="pricefrom"]').val(ui.values[ 0 ]);
-				$('[name="priceto"]').val(ui.values[ 1 ]);
+				$('[name="areafrom"]').val(ui.values[ 0 ]);
+				$('[name="areato"]').val(ui.values[ 1 ]);
 			}
 		});
 		$('.js-price-from').text($('#range-price').slider('values', 0));
@@ -423,20 +436,52 @@ Garden.map = function() {
 		$('[name="areafrom"]').val($('#range-area').slider('values', 0));
 		$('[name="areato"]').val($('#range-area').slider('values', 1));
 	}
+	var showMap = function() {
+		$('.js-choise-filter').fadeOut();
+		$('.js-show-filter').fadeIn();
+		return false;
+	}
+	var showFilter = function() {
+		$('.js-choise-filter').fadeIn();
+		$('.js-show-filter').fadeOut();
+		return false;
+	}
 	var mapTabs = function() {
-		var showMap = function() {
-			$('.js-choise-filter').fadeOut();
-			$('.js-show-filter').fadeIn();
-			return false;
-		}
-		var showFilter = function() {
-			$('.js-choise-filter').fadeIn();
-			$('.js-show-filter').fadeOut();
-			return false;
-		}
 		$('.js-show-map').on('click', showMap);
 		$('.js-show-filter').on('click', showFilter);
 		showFilter();
+	}
+	var showSuited = function(params) {
+		var suitedArray = {};
+		$.each(Dictionary.buildings, function(i, v){
+			var suited = true;
+			if(!(	
+				(params.withhouse && v.status == 2)||
+				(params.withpod && v.status == 1)||
+				(params.withoutpod && v.status == 0))) {
+				suited = false;
+			}
+			if(v.price < params.pricefrom || v.price > params.priceto) {
+				suited = false;
+			}
+			if(v.land_area < params.areafrom || v.land_area > params.areato) {
+				suited = false;
+			}
+			if(suited) {
+				suitedArray[i] = v;
+			}
+		});
+		var html = [];
+		var count = 0;
+		$.each(suitedArray, function(i, v){
+			html.push('<li class="body__item js-filter-item" data-id="' + v.id + '"><div class="wrapper"><span>' + v.number + '</span><span>' + v.turn + '</span><span>' + v.land_area + '</span><span>' + numToContract(v.status) + '</span><span>' + v.price.formatMoney() + '</span></div></li>');
+			count++;
+		});
+		if(count != 0) {
+			$('.js-filter-items').html(html.join(''));
+		} else {
+			$('.js-filter-items').html('<li class="body__item nothing-found">К сожалению по заданым параметрам ничего не нашлось</li>');
+		}
 	}
 	var filterForm = function() {
 		$('.js-filter-form').on('submit', function(e){
@@ -447,7 +492,7 @@ Garden.map = function() {
 				var iArray = v.split('=');
 				params[iArray[0]] = iArray[1] || false;
 			});
-			console.log(params);
+			showSuited(params);
 			$('.js-filter-list').slideDown(300);
 			setTimeout(function(){
 				$('html, body').animate({
@@ -455,11 +500,16 @@ Garden.map = function() {
 				}, 300);
 			}, 150);
 		});
+		$(document).on('click', '.js-filter-item', function(){
+			var thisId = $(this).attr('data-id');
+			showMap();
+			tooltip.show(thisId);
+		});
 	}
 	var init = function() {
 		move();
 		setMarks();
-		tooltip();
+		tooltip.init();
 		filter();
 		mapTabs();
 		filterForm();

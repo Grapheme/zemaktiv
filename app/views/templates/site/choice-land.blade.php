@@ -90,13 +90,7 @@
 	              <div class="wrapper"><span>Участок</span><span>Очередь</span><span>Площадь, сот.</span><span>Статус</span><span>Цена, руб.</span></div>
 	            </li>
 	          </ul>
-	          <ul class="table__body">
-	            <li class="body__item">
-	              <div class="wrapper"><span>243</span><span>2</span><span>29,6</span><span>Без подряда</span><span>2 944 000</span></div>
-	            </li>
-	            <li class="body__item">
-	              <div class="wrapper"><span>243</span><span>2</span><span>29,6</span><span>Без подряда</span><span>2 944 000</span></div>
-	            </li>
+	          <ul class="table__body js-filter-items">
 	          </ul>
 	        </div>
 	      </div>

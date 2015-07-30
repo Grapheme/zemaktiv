@@ -1815,3 +1815,8 @@ h2 {
         display: inline-block;
         vertical-align: top;
         width: 20%; }
+      .wrapper-choise .filter__list .list__table .body__item.nothing-found {
+        text-align: center;
+        font-size: 1.125rem; }
+        .wrapper-choise .filter__list .list__table .body__item.nothing-found:hover {
+          background: #f8f8f8; }
