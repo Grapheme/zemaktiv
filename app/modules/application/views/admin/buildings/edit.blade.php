@@ -5,6 +5,7 @@
     @include($module['tpl'].'buildings.menu')
     {{ Form::model($build, array('route'=>array('buildings.update', $build->id),'class'=>'smart-form','id'=>'buildings-form','role'=>'form','method'=>'put')) }}
     {{ Form::hidden('number') }}
+    {{ Form::hidden('sold') }}
     <div class="row">
         <section class="col col-6">
             <div class="well">
@@ -68,12 +69,6 @@
                         <label class="label">Описание</label>
                         <label class="input">
                             {{ Form::text('description') }}
-                        </label>
-                    </section>
-                    <section>
-                        <label class="label">Дом продан</label>
-                        <label class="checkbox">
-                            {{ Form::checkbox('sold', 1) }}
                         </label>
                     </section>
                 </fieldset>

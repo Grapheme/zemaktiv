@@ -8,7 +8,6 @@
 @section('style')
 @stop
 @section('content')
-    {{ $page->draw_blocks() }}
 @stop
 @section('scripts')
 @stop

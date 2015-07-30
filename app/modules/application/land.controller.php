@@ -72,7 +72,7 @@ class LandController extends BaseController {
             $land->coordinate_x = (int)Input::get('coordinate_x');
             $land->coordinate_y = (int)Input::get('coordinate_y');
             $land->photo_id = (int)Input::get('photo_id');
-            $land->sold = 0;
+            $land->sold = Input::has('sold') ? 1 : 0;
             $land->save();
 
             $land->gallery_id = ExtForm::process('gallery', array('module' => 'Участок', 'unit_id' => $land->id,
