@@ -181,8 +181,8 @@
 		position: relative;
 		z-index: 3;
 		background: rgba(255, 255, 255, .9);
-		min-height: 90vh;
-		overflow: hidden;
+		height: 90vh;
+		overflow: auto;
 
 		.page__full {
 			position: relative;
