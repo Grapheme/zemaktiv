@@ -444,6 +444,7 @@ Garden.map = function() {
 	var showFilter = function() {
 		$('.js-choise-filter').fadeIn();
 		$('.js-show-filter').fadeOut();
+		tooltip.close();
 		return false;
 	}
 	var mapTabs = function() {
@@ -496,7 +497,7 @@ Garden.map = function() {
 			$('.js-filter-list').slideDown(300);
 			setTimeout(function(){
 				$('html, body').animate({
-					scrollTop: $('.js-filter-list').offset().top
+					scrollTop: $('.js-filter-list').offset().top - 100
 				}, 300);
 			}, 150);
 		});
