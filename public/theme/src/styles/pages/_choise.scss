@@ -366,6 +366,15 @@
 					vertical-align: top;
 					width: 20%;
 				}
+
+				&.nothing-found {
+					text-align: center;
+					font-size: 18rem / $fs;
+
+					&:hover {
+						background: #f8f8f8;
+					}
+				}
 			}
 		}
 	}
