@@ -33,8 +33,14 @@ html {
 }
 
 .main {
+	position: relative;
+	
 	&.header-min {
 		padding-top: 210rem / $fs;
+
+		.overlay {
+			top: 210rem / $fs;
+		}
 	}
 }
 

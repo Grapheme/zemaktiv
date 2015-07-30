@@ -1853,6 +1853,20 @@ Garden.map = function() {
 	}
 	init();
 }
+Garden.overlays = {
+	open: function(name) {
+		$('.js-overlay').show();
+		$('.js-overlay-block[data-name="' + name + '"]').fadeIn()
+			.siblings().fadeOut();
+	},
+	init: function() {
+		var self = this;
+		$('.js-open-overlay').on('click', function(){
+			self.open($(this).attr('data-open'));
+			return false;
+		});
+	}
+}
 Garden.checkbox = function() {
 	$('.js-checkbox').button();
 }
@@ -1867,6 +1881,7 @@ Garden.init = function() {
 	this.lineGallery();
 	this.map();
 	this.checkbox();
+	this.overlays.init();
 	//this.speedUp();
 	//this.smartHover();
 }

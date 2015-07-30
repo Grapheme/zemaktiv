@@ -31,7 +31,7 @@
             <li class="nav__item item-us item-orange"><a href="#" class="item__link"><span>О проекте</span></a></li>
           </ul>
           <ul>
-            <li class="nav__item item-call"><a href="#" class="item__link"><span>Заказать звонок</span></a></li>
+            <li class="nav__item item-call"><a href="#" data-open="call" class="item__link js-open-overlay"><span>Заказать звонок</span></a></li>
             <li class="nav__item item-phone"><a href="tel:+74952495555" class="item__link"><span>+7 (495) 249-55-55</span></a></li>
           </ul>
         </nav>
@@ -67,8 +67,55 @@
         </div>
       </div>
       <div class="overlay js-overlay">
-        <div data-name="book" class="overlay__block block-book">
-          <div class="book__title">Участок №250, вторая очередь, 13,95 соток</div>
+        <div data-name="book" class="overlay__block block-book js-overlay-block">
+          <div class="wrapper">
+            <div class="block-cont">
+              <div class="book__title"><span>Участок №250, вторая очередь, 13,95 соток</span></div>
+              <div class="overlay__form">
+                <input type="hidden" name="id">
+                <div class="form__block block-phone">
+                  <div class="block__title">Ваш номер телефона</div>
+                  <div class="block__input">
+                    <div class="phone__number">+7</div>
+                    <input type="text" name="phone" class="input__item">
+                  </div>
+                </div>
+                <div class="form__block">
+                  <div class="block__title">Имя</div>
+                  <div class="block__input">
+                    <input type="text" name="name" class="input__item">
+                  </div>
+                </div>
+                <div class="form__block">
+                  <div class="block__title">Почта</div>
+                  <div class="block__input">
+                    <input type="text" name="email" class="input__item">
+                  </div>
+                </div>
+                <div class="form__btn">
+                  <button type="submit" class="us-btn btn-transparent"><span>Забронировать</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-name="call" class="overlay__block block-call js-overlay-block">
+          <div class="wrapper">
+            <div class="block-cont">
+              <div class="overlay__form">
+                <div class="form__block block-phone">
+                  <div class="block__title">Ваш номер телефона</div>
+                  <div class="block__input">
+                    <div class="phone__number">+7</div>
+                    <input type="text" name="phone" class="input__item">
+                  </div>
+                </div>
+                <div class="form__btn">
+                  <button type="submit" class="us-btn btn-transparent"><span>Обратный звонок</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </main>

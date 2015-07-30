@@ -51,7 +51,7 @@ html.no-js(lang="")
                             span О проекте
                 ul
                     li.nav__item.item-call
-                        a(href="#").item__link
+                        a(href="#" data-open="call").item__link.js-open-overlay
                             span Заказать звонок
                     li.nav__item.item-phone
                         a(href="tel:+74952495555").item__link
@@ -59,8 +59,41 @@ html.no-js(lang="")
     main.main.js-main
         block content
         .overlay.js-overlay
-            .overlay__block.block-book(data-name="book")
-                .book__title Участок №250, вторая очередь, 13,95 соток
+            .overlay__block.block-book.js-overlay-block(data-name="book")
+                .wrapper
+                    .block-cont
+                        .book__title
+                            span Участок №250, вторая очередь, 13,95 соток
+                        .overlay__form
+                            input(type="hidden" name="id")
+                            .form__block.block-phone
+                                .block__title Ваш номер телефона
+                                .block__input
+                                    .phone__number +7
+                                    input(type="text" name="phone").input__item
+                            .form__block
+                                .block__title Имя
+                                .block__input
+                                    input(type="text" name="name").input__item
+                            .form__block
+                                .block__title Почта
+                                .block__input
+                                    input(type="text" name="email").input__item
+                            .form__btn
+                                button(type="submit").us-btn.btn-transparent
+                                    span Забронировать
+            .overlay__block.block-call.js-overlay-block(data-name="call")
+                .wrapper
+                    .block-cont
+                        .overlay__form
+                            .form__block.block-phone
+                                .block__title Ваш номер телефона
+                                .block__input
+                                    .phone__number +7
+                                    input(type="text" name="phone").input__item
+                            .form__btn
+                                button(type="submit").us-btn.btn-transparent
+                                    span Обратный звонок
     footer.footer
         .wrapper
             .footer__left

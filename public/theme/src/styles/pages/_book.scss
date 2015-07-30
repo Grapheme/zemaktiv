@@ -1,0 +1,132 @@
+.overlay {
+	display: none;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 999;
+
+	.overlay__block {
+		display: none;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		color: #fff;
+		text-align: center;
+
+		.wrapper {
+			height: 100%;
+
+			&:before {
+				content: "";
+				display: inline-block;
+				vertical-align: middle;
+				width: 0;
+				height: 100%;
+			}
+		}
+
+		.block-cont {
+			display: inline-block;
+			vertical-align: middle;
+			width: 90%;
+		}
+	}
+
+	.block-book {
+		background: #e9b344;
+
+		.book__title {
+			span {
+				display: inline-block;
+				vertical-align: top;
+				font-family: 'pf_agora_slab_pro';
+				font-weight: 800;
+				font-size: 24rem / $fs;
+				background: #d49f33;
+				padding: 0 20rem / $fs;
+				line-height: 50rem / $fs;
+			}
+		}
+
+		.overlay__form {
+			margin-top: 55rem / $fs;
+
+			.input__item {
+				background: #f5c664;
+			}
+		}
+	}
+
+	.block-call {
+		background: #42b974;
+
+		.overlay__form {
+			.input__item {
+				background: #50de8c;
+			}
+		}
+	}
+
+	.overlay__form {
+		.form__block {
+			width: 400rem / $fs;
+			margin: 20rem / $fs auto 0;
+
+			.block__title {
+				font-size: 20rem / $fs;
+				font-weight: 500;
+			}
+
+			.block__input {
+				margin-top: 7rem / $fs;
+
+				.input__item {
+					font-size: 20rem / $fs;
+					border: none;
+					padding: 0 15rem / $fs;
+					height: 50rem / $fs;
+					outline: none;
+					width: 100%;
+					box-sizing: border-box;
+				}
+			}
+
+			&.block-phone {
+				.block__input {
+					overflow: hidden;
+
+					.phone__number {
+						float: left;
+						width: 25%;
+						font-family: 'pf_agora_slab_pro';
+						font-size: 48rem / $fs;
+						font-weight: 500;
+						line-height: 50rem / $fs;
+					}
+
+					.input__item {
+						float: left;
+						width: 75%;
+						font-family: 'pf_agora_slab_pro';
+						font-weight: 700;
+						font-size: 25rem / $fs;
+					}
+				}
+			}
+		}
+
+		.form__btn {
+			margin-top: 30rem / $fs;
+
+			.us-btn {
+				height: 50rem / $fs;
+				line-height: 44rem / $fs;
+				padding: 0 30rem / $fs;
+			}
+		}
+	}
+}
