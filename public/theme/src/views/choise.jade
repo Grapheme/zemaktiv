@@ -17,10 +17,10 @@ block content
 					.image__tooltip.js-tooltip
 						a(href="#").tooltip__close.js-close
 						.tooltip__title Участок №<span class="js-bnum"></span>
-						//- .tooltip__subtitle Вторая очередь
+						.tooltip__subtitle Очередь: <span class="js-bturn"></span>
 						ul.tooltip__list
 							li.list__item <span class="js-barea"></span> соток
-							//- li.list__item Без подряда
+							li.list__item <span class="js-bcont"></span>
 							li.list__item <span class="js-bprice"></span> руб.
 						.tooltip__btn
 							a(href="#" data-id).js-book.us-btn.btn-white
@@ -33,36 +33,63 @@ block content
 					a(href="#").choise__tomap.us-btn.btn-white.js-show-map
 						span Выбрать на генплане
 					.filter__form
-						.form__left
-							.form__title Участки
-							.left__check
-								input(name="withoutpod" id="withoutpod" type="checkbox" checked="checked").js-checkbox 
-								label(for="withoutpod") Без подряда
-							.left__check
-								input(name="withpod" id="withpod" type="checkbox" checked="checked").js-checkbox 
-								label(for="withpod") С подрядом
-							.left__check
-								input(name="withhouse" id="withhouse" type="checkbox" checked="checked").js-checkbox 
-								label(for="withhouse") Участок с домом
-						.form__right
-							.right__block
-								.form__title Цена, руб.
-								.form__desc от <span class="js-price-from"></span> до <span class="js-price-to"></span>
-								.form__slider
-									#range-price
-									input(name="pricefrom" type="hidden")
-									input(name="priceto" type="hidden")
-							.right__block
-								.form__title Площадь, сот.
-								.form__desc от <span class="js-area-from"></span> до <span class="js-area-to"></span>
-								.form__slider
-									#range-area
-									input(name="areafrom" type="hidden")
-									input(name="areato" type="hidden")
-							.right__btn
-								button(type="submit").us-btn.btn-green
-									span Подбор
+						form.js-filter-form
+							.form__left
+								.form__title Участки
+								.left__check
+									input(name="withoutpod" id="withoutpod" type="checkbox" checked="checked").js-checkbox 
+									label(for="withoutpod") Без подряда
+								.left__check
+									input(name="withpod" id="withpod" type="checkbox" checked="checked").js-checkbox 
+									label(for="withpod") С подрядом
+								.left__check
+									input(name="withhouse" id="withhouse" type="checkbox" checked="checked").js-checkbox 
+									label(for="withhouse") Участок с домом
+							.form__right
+								.right__block
+									.form__title Цена, руб.
+									.form__desc от <span class="js-price-from"></span> до <span class="js-price-to"></span>
+									.form__slider
+										#range-price
+										input(name="pricefrom" type="hidden")
+										input(name="priceto" type="hidden")
+								.right__block
+									.form__title Площадь, сот.
+									.form__desc от <span class="js-area-from"></span> до <span class="js-area-to"></span>
+									.form__slider
+										#range-area
+										input(name="areafrom" type="hidden")
+										input(name="areato" type="hidden")
+								.right__btn
+									button(type="submit").us-btn.btn-green
+										span Подбор
 						.clearfix
+			.filter__list.js-filter-list
+				.list__table
+					ul.table__head
+						li.body__item
+							.wrapper
+								span Участок
+								span Очередь
+								span Площадь, сот.
+								span Статус
+								span Цена, руб.
+					ul.table__body
+						li.body__item
+							.wrapper
+								span 243
+								span 2
+								span 29,6
+								span Без подряда
+								span 2 944 000
+						li.body__item
+							.wrapper
+								span 243
+								span 2
+								span 29,6
+								span Без подряда
+								span 2 944 000
+
 	script.
 		Dictionary = window.Dictionary || {};
 		Dictionary.buildings = {
@@ -85,7 +112,7 @@ block content
 					coordinate_x: 2300,
 					coordinate_y: 1450,
 					sold: 1,
-					status: 2,
+					status: 0,
 					turn: 2
 				},
 			};
