@@ -11,7 +11,6 @@
     <?php
         $news_list = News::with('meta.seo', 'meta.photo', 'meta.gallery.photos')->orderBy('published_at','DESC')->paginate(10);
     ?>
-    <main class="main js-main">
         <div class="half-page">
             <div class="wrapper">
                 <div class="page-full">
@@ -36,7 +35,6 @@
                 </div>
             </div>
         </div>
-    </main>
 @stop
 @section('scripts')
 @stop

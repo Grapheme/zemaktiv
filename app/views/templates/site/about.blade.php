@@ -8,7 +8,6 @@
 @section('style')
 @stop
 @section('content')
-    <main class="main js-main">
         <div class="half-page">
             <div class="wrapper">
                 <div class="page__left">
@@ -89,7 +88,6 @@
                 </div>
             </div>
         </div>
-    </main>
 @stop
 @section('scripts')
     <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU"></script>

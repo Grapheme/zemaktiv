@@ -11,7 +11,6 @@ $lands = Land::all();
 @section('style')
 @stop
 @section('content')
-    <main class="main js-main">
         <div class="wrapper-choise js-choise-wrapper">
             <div class="js-choise-map">
                 <div class="wrapper relative">

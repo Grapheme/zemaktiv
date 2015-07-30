@@ -17,7 +17,6 @@ endif;
 @section('style')
 @stop
 @section('content')
-    <main class="main js-main">
         <div class="half-page">
             <div class="wrapper">
                 <div class="page__left">
@@ -49,7 +48,6 @@ endif;
                 </div>
             </div>
         </div>
-    </main>
 @stop
 @section('scripts')
 @stop

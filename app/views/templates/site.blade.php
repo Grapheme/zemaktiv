@@ -19,9 +19,12 @@
 
         @include(Helper::layout('header'))
 
-        @section('content')
-            {{ @$content }}
-        @show
+        <main class="main js-main">
+            @section('content')
+                {{ @$content }}
+            @show
+            @include(Helper::layout('overlays'))
+        </main>
 
         @section('footer')
             @include(Helper::layout('footer'))
