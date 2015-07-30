@@ -1832,8 +1832,11 @@ Garden.map = function() {
 			showSuited(params);
 			$('.js-filter-list').slideDown(300);
 			setTimeout(function(){
+				$('.js-choise-filter').animate({
+					scrollTop: $('.js-filter-list').position().top
+				}, 300);
 				$('html, body').animate({
-					scrollTop: $('.js-filter-list').offset().top - 100
+					scrollTop: $('.js-choise-filter').offset().top - 100
 				}, 300);
 			}, 150);
 		});
@@ -1859,10 +1862,19 @@ Garden.overlays = {
 		$('.js-overlay-block[data-name="' + name + '"]').fadeIn()
 			.siblings().fadeOut();
 	},
+	close: function() {
+		$('.js-overlay').fadeOut(function(){
+			$('.js-overlay-block').hide();
+		});
+	},
 	init: function() {
 		var self = this;
 		$('.js-open-overlay').on('click', function(){
 			self.open($(this).attr('data-open'));
+			return false;
+		});
+		$('.js-close-overlay').on('click', function(){
+			self.close();
 			return false;
 		});
 	}
