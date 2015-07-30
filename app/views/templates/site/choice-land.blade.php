@@ -5,7 +5,7 @@
  */
 ?>
 <?php
-    $lands = Land::all();
+$lands = Land::all();
 ?>
 @extends(Helper::layout())
 @section('style')
@@ -29,6 +29,7 @@
                     <div class="map__image js-map">
                         <div class="image__tooltip js-tooltip">
                             <a href="#" class="tooltip__close js-close"></a>
+
                             <div class="tooltip__title">Участок №<span class="js-bnum"></span></div>
                             <div class="tooltip__subtitle">Очередь: <span class="js-bturn"></span></div>
                             <ul class="tooltip__list">
@@ -45,23 +46,28 @@
                     <div class="wrapper">
                         <div class="page__full">
                             <h1 class="us-title title-choise"><span>{{ $page->seo->h1 }}</span></h1>
-                            <a href="#" class="choise__tomap us-btn btn-white js-show-map"><span>Выбрать на генплане</span></a>
+                            <a href="#"
+                               class="choise__tomap us-btn btn-white js-show-map"><span>Выбрать на генплане</span></a>
+
                             <div class="filter__form">
                                 <form class="js-filter-form">
                                     <div class="form__left">
                                         <div class="form__title">Участки</div>
                                         <div class="left__check">
-                                            <input value="0" name="withoutpod" id="withoutpod" type="checkbox" checked="checked"
+                                            <input value="0" name="withoutpod" id="withoutpod" type="checkbox"
+                                                   checked="checked"
                                                    class="js-checkbox">
                                             <label for="withoutpod">Без подряда</label>
                                         </div>
                                         <div class="left__check">
-                                            <input value="1" name="withpod" id="withpod" type="checkbox" checked="checked"
+                                            <input value="1" name="withpod" id="withpod" type="checkbox"
+                                                   checked="checked"
                                                    class="js-checkbox">
                                             <label for="withpod">С подрядом</label>
                                         </div>
                                         <div class="left__check">
-                                            <input value="2" name="withhouse" id="withhouse" type="checkbox" checked="checked"
+                                            <input value="2" name="withhouse" id="withhouse" type="checkbox"
+                                                   checked="checked"
                                                    class="js-checkbox">
                                             <label for="withhouse">Участок с домом</label>
                                         </div>
@@ -142,9 +148,11 @@
                 status: {{ $land->status }},
                 turn: {{ $land->turn }}
 
+
             },
             @endforeach
         @endif
+
 
         };
     </script>
