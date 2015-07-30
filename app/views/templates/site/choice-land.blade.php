@@ -114,7 +114,7 @@ $lands = Land::all();
                                     </div>
                                 </li>
                             </ul>
-                            <ul class="table__body js-filter-item"></ul>
+                            <ul class="table__body js-filter-items"></ul>
                         </div>
                     </div>
                 </div>
