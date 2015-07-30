@@ -88,7 +88,7 @@
                         </label>
                     </section>
                     <section>
-                        <label class="label">Дом продан</label>
+                        <label class="label">Участок продан</label>
                         <label class="checkbox">
                             {{ Form::checkbox('sold', 1) }}
                         </label>

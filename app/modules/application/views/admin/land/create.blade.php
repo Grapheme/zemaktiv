@@ -86,6 +86,12 @@
                             {{ Form::text('description') }}
                         </label>
                     </section>
+                    <section>
+                        <label class="label">Участок продан</label>
+                        <label class="checkbox">
+                            {{ Form::checkbox('sold', 1) }}
+                        </label>
+                    </section>
                 </fieldset>
                 <footer>
                     <a class="btn btn-default no-margin regular-10 uppercase pull-left btn-spinner"
