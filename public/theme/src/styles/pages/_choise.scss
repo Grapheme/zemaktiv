@@ -198,6 +198,7 @@
 		.filter__form {
 			width: 920rem / $fs;
 			margin-top: 30rem / $fs;
+			padding-bottom: 60rem / $fs;
 
 			.form__left {
 				float: left;
@@ -306,6 +307,64 @@
 
 				.ui-slider .ui-slider-range {
 					background: #42b974;
+				}
+
+				.ui-slider-handle {
+					cursor: pointer;
+				}
+			}
+		}
+	}
+
+	.filter__list {
+		display: none;
+		background: #fff;
+		padding: 25rem / $fs 0 50rem / $fs;
+
+		.list__table {
+			ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				font-size: 0;
+			}
+
+			.table__head {
+				.body__item {
+					font-family: 'pf_agora_slab_pro';
+					font-size: 16rem / $fs;
+					font-weight: 700;
+				}
+			}
+
+			.table__body {
+				.body__item {
+					font-size: 15rem / $fs;	
+					transition: all .2s ease;
+					cursor: pointer;
+
+					&:nth-child(2n-1) {
+						background: #f8f8f8;
+					}
+
+					&:hover {
+						background: #e7f5ed;
+					}
+				}
+			}
+
+			.body__item {
+				height: 50rem / $fs;
+				line-height: 50rem / $fs;
+
+				.wrapper {
+					position: relative;
+				}
+
+				span {
+					display: inline-block;
+					vertical-align: top;
+					width: 20%;
 				}
 			}
 		}

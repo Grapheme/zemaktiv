@@ -354,8 +354,11 @@ Garden.map = function() {
 			activeId = id;
 			var thisObj = Dictionary.buildings[id];
 			tooltip.find('.js-bnum').text(thisObj.number);
+			tooltip.find('.js-bturn').text(thisObj.turn);
 			tooltip.find('.js-bprice').text(thisObj.price.formatMoney(2));
+			tooltip.find('.js-bcont').text(numToContract(thisObj.status));
 			tooltip.find('.js-barea').text(thisObj.land_area);
+			tooltip.find('.js-book').attr('data-id', thisObj.id);
 			var thisMark = $('.js-mark[data-id="' + id + '"]');
 			var markPos = thisMark.position();
 			tooltip.hide().removeClass('transition active');
@@ -395,6 +398,8 @@ Garden.map = function() {
 			slide: function(event, ui) {
 				$('.js-price-from').text(ui.values[ 0 ]);
 				$('.js-price-to').text(ui.values[ 1 ]);
+				$('[name="pricefrom"]').val(ui.values[ 0 ]);
+				$('[name="priceto"]').val(ui.values[ 1 ]);
 			}
 		});
 		$('#range-area').slider({
@@ -405,12 +410,18 @@ Garden.map = function() {
 			slide: function(event, ui) {
 				$('.js-area-from').text(ui.values[ 0 ]);
 				$('.js-area-to').text(ui.values[ 1 ]);
+				$('[name="pricefrom"]').val(ui.values[ 0 ]);
+				$('[name="priceto"]').val(ui.values[ 1 ]);
 			}
 		});
 		$('.js-price-from').text($('#range-price').slider('values', 0));
 		$('.js-price-to').text($('#range-price').slider('values', 1));
 		$('.js-area-from').text($('#range-area').slider('values', 0));
 		$('.js-area-to').text($('#range-area').slider('values', 1));
+		$('[name="pricefrom"]').val($('#range-price').slider('values', 0));
+		$('[name="priceto"]').val($('#range-price').slider('values', 1));
+		$('[name="areafrom"]').val($('#range-area').slider('values', 0));
+		$('[name="areato"]').val($('#range-area').slider('values', 1));
 	}
 	var mapTabs = function() {
 		var showMap = function() {
@@ -427,12 +438,31 @@ Garden.map = function() {
 		$('.js-show-filter').on('click', showFilter);
 		showFilter();
 	}
+	var filterForm = function() {
+		$('.js-filter-form').on('submit', function(e){
+			e.preventDefault();
+			var inputs = $(this).serialize().split('&');
+			var params = {};
+			$.each(inputs, function(i, v){
+				var iArray = v.split('=');
+				params[iArray[0]] = iArray[1] || false;
+			});
+			console.log(params);
+			$('.js-filter-list').slideDown(300);
+			setTimeout(function(){
+				$('html, body').animate({
+					scrollTop: $('.js-filter-list').offset().top
+				}, 300);
+			}, 150);
+		});
+	}
 	var init = function() {
 		move();
 		setMarks();
 		tooltip();
 		filter();
 		mapTabs();
+		filterForm();
 	}
 	init();
 }
