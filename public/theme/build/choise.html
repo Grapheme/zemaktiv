@@ -50,8 +50,10 @@
             <div class="map__image js-map">
               <div class="image__tooltip js-tooltip"><a href="#" class="tooltip__close js-close"></a>
                 <div class="tooltip__title">Участок №<span class="js-bnum"></span></div>
+                <div class="tooltip__subtitle">Очередь: <span class="js-bturn"></span></div>
                 <ul class="tooltip__list">
                   <li class="list__item"><span class="js-barea"></span> соток</li>
+                  <li class="list__item"><span class="js-bcont"></span></li>
                   <li class="list__item"><span class="js-bprice"></span> руб.</li>
                 </ul>
                 <div class="tooltip__btn"><a href="#" data-id class="js-book us-btn btn-white"><span>Забронировать</span></a></div>
@@ -64,46 +66,65 @@
             <div class="page__full">
               <h1 class="us-title title-choise"><span>Выбор участка</span></h1><a href="#" class="choise__tomap us-btn btn-white js-show-map"><span>Выбрать на генплане</span></a>
               <div class="filter__form">
-                <div class="form__left">
-                  <div class="form__title">Участки</div>
-                  <div class="left__check">
-                    <input name="withoutpod" id="withoutpod" type="checkbox" checked="checked" class="js-checkbox">
-                    <label for="withoutpod">Без подряда</label>
-                  </div>
-                  <div class="left__check">
-                    <input name="withpod" id="withpod" type="checkbox" checked="checked" class="js-checkbox">
-                    <label for="withpod">С подрядом</label>
-                  </div>
-                  <div class="left__check">
-                    <input name="withhouse" id="withhouse" type="checkbox" checked="checked" class="js-checkbox">
-                    <label for="withhouse">Участок с домом</label>
-                  </div>
-                </div>
-                <div class="form__right">
-                  <div class="right__block">
-                    <div class="form__title">Цена, руб.</div>
-                    <div class="form__desc">от <span class="js-price-from"></span> до <span class="js-price-to"></span></div>
-                    <div class="form__slider">
-                      <div id="range-price"></div>
-                      <input name="pricefrom" type="hidden">
-                      <input name="priceto" type="hidden">
+                <form class="js-filter-form">
+                  <div class="form__left">
+                    <div class="form__title">Участки</div>
+                    <div class="left__check">
+                      <input name="withoutpod" id="withoutpod" type="checkbox" checked="checked" class="js-checkbox">
+                      <label for="withoutpod">Без подряда</label>
+                    </div>
+                    <div class="left__check">
+                      <input name="withpod" id="withpod" type="checkbox" checked="checked" class="js-checkbox">
+                      <label for="withpod">С подрядом</label>
+                    </div>
+                    <div class="left__check">
+                      <input name="withhouse" id="withhouse" type="checkbox" checked="checked" class="js-checkbox">
+                      <label for="withhouse">Участок с домом</label>
                     </div>
                   </div>
-                  <div class="right__block">
-                    <div class="form__title">Площадь, сот.</div>
-                    <div class="form__desc">от <span class="js-area-from"></span> до <span class="js-area-to"></span></div>
-                    <div class="form__slider">
-                      <div id="range-area"></div>
-                      <input name="areafrom" type="hidden">
-                      <input name="areato" type="hidden">
+                  <div class="form__right">
+                    <div class="right__block">
+                      <div class="form__title">Цена, руб.</div>
+                      <div class="form__desc">от <span class="js-price-from"></span> до <span class="js-price-to"></span></div>
+                      <div class="form__slider">
+                        <div id="range-price"></div>
+                        <input name="pricefrom" type="hidden">
+                        <input name="priceto" type="hidden">
+                      </div>
+                    </div>
+                    <div class="right__block">
+                      <div class="form__title">Площадь, сот.</div>
+                      <div class="form__desc">от <span class="js-area-from"></span> до <span class="js-area-to"></span></div>
+                      <div class="form__slider">
+                        <div id="range-area"></div>
+                        <input name="areafrom" type="hidden">
+                        <input name="areato" type="hidden">
+                      </div>
+                    </div>
+                    <div class="right__btn">
+                      <button type="submit" class="us-btn btn-green"><span>Подбор</span></button>
                     </div>
                   </div>
-                  <div class="right__btn">
-                    <button type="submit" class="us-btn btn-green"><span>Подбор</span></button>
-                  </div>
-                </div>
+                </form>
                 <div class="clearfix"></div>
               </div>
+            </div>
+          </div>
+          <div class="filter__list js-filter-list">
+            <div class="list__table">
+              <ul class="table__head">
+                <li class="body__item">
+                  <div class="wrapper"><span>Участок</span><span>Очередь</span><span>Площадь, сот.</span><span>Статус</span><span>Цена, руб.</span></div>
+                </li>
+              </ul>
+              <ul class="table__body">
+                <li class="body__item">
+                  <div class="wrapper"><span>243</span><span>2</span><span>29,6</span><span>Без подряда</span><span>2 944 000</span></div>
+                </li>
+                <li class="body__item">
+                  <div class="wrapper"><span>243</span><span>2</span><span>29,6</span><span>Без подряда</span><span>2 944 000</span></div>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -130,7 +151,7 @@
         			coordinate_x: 2300,
         			coordinate_y: 1450,
         			sold: 1,
-        			status: 2,
+        			status: 0,
         			turn: 2
         		},
         	};
