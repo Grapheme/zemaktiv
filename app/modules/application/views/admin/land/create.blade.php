@@ -23,7 +23,7 @@
                         </label>
                     </section>
                     <section>
-                        <label class="label">Площадь (кв.км)</label>
+                        <label class="label">Площадь (сотка)</label>
                         <label class="input">
                             {{ Form::text('area') }}
                         </label>
