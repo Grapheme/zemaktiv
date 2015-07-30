@@ -14,7 +14,6 @@ endif;
 @section('style')
 @stop
 @section('content')
-    <main class="main js-main">
         <div class="wrapper relative">
             <div class="wrapper-photos">
                 <h1 class="us-title title-photos page-full"><span>{{ $page->seo->h1 }}</span></h1>
@@ -32,7 +31,6 @@ endif;
             @endforeach
         </div>
         @endif
-    </main>
 @stop
 @section('scripts')
 @stop

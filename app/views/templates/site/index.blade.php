@@ -29,7 +29,6 @@
     endif;
 ?>
 
-<main class="main js-main">
 @if(count($sliders))
     <div class="index-slider js-index-slider">
         <div class="slider__list">
@@ -120,7 +119,6 @@
         </div>
     </div>
 @endif
-</main>
 @stop
 @section('scripts')
 @stop

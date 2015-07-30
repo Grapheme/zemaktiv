@@ -11,7 +11,6 @@
     <?php
         $buildings = Buildings::orderBy('number','ASC')->with('land','photo', 'gallery.photos')->paginate(5);
     ?>
-    <main class="main js-main">
         <div class="us-page">
             <div class="wrapper">
                 <h1 class="us-title title-green"><span>{{ $page->seo->h1 }}</span></h1>
@@ -87,7 +86,6 @@
             </div>
         @endif
         </div>
-    </main>
 @stop
 @section('scripts')
 @stop
