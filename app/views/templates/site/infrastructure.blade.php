@@ -28,12 +28,12 @@ endif;
                 {{ $page->block('title') }}
                 <div class="places-list">
                 @foreach($infrastructures as $infrastructure)
-                    <div class="list__item">
+                    <div class="list__item" data-title="{{ $infrastructure['name'] }}" data-image="{{ asset(Config::get('site.galleries_photo_public_dir').'/'.$infrastructure['photo_name']) }}" data-desc="{{ $infrastructure['content'] }} data-longitude="{{ $infrastructure['longitude'] }}" data-latitude="{{ $infrastructure['latitude'] }}">
                         <div class="item__image">
-                            <div class="item__back back-green"></div>
+                            <div class="item__back {{ $infrastructure['item_back_class'] }}"></div>
                             <div class="item__icon" style="background-image: url({{ asset(Config::get('site.galleries_photo_public_dir').'/'.$infrastructure['photo_name']) }})"></div>
                         </div>
-                        <div class="item__desc">Летнее кафе</div>
+                        <div class="item__desc">{{ $infrastructure['name'] }}</div>
                     </div>
                 @endforeach
                 </div>
