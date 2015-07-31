@@ -1691,7 +1691,7 @@ Garden.infraMap = function() {
 	    	        balloonPanelMaxMapArea: 0,
 	    	        balloonMaxWidth: 300,
 	    	        iconLayout: 'default#image',
-	    	        iconImageHref: 'images/mark.png',
+	    	        iconImageHref: '/theme/build/images/mark.png',
 	    	        iconImageSize: [25, 35],
 	    	        iconImageOffset: [-12.5, -35]
 	    	    });
