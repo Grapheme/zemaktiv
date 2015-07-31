@@ -5,14 +5,14 @@
  */
 ?>
  <?php
-if ($sliders = Dictionary::valuesBySlug('main_baners', NULL, 'all', TRUE)):
+if ($sliders = Dictionary::valuesBySlug('main_baners',function($query){$query->orderBy('lft', 'ASC');}, 'all', TRUE)):
     foreach ($sliders as $index => $slider):
         if ($slider['photo']):
             $sliders[$index]['photo_name'] = Photo::where('id', $slider['photo'])->pluck('name');
         endif;
     endforeach;
 endif;
-if ($communications = Dictionary::valuesBySlug('communications_units', NULL, 'all', TRUE)):
+if ($communications = Dictionary::valuesBySlug('communications_units', function($query){$query->orderBy('lft', 'ASC');}, 'all', TRUE)):
     foreach ($communications as $index => $communication):
         if ($communication['photo']):
             $communications[$index]['photo_name'] = Photo::where('id', $communication['photo'])->pluck('name');
