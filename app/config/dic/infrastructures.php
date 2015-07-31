@@ -25,7 +25,12 @@ return array(
             'content' => array(
                 'title' => 'Описание',
                 'type' => 'textarea',
-            ));
+            ),
+            'item_back_class' => array(
+                'title' => 'Класс',
+                'type' => 'text',
+            )
+        );
     },
     'menus' => function($dic, $dicval = NULL) {
         $menus = array();
