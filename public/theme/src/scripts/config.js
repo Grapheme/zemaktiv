@@ -43,7 +43,7 @@ function numToContract(num) {
     }
 }
 
-ymaps.modules.define('MultiRouteCustomView', [
+/*ymaps.modules.define('MultiRouteCustomView', [
     'util.defineClass'
 ], function (provide, defineClass) {
     // Класс простого текстового отображения модели мультимаршрута.
@@ -166,4 +166,4 @@ ymaps.modules.define('MultiRouteCustomView', [
     });
 
     provide(CustomView);
-});
+});*/
