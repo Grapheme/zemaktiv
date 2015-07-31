@@ -1479,11 +1479,46 @@ h2 {
                 transition: all 0.5s ease;
         opacity: 0; }
   .way-container .way-btns {
-    margin-top: 1.875rem; }
+    margin-top: 1.875rem;
+    text-align: center; }
     .way-container .way-btns .us-btn {
       margin-left: -2px; }
       .way-container .way-btns .us-btn:first-child {
         margin-left: 0; }
+
+.map-ballon {
+  background: #fff;
+  width: 18.125rem;
+  margin-left: -9.0625rem;
+  margin-top: 1.25rem;
+  padding: 1.25rem 1.875rem 1.875rem;
+  box-sizing: border-box; }
+  .map-ballon:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -1.25rem;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 1.25rem 1.25rem 1.25rem;
+    border-color: transparent transparent #fff transparent; }
+  .map-ballon .ballon__img {
+    display: inline-block;
+    vertical-align: middle; }
+    .map-ballon .ballon__img img {
+      max-height: 3.125rem;
+      max-width: 3.125rem; }
+  .map-ballon .ballon__title {
+    display: inline-block;
+    vertical-align: middle;
+    font-family: 'pf_agora_slab_pro';
+    font-weight: 700; }
+  .map-ballon .ballon__desc {
+    line-height: 1.6;
+    font-size: 0.9375rem;
+    margin-top: 0.625rem; }
 
 .wrapper-photos {
   position: absolute;
