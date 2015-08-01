@@ -1955,7 +1955,8 @@ Garden.map = function() {
 			if(value.price < prices.min || prices.min === false) prices.min = value.price;
 			if(value.land_area > areas.max) areas.max = value.land_area;
 			if(value.land_area < areas.min || areas.min === false) areas.min = value.land_area;
-			$('.js-map').append('<a class="image__mark js-mark" data-id="' + value.id + '" style="left: ' + value.coordinate_x + 'px; top: ' + value.coordinate_y + 'px;"></a>');
+			var soldStr = value.sold == 1 ? ' sold' : '';
+			$('.js-map').append('<a class="image__mark js-mark' + soldStr + '" data-id="' + value.id + '" style="left: ' + value.coordinate_x + 'px; top: ' + value.coordinate_y + 'px;"></a>');
 		});
 	}
 	var filter = function() {
@@ -2040,17 +2041,16 @@ Garden.map = function() {
 			$('.js-filter-items').html('<li class="body__item nothing-found">К сожалению по заданым параметрам ничего не нашлось</li>');
 		}
 	}
-	var filterForm = function() {
-		$('.js-filter-form').on('submit', function(e){
-			e.preventDefault();
-			var inputs = $(this).serialize().split('&');
-			var params = {};
-			$.each(inputs, function(i, v){
-				var iArray = v.split('=');
-				params[iArray[0]] = iArray[1] || false;
-			});
-			showSuited(params);
-			$('.js-filter-list').slideDown(300);
+	var submitFilter = function(form, noscroll) {
+		var inputs = form.serialize().split('&');
+		var params = {};
+		$.each(inputs, function(i, v){
+			var iArray = v.split('=');
+			params[iArray[0]] = iArray[1] || false;
+		});
+		showSuited(params);
+		$('.js-filter-list').slideDown(300);
+		if(!noscroll) {
 			setTimeout(function(){
 				$('.js-choise-filter').animate({
 					scrollTop: $('.js-filter-list').position().top
@@ -2059,11 +2059,20 @@ Garden.map = function() {
 					scrollTop: $('.js-choise-filter').offset().top - 100
 				}, 300);
 			}, 150);
+		}
+	}
+	var filterForm = function() {
+		$('.js-filter-form').on('submit', function(e){
+			e.preventDefault();
+			submitFilter($(this));
 		});
 		$(document).on('click', '.js-filter-item', function(){
 			var thisId = $(this).attr('data-id');
 			showMap();
 			tooltip.show(thisId);
+			$('html, body').animate({
+				scrollTop: $('.js-choise-wrapper').offset().top - 100
+			});
 		});
 	}
 	var init = function() {
@@ -2073,6 +2082,7 @@ Garden.map = function() {
 		filter();
 		mapTabs();
 		filterForm();
+		submitFilter($('.js-filter-form'), true);
 	}
 	init();
 }

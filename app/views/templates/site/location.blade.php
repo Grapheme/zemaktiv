@@ -9,7 +9,7 @@
 @stop
 @section('content')
     <div class="half-page infra-page">
-        <div id="infra-map" class="infra-map"></div>
+        <div id="location-map" class="infra-map"></div>
         <div class="wrapper">
             <div class="page__left">
                 <div class="tabs-title">

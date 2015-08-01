@@ -1,0 +1,23 @@
+@media only screen and (max-width: 1300px) {
+	html {
+		font-size: ($fs - 1)+px;
+	}
+}
+
+@media only screen and (max-width: 1245px) {
+	html {
+		font-size: ($fs - 2)+px;
+	}
+}
+
+@media only screen and (max-width: 1160px) {
+	html {
+		font-size: ($fs - 3)+px;
+	}
+}
+
+@media only screen and (max-width: 1070px) {
+	html {
+		font-size: ($fs - 4)+px;
+	}
+}
