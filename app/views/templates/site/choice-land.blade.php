@@ -36,7 +36,7 @@ $lands = Land::all();
                             <li class="list__item"><span class="js-bcont"></span></li>
                             <li class="list__item"><span class="js-bprice"></span> руб.</li>
                         </ul>
-                        <div class="tooltip__btn"><a href="#" data-id class="js-book us-btn btn-white"><span>Забронировать</span></a>
+                        <div class="tooltip__btn"><a href="#" data-id class="js-book us-btn btn-white js-open-overlay" data-open="book"><span>Забронировать</span></a>
                         </div>
                     </div>
                 </div>

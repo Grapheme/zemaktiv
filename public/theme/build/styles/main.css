@@ -418,6 +418,9 @@ html {
   -moz-osx-font-smoothing: grayscale;
   color: #111111; }
 
+body {
+  min-width: 1000px; }
+
 .disable-hover,
 .disable-hover * {
   pointer-events: none !important; }
@@ -924,6 +927,22 @@ h2 {
           transition: all 0.2s ease; }
   .us-link:hover {
     border-bottom: 1px solid transparent; }
+
+@media only screen and (max-width: 1300px) {
+  html {
+    font-size: 15px; } }
+
+@media only screen and (max-width: 1245px) {
+  html {
+    font-size: 14px; } }
+
+@media only screen and (max-width: 1160px) {
+  html {
+    font-size: 13px; } }
+
+@media only screen and (max-width: 1070px) {
+  html {
+    font-size: 12px; } }
 
 .done .done__house {
   padding: 1.875rem 0 0.9375rem;
@@ -1620,11 +1639,12 @@ h2 {
         position: absolute;
         width: 1.5625rem;
         height: 1.5625rem;
-        border-radius: 1.5625rem;
         margin-left: -0.78125rem;
         margin-top: -0.78125rem;
-        background: rgba(221, 62, 68, 0.8);
+        background: url(../images/ui/house.svg);
         cursor: pointer; }
+        .wrapper-choise .choise__map .map__image .image__mark.sold {
+          background: url(../images/ui/house-sold.svg); }
       .wrapper-choise .choise__map .map__image .image__tooltip {
         display: none;
         position: absolute;

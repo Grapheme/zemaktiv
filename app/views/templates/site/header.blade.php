@@ -29,7 +29,7 @@
         <nav class="menu__nav">
             {{ Menu::placement('main_menu') }}
             <ul>
-                <li class="nav__item item-call">
+                <li class="nav__item item-call js-open-overlay" data-open="call">
                     <a href="#" class="item__link"><span>Заказать звонок</span></a>
                 </li>
                 <li class="nav__item item-phone">

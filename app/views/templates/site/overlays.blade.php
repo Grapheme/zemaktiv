@@ -5,8 +5,8 @@
 ?>
 <div class="overlay js-overlay">
     <div data-name="book" class="overlay__block block-book js-overlay-block">
-        <div class="wrapper"><a href="#" class="block__close js-close-overlay"></a>
-
+        <div class="wrapper">
+            <a href="#" class="block__close js-close-overlay"></a>
             <div class="block-cont">
                 <div class="book__title"><span>Участок №250, вторая очередь, 13,95 соток</span></div>
                 <div class="overlay__form">
