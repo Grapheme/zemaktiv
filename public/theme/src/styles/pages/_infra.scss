@@ -232,10 +232,10 @@
 	.balloon__close {
 		position: absolute;
 		display: inline-block;
-		top: 28rem / $fs;
-		right: 28rem / $fs;
-		height: 25rem / $fs;
-		width: 25rem / $fs;
+		top: .5rem;
+		right: .5rem;
+		height: 20rem / $fs;
+		width: 20rem / $fs;
 
 		&:before, &:after {
 			content: "";
@@ -245,7 +245,7 @@
 			left: 0;
 			width: 100%;
 			height: 2px;
-			background: $borderColor;
+			background: #ccc;
 		}
 
 		&:before {
