@@ -1569,7 +1569,7 @@ h2 {
   .map-ballon:before {
     content: "";
     position: absolute;
-    top: 0;
+    top: -1rem;
     left: 50%;
     margin-left: -1.25rem;
     width: 0;
@@ -1583,7 +1583,8 @@ h2 {
     top: .5rem;
     right: .5rem;
     height: 1.25rem;
-    width: 1.25rem; }
+    width: 1.25rem;
+    cursor: pointer; }
     .map-ballon .balloon__close:before, .map-ballon .balloon__close:after {
       content: "";
       position: absolute;
