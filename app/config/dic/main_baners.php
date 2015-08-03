@@ -15,11 +15,11 @@ return array(
                 ),
             ),
             'link_title' => array(
-                'title' => 'Подпись ссыдки на ресурс',
+                'title' => 'Подпись ссылки на ресурс',
                 'type' => 'text',
             ),
             'link' => array(
-                'title' => 'Ссыдка на ресурс',
+                'title' => 'Ссылка на ресурс',
                 'type' => 'text',
             ),
             'content' => array(

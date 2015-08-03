@@ -112,10 +112,17 @@ endif;
             <div class="wrapper">
                 <div class="line__inside">
                     <b>Готовность:</b>
+                    <?php
+                        $readiness = NULL;
+                        $readiness_string = $page->block('readiness');
+                        if(!empty($readiness_string)):
+                            $readiness = explode("\n",$readiness_string);
+                        endif;
+                    ?>
                     <span class="relative">
-                        <span class="js-inside-slide inside__slide">{{ $page->block('readiness') }}</span>
-                        <span class="js-inside-slide inside__slide">{{ $page->block('readiness') }}</span>
-                        <span class="js-inside-slide inside__slide">{{ $page->block('readiness') }}</span>
+                    @foreach($readiness as $line)
+                        <span class="js-inside-slide inside__slide">{{ $line }}</span>
+                    @endforeach
                     </span>
                 </div>
             </div>
