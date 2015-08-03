@@ -110,7 +110,13 @@ endif;
         </div>
         <div class="block-line">
             <div class="wrapper">
-                <div class="line__inside"><b>Готовность:</b><span>{{ $page->block('readiness') }}</span>
+                <div class="line__inside">
+                    <b>Готовность:</b>
+                    <span class="relative">
+                        <span class="js-inside-slide inside__slide">{{ $page->block('readiness') }}</span>
+                        <span class="js-inside-slide inside__slide">{{ $page->block('readiness') }}</span>
+                        <span class="js-inside-slide inside__slide">{{ $page->block('readiness') }}</span>
+                    </span>
                 </div>
             </div>
         </div>

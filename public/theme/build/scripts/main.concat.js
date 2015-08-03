@@ -1523,7 +1523,9 @@ Garden.indexSlider = function() {
 	var slides = parent.find('.js-slide');
 	var dotsDiv = parent.find('.js-dots');
 	var zTimeout;
+	var activeId = false;
 	var show = function(id) {
+		activeId = id;
 		$.each([slides, dotsDiv.find('.js-dot')], function(index, value){
 			value.eq(id).addClass('active')
 				.siblings().removeClass('active');
@@ -1534,17 +1536,69 @@ Garden.indexSlider = function() {
 				.siblings().removeClass('zActive');
 		}, 500);
 	}
+	var autoPlay = function() {
+		var nextId = 0;
+		if(activeId !== false) {
+			nextId = activeId + 1;
+		}
+		if(nextId == slides.length) {
+			nextId = 0;
+		}
+		show(nextId);
+		setTimeout(function(){
+			autoPlay();
+		}, 7000);
+	}
 	var init = function() {
 		for(var i = 0; i < slides.length; i++) {
 			dotsDiv.append('<li class="js-dot"></li>');
 		}
-		show(0);
+		//show(0);
+		autoPlay();
 		$('.js-dot').on('click', function(){
 			show($(this).index());
 			return false;
 		});
 	}
 	init();
+}
+Garden.indexLines = function() {
+	var activeId = false;
+	var setActive = function(id) {
+		$('.js-inside-slide').eq(id).addClass('active').siblings().removeClass('active');
+		$('.js-inside-slide').eq(id).prev().addClass('bottom').siblings().removeClass('bottom');
+	}
+	var show = function(id) {
+		activeId = id;
+		if(id == 0) {
+			$('.js-inside-slide').last().addClass('bottom')
+			setTimeout(function(){
+				$('.js-inside-slide').removeClass('transition active bottom');
+				setTimeout(function(){
+					$('.js-inside-slide').addClass('transition');
+					setActive(id);
+				}, 50);
+			}, 500);
+		} else {
+			setActive(id);
+		}
+	}
+	var autoPlay = function() {
+		var nextId = 0;
+		var time = 5000;
+		if(activeId !== false) {
+			nextId = activeId + 1;
+		}
+		if(nextId == $('.js-inside-slide').length) {
+			nextId = 0;
+			time = time + 500;
+		}
+		show(nextId);
+		setTimeout(function(){
+			autoPlay();
+		}, time);
+	}
+	autoPlay();
 }
 Garden.smartHover = function() {
 	if(!$('.js-shover').length) return;
@@ -2125,6 +2179,7 @@ Garden.init = function() {
 	this.checkbox();
 	this.overlays.init();
 	this.locationMap();
+	this.indexLines();
 	//this.speedUp();
 	//this.smartHover();
 }
