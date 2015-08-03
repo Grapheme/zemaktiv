@@ -6,6 +6,7 @@
 ?>
 <?php
 $buildings = Buildings::orderBy('number', 'ASC')->with('land', 'photo', 'gallery.photos')->paginate(5);
+$lands = Land::all();
 ?>
 @extends(Helper::layout())
 @section('style')
@@ -80,7 +81,7 @@ $buildings = Buildings::orderBy('number', 'ASC')->with('land', 'photo', 'gallery
                                 <div class="right__btns">
                                     <a href="{{ pageurl('gen-plan').'#'.$build->land->id }}"
                                        class="us-btn btn-white"><span>Посмотреть на генплане</span></a>
-                                    <a href="#" class="us-btn btn-green"><span>Забронировать</span></a>
+                                    <a href="#" data-id="{{ $build->land->id }}" class="js-book us-btn btn-green"><span>Забронировать</span></a>
                                 </div>
                             </div>
                             <div class="clearfix"></div>
@@ -95,4 +96,25 @@ $buildings = Buildings::orderBy('number', 'ASC')->with('land', 'photo', 'gallery
     </div>
 @stop
 @section('scripts')
+    <script>
+        Dictionary = window.Dictionary || {};
+        Dictionary.buildings = {
+            @if($lands->count())
+                @foreach($lands as $land)
+                    "{{ $land->id }}": {
+                        id: {{ $land->id }},
+                        number: {{ $land->number }},
+                        land_area: {{ $land->area }},
+                        price: {{ $land->price }},
+                        coordinate_x: {{ $land->coordinate_x }},
+                        coordinate_y: {{ $land->coordinate_y }},
+                        sold: {{ $land->sold }},
+                        status: {{ $land->status }},
+                        turn: {{ $land->turn }}
+                    },
+                @endforeach
+            @endif
+        };
+        console.log(Dictionary);
+    </script>
 @stop

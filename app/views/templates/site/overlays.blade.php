@@ -8,9 +8,9 @@
         <div class="wrapper">
             <a href="#" class="block__close js-close-overlay"></a>
             <div class="block-cont">
-                <div class="book__title"><span>Участок №250, вторая очередь, 13,95 соток</span></div>
+                <div class="book__title"><span>Участок №<span class="js-book-number"></span>, вторая очередь, <span class="js-book-area"></span> соток</span></div>
                 <div class="overlay__form">
-                    <input type="hidden" name="id">
+                    <input type="hidden" name="id" class="js-input-book-id">
 
                     <div class="form__block block-phone">
                         <div class="block__title">Ваш номер телефона</div>

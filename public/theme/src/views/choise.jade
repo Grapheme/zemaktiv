@@ -4,9 +4,13 @@ block content
 	.wrapper-choise.js-choise-wrapper
 		.js-choise-map
 			.wrapper.relative
-				.wrapper-photos
+				.js-map-title.wrapper-photos(style="display: none;")
 					h1.us-title.title-choise.page-full
 						span Выбор участка
+					.lines-choice
+						a(href="#" data-number="1").choice__left.js-choice-left
+						a(data-number="2").choice__center.js-choice-center
+						a(href="#" data-number="3").choice__right.js-choice-right
 				.wrapper-params
 					a(href="#").choise__toparams.js-show-filter(style="display: none")
 						span.toparams__title Подбор по параметрам
@@ -14,6 +18,8 @@ block content
 			.choise__map.js-map-container
 				.map__image.js-map
 					//- .image__mark.js-mark(style="left: 2000px; top: 1500px;" data-id="4")
+					each i in [1,2,3]
+						.image__line(class="line-#{i} js-line-#{i}")
 					.image__tooltip.js-tooltip
 						a(href="#").tooltip__close.js-close
 						.tooltip__title Участок №<span class="js-bnum"></span>

@@ -14,8 +14,13 @@ $lands = Land::all();
     <div class="wrapper-choise js-choise-wrapper">
         <div class="js-choise-map">
             <div class="wrapper relative">
-                <div class="wrapper-photos">
+                <div class="wrapper-photos js-map-title" style="display: none;">
                     <h1 class="us-title title-choise page-full"><span>{{ $page->seo->h1 }}</span></h1>
+                    <div class="lines-choice">
+                        <a href="#" data-number="1" class="choice__left js-choice-left"></a>
+                        <a data-number="2" class="choice__center js-choice-center"></a>
+                        <a href="#" data-number="3" class="choice__right js-choice-right"></a>
+                    </div>
                 </div>
                 <div class="wrapper-params">
                     <a href="#" style="display: none" class="choise__toparams js-show-filter">
@@ -26,6 +31,9 @@ $lands = Land::all();
             </div>
             <div class="choise__map js-map-container">
                 <div class="map__image js-map">
+                    <div class="image__line line-1 js-line-1"></div>
+                    <div class="image__line line-2 js-line-2"></div>
+                    <div class="image__line line-3 js-line-3"></div>
                     <div class="image__tooltip js-tooltip">
                         <a href="#" class="tooltip__close js-close"></a>
 
@@ -36,7 +44,7 @@ $lands = Land::all();
                             <li class="list__item"><span class="js-bcont"></span></li>
                             <li class="list__item"><span class="js-bprice"></span> руб.</li>
                         </ul>
-                        <div class="tooltip__btn"><a href="#" data-id class="js-book us-btn btn-white js-open-overlay" data-open="book"><span>Забронировать</span></a>
+                        <div class="tooltip__btn js-bbtn"><a href="#" data-id class="js-book us-btn btn-white"><span>Забронировать</span></a>
                         </div>
                     </div>
                 </div>
@@ -68,7 +76,7 @@ $lands = Land::all();
                                         <input value="2" name="withhouse" id="withhouse" type="checkbox"
                                                checked="checked"
                                                class="js-checkbox">
-                                        <label for="withhouse">Участок с домом</label>
+                                        <label for="withhouse">С готовым домом</label>
                                     </div>
                                 </div>
                                 <div class="form__right">
@@ -128,24 +136,18 @@ $lands = Land::all();
             @if($lands->count())
                 @foreach($lands as $land)
                     "{{ $land->id }}": {
-                id: {{ $land->id }},
-                number: {{ $land->number }},
-                land_area: {{ $land->area }},
-                price: {{ $land->price }},
-                coordinate_x: {{ $land->coordinate_x }},
-                coordinate_y: {{ $land->coordinate_y }},
-                sold: {{ $land->sold }},
-                status: {{ $land->status }},
-                turn: {{ $land->turn }}
-
-
-
-            },
-            @endforeach
-        @endif
-
-
-
+                        id: {{ $land->id }},
+                        number: {{ $land->number }},
+                        land_area: {{ $land->area }},
+                        price: {{ $land->price }},
+                        coordinate_x: {{ $land->coordinate_x }},
+                        coordinate_y: {{ $land->coordinate_y }},
+                        sold: {{ $land->sold }},
+                        status: {{ $land->status }},
+                        turn: {{ $land->turn }}
+                    },
+                @endforeach
+            @endif
         };
     </script>
 @stop
