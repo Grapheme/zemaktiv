@@ -180,6 +180,36 @@
 			font-weight: 800;
 			margin-right: 20rem / $fs;
 		}
+
+		.relative {
+			display: inline-block;
+			vertical-align: middle;
+			width: 830rem / $fs;
+			height: 90rem / $fs;
+		}
+
+		.inside__slide {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			opacity: 0;
+			transform: translateY(-25%);
+
+			&.active {
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+			&.bottom {
+				opacity: 0;
+				transform: translateY(25%);
+			}
+
+			&.transition {
+				transition: all .5s ease;
+			}
+		}
 	}
 }
 
