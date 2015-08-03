@@ -121,7 +121,9 @@ endif;
                     ?>
                     <span class="relative">
                     @foreach($readiness as $line)
+                        @if(!empty($line))
                         <span class="js-inside-slide inside__slide">{{ $line }}</span>
+                        @endif
                     @endforeach
                     </span>
                 </div>
