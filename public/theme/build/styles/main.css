@@ -1559,6 +1559,7 @@ h2 {
         margin-left: 0; }
 
 .map-ballon {
+  position: relative;
   background: #fff;
   width: 18.125rem;
   margin-left: -9.0625rem;
