@@ -219,7 +219,7 @@
 	&:before {
 		content: "";
 		position: absolute;
-		top: 0;
+		top: -1rem;
 		left: 50%;
 		margin-left: -20rem / $fs;
 		width: 0;
@@ -236,6 +236,7 @@
 		right: .5rem;
 		height: 20rem / $fs;
 		width: 20rem / $fs;
+		cursor: pointer;
 
 		&:before, &:after {
 			content: "";
