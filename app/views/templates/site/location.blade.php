@@ -14,7 +14,7 @@
             <div class="page__left">
                 <div class="tabs-title">
                     <h1 class="us-title title-red"><span>{{ $page->seo->h1 }}</span></h1>
-                    <a href="{{ pageurl('infrastructure') }}" class="title__link">Инфраструктура</a>
+                    <a href="{{ pageurl('infrastructure') }}" class="title__link">Путеводитель</a>
                 </div>
                 {{ $page->block('title') }}
                 <div class="way-container">

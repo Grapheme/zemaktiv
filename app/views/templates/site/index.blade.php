@@ -65,10 +65,10 @@ endif;
     </div>
     <div class="index-filter">
         <a href="{{ pageurl('buildings') }}" class="filter__item">
-            <div class="item__title">Готовые дома за 3.5 млн</div>
+            <div class="item__title">{{ $page->block('btn_buildings') }}</div>
         </a>
         <a href="{{ pageurl('choice-land') }}" class="filter__item">
-            <div class="item__title">Участки без подряда</div>
+            <div class="item__title">{{ $page->block('btn_land') }}</div>
         </a>
     </div>
     <div class="index-block">
