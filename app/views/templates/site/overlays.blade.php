@@ -46,25 +46,23 @@
     </div>
     <div data-name="call" class="overlay__block block-call js-overlay-block">
         <div class="wrapper"><a href="#" class="block__close js-close-overlay"></a>
-
             <div class="block-cont">
                 <div class="overlay__form">
-                    <form id="call-form" class="js-overlay-form" action="theme/build/json/form.json">
+                    {{ Form::open(array('route'=>'request_call','id'=>'call-form','class'=>'js-overlay-form')) }}
                         <div class="form__block block-phone">
                             <div class="block__title">Ваш номер телефона</div>
                             <div class="block__input">
                                 <div class="phone__number">+7</div>
-                                <input type="text" name="phone" class="input__item">
+                                {{ Form::text('phone', NULL, array('class'=>'input__item')) }}
                             </div>
                         </div>
                         <div class="form__btn">
-                            <button type="submit" class="us-btn btn-transparent"><span>Обратный звонок</span>
-                            </button>
+                            <button type="submit" class="us-btn btn-transparent"><span>Обратный звонок</span></button>
                         </div>
                         <div class="form__block">
                             <div class="block__response js-response-text">Сообщение</div>
                         </div>
-                    </form>
+                    {{ Form::close() }}
                     <div class="overlay__success js-call-success">Скоро мы вам перезвоним!</div>
                 </div>
             </div>
