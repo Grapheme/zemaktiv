@@ -22,7 +22,7 @@ endif;
         <div class="wrapper">
             <div class="page__left">
                 <div class="tabs-title">
-                    <h1 class="us-title title-red"><span>Инфраструктура</span></h1>
+                    <h1 class="us-title title-red"><span>{{ $page->seo->h1 }}</span></h1>
                     <a href="{{ pageurl('location') }}" class="title__link">Расположение</a>
                 </div>
                 {{ $page->block('title') }}
