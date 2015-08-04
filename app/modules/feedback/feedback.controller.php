@@ -34,11 +34,8 @@ class FeedbackController extends BaseController {
         $json_request = array('status' => FALSE, 'responseText' => '', 'redirect' => FALSE);
         $validation = Validator::make(Input::all(), array('phone' => 'required'));
         if ($validation->passes()):
-
             $feedback_mail = Config::get('mail.feedback.call_address');
             Config::set('mail.sendto_mail', $feedback_mail);
-
-            #Config::set('mail.sendto_mail', 'vkharseev@gmail.com');
             $this->postSendMessage(NULL, array('subject' => 'Заказ звонка',
                 'phone' => Input::get('phone')), 'call_request');
             $json_request['responseText'] = 'Сообщение отправлено';
@@ -57,11 +54,8 @@ class FeedbackController extends BaseController {
         $validation = Validator::make(Input::all(), array('id' => 'required', 'name' => 'required',
             'email' => 'required|email', 'phone' => 'required'));
         if ($validation->passes()):
-
             $feedback_mail = Config::get('mail.feedback.bran_address');
             Config::set('mail.sendto_mail', $feedback_mail);
-
-            #Config::set('mail.sendto_mail', 'vkharseev@gmail.com');
             $this->postSendMessage(NULL, array('subject' => 'Бронирование участка',
                 'land_id' => Input::get('id'),
                 'name' => Input::get('name'),
@@ -86,8 +80,6 @@ class FeedbackController extends BaseController {
         if ($validation->passes()):
             $feedback_mail = Config::get('mail.feedback.address');
             Config::set('mail.sendto_mail', $feedback_mail);
-
-            Config::set('mail.sendto_mail', 'vkharseev@gmail.com');
             $this->postSendmessage(NULL, array('subject' => 'Форма обратной связи', 'email' => Input::get('email'),
                 'name' => Input::get('name'), 'content' => Input::get('message')));
             $json_request['responseText'] = 'Сообщение отправлено';
