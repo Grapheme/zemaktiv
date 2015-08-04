@@ -4,6 +4,7 @@ return array(
 
     'feedback' => array(
         'address' => 'support@grapheme.ru',
+        'call_address' => 'support@grapheme.ru',
     ),
 
     'driver' => 'smtp',
