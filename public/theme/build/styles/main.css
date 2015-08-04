@@ -2082,7 +2082,7 @@ h2 {
                 transform: rotate(45deg); }
   .overlay .block-book {
     background: #e9b344; }
-    .overlay .block-book .book__title span {
+    .overlay .block-book .book__title > span {
       display: inline-block;
       vertical-align: top;
       font-family: 'pf_agora_slab_pro';
@@ -2136,3 +2136,12 @@ h2 {
       height: 3.125rem;
       line-height: 2.75rem;
       padding: 0 1.875rem; }
+  .overlay .overlay__form .block__response {
+    display: none;
+    font-size: 1.125rem; }
+  .overlay .overlay__form label.error {
+    display: inline-block;
+    margin-top: 0.625rem; }
+  .overlay .overlay__success {
+    display: none;
+    font-size: 1.5rem; }

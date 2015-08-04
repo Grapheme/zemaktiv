@@ -69,7 +69,7 @@
 		background: #e9b344;
 
 		.book__title {
-			span {
+			> span {
 				display: inline-block;
 				vertical-align: top;
 				font-family: 'pf_agora_slab_pro';
@@ -157,5 +157,20 @@
 				padding: 0 30rem / $fs;
 			}
 		}
+
+		.block__response {
+			display: none;
+			font-size: 18rem / $fs;
+		}
+
+		label.error {
+			display: inline-block;
+			margin-top: 10rem / $fs;
+		}
+	}
+
+	.overlay__success {
+		display: none;
+		font-size: 24rem / $fs;
 	}
 }

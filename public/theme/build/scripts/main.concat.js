@@ -1642,6 +1642,51 @@ Garden.autosize = function() {
 		autosize($('.js-autosize'));
 	}
 }
+Garden.overlayForms = function() {
+	var forms = $('.js-overlay-form');
+	forms.filter('#call-form').validate({
+	    rules: {
+	        phone: {
+	            required: true
+	        }
+	    },
+	    submitHandler: function(form) {
+	        Help.ajaxSubmit(form, {
+	            success: function() {
+	                $(form).slideUp();
+	                $('.js-call-success').slideDown();
+	                setTimeout(function(){
+	                	Garden.overlays.close();
+	                }, 1500);
+	            }
+	        });
+	        return false;
+	    }
+	});
+	forms.filter('#book-form').validate({
+	    rules: {
+	        name: {
+	            required: true
+	        },
+	        email: {
+	        	required: true,
+	        	email: true
+	        }
+	    },
+	    submitHandler: function(form) {
+	        Help.ajaxSubmit(form, {
+	            success: function() {
+	                $(form).slideUp();
+	                $('.js-book-success').slideDown();
+	                setTimeout(function(){
+	                	Garden.overlays.close();
+	                }, 3000);
+	            }
+	        });
+	        return false;
+	    }
+	});
+}
 Garden.contactForm = function() {
 	if(!$('.js-contact-form').length) return;
 	var form = $('.js-contact-form');
@@ -2227,6 +2272,7 @@ Garden.book = function() {
 		var thisObj = Dictionary.buildings[houseId];
 		input.val(houseId);
 		$('.js-book-number').text(thisObj.number);
+		$('.js-book-line').text(thisObj.turn);
 		$('.js-book-area').text(thisObj.land_area);
 		Garden.overlays.open('book');
 		console.log(thisObj);
@@ -2274,6 +2320,7 @@ Garden.init = function() {
 	this.locationMap();
 	this.indexLines();
 	this.book();
+	this.overlayForms();
 	//this.speedUp();
 	//this.smartHover();
 }
