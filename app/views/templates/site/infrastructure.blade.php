@@ -8,7 +8,7 @@
 if ($infrastructures = Dictionary::valuesBySlug('infrastructures', NULL, 'all', TRUE)):
     foreach ($infrastructures as $index => $infrastructure):
         if ($infrastructure['photo']):
-            $infrastructures[$index]['photo_name'] = Photo::where('id', $infrastructure['photo'])->pluck('name');
+            $infrastructures[$index]['photo_path'] = Upload::where('id', $infrastructure['photo'])->pluck('path');
         endif;
     endforeach;
 endif;
@@ -28,10 +28,10 @@ endif;
                 {{ $page->block('title') }}
                 <div class="places-list">
                 @foreach($infrastructures as $infrastructure)
-                    <div class="list__item js-balloon-item" data-title="{{ $infrastructure['name'] }}" data-image="{{ asset(Config::get('site.galleries_photo_public_dir').'/'.$infrastructure['photo_name']) }}" data-desc="{{ $infrastructure['content'] }}" data-longitude="{{ $infrastructure['longitude'] }}" data-latitude="{{ $infrastructure['latitude'] }}">
+                    <div class="list__item js-balloon-item" data-title="{{ $infrastructure['name'] }}" data-image="{{ asset($infrastructure['photo_path']) }}" data-desc="{{ $infrastructure['content'] }}" data-longitude="{{ $infrastructure['longitude'] }}" data-latitude="{{ $infrastructure['latitude'] }}">
                         <div class="item__image">
-                            <div class="item__back {{ $infrastructure['item_back_class'] }}"></div>
-                            <div class="item__icon" style="background-image: url({{ asset(Config::get('site.galleries_photo_public_dir').'/'.$infrastructure['photo_name']) }})"></div>
+                            <div class="item__back"></div>
+                            <div class="item__icon" style="background-image: url({{ asset($infrastructure['photo_path']) }})"></div>
                         </div>
                         <div class="item__desc">{{ $infrastructure['name'] }}</div>
                     </div>
