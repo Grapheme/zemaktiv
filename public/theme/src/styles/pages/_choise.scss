@@ -1,6 +1,7 @@
 .wrapper-choise {
 	position: relative;
 	min-height: 90vh;
+	max-height: 100vw;
 
 	.choise__map {
 		position: absolute;
@@ -8,6 +9,7 @@
 		left: 0;
 		right: 0;
 		height: 90vh;
+		max-height: 100vw;
 		overflow: hidden;
 		backface-visibility: hidden;
 
@@ -30,13 +32,42 @@
 				opacity: 1;
 			}
 
+			.image__line {
+				position: absolute;
+				opacity: .7;
+
+				&.line-1 {
+					top: 82rem;
+					left: 46.5rem;
+					width: 77rem;
+				    height: 77rem;
+					background: url(../images/ui/contur1.svg) 0 0 / 100% 100% no-repeat;
+				}
+
+				&.line-2 {
+					top: 51.1rem;
+				    left: 107.1rem;
+				    width: 98rem;
+				    height: 73rem;
+					background: url(../images/ui/contur2.svg) 0 0 / 100% 100% no-repeat;
+				}
+
+				&.line-3 {
+					top: 9.8rem;
+					left: 131.1rem;
+					width: 80.9rem;
+					height: 62rem;
+					background: url(../images/ui/contur3.svg) 0 0 / 100% 100% no-repeat;
+				}
+			}
+
 			.image__mark {
 				position: absolute;
-				width: 25rem / $fs;
-				height: 25rem / $fs;
-				//border-radius: 25rem / $fs;
-				margin-left: -25rem / $fs / 2;
-				margin-top: -25rem / $fs / 2;
+				width: 20rem / $fs;
+				height: 20rem / $fs;
+				//border-radius: 20rem / $fs;
+				margin-left: -20rem / $fs / 2;
+				margin-top: -20rem / $fs / 2;
 				background: url(../images/ui/house.svg);
 				cursor: pointer;
 
@@ -186,6 +217,7 @@
 		z-index: 3;
 		background: rgba(255, 255, 255, .9);
 		height: 90vh;
+		max-height: 100vw;
 		overflow: auto;
 
 		.page__full {
@@ -379,6 +411,74 @@
 						background: #f8f8f8;
 					}
 				}
+			}
+		}
+	}
+
+	.lines-choice {
+		position: relative;
+		margin-top: 20rem / $fs;
+		height: 65rem / $fs;
+		width: 326rem / $fs;
+		text-align: center;
+		pointer-events: initial;
+
+		.choice__left, .choice__right {
+			display: inline-block;
+			vertical-align: middle;
+			height: 100%;
+			width: 75rem / $fs;
+			background-size: cover;
+			background-position: center center;
+
+			&[disabled="disabled"] {
+				opacity: 0;
+				cursor: default;
+			}
+		}
+
+		.choice__left {
+			float: left;
+
+			&[data-number="1"] {
+				background-image: url(../images/ui/line1left.svg);
+			}
+
+			&[data-number="2"] {
+				background-image: url(../images/ui/line2left.svg);
+			}
+		}
+
+		.choice__right {
+			float: right;
+
+			&[data-number="2"] {
+				background-image: url(../images/ui/line2right.svg);
+			}
+
+			&[data-number="3"] {
+				background-image: url(../images/ui/line3right.svg);
+			}
+		}
+
+		.choice__center {
+			display: inline-block;
+			vertical-align: middle;
+			height: 100%;
+			width: 135rem / $fs;
+			background-size: cover;
+			background-position: center center;
+
+			&[data-number="1"] {
+				background-image: url(../images/ui/line1block.svg);
+			}
+
+			&[data-number="2"] {
+				background-image: url(../images/ui/line2block.svg);
+			}
+
+			&[data-number="3"] {
+				background-image: url(../images/ui/line3block.svg);
 			}
 		}
 	}

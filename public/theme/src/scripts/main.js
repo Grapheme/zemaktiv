@@ -235,7 +235,15 @@ Garden.infraMap = function() {
         });
         myPlacemark = new ymaps.Placemark([55.760768, 37.554879], { content: '2-я Звенигородская улица' });
         myMap.geoObjects.add(myPlacemark);
-        myMap.controls	.remove('zoomControl')
+        myMap.controls	.add('zoomControl'
+        						/*{
+        							float: 'none',
+    							    position: {
+										right: 500,
+										top: 5,
+										left: 'auto'
+									}
+        						}*/)
 					    .remove('searchControl')
 					    .remove('typeSelector')
 					    .remove('mapTools');
@@ -247,7 +255,7 @@ Garden.infraMap = function() {
 	                this._$element = $('.ymaps-discount-balloon', this.getParentElement());
 	                this._$element_inner = $('.map-ballon');
 	                this.applyElementOffset();
-	                this._$element.find('.balloon-close').on('click', $.proxy(this.onCloseClick, this));
+	                this._$element.find('.balloon__close').on('click', $.proxy(this.onCloseClick, this));
 	            },
 	            applyElementOffset: function() {
 	                this._$element.css({
@@ -265,6 +273,7 @@ Garden.infraMap = function() {
 	        });
 	    var BalloonContentLayout = ymaps.templateLayoutFactory.createClass(
 	        '<div class="map-ballon">\
+	        	<a class="balloon__close"></a>\
 	        	<div class="ballon__header">\
 	        		<span class="ballon__img"><img src="{{properties.image}}"></span>\
 	        		<span class="ballon__title">{{properties.title}}</span>\
@@ -490,7 +499,7 @@ Garden.map = function() {
 		$(document).on('mouseup', function(){
 			mousedown = false;
 		});
-		setMapCenter();
+		//setMapCenter();
 	}
 	var tooltip = {
 		tooltip: $('.js-tooltip'),
@@ -516,6 +525,12 @@ Garden.map = function() {
 			self.tooltip.find('.js-bcont').text(numToContract(thisObj.status));
 			self.tooltip.find('.js-barea').text(thisObj.land_area);
 			self.tooltip.find('.js-book').attr('data-id', thisObj.id);
+			console.log(thisObj.sold);
+			if(thisObj.sold == 0) {
+				self.tooltip.find('.js-bbtn').show();
+			} else {
+				self.tooltip.find('.js-bbtn').hide();
+			}
 			var thisMark = $('.js-mark[data-id="' + id + '"]');
 			var markPos = thisMark.position();
 			setMapCenter(markPos.left, markPos.top - (mapCont.height()/100)*20);
@@ -548,7 +563,7 @@ Garden.map = function() {
 			if(value.land_area > areas.max) areas.max = value.land_area;
 			if(value.land_area < areas.min || areas.min === false) areas.min = value.land_area;
 			var soldStr = value.sold == 1 ? ' sold' : '';
-			$('.js-map').append('<a class="image__mark js-mark' + soldStr + '" data-id="' + value.id + '" style="left: ' + value.coordinate_x + 'px; top: ' + value.coordinate_y + 'px;"></a>');
+			$('.js-map').append('<a class="image__mark js-mark' + soldStr + '" data-id="' + value.id + '" style="left: ' + value.coordinate_x/16 + 'rem; top: ' + value.coordinate_y/16 + 'rem;"></a>');
 		});
 	}
 	var filter = function() {
@@ -558,8 +573,8 @@ Garden.map = function() {
 			max: prices.max,
 			values: [prices.min, prices.max],
 			slide: function(event, ui) {
-				$('.js-price-from').text(ui.values[ 0 ]);
-				$('.js-price-to').text(ui.values[ 1 ]);
+				$('.js-price-from').text(ui.values[ 0 ].formatMoney());
+				$('.js-price-to').text(ui.values[ 1 ].formatMoney());
 				$('[name="pricefrom"]').val(ui.values[ 0 ]);
 				$('[name="priceto"]').val(ui.values[ 1 ]);
 			}
@@ -576,8 +591,8 @@ Garden.map = function() {
 				$('[name="areato"]').val(ui.values[ 1 ]);
 			}
 		});
-		$('.js-price-from').text($('#range-price').slider('values', 0));
-		$('.js-price-to').text($('#range-price').slider('values', 1));
+		$('.js-price-from').text($('#range-price').slider('values', 0).formatMoney());
+		$('.js-price-to').text($('#range-price').slider('values', 1).formatMoney());
 		$('.js-area-from').text($('#range-area').slider('values', 0));
 		$('.js-area-to').text($('#range-area').slider('values', 1));
 		$('[name="pricefrom"]').val($('#range-price').slider('values', 0));
@@ -587,12 +602,12 @@ Garden.map = function() {
 	}
 	var showMap = function() {
 		$('.js-choise-filter').fadeOut();
-		$('.js-show-filter').fadeIn();
+		$('.js-show-filter, .js-map-title').fadeIn();
 		return false;
 	}
 	var showFilter = function() {
 		$('.js-choise-filter').fadeIn();
-		$('.js-show-filter').fadeOut();
+		$('.js-show-filter, .js-map-title').fadeOut();
 		tooltip.close();
 		return false;
 	}
@@ -600,6 +615,51 @@ Garden.map = function() {
 		$('.js-show-map').on('click', showMap);
 		$('.js-show-filter').on('click', showFilter);
 		showFilter();
+	}
+	var lines = {
+		activeLine: false,
+		setActive: function(number) {
+			activeLine = number;
+			$('.js-choice-center').attr('data-number', number);
+			if(number == 1) {
+				$('.js-choice-left').attr('disabled', 'disabled');
+			} else {
+				$('.js-choice-left').attr('data-number', number - 1);
+				$('.js-choice-left').removeAttr('disabled');
+			}
+			if(number == 3) {
+				$('.js-choice-right').attr('disabled', 'disabled');
+			} else {
+				$('.js-choice-right').attr('data-number', number + 1);
+				$('.js-choice-right').removeAttr('disabled');
+			}
+		},
+		setCenter: function(number) {
+			var thisBlock = $('.js-line-' + number);
+			var thisX = thisBlock.position().left + thisBlock.width() / 2;
+			var thisY = thisBlock.position().top + thisBlock.height() / 2;
+			setMapCenter(thisX, thisY);
+		},
+		init: function() {
+			var self = this;
+			self.setActive(1);
+			self.setCenter(1);
+			$('.js-choice-left').on('click', function(){
+				if($(this).attr('disabled') == 'disabled') return;
+				var thisNum = parseInt($(this).attr('data-number'));
+				self.setActive(thisNum);
+				self.setCenter(thisNum);
+				return false;
+			});
+			$('.js-choice-right').on('click', function(){
+				if($(this).attr('disabled') == 'disabled') return;
+				var thisNum = parseInt($(this).attr('data-number'));
+				self.setActive(thisNum);
+				self.setCenter(thisNum);
+				return false;
+			});
+			$('.js-map').addClass('active transition');
+		}
 	}
 	var showSuited = function(params) {
 		var suitedArray = {};
@@ -666,6 +726,25 @@ Garden.map = function() {
 				scrollTop: $('.js-choise-wrapper').offset().top - 100
 			});
 		});
+		var checks = {
+			withHouse: false,
+			withWork: false,
+			withOutWork: false
+		};
+		$.each(Dictionary.buildings, function(i, v){
+			if(v.status == 0) checks.withOutWork = true;
+			if(v.status == 1) checks.withWork = true;
+			if(v.status == 2) checks.withHouse = true;
+		});
+		if(!checks.withOutWork) {
+			$('[name="withoutpod"]').parent().hide();
+		}
+		if(!checks.withWork) {
+			$('[name="withpod"]').parent().hide();
+		}
+		if(!checks.withHouse) {
+			$('[name="withhouse"]').parent().hide();
+		}
 	}
 	var init = function() {
 		move();
@@ -675,8 +754,22 @@ Garden.map = function() {
 		mapTabs();
 		filterForm();
 		submitFilter($('.js-filter-form'), true);
+		lines.init();
 	}
 	init();
+}
+Garden.book = function() {
+	$(document).on('click', '.js-book', function(){
+		var houseId = $(this).attr('data-id');
+		var input = $('.js-input-book-id');
+		var thisObj = Dictionary.buildings[houseId];
+		input.val(houseId);
+		$('.js-book-number').text(thisObj.number);
+		$('.js-book-area').text(thisObj.land_area);
+		Garden.overlays.open('book');
+		console.log(thisObj);
+		return false;
+	});
 }
 Garden.overlays = {
 	open: function(name) {
@@ -718,6 +811,7 @@ Garden.init = function() {
 	this.overlays.init();
 	this.locationMap();
 	this.indexLines();
+	this.book();
 	//this.speedUp();
 	//this.smartHover();
 }

@@ -149,6 +149,15 @@
 		font-family: 'pf_agora_slab_pro';
 		font-weight: 500;
 
+		&:after {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: 1px;
+			background: $borderColor;
+		}
 
 		&:before {
 			content: "";
@@ -266,6 +275,11 @@
 						background: #42b974;
 						color: #fff;
 						font-weight: 700;
+						transition: background .2s ease;
+
+						&:hover {
+							background: #24A058;
+						}
 					}
 				}
 

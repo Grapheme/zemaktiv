@@ -155,3 +155,20 @@
 		border-bottom: 1px solid transparent;
 	}
 }
+
+.fancybox-close {
+	background: url(../images/ui/close.svg);
+
+	&:hover {
+		opacity: .8;
+	}
+}
+
+.fancybox-next span {
+	background: url(../images/ui/arrow.svg) center center no-repeat;
+}
+
+.fancybox-prev span {
+	background: url(../images/ui/arrow.svg) center center no-repeat;
+	transform: rotate(180deg);
+}

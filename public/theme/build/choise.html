@@ -41,13 +41,17 @@
       <div class="wrapper-choise js-choise-wrapper">
         <div class="js-choise-map">
           <div class="wrapper relative">
-            <div class="wrapper-photos">
+            <div style="display: none;" class="js-map-title wrapper-photos">
               <h1 class="us-title title-choise page-full"><span>Выбор участка</span></h1>
+              <div class="lines-choice"><a href="#" data-number="1" class="choice__left js-choice-left"></a><a data-number="2" class="choice__center js-choice-center"></a><a href="#" data-number="3" class="choice__right js-choice-right"></a></div>
             </div>
             <div class="wrapper-params"><a href="#" style="display: none" class="choise__toparams js-show-filter"><span class="toparams__title">Подбор по параметрам</span><span class="toparams__desc">Цена и площадь</span></a></div>
           </div>
           <div class="choise__map js-map-container">
             <div class="map__image js-map">
+              <div class="image__line line-1 js-line-1"></div>
+              <div class="image__line line-2 js-line-2"></div>
+              <div class="image__line line-3 js-line-3"></div>
               <div class="image__tooltip js-tooltip"><a href="#" class="tooltip__close js-close"></a>
                 <div class="tooltip__title">Участок №<span class="js-bnum"></span></div>
                 <div class="tooltip__subtitle">Очередь: <span class="js-bturn"></span></div>
