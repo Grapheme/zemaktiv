@@ -90,7 +90,7 @@ endif;
                              style="background-image: url({{ asset(Config::get('site.galleries_photo_public_dir').'/'.$communication['photo_name']) }});"></div>
                         <div class="item__title">{{ $communication['name'] }}</div>
                         <div class="item__desc">
-                            {{ $communication['anonce'] }}
+                            {{ $communication['content'] }}
                         </div>
                     </div>
                 @endforeach
