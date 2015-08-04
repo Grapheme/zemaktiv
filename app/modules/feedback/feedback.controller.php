@@ -61,7 +61,7 @@ class FeedbackController extends BaseController {
             $feedback_mail = Config::get('mail.feedback.bran_address');
             Config::set('mail.sendto_mail', $feedback_mail);
 
-            Config::set('mail.sendto_mail', 'vkharseev@gmail.com');
+            #Config::set('mail.sendto_mail', 'vkharseev@gmail.com');
             $this->postSendMessage(NULL, array('subject' => 'Бронирование участка',
                 'land_id' => Input::get('id'),
                 'name' => Input::get('name'),
