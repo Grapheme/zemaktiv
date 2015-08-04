@@ -1,6 +1,6 @@
 <?
 /**
- * TITLE: Инфраструктура
+ * TITLE: Путеводитель
  * AVAILABLE_ONLY_IN_ADVANCED_MODE
  */
 ?>
