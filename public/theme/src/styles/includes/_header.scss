@@ -119,10 +119,9 @@
 				}
 
 				&.item-title {
-					text-decoration: none;
-					text-transform: uppercase;
-					color: inherit;
-					font-weight: 500;
+					width: 280rem / $fs;
+					background: url(../images/header/left-text.png) center center no-repeat;
+					background-size: 230rem/$fs auto;
 				}
 
 				&.item-name {
