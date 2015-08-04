@@ -15,6 +15,6 @@
                 <div class="block__link"><a href="">Контакты</a></div>
             </div>
         </div>
-        <div class="footer__right"><span>Симферопольское шоссе, 70 км от МКАД, +7 (495) 249-55-55</span></div>
+        <div class="footer__right"><span>Симферопольское шоссе, 70 км от МКАД, +7 (495) 223-49-49</span></div>
     </div>
 </footer>

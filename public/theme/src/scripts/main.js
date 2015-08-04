@@ -687,8 +687,10 @@ Garden.map = function() {
 		},
 		init: function() {
 			var self = this;
-			self.setActive(1);
-			self.setCenter(1);
+			if(!Dictionary.buildings[window.location.hash.substr(1)]) {
+				self.setActive(1);
+				self.setCenter(1);
+			}
 			$('.js-choice-left').on('click', function(){
 				if($(this).attr('disabled') == 'disabled') return;
 				var thisNum = parseInt($(this).attr('data-number'));
@@ -703,7 +705,6 @@ Garden.map = function() {
 				self.setCenter(thisNum);
 				return false;
 			});
-			$('.js-map').addClass('active transition');
 		}
 	}
 	var showSuited = function(params) {
@@ -790,8 +791,14 @@ Garden.map = function() {
 		if(!checks.withHouse) {
 			$('[name="withhouse"]').parent().hide();
 		}
+		var thisHash = window.location.hash.substr(1);
+		if(thisHash != '' && Dictionary.buildings[thisHash]) {
+			showMap();
+			tooltip.show(thisHash);
+		}
 	}
 	var init = function() {
+		$('.js-map').addClass('active transition');
 		move();
 		setMarks();
 		tooltip.init();

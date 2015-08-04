@@ -20,7 +20,7 @@
         @else
             <a class="min__item item-apple" href="{{ pageurl('') }}"></a>
         @endif
-            <a href="#" class="min__item item-title">Коттеджный посёлок</a>
+            <a href="#" class="min__item item-title"></a>
             <a href="#" class="min__item item-name"></a>
             <a href="#" class="min__item item-text"></a>
         </div>
@@ -33,7 +33,7 @@
                     <a href="#" class="item__link"><span>Заказать звонок</span></a>
                 </li>
                 <li class="nav__item item-phone">
-                    <a href="tel:+74952495555" class="item__link"><span>+7 (495) 249-55-55</span></a>
+                    <a href="tel:+74952234949" class="item__link"><span>+7 (495) 223-49-49</span></a>
                 </li>
             </ul>
         </nav>
