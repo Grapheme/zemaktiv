@@ -85,7 +85,8 @@ class FeedbackController extends BaseController {
             'message' => 'required'));
         if ($validation->passes()):
             $feedback_mail = Config::get('mail.feedback.address');
-//            Config::set('mail.sendto_mail', $feedback_mail);
+            Config::set('mail.sendto_mail', $feedback_mail);
+
             Config::set('mail.sendto_mail', 'vkharseev@gmail.com');
             $this->postSendmessage(NULL, array('subject' => 'Форма обратной связи', 'email' => Input::get('email'),
                 'name' => Input::get('name'), 'content' => Input::get('message')));
