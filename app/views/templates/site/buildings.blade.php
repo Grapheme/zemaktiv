@@ -79,7 +79,7 @@ $lands = Land::all();
                                     </div>
                                 </div>
                                 <div class="right__btns">
-                                    <a href="{{ pageurl('gen-plan').'#'.$build->land->id }}"
+                                    <a href="{{ pageurl('choice-land').'#'.$build->land->id }}"
                                        class="us-btn btn-white"><span>Посмотреть на генплане</span></a>
                                     <a href="#" data-id="{{ $build->land->id }}" class="js-book us-btn btn-green"><span>Забронировать</span></a>
                                 </div>

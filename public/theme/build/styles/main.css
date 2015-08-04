@@ -410,6 +410,53 @@ th {
   font-weight: 700;
   font-style: normal; }
 
+/* @font-face {
+    font-family: 'acrom';
+    src: url('../fonts/acrommedium-webfont.eot');
+    src: url('../fonts/acrommedium-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/acrommedium-webfont.woff2') format('woff2'),
+         url('../fonts/acrommedium-webfont.woff') format('woff'),
+         url('../fonts/acrommedium-webfont.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'acrom';
+    src: url('../fonts/acromregular-webfont.eot');
+    src: url('../fonts/acromregular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/acromregular-webfont.woff2') format('woff2'),
+         url('../fonts/acromregular-webfont.woff') format('woff'),
+         url('../fonts/acromregular-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'acrom';
+    src: url('../fonts/acrombold-webfont.eot');
+    src: url('../fonts/acrombold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/acrombold-webfont.woff2') format('woff2'),
+         url('../fonts/acrombold-webfont.woff') format('woff'),
+         url('../fonts/acrombold-webfont.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'acrom';
+    src: url('../fonts/acromlight-webfont.eot');
+    src: url('../fonts/acromlight-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/acromlight-webfont.woff2') format('woff2'),
+         url('../fonts/acromlight-webfont.woff') format('woff'),
+         url('../fonts/acromlight-webfont.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+
+} */
 html {
   font-family: 'room';
   font-weight: 500;
@@ -690,10 +737,9 @@ h2 {
         background: url(../images/header/apple_min.png) center center no-repeat;
         background-size: 2rem 2.25rem; }
       .header .header__top .top__min .min__item.item-title {
-        text-decoration: none;
-        text-transform: uppercase;
-        color: inherit;
-        font-weight: 500; }
+        width: 17.5rem;
+        background: url(../images/header/left-text.png) center center no-repeat;
+        background-size: 14.375rem auto; }
       .header .header__top .top__min .min__item.item-name {
         width: 16.875rem;
         background: url(../images/header/logo-text_min.png) center center no-repeat;
