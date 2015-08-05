@@ -16,7 +16,8 @@
                     <tbody>
                     @foreach($buildings as $index => $build)
                         <tr>
-                            <td>{{ $index + 1 }}</td>
+                            <?php $sub_index = Input::has('page') ? (int)Input::get('page')-1 : 0;?>
+                            <td>{{ ($index+1)+($sub_index*25) }}</td>
                             <td>Участок №{{ $build->land->number }}. {{ $build->title }}</td>
                             <td>{{ number_format($build->price, 2, '.', ' ') }} руб.</td>
                             <td class="text-center" style="white-space:nowrap;">
