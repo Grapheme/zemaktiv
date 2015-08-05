@@ -8,7 +8,7 @@
     <div class="header__top">
         <div class="top__big">
         @if (Request::is('/'))
-            <div class="big__logo"></div>
+            <a class="big__logo" href="#}"></a>
         @else
             <a class="big__logo" href="{{ pageurl('') }}"></a>
         @endif
@@ -16,13 +16,16 @@
         </div>
         <div class="top__min">
         @if (Request::is('/'))
-            <div class="min__item item-apple"></div>
-        @else
-            <a class="min__item item-apple" href="{{ pageurl('') }}"></a>
-        @endif
+            <a class="min__item item-apple" href="#"></a>
             <a href="#" class="min__item item-title"></a>
             <a href="#" class="min__item item-name"></a>
             <a href="#" class="min__item item-text"></a>
+        @else
+            <a class="min__item item-apple" href="{{ pageurl('') }}"></a>
+            <a href="{{ pageurl('') }}" class="min__item item-title"></a>
+            <a href="{{ pageurl('') }}" class="min__item item-name"></a>
+            <a href="{{ pageurl('') }}" class="min__item item-text"></a>
+        @endif
         </div>
     </div>
     <div class="header__menu">
