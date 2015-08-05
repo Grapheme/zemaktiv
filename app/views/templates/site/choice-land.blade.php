@@ -150,6 +150,7 @@ $lands = Land::all();
                         land_area: {{ $land->area }},
                         price: {{ $land->price }},
                         price_house: {{ $land->price_house }},
+                        price_total: {{ $land->price + $land->price_house }},
                         coordinate_x: {{ $land->coordinate_x }},
                         coordinate_y: {{ $land->coordinate_y }},
                         sold: {{ $land->sold }},
