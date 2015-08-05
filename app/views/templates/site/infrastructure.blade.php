@@ -23,7 +23,11 @@ endif;
             <div class="page__left">
                 <div class="tabs-title">
                     <h1 class="us-title title-red"><span>{{ $page->seo->h1 }}</span></h1>
-                    <a href="{{ pageurl('location') }}" class="title__link">Расположение</a>
+                    <div class="tabs-right">
+                        <div class="right-cont">
+                            <a href="{{ pageurl('location') }}" class="title__link">Расположение</a>
+                        </div>
+                    </div>
                 </div>
                 {{ $page->block('title') }}
                 <div class="places-list">
