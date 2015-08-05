@@ -280,8 +280,7 @@ Garden.infraMap = function() {
         });
         myPlacemark = new ymaps.Placemark([55.760768, 37.554879], { content: '2-я Звенигородская улица' });
         myMap.geoObjects.add(myPlacemark);
-        myMap.controls	.add('zoomControl')
-					    .remove('searchControl')
+        myMap.controls	.remove('searchControl')
 					    .remove('typeSelector')
 					    .remove('mapTools');
 

@@ -93,7 +93,7 @@ $lands = Land::all();
                                         </div>
                                     </div>
                                     <div class="right__block">
-                                        <div class="form__title">Площадь, сот.</div>
+                                        <div class="form__title">Площадь участка, соток</div>
                                         <div class="form__desc">
                                             от <span class="js-area-from"></span>
                                             до <span class="js-area-to"></span></div>
