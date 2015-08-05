@@ -14,11 +14,16 @@ $news_list = News::with('meta.seo', 'meta.photo', 'meta.gallery.photos')->orderB
     <div class="half-page">
         <div class="wrapper">
             <div class="page-full">
-                <div class="tabs-title">
+                <div class="tabs-title many-tabs">
                     <h1 class="us-title title-yellow"><span>{{ $page->seo->h1 }}</span></h1>
-                    <a href="{{ pageurl('about-company') }}" class="title__link">О компании</a>
-                    <a href="{{ pageurl('documents') }}" class="title__link">Документы</a>
-                    <a href="{{ pageurl('about') }}" class="title__link">О проекте</a></div>
+                    <div class="tabs-right">
+                        <div class="right-cont">
+                            <a href="{{ pageurl('about-company') }}" class="title__link">О компании</a>
+                            <a href="{{ pageurl('documents') }}" class="title__link">Документы</a>
+                            <a href="{{ pageurl('about') }}" class="title__link">О проекте</a>
+                        </div>
+                    </div>
+                </div>
                 <div class="us-news">
                     <ul class="news__list martop40">
                         @foreach($news_list as $news)

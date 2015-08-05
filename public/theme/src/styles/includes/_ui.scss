@@ -78,9 +78,34 @@
 		transition: all .2s ease;
 	}
 
-	&:hover {
+	&:after {
+		content: "";
+		position: relative;
+		z-index: 3;
+		display: inline-block;
+		vertical-align: middle;
+		height: 20rem / $fs;
+		background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTAyNCIgaGVpZ2h0PSIxMDI0IiB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0Ij48ZyBpZD0iaWNvbW9vbi1pZ25vcmUiPjwvZz48cGF0aCBkPSJNMzg0IDEyOGMwLTcwLjY5MiA1Ny4zMDgtMTI4IDEyOC0xMjhzMTI4IDU3LjMwOCAxMjggMTI4YzAgNzAuNjkyLTU3LjMwOCAxMjgtMTI4IDEyOHMtMTI4LTU3LjMwOC0xMjgtMTI4ek02NTUuNTMgMjQwLjQ3YzAtNzAuNjkyIDU3LjMwOC0xMjggMTI4LTEyOHMxMjggNTcuMzA4IDEyOCAxMjhjMCA3MC42OTItNTcuMzA4IDEyOC0xMjggMTI4cy0xMjgtNTcuMzA4LTEyOC0xMjh6TTgzMiA1MTJjMC0zNS4zNDYgMjguNjU0LTY0IDY0LTY0czY0IDI4LjY1NCA2NCA2NGMwIDM1LjM0Ni0yOC42NTQgNjQtNjQgNjRzLTY0LTI4LjY1NC02NC02NHpNNzE5LjUzIDc4My41M2MwLTM1LjM0NiAyOC42NTQtNjQgNjQtNjRzNjQgMjguNjU0IDY0IDY0YzAgMzUuMzQ2LTI4LjY1NCA2NC02NCA2NHMtNjQtMjguNjU0LTY0LTY0ek00NDguMDAyIDg5NmMwIDAgMCAwIDAgMCAwLTM1LjM0NiAyOC42NTQtNjQgNjQtNjRzNjQgMjguNjU0IDY0IDY0YzAgMCAwIDAgMCAwIDAgMzUuMzQ2LTI4LjY1NCA2NC02NCA2NHMtNjQtMjguNjU0LTY0LTY0ek0xNzYuNDcyIDc4My41M2MwIDAgMCAwIDAgMCAwLTM1LjM0NiAyOC42NTQtNjQgNjQtNjRzNjQgMjguNjU0IDY0IDY0YzAgMCAwIDAgMCAwIDAgMzUuMzQ2LTI4LjY1NCA2NC02NCA2NHMtNjQtMjguNjU0LTY0LTY0ek0xNDQuNDcyIDI0MC40N2MwIDAgMCAwIDAgMCAwLTUzLjAxOSA0Mi45ODEtOTYgOTYtOTZzOTYgNDIuOTgxIDk2IDk2YzAgMCAwIDAgMCAwIDAgNTMuMDE5LTQyLjk4MSA5Ni05NiA5NnMtOTYtNDIuOTgxLTk2LTk2ek01NiA1MTJjMC0zOS43NjUgMzIuMjM1LTcyIDcyLTcyczcyIDMyLjIzNSA3MiA3MmMwIDM5Ljc2NS0zMi4yMzUgNzItNzIgNzJzLTcyLTMyLjIzNS03Mi03MnoiPjwvcGF0aD48L3N2Zz4=);
+		background-size: 100%;
+		background-position: center center;
+		animation: fa-spin 1s infinite steps(8);
+		width: 0;
+		margin-left: 0;
+		opacity: 0;
+		transition: all .2s ease;
+	}
+
+	&:hover, &.loading {
 		&:before {
 			transform: translateY(0);
+		}
+	}
+
+	&.loading {
+		&:after {
+			width: 20rem / $fs;
+			margin-left: 20rem / $fs;
+			opacity: 1;
 		}
 	}
 
@@ -93,7 +118,7 @@
 			background: #fff;
 		}
 
-		&:hover {
+		&:hover, &.loading {
 			color: #42b974;
 		}
 	}
@@ -106,7 +131,7 @@
 			background: #111;
 		}
 
-		&:hover {
+		&:hover, &.loading {
 			color: #fff;
 		}
 	}
@@ -120,7 +145,7 @@
 			background: #fff;
 		}
 
-		&:hover {
+		&:hover, &.loading {
 			color: #111;
 		}
 	}
@@ -134,7 +159,7 @@
 			background: #fff;
 		}
 
-		&:hover {
+		&:hover, &.loading {
 			color: #476cb4;
 		}
 	}
