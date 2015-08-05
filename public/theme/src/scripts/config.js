@@ -37,7 +37,7 @@ function numToContract(num) {
         case 1:
             return "С подрядом";
         case 2:
-            return "Участок с домом";
+            return "С готовым домом";
         default:
             return "Без подряда";
     }

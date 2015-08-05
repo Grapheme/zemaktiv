@@ -33,7 +33,7 @@
                     <a href="#" class="item__link"><span>Заказать звонок</span></a>
                 </li>
                 <li class="nav__item item-phone">
-                    <a href="tel:+74952234949" class="item__link"><span>+7 (495) 223-49-49</span></a>
+                    <a href="tel:+74954077887" class="item__link"><span>+7 (495) 407-78-87</span></a>
                 </li>
             </ul>
         </nav>
