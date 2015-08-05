@@ -1495,16 +1495,46 @@ h2 {
   padding: 0;
   list-style: none; }
   .news__list .list__item {
-    margin-bottom: 1.25rem;
-    line-height: 1.5; }
+    line-height: 1.5;
+    padding-bottom: 2.5rem;
+    overflow: hidden;
+    border-bottom: 1px solid #f1f1f1; }
+    .news__list .list__item h2 {
+      margin-bottom: 0; }
     .news__list .list__item .item__date {
-      color: #8c8c8c; }
+      margin-top: 1.25rem; }
+      .news__list .list__item .item__date span {
+        display: inline-block;
+        background: #f1f1f1;
+        padding: 0 0.3125rem; }
     .news__list .list__item .item__link a {
       position: relative; }
       .news__list .list__item .item__link a:before {
         content: "–";
         position: absolute;
         left: -0.9375rem; }
+    .news__list .list__item .item__content {
+      margin-top: 1.25rem; }
+    .news__list .list__item .page__left, .news__list .list__item .page__right {
+      border: none;
+      padding-top: 0; }
+
+.news-images {
+  overflow: hidden; }
+  .news-images .images__item {
+    float: left;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    width: 7.5rem;
+    height: 7.5rem;
+    margin: 1px; }
+    .news-images .images__item span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0; }
 
 .infra-page {
   position: relative;
