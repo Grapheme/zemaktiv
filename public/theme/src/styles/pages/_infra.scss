@@ -155,7 +155,7 @@
 			margin: 0 20rem / $fs;
 			cursor: pointer;
 
-			&:hover {
+			&:hover, &.active {
 				.item__image {
 					transform: scale(1);
 				}

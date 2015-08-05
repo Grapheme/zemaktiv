@@ -484,18 +484,14 @@ Garden.speedUp = function() {
 }
 Garden.map = function() {
 	if(!$('.js-choise-wrapper').length) return;
-	var map = $('.js-map');
-	var mapCont = $('.js-map-container');
-	var cursorPos = [];
-	var mapPos = [];
-	var prices = {
-		min: false,
-		max: 0
-	};
-	var areas = {
-		min: false,
-		max: 0
-	};
+	var map = $('.js-map'),
+		mapCont = $('.js-map-container'),
+		cursorPos = [],
+		mapPos = [],
+		prices,
+		areas,
+		suitedArray = {},
+		filterParams;
 	var setMapPos = function(x, y) {
 		if(x > 0) x = 0;
 		if(y > 0) y = 0;
@@ -601,12 +597,42 @@ Garden.map = function() {
 			});
 		}
 	}
+	var setMinMax = function(obj, type) {
+		var priceCondition = (type && type == 'price') || !type;
+		var areaCondition = (type && type == 'area') || !type;
+		var thisPrices = {
+			min: false,
+			max: 0
+		};
+		var thisAreas = {
+			min: false,
+			max: 0
+		};
+		$.each(obj, function(index, value){
+			if(priceCondition) {
+				if(value.price > thisPrices.max) thisPrices.max = value.price;
+				if(value.price < thisPrices.min || thisPrices.min === false) thisPrices.min = value.price;
+			}
+			if(areaCondition) {
+				if(value.land_area > thisAreas.max) thisAreas.max = value.land_area;
+				if(value.land_area < thisAreas.min || thisAreas.min === false) thisAreas.min = value.land_area;
+			}
+		});
+		if(type) {
+			if(type == 'price') {
+				return thisPrices;
+			}
+			if(type == 'area') {
+				return thisAreas;
+			}
+		} else {
+			prices = thisPrices;
+			areas = thisAreas;
+		}
+	}
 	var setMarks = function() {
+		setMinMax(Dictionary.buildings);
 		$.each(Dictionary.buildings, function(index, value){
-			if(value.price > prices.max) prices.max = value.price;
-			if(value.price < prices.min || prices.min === false) prices.min = value.price;
-			if(value.land_area > areas.max) areas.max = value.land_area;
-			if(value.land_area < areas.min || areas.min === false) areas.min = value.land_area;
 			var soldStr = value.sold == 1 ? ' sold' : '';
 			$('.js-map').append('<a class="image__mark js-mark' + soldStr + '" data-id="' + value.id + '" style="left: ' + value.coordinate_x/16 + 'rem; top: ' + value.coordinate_y/16 + 'rem;"></a>');
 		});
@@ -622,6 +648,8 @@ Garden.map = function() {
 				$('.js-price-to').text(ui.values[ 1 ].formatMoney());
 				$('[name="pricefrom"]').val(ui.values[ 0 ]);
 				$('[name="priceto"]').val(ui.values[ 1 ]);
+				$(document).trigger('sliders::update');
+				$(document).trigger('sliderprice::update');
 			}
 		});
 		$('#range-area').slider({
@@ -634,25 +662,43 @@ Garden.map = function() {
 				$('.js-area-to').text(ui.values[ 1 ]);
 				$('[name="areafrom"]').val(ui.values[ 0 ]);
 				$('[name="areato"]').val(ui.values[ 1 ]);
+				$(document).trigger('sliders::update');
+				$(document).trigger('sliderarea::update');
 			}
 		});
-		$('.js-price-from').text($('#range-price').slider('values', 0).formatMoney());
-		$('.js-price-to').text($('#range-price').slider('values', 1).formatMoney());
-		$('.js-area-from').text($('#range-area').slider('values', 0));
-		$('.js-area-to').text($('#range-area').slider('values', 1));
-		$('[name="pricefrom"]').val($('#range-price').slider('values', 0));
-		$('[name="priceto"]').val($('#range-price').slider('values', 1));
-		$('[name="areafrom"]').val($('#range-area').slider('values', 0));
-		$('[name="areato"]').val($('#range-area').slider('values', 1));
+		updateFilterText();
+		$('.js-filter-form input[type="checkbox"]').on('change', function(){
+			countSuited();
+			updateSliders();
+		});
 	}
+	var updateFilterText = function(type) {
+		if(!type || (type && type == 'price')) {
+			$('.js-price-from').text($('#range-price').slider('values', 0).formatMoney());
+			$('.js-price-to').text($('#range-price').slider('values', 1).formatMoney());
+			$('[name="pricefrom"]').val($('#range-price').slider('values', 0));
+			$('[name="priceto"]').val($('#range-price').slider('values', 1));
+		}
+		if(!type || (type && type == 'area')) {
+			$('.js-area-from').text($('#range-area').slider('values', 0));
+			$('.js-area-to').text($('#range-area').slider('values', 1));
+			$('[name="areafrom"]').val($('#range-area').slider('values', 0));
+			$('[name="areato"]').val($('#range-area').slider('values', 1));
+		}
+	}
+	var inFrontTimeOut;
 	var showMap = function() {
-		$('.js-choise-filter').fadeOut();
-		$('.js-show-filter, .js-map-title').fadeIn();
+		$('.js-choise-map').addClass('active');
+		$('.js-choise-filter').removeClass('active');
+		inFrontTimeOut = setTimeout(function(){
+			$('.js-choise-filter').removeClass('infront');
+		}, 500);
 		return false;
 	}
 	var showFilter = function() {
-		$('.js-choise-filter').fadeIn();
-		$('.js-show-filter, .js-map-title').fadeOut();
+		clearTimeout(inFrontTimeOut);
+		$('.js-choise-map').removeClass('active');
+		$('.js-choise-filter').addClass('infront active');
 		tooltip.close();
 		return false;
 	}
@@ -692,14 +738,14 @@ Garden.map = function() {
 				self.setCenter(1);
 			}
 			$('.js-choice-left').on('click', function(){
-				if($(this).attr('disabled') == 'disabled') return;
+				if($(this).attr('disabled')) return false;
 				var thisNum = parseInt($(this).attr('data-number'));
 				self.setActive(thisNum);
 				self.setCenter(thisNum);
 				return false;
 			});
 			$('.js-choice-right').on('click', function(){
-				if($(this).attr('disabled') == 'disabled') return;
+				if($(this).attr('disabled')) return false;
 				var thisNum = parseInt($(this).attr('data-number'));
 				self.setActive(thisNum);
 				self.setCenter(thisNum);
@@ -707,8 +753,15 @@ Garden.map = function() {
 			});
 		}
 	}
-	var showSuited = function(params) {
-		var suitedArray = {};
+	var countSuited = function() {
+		var inputs = $('.js-filter-form').serialize().split('&');
+		filterParams = {};
+		$.each(inputs, function(i, v){
+			var iArray = v.split('=');
+			filterParams[iArray[0]] = iArray[1] || false;
+		});
+		suitedArray = {};
+		var params = filterParams;
 		$.each(Dictionary.buildings, function(i, v){
 			var suited = true;
 			if(!(	
@@ -727,6 +780,8 @@ Garden.map = function() {
 				suitedArray[i] = v;
 			}
 		});
+	}
+	var showSuited = function() {
 		var html = [];
 		var count = 0;
 		$.each(suitedArray, function(i, v){
@@ -739,23 +794,112 @@ Garden.map = function() {
 			$('.js-filter-items').html('<li class="body__item nothing-found">К сожалению по заданым параметрам ничего не нашлось</li>');
 		}
 	}
-	var submitFilter = function(form, noscroll) {
-		var inputs = form.serialize().split('&');
-		var params = {};
-		$.each(inputs, function(i, v){
-			var iArray = v.split('=');
-			params[iArray[0]] = iArray[1] || false;
+	var updateChecks = function() {
+		var thisObj = {};
+		var params = filterParams;
+		$.each(Dictionary.buildings, function(i, v){
+			var suited = true;
+			if(v.price < params.pricefrom || v.price > params.priceto) {
+				suited = false;
+			}
+			if(v.land_area < params.areafrom || v.land_area > params.areato) {
+				suited = false;
+			}
+			if(suited) {
+				thisObj[i] = v;
+			}
 		});
-		showSuited(params);
+		checkBoxes(thisObj);
+	}
+	var updateArea = function() {
+		var thisObj = {};
+		var params = filterParams;
+		$.each(Dictionary.buildings, function(i, v){
+			var suited = true;
+			if(!(	
+				(params.withhouse && v.status == 2)||
+				(params.withpod && v.status == 1)||
+				(params.withoutpod && v.status == 0))) {
+				suited = false;
+			}
+			if(v.price < $('#range-price').slider('values', 0) || v.price > $('#range-price').slider('values', 1)) {
+				suited = false;
+			}
+			if(suited) {
+				thisObj[i] = v;
+			}
+		});
+		var areaRange = setMinMax(thisObj, 'area');
+		//$('#range-price').slider('option', 'min', prices.min);
+		//$('#range-price').slider('option', 'max', prices.max);
+		// $('#range-area').slider('option', 'min', areaRange.min);
+		// $('#range-area').slider('option', 'max', areaRange.max);
+		$('#range-area').slider('option', 'values', [areaRange.min, areaRange.max]);
+		updateFilterText('area');
+	}
+	var updatePrice = function() {
+		var thisObj = {};
+		var params = filterParams;
+		$.each(Dictionary.buildings, function(i, v){
+			var suited = true;
+			if(!(	
+				(params.withhouse && v.status == 2)||
+				(params.withpod && v.status == 1)||
+				(params.withoutpod && v.status == 0))) {
+				suited = false;
+			}
+			if(v.land_area < $('#range-area').slider('values', 0) || v.land_area > $('#range-area').slider('values', 1)) {
+				suited = false;
+			}
+			if(suited) {
+				thisObj[i] = v;
+			}
+		});
+		var priceRange = setMinMax(thisObj, 'price');
+		//$('#range-area').slider('option', 'min', areas.min);
+		//$('#range-area').slider('option', 'max', areas.max);
+		// $('#range-price').slider('option', 'min', priceRange.min);
+		// $('#range-price').slider('option', 'max', priceRange.max);
+		$('#range-price').slider('option', 'values', [priceRange.min, priceRange.max]);
+		updateFilterText('price');
+	}
+	var updateSliders = function() {
+		var thisObj = {};
+		var params = filterParams;
+		$.each(Dictionary.buildings, function(i, v){
+			var suited = true;
+			if(!(	
+				(params.withhouse && v.status == 2)||
+				(params.withpod && v.status == 1)||
+				(params.withoutpod && v.status == 0))) {
+				suited = false;
+			}
+			if(suited) {
+				thisObj[i] = v;
+			}
+		});
+		var priceRange = setMinMax(thisObj, 'price');
+		var areaRange = setMinMax(thisObj, 'area');
+		$('#range-area').slider('option', 'min', areaRange.min);
+		$('#range-area').slider('option', 'max', areaRange.max);
+		$('#range-price').slider('option', 'min', priceRange.min);
+		$('#range-price').slider('option', 'max', priceRange.max);
+		updateFilterText('price');
+		updateFilterText('area');
+	}
+	var submitFilter = function(form, noscroll) {
+		showSuited();
 		$('.js-filter-list').slideDown(300);
 		if(!noscroll) {
 			setTimeout(function(){
 				$('.js-choise-filter').animate({
-					scrollTop: $('.js-filter-list').position().top
+					scrollTop: $('.js-choise-filter .page__full').outerHeight(true)
 				}, 300);
-				$('html, body').animate({
-					scrollTop: $('.js-choise-filter').offset().top - 100
-				}, 300);
+				setTimeout(function(){
+					$('html, body').animate({
+						scrollTop: $('.js-choise-filter').offset().top - 100
+					}, 300);
+				}, 10);
 			}, 150);
 		}
 	}
@@ -772,29 +916,48 @@ Garden.map = function() {
 				scrollTop: $('.js-choise-wrapper').offset().top - 100
 			});
 		});
+		$(document).on('sliders::update', function(){
+			countSuited();
+			updateChecks();
+		});
+		$(document).on('sliderprice::update', function(){
+			updateArea();
+		});
+		$(document).on('sliderarea::update', function(){
+			updatePrice();
+		});
+		var thisHash = window.location.hash.substr(1);
+		if(thisHash != '' && Dictionary.buildings[thisHash]) {
+			showMap();
+			tooltip.show(thisHash);
+		}
+		checkBoxes(Dictionary.buildings);
+	}
+	var checkBoxes = function(obj) {
 		var checks = {
 			withHouse: false,
 			withWork: false,
 			withOutWork: false
 		};
-		$.each(Dictionary.buildings, function(i, v){
+		$.each(obj, function(i, v){
 			if(v.status == 0) checks.withOutWork = true;
 			if(v.status == 1) checks.withWork = true;
 			if(v.status == 2) checks.withHouse = true;
 		});
 		if(!checks.withOutWork) {
 			$('[name="withoutpod"]').parent().hide();
+		} else {
+			$('[name="withoutpod"]').parent().show();
 		}
 		if(!checks.withWork) {
 			$('[name="withpod"]').parent().hide();
+		} else {
+			$('[name="withpod"]').parent().show();
 		}
 		if(!checks.withHouse) {
 			$('[name="withhouse"]').parent().hide();
-		}
-		var thisHash = window.location.hash.substr(1);
-		if(thisHash != '' && Dictionary.buildings[thisHash]) {
-			showMap();
-			tooltip.show(thisHash);
+		} else {
+			$('[name="withhouse"]').parent().show();
 		}
 	}
 	var init = function() {
@@ -805,6 +968,7 @@ Garden.map = function() {
 		filter();
 		mapTabs();
 		filterForm();
+		countSuited();
 		submitFilter($('.js-filter-form'), true);
 		lines.init();
 	}
