@@ -36,9 +36,15 @@
                         </label>
                     </section>
                     <section>
-                        <label class="label">Цена (руб.)</label>
+                        <label class="label">Цена участка (руб.)</label>
                         <label class="input">
                             {{ Form::text('price') }}
+                        </label>
+                    </section>
+                    <section>
+                        <label class="label">Цена участка c домом (руб.)</label>
+                        <label class="input">
+                            {{ Form::text('price_house') }}
                         </label>
                     </section>
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
