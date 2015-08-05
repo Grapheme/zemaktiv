@@ -48,7 +48,7 @@ class LandController extends BaseController {
     /****************************************************************************/
     public function index() {
 
-        $lands = Land::orderBy('number')->get();
+        $lands = Land::orderBy('number')->paginate(25);
         return View::make($this->module['tpl'] . 'land.index', compact('lands'));
     }
 

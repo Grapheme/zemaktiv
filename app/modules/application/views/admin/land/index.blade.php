@@ -39,6 +39,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                {{ $lands->links() }}
             </div>
         </div>
     @else
