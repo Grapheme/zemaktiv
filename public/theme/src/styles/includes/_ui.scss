@@ -164,6 +164,20 @@
 		}
 	}
 
+	&.btn-black-white {
+		color: #111;
+		background: #fff;
+		border: 2px solid #111;
+
+		&:before {
+			background: #111;
+		}
+
+		&:hover, &.loading {
+			color: #fff;
+		}
+	}
+
 	span {
 		position: relative;
 		z-index: 2;

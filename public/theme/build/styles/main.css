@@ -1025,6 +1025,14 @@ h2 {
       background: #fff; }
     .us-btn.btn-blue:hover, .us-btn.btn-blue.loading {
       color: #476cb4; }
+  .us-btn.btn-black-white {
+    color: #111;
+    background: #fff;
+    border: 2px solid #111; }
+    .us-btn.btn-black-white:before {
+      background: #111; }
+    .us-btn.btn-black-white:hover, .us-btn.btn-black-white.loading {
+      color: #fff; }
   .us-btn span {
     position: relative;
     z-index: 2; }
@@ -1961,7 +1969,7 @@ h2 {
   .wrapper-choise .wrapper-params {
     position: absolute;
     z-index: 2;
-    right: 0;
+    right: 1.25rem;
     top: 5rem; }
     .wrapper-choise .wrapper-params .choise__toparams {
       display: inline-block;
@@ -1978,11 +1986,11 @@ h2 {
       .wrapper-choise .wrapper-params .choise__toparams .toparams__desc {
         font-size: 0.9375rem;
         margin-top: 0.625rem; }
-  .wrapper-choise .choise-map .choise__toparams, .wrapper-choise .choise-map .wrapper-photos {
+  .wrapper-choise .choise-map .choise__toparams, .wrapper-choise .choise-map .wrapper-photos, .wrapper-choise .choise-map .wrapper-params {
     opacity: 0;
     -webkit-transition: all 0.5s ease;
             transition: all 0.5s ease; }
-  .wrapper-choise .choise-map.active .choise__toparams, .wrapper-choise .choise-map.active .wrapper-photos {
+  .wrapper-choise .choise-map.active .choise__toparams, .wrapper-choise .choise-map.active .wrapper-photos, .wrapper-choise .choise-map.active .wrapper-params {
     opacity: 1; }
   .wrapper-choise .choise-filter {
     position: relative;
@@ -2125,7 +2133,13 @@ h2 {
       .wrapper-choise .filter__list .list__table .body__item span {
         display: inline-block;
         vertical-align: top;
-        width: 20%; }
+        text-align: center; }
+        .wrapper-choise .filter__list .list__table .body__item span:nth-child(1), .wrapper-choise .filter__list .list__table .body__item span:nth-child(2), .wrapper-choise .filter__list .list__table .body__item span:nth-child(3) {
+          width: 13%; }
+        .wrapper-choise .filter__list .list__table .body__item span:nth-child(4), .wrapper-choise .filter__list .list__table .body__item span:nth-child(5) {
+          width: 18%; }
+        .wrapper-choise .filter__list .list__table .body__item span:nth-child(6) {
+          width: 25%; }
       .wrapper-choise .filter__list .list__table .body__item.nothing-found {
         text-align: center;
         font-size: 1.125rem; }

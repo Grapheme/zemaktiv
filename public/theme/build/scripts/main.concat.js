@@ -2238,7 +2238,11 @@ Garden.map = function() {
 		var html = [];
 		var count = 0;
 		$.each(suitedArray, function(i, v){
-			html.push('<li class="body__item js-filter-item" data-id="' + v.id + '"><div class="wrapper"><span>' + v.number + '</span><span>' + v.turn + '</span><span>' + v.land_area + '</span><span>' + numToContract(v.status) + '</span><span>' + v.price.formatMoney() + '</span></div></li>');
+			var totalPrice = '';
+			if(v.status == 2) {
+				totalPrice = v.price.formatMoney();
+			}
+			html.push('<li class="body__item js-filter-item" data-id="' + v.id + '"><div class="wrapper"><span>' + v.number + '</span><span>' + v.turn + '</span><span>' + v.land_area + '</span><span>' + numToContract(v.status) + '</span><span>' + v.price_land.formatMoney() + '</span><span>' + totalPrice + '</span></div></li>');
 			count++;
 		});
 		if(count != 0) {
