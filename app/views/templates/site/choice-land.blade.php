@@ -12,9 +12,9 @@ $lands = Land::all();
 @stop
 @section('content')
     <div class="wrapper-choise js-choise-wrapper">
-        <div class="js-choise-map">
+        <div class="js-choise-map choise-map">
             <div class="wrapper relative">
-                <div class="wrapper-photos js-map-title" style="display: none;">
+                <div class="wrapper-photos js-map-title">
                     <h1 class="us-title title-choise page-full"><span>{{ $page->seo->h1 }}</span></h1>
                     <div class="lines-choice">
                         <a href="#" data-number="1" class="choice__left js-choice-left"></a>
@@ -23,7 +23,7 @@ $lands = Land::all();
                     </div>
                 </div>
                 <div class="wrapper-params">
-                    <a href="#" style="display: none" class="choise__toparams js-show-filter">
+                    <a href="#" class="choise__toparams js-show-filter">
                         <span class="toparams__title">Подбор по параметрам</span>
                         <span class="toparams__desc">Цена и площадь</span>
                     </a>
@@ -128,6 +128,15 @@ $lands = Land::all();
         </div>
     </div>
     </main>
+    <div style="position: fixed; top: -9999px; left: -9999px; visibility: hidden;">
+        <img src="{{ Config::get('site.theme_path') }}/images/ui/line1block.svg" alt="">
+        <img src="{{ Config::get('site.theme_path') }}/images/ui/line1left.svg" alt="">
+        <img src="{{ Config::get('site.theme_path') }}/images/ui/line2block.svg" alt="">
+        <img src="{{ Config::get('site.theme_path') }}/images/ui/line2left.svg" alt="">
+        <img src="{{ Config::get('site.theme_path') }}/images/ui/line2right.svg" alt="">
+        <img src="{{ Config::get('site.theme_path') }}/images/ui/line3block.svg" alt="">
+        <img src="{{ Config::get('site.theme_path') }}/images/ui/line3right.svg" alt="">
+    </div>
 @stop
 @section('scripts')
     <script>

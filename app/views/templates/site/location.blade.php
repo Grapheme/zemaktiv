@@ -19,17 +19,21 @@
                 {{ $page->block('title') }}
                 <div class="way-container">
                     <div class="way-list">
-                        <div class="list__item">
+                        <div class="list__item active">
                             <div class="item__image image-bus"></div>
                             <div class="item__desc">На транспорте</div>
                         </div>
-                        <div class="list__item">
+                    </div>
+                    <div class="us-article">
+                        {{ $page->block('description_bus') }}
+                    </div>
+                    <div class="way-list">
+                        <div class="list__item active">
                             <div class="item__image image-car"></div>
                             <div class="item__desc">На авто</div>
                         </div>
                     </div>
                     <div class="us-article">
-                        {{ $page->block('description_bus') }}
                         {{ $page->block('description_car') }}
                     </div>
                     <div class="way-btns"><a href="#"
