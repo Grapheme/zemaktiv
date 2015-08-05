@@ -13,6 +13,7 @@ class CreateLandTables extends Migration {
 			$table->integer('number')->default(0)->unsigned()->nullable();
 			$table->tinyInteger('status')->default(0)->unsigned()->nullable();
 			$table->double('price')->default(0)->unsigned()->nullable();
+			$table->double('price_house')->default(0)->unsigned()->nullable();
 			$table->integer('coordinate_x')->default(0)->unsigned()->nullable();
 			$table->integer('coordinate_y')->default(0)->unsigned()->nullable();
 
