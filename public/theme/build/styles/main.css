@@ -1730,7 +1730,7 @@ h2 {
   z-index: 1; }
   .block-photos .photos__item {
     position: relative;
-    width: 25vw;
+    width: 25%;
     height: 25vw;
     float: left; }
     .block-photos .photos__item .item__link {
