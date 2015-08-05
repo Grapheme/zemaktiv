@@ -48,7 +48,11 @@ class BuildingsController extends BaseController {
     /****************************************************************************/
     public function index() {
 
-        $buildings = Buildings::orderBy('number')->with('land')->paginate(25);
+        if(Input::has('search')):
+            $buildings = Buildings::where('number', Input::get('search'))->get();
+        else:
+            $buildings = Buildings::orderBy('number')->with('land')->paginate(25);
+        endif;
         return View::make($this->module['tpl'] . 'buildings.index', compact('buildings'));
     }
 

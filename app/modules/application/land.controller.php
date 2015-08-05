@@ -48,7 +48,11 @@ class LandController extends BaseController {
     /****************************************************************************/
     public function index() {
 
-        $lands = Land::orderBy('number')->paginate(25);
+        if(Input::has('search')):
+            $lands = Land::where('number', Input::get('search'))->get();
+        else:
+            $lands = Land::orderBy('number')->paginate(25);
+        endif;
         return View::make($this->module['tpl'] . 'land.index', compact('lands'));
     }
 
