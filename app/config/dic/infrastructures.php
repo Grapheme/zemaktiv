@@ -7,12 +7,16 @@ return array(
         return array(
             'photo' => array(
                 'title' => 'Изображение',
-                'type' => 'image',
-                'params' => array(
-                    'maxFilesize' => 1, // MB
-                    #'acceptedFiles' => 'image/*',
-                    #'maxFiles' => 2,
-                ),
+                'type' => 'upload',
+                'accept' => '*', # .exe,image/*,video/*,audio/*
+                'label_class' => 'input-file',
+                'handler' => function($value, $element = false) {
+                    if (@is_object($element) && @is_array($value)) {
+                        $value['module'] = 'DicVal';
+                        $value['unit_id'] = $element->id;
+                    }
+                    return ExtForm::process('upload', $value);
+                },
             ),
             'longitude' => array(
                 'title' => 'Долгота',
