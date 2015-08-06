@@ -12,7 +12,7 @@
             </div>
             <div class="left__block">
                 <div class="block__link"><a href="{{ pageurl('about') }}">О проекте</a></div>
-                <div class="block__link"><a href="{{ pageurl('about') }}">Контакты</a></div>
+                <div class="block__link"><a href="{{ pageurl('contacts') }}">Контакты</a></div>
             </div>
         </div>
         <div class="footer__right"><span>Симферопольское шоссе, 70 км от МКАД, +7 (495) 407-78-87</span></div>
