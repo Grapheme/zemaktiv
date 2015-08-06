@@ -2063,7 +2063,7 @@ Garden.map = function() {
 			clearTimeout(self.closeTimeout);
 			if(id === self.activeId) return;
 			self.activeId = id;
-			var thisObj = Dictionary.buildings[id];
+			var thisObj = Dictionary.buildingsAll[id];
 			self.tooltip.find('.js-bnum').text(thisObj.number);
 			self.tooltip.find('.js-bturn').text(thisObj.turn);
 			if(parseInt(thisObj.price_total) == 0 || !thisObj.price_total) {
