@@ -356,7 +356,7 @@ Garden.infraMap = function() {
 	    });
 		$('.js-balloon-item').on('click', function(){
 			var balloonId = $(this).attr('data-balloon-id');
-			myMap.panTo([$(this).attr('data-longitude'), $(this).attr('data-latitude')]);
+			myMap.setCenter([$(this).attr('data-longitude'), $(this).attr('data-latitude')]);
 			placemarks[balloonId].mark.balloon.open();
 		});
     }
