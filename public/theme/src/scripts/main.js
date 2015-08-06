@@ -354,9 +354,8 @@ Garden.infraMap = function() {
 		$('.js-balloon-item').on('click', function(){
 			var balloonId = $(this).attr('data-balloon-id');
 			//myMap.setCenter();
-			console.log(placemarks[balloonId].mark.geometry.getCoordinates());
-			myMap.panTo([1,1], {
-	            // Задержка между перемещениями.
+			var thisCoors = placemarks[balloonId].mark.geometry.getCoordinates();
+			myMap.panTo([parseInt(thisCoors[0]), parseInt(thisCoors[1])], {
 	            delay: 1500
 	        });
 			placemarks[balloonId].mark.balloon.open();
