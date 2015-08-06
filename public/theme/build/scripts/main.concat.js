@@ -1818,7 +1818,7 @@ Garden.infraMap = function() {
 	    });
 		$('.js-balloon-item').on('click', function(){
 			var balloonId = $(this).attr('data-balloon-id');
-			myMap.setCenter([$(this).attr('data-longitude'), $(this).attr('data-latitude')]);
+			myMap.panTo(myMap.getCenter(), [$(this).attr('data-longitude'), $(this).attr('data-latitude')]);
 			placemarks[balloonId].mark.balloon.open();
 		});
     }
