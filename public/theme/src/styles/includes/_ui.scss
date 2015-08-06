@@ -95,7 +95,7 @@
 		transition: all .2s ease;
 	}
 
-	&:hover, &.loading {
+	&:hover, &.loading, &.active {
 		&:before {
 			transform: translateY(0);
 		}
@@ -131,7 +131,7 @@
 			background: #111;
 		}
 
-		&:hover, &.loading {
+		&:hover, &.loading, &.active {
 			color: #fff;
 		}
 	}

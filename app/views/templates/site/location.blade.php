@@ -40,9 +40,10 @@
                     <div class="us-article">
                         {{ $page->block('description_car') }}
                     </div>
-                    <div class="way-btns"><a href="#"
-                                             class="us-btn btn-white"><span>Через Вяземское шоссе</span></a><a
-                                href="#" class="us-btn btn-white"><span>Через Дмитровское шоссе</span></a></div>
+                    <div class="way-btns">
+                        <a href="#" class="us-btn btn-white js-way-btn"><span>Через «Чехов»</span></a><!--
+                     --><a href="#" class="us-btn btn-white js-way-btn"><span>Через переезд</span></a>
+                    </div>
                 </div>
             </div>
             <div class="clearfix"></div>

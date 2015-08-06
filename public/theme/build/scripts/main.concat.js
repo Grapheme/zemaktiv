@@ -1465,6 +1465,15 @@ window.Garden = {};
 window.Dictionary = window.Dictionary || {};
 Dictionary.gardenPos = [55.04122958, 37.35616642];
 Dictionary.mkadPos = [55.577007, 37.589141];
+Dictionary.zoomOptions = {
+	options: {
+	    position: {
+	    	left: 'auto',
+	    	right: '43rem',
+	    	top: '3rem'
+	    }
+	}
+};
 Help.ajaxSubmit = function(form, callbacks) {
     var response_cont = $(form).find('.js-response-text'),
         options = { 
@@ -1738,8 +1747,12 @@ Garden.infraMap = function() {
     function init(){
         myMap = new ymaps.Map("infra-map", {
             center: Dictionary.gardenPos,
-            zoom: 14
+            zoom: 14,
+            controls: []
         });
+        var zoomControl = new ymaps.control.ZoomControl(Dictionary.zoomOptions);
+        myMap.behaviors.disable("scrollZoom")
+        myMap.controls.add(zoomControl);
         myPlacemark = new ymaps.Placemark([55.760768, 37.554879], { content: '2-я Звенигородская улица' });
         myMap.geoObjects.add(myPlacemark);
         myMap.controls	.remove('searchControl')
@@ -1805,6 +1818,7 @@ Garden.infraMap = function() {
 	    });
 		$('.js-balloon-item').on('click', function(){
 			var balloonId = $(this).attr('data-balloon-id');
+			myMap.setCenter([$(this).attr('data-longitude'), $(this).attr('data-latitude')]);
 			placemarks[balloonId].mark.balloon.open();
 		});
     }
@@ -1814,29 +1828,51 @@ Garden.locationMap = function() {
 	ymaps.ready(init);
     var myMap,
     	myPlacemark,
-    	multiRouteModel,
-    	multiRouteView;
+    	routeModel = [],
+    	routeViews = [];
 
     function init(){
     	myMap = new ymaps.Map("location-map", {
     	    center: Dictionary.gardenPos,
-    	    zoom: 14
-    	});     
-		multiRouteModel = new ymaps.multiRouter.MultiRouteModel(['Россия, Москва, МКАД, 31-й километр', '', 'Россия, Московская область, Серпуховский район, коттеджный посёлок Вяземские сады'], {
-		    avoidTrafficJams: false,
-		    viaIndexes: [1],
+    	    zoom: 14,
+    	    controls: []
+    	});
+    	var zoomControl = new ymaps.control.ZoomControl(Dictionary.zoomOptions);
+    	myMap.behaviors.disable("scrollZoom")
+    	myMap.controls.add(zoomControl);
+		routeModel[0] = new ymaps.multiRouter.MultiRouteModel(['Россия, Москва, МКАД, 31-й километр', 'Россия, Московская область, Серпуховский район, коттеджный посёлок Вяземские сады'], {
+		    avoidTrafficJams: false
 		});
-		multiRouteView = new ymaps.multiRouter.MultiRoute(multiRouteModel);
-		myMap.geoObjects.add(multiRouteView);
+		routeModel[1] = new ymaps.multiRouter.MultiRouteModel(['Россия, Москва, МКАД, 31-й километр', [55.029864, 37.467662], 'Россия, Московская область, Серпуховский район, коттеджный посёлок Вяземские сады'], {
+		    avoidTrafficJams: false
+		});
+		routeViews[0] = new ymaps.multiRouter.MultiRoute(routeModel[0], {
+			wayPointDraggable: true,
+	        boundsAutoApply: true
+		});
+		routeViews[1] = new ymaps.multiRouter.MultiRoute(routeModel[1], {
+			wayPointDraggable: true,
+	        boundsAutoApply: true
+		});
+		//myMap.geoObjects.add(routeViews[1]);
         myMap.controls	.remove('searchControl')
 					    .remove('typeSelector')
 					    .remove('mapTools');
+		$('.js-way-btn').on('click', function(){
+			showWay($(this).index());
+			return false;
+		});
+		showWay(0);
     }
-    function showBusWay() {
-    	multiRouteModel.setParams({ routingMode: 'masstransit' }, true);
-    }
-    function showCarWay() {
-    	multiRouteModel.setParams({ routingMode: 'auto' }, true);
+    function showWay(index) {
+    	$('.js-way-btn').eq(index).addClass('active')
+    		.siblings().removeClass('active');
+    	$.each(routeViews, function(i, v){
+    		if(i != index) {
+    			myMap.geoObjects.remove(routeViews[i]);
+    		}
+    	});
+    	myMap.geoObjects.add(routeViews[index]);
     }
 }
 Garden.fancybox = function() {
