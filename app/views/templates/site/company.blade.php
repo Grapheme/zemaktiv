@@ -26,5 +26,4 @@
     </div>
 @stop
 @section('scripts')
-    <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
 @stop
