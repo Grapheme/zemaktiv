@@ -1474,6 +1474,19 @@ Dictionary.zoomOptions = {
 	    }
 	}
 };
+Help.getHash = function(index) {
+	var thisHash = window.location.hash.substr(1);
+	if(thisHash == '') {
+		return false;
+	}
+	var hashParts = thisHash.split('&');
+	var hashVal = [];
+	$.each(hashParts, function(index, value){
+		var sValue = value.split('=');
+		hashVal[sValue[0]] = sValue[1];
+	});
+	return hashVal[index];
+}
 Help.ajaxSubmit = function(form, callbacks) {
     var response_cont = $(form).find('.js-response-text'),
         options = { 
@@ -2237,7 +2250,7 @@ Garden.map = function() {
 		},
 		init: function() {
 			var self = this;
-			if(!Dictionary.buildings[window.location.hash.substr(1)]) {
+			if(!Dictionary.buildings[Help.getHash('id')]) {
 				self.setActive(1);
 				self.setCenter(1);
 			}
@@ -2434,10 +2447,15 @@ Garden.map = function() {
 		$(document).on('sliderarea::update', function(){
 			updatePrice();
 		});
-		var thisHash = window.location.hash.substr(1);
-		if(thisHash != '' && Dictionary.buildings[thisHash]) {
+		if(window.location.hash.substr(1) != '') {
 			showMap();
-			tooltip.show(thisHash);
+			if(Dictionary.buildings[Help.getHash('id')]) {
+				tooltip.show(Help.getHash('id'));
+				$('.js-back-to-buildings').show()
+					.attr('href', $('.js-back-to-buildings').attr('href') + '?page=' + Help.getHash('backpage'));
+			}
+		} else {
+			$('.js-show-filter').show();
 		}
 		checkBoxes(Dictionary.buildings);
 	}

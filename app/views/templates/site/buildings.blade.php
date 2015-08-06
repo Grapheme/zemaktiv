@@ -81,7 +81,14 @@ $lands = Land::all();
                                     </div>
                                 </div>
                                 <div class="right__btns">
-                                    <a href="{{ pageurl('choice-land').'#'.$build->land->id }}"
+                                    <?php
+                                        if(isset($_GET['page'])) {
+                                            $backPage = $_GET['page'];
+                                        } else {
+                                            $backPage = 1;
+                                        }
+                                    ?>
+                                    <a href="{{ pageurl('choice-land').'#id='.$build->land->id.'&backpage='.$backPage }}"
                                        class="us-btn btn-white"><span>Посмотреть на генплане</span></a>
                                     <a href="#" data-id="{{ $build->land->id }}" class="js-book us-btn btn-green"><span>Забронировать</span></a>
                                 </div>

@@ -23,8 +23,11 @@ $lands = Land::all();
                     </div>
                 </div>
                 <div class="wrapper-params">
-                    <a href="#" class="us-btn btn-black-white js-show-filter">
+                    <a href="#" class="us-btn btn-black-white js-show-filter" style="display: none;">
                         <span>Участки списком</span>
+                    </a>
+                    <a href="{{ URL::to('/buildings') }}" class="us-btn btn-black-white js-back-to-buildings" style="display: none;">
+                        <span>Вернуться в список</span>
                     </a>
                     <!-- <a href="#" class="choise__toparams js-show-filter">
                         <span class="toparams__title">Подбор по параметрам</span>
