@@ -285,7 +285,7 @@ Garden.infraMap = function() {
     function init(){
         myMap = new ymaps.Map("infra-map", {
             center: Dictionary.gardenPos,
-            zoom: 14,
+            zoom: 12,
             controls: []
         });
         var zoomControl = new ymaps.control.ZoomControl(Dictionary.zoomOptions);
@@ -356,7 +356,7 @@ Garden.infraMap = function() {
 	    });
 		$('.js-balloon-item').on('click', function(){
 			var balloonId = $(this).attr('data-balloon-id');
-			myMap.setCenter([$(this).attr('data-longitude'), $(this).attr('data-latitude')]);
+			myMap.panTo([$(this).attr('data-longitude'), $(this).attr('data-latitude')], );
 			placemarks[balloonId].mark.balloon.open();
 		});
     }
