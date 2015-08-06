@@ -126,7 +126,7 @@ $lands = Land::all();
                         <ul class="table__head">
                             <li class="body__item">
                                 <div class="wrapper">
-                                    <span>Участок</span><span>Очередь</span><span>Площадь, сот.</span><span>Статус</span><span>Цена участка, руб.</span><span>Цена участка с домом, руб.</span>
+                                    <span data-sort="ASC">Участок</span><span>Очередь</span><span>Площадь, сот.</span><span>Статус</span><span>Цена участка, руб.</span><span>Цена участка с домом, руб.</span>
                                 </div>
                             </li>
                         </ul>
@@ -150,7 +150,7 @@ $lands = Land::all();
 @section('scripts')
     <script>
         Dictionary = window.Dictionary || {};
-        Dictionary.buildings = {
+        Dictionary.buildingsAll = {
             @if($lands->count())
                 @foreach($lands as $land)
                     "{{ $land->id }}": {
@@ -159,7 +159,7 @@ $lands = Land::all();
                         land_area: {{ $land->area }},
                         price: {{ $land->price }},
                         price_house: {{ $land->price_house }},
-                        price_total: {{ $land->price + $land->price_house }},
+                        price_total: {{ $land->price_house }},
                         coordinate_x: {{ $land->coordinate_x }},
                         coordinate_y: {{ $land->coordinate_y }},
                         sold: {{ $land->sold }},
@@ -169,5 +169,26 @@ $lands = Land::all();
                 @endforeach
             @endif
         };
+        Dictionary.buildings = {
+            @if($lands->count())
+                @foreach($lands as $land)
+                    @if($land->sold == 0)
+                        "{{ $land->id }}": {
+                            id: {{ $land->id }},
+                            number: "{{ $land->number }}",
+                            land_area: {{ $land->area }},
+                            price: {{ $land->price }},
+                            price_house: {{ $land->price_house }},
+                            price_total: {{ $land->price_house }},
+                            coordinate_x: {{ $land->coordinate_x }},
+                            coordinate_y: {{ $land->coordinate_y }},
+                            sold: {{ $land->sold }},
+                            status: {{ $land->status }},
+                            turn: {{ $land->turn }}
+                        },
+                    @endif
+                @endforeach
+            @endif
+        }
     </script>
 @stop

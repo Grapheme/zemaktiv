@@ -2066,7 +2066,11 @@ Garden.map = function() {
 			var thisObj = Dictionary.buildings[id];
 			self.tooltip.find('.js-bnum').text(thisObj.number);
 			self.tooltip.find('.js-bturn').text(thisObj.turn);
-			self.tooltip.find('.js-bprice').text(thisObj.price.formatMoney(2));
+			if(parseInt(thisObj.price_total) == 0 || !thisObj.price_total) {
+				self.tooltip.find('.js-bprice').text(thisObj.price.formatMoney(2));
+			} else {
+				self.tooltip.find('.js-bprice').text(thisObj.price_total.formatMoney(2));
+			}
 			self.tooltip.find('.js-bcont').text(numToContract(thisObj.status));
 			self.tooltip.find('.js-barea').text(thisObj.land_area);
 			self.tooltip.find('.js-book').attr('data-id', thisObj.id);
@@ -2151,7 +2155,7 @@ Garden.map = function() {
 	}
 	var setMarks = function() {
 		setMinMax(Dictionary.buildings);
-		$.each(Dictionary.buildings, function(index, value){
+		$.each(Dictionary.buildingsAll, function(index, value){
 			var soldStr = value.sold == 1 ? ' sold' : '';
 			$('.js-map').append('<a class="image__mark js-mark' + soldStr + '" data-id="' + value.id + '" style="left: ' + value.coordinate_x/16 + 'rem; top: ' + value.coordinate_y/16 + 'rem;"></a>');
 		});
