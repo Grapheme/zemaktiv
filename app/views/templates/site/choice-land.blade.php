@@ -84,7 +84,7 @@ $lands = Land::all();
                                 </div>
                                 <div class="form__right">
                                     <div class="right__block">
-                                        <div class="form__title">Цена, руб.</div>
+                                        <div class="form__title">Цена участка, руб</div>
                                         <div class="form__desc">
                                             от <span class="js-price-from"></span>
                                             до <span class="js-price-to"></span>

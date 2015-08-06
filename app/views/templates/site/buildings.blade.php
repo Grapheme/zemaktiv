@@ -49,7 +49,7 @@ $lands = Land::all();
                                 @endif
                             </div>
                             <div class="house__right">
-                                <div class="right__title">{{ $build->title }},<br>участок №{{ $build->number }}</div>
+                                <div class="right__title">{{ $build->title }},<br>участок №{{ $build->land->number }}</div>
                                 <div class="right__info">
                                     <div class="info__block">
                                         <div class="block__left">Площадь:</div>
