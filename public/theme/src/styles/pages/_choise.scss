@@ -547,4 +547,29 @@
 			}
 		}
 	}
+
+	[data-sort-name] {
+		cursor: pointer;
+	}
+
+	[data-sort] {
+		&:after {
+			content: "↑";
+			margin-left: 5rem / $fs;
+			font-size: .8em;
+			font-weight: 300;
+		}
+	}
+
+	[data-sort="ASC"] {
+		&:after {
+			content: "↓";
+		}
+	}
+
+	[data-sort="DESC"] {
+		&:after {
+			content: "↑";
+		}
+	}
 }

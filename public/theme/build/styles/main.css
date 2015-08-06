@@ -2219,6 +2219,17 @@ h2 {
         background-image: url(../images/ui/line2block.svg); }
       .wrapper-choise .lines-choice .choice__center[data-number="3"] {
         background-image: url(../images/ui/line3block.svg); }
+  .wrapper-choise [data-sort-name] {
+    cursor: pointer; }
+  .wrapper-choise [data-sort]:after {
+    content: "↑";
+    margin-left: 0.3125rem;
+    font-size: .8em;
+    font-weight: 300; }
+  .wrapper-choise [data-sort="ASC"]:after {
+    content: "↓"; }
+  .wrapper-choise [data-sort="DESC"]:after {
+    content: "↑"; }
 
 .overlay {
   display: none;
