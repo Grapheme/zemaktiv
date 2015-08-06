@@ -603,6 +603,7 @@ Garden.map = function() {
 			var thisMark = $('.js-mark[data-id="' + id + '"]');
 			var markPos = thisMark.position();
 			var bottomPos = $('.js-map').height() - markPos.top;
+			lines.setActive(thisObj.turn);
 			setMapCenter(markPos.left, markPos.top - (mapCont.height()/100)*20);
 			self.tooltip.hide().removeClass('transition active');
 			self.tooltip.show();
