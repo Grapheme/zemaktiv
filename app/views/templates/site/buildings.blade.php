@@ -124,6 +124,5 @@ $lands = Land::all();
                 @endforeach
             @endif
         };
-        console.log(Dictionary);
     </script>
 @stop
