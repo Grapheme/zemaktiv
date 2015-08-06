@@ -112,7 +112,7 @@ $lands = Land::all();
                 @foreach($lands as $land)
                     "{{ $land->id }}": {
                         id: {{ $land->id }},
-                        number: {{ $land->number }},
+                        number: "{{ $land->number }}",
                         land_area: {{ $land->area }},
                         price: {{ $land->price }},
                         coordinate_x: {{ $land->coordinate_x }},

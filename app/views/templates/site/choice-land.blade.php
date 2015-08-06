@@ -42,16 +42,19 @@ $lands = Land::all();
                     <div class="image__line line-3 js-line-3"></div>
                     <div class="image__tooltip js-tooltip">
                         <a href="#" class="tooltip__close js-close"></a>
-
                         <div class="tooltip__title">Участок №<span class="js-bnum"></span></div>
-                        <div class="tooltip__subtitle">Очередь: <span class="js-bturn"></span></div>
-                        <ul class="tooltip__list">
-                            <li class="list__item"><span class="js-barea"></span> соток</li>
-                            <li class="list__item"><span class="js-bcont"></span></li>
-                            <li class="list__item"><span class="js-bprice"></span> руб.</li>
-                        </ul>
-                        <div class="tooltip__btn js-bbtn"><a href="#" data-id class="js-book us-btn btn-white"><span>Забронировать</span></a>
+                        <div class="js-not-sold-block">
+                            <div class="tooltip__subtitle">Очередь: <span class="js-bturn"></span></div>
+                            <ul class="tooltip__list">
+                                <li class="list__item"><span class="js-barea"></span> соток</li>
+                                <li class="list__item"><span class="js-bcont"></span></li>
+                                <li class="list__item"><span class="js-bprice"></span> руб.</li>
+                            </ul>
+                            <div class="tooltip__btn js-bbtn">
+                                <a href="#" data-id class="js-book us-btn btn-white"><span>Забронировать</span></a>
+                            </div>
                         </div>
+                        <div class="js-sold-block tooltip-sold">Данный участок продан</div>
                     </div>
                 </div>
             </div>
