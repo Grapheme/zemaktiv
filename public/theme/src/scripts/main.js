@@ -1111,6 +1111,15 @@ Garden.book = function() {
 		$('.js-book-number').text(thisObj.number);
 		$('.js-book-line').text(thisObj.turn);
 		$('.js-book-area').text(thisObj.land_area);
+		$('.js-book-price').text(thisObj.price.formatMoney());
+		$('.js-book-price-total').text(thisObj.price_total.formatMoney());
+		if(thisObj.status == 2) {
+			$('.js-book-title-with-house').show()
+				.siblings().hide();
+		} else {
+			$('.js-book-title').show()
+				.siblings().hide();
+		}
 		Garden.overlays.open('book');
 		console.log(thisObj);
 		return false;
