@@ -289,6 +289,7 @@ Garden.infraMap = function() {
             controls: []
         });
         var zoomControl = new ymaps.control.ZoomControl(Dictionary.zoomOptions);
+        myMap.controls.add(zoomControl);
         myMap.behaviors.disable("scrollZoom")
         myMap.controls	.remove('searchControl')
 					    .remove('typeSelector')
@@ -377,8 +378,8 @@ Garden.locationMap = function() {
     	    controls: []
     	});
     	var zoomControl = new ymaps.control.ZoomControl(Dictionary.zoomOptions);
-    	myMap.behaviors.disable("scrollZoom")
     	myMap.controls.add(zoomControl);
+    	myMap.behaviors.disable("scrollZoom")
 		routeModel[0] = new ymaps.multiRouter.MultiRouteModel(['Россия, Москва, МКАД, 31-й километр', 'Россия, Московская область, Серпуховский район, коттеджный посёлок Вяземские сады'], {
 		    avoidTrafficJams: false
 		});
