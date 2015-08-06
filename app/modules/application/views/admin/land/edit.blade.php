@@ -94,9 +94,8 @@
                         </label>
                     </section>
                     <section>
-                        <label class="label">Участок продан</label>
                         <label class="">
-                            {{ Form::checkbox('sold', 1) }}
+                            {{ Form::checkbox('sold', 1) }} Участок продан
                         </label>
                     </section>
                 </fieldset>
