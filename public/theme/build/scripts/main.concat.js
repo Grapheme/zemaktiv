@@ -2331,8 +2331,12 @@ Garden.map = function() {
 			var sort1 = obj1[value];
 			var sort2 = obj2[value];
 			if(value == 'number') {
-				sort1 = parseInt(sort1);
-				sort2 = parseInt(sort2);
+				if(sort1.replace(/[0-9]/g, '') != '') {
+					sort1 = sort1 + 0.5;
+				}
+				if(sort2.replace(/[0-9]/g, '') != '') {
+					sort2 = sort2 + 0.5;
+				}
 			}
 			if(sortType == 'ASC') {
 				return sort1 - sort2;
