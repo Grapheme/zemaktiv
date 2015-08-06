@@ -5,6 +5,7 @@
     @include($module['tpl'].'buildings.menu')
     {{ Form::open(array('route'=>'buildings.store','class'=>'smart-form','id'=>'buildings-form','role'=>'form','method'=>'post')) }}
     {{ Form::hidden('number', (int) Buildings::orderBy('number','DESC')->pluck('number') + 1) }}
+    {{ Form::hidden('description') }}
     <div class="row">
         <section class="col col-6">
             <div class="well">
@@ -62,12 +63,6 @@
                         <label class="label">Галерея</label>
                         <label class="input">
                             {{ ExtForm::gallery('gallery') }}
-                        </label>
-                    </section>
-                    <section>
-                        <label class="label">Описание</label>
-                        <label class="input">
-                            {{ Form::text('description') }}
                         </label>
                     </section>
                 </fieldset>
