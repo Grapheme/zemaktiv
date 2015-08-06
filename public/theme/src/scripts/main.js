@@ -1121,7 +1121,6 @@ Garden.book = function() {
 				.siblings().hide();
 		}
 		Garden.overlays.open('book');
-		console.log(thisObj);
 		return false;
 	});
 }
