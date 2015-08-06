@@ -557,7 +557,6 @@ Garden.map = function() {
 			self.tooltip.find('.js-bcont').text(numToContract(thisObj.status));
 			self.tooltip.find('.js-barea').text(thisObj.land_area);
 			self.tooltip.find('.js-book').attr('data-id', thisObj.id);
-			console.log(thisObj.sold);
 			if(thisObj.sold == 0) {
 				self.tooltip.find('.js-bbtn').show();
 			} else {
@@ -565,12 +564,25 @@ Garden.map = function() {
 			}
 			var thisMark = $('.js-mark[data-id="' + id + '"]');
 			var markPos = thisMark.position();
+			var bottomPos = $('.js-map').height() - markPos.top;
 			setMapCenter(markPos.left, markPos.top - (mapCont.height()/100)*20);
 			self.tooltip.hide().removeClass('transition active');
-			self.tooltip.css({
-				left: markPos.left,
-				bottom: $('.js-map').height() - markPos.top
-			}).show();
+			self.tooltip.show();
+			if(markPos.top - self.tooltip.outerHeight() < 0) {
+				self.tooltip.addClass('fromtop');
+				self.tooltip.css({
+					left: markPos.left,
+					bottom: 'auto',
+					top: markPos.top
+				});
+			} else {
+				self.tooltip.removeClass('fromtop');
+				self.tooltip.css({
+					left: markPos.left,
+					bottom: bottomPos,
+					top: 'auto'
+				});
+			}
 			setTimeout(function(){
 				self.tooltip.addClass('transition active');
 			}, 10);
@@ -778,9 +790,9 @@ Garden.map = function() {
 		$.each(suitedArray, function(i, v){
 			var totalPrice = '';
 			if(v.status == 2) {
-				totalPrice = v.price.formatMoney();
+				totalPrice = v.price_total.formatMoney();
 			}
-			html.push('<li class="body__item js-filter-item" data-id="' + v.id + '"><div class="wrapper"><span>' + v.number + '</span><span>' + v.turn + '</span><span>' + v.land_area + '</span><span>' + numToContract(v.status) + '</span><span>' + v.price_land.formatMoney() + '</span><span>' + totalPrice + '</span></div></li>');
+			html.push('<li class="body__item js-filter-item" data-id="' + v.id + '"><div class="wrapper"><span>' + v.number + '</span><span>' + v.turn + '</span><span>' + v.land_area + '</span><span>' + numToContract(v.status) + '</span><span>' + v.price.formatMoney() + '</span><span>' + totalPrice + '</span></div></li>');
 			count++;
 		});
 		if(count != 0) {
