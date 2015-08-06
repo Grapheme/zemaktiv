@@ -25,7 +25,7 @@ endif;
                     <h1 class="us-title title-red"><span>{{ $page->seo->h1 }}</span></h1>
                     <div class="tabs-right">
                         <div class="right-cont">
-                            <a href="{{ pageurl('location') }}" class="title__link">Расположение</a>
+                            <a href="{{ pageurl('raspolojenie') }}" class="title__link">Расположение</a>
                         </div>
                     </div>
                 </div>
