@@ -848,7 +848,19 @@ Garden.map = function() {
 	var showSuited = function() {
 		var html = [];
 		var count = 0;
+		var sortable = [];
 		$.each(suitedArray, function(i, v){
+			sortable.push(v);
+		});
+		sortable.sort(function(obj1, obj2) {
+			var value = $('[data-sort]').attr('data-sort-name');
+			if($('[data-sort]').attr('data-sort') == 'ASC') {
+				return obj1[value] - obj2[value];
+			} else {
+				return obj2[value] - obj1[value];
+			}
+		});
+		$.each(sortable, function(i, v){
 			var totalPrice = '';
 			if(v.status == 2) {
 				totalPrice = v.price_total.formatMoney();
@@ -1016,6 +1028,15 @@ Garden.map = function() {
 		} else {
 			$('.js-show-filter').show();
 		}
+		$('[data-sort-name]').on('click', function(){
+			if($(this).attr('data-sort') == 'ASC') {
+				$(this).attr('data-sort', 'DESC');
+			} else {
+				$(this).attr('data-sort', 'ASC');
+			}
+			$(this).siblings().removeAttr('data-sort');
+			showSuited();
+		});
 		checkBoxes(Dictionary.buildings);
 	}
 	var checkBoxes = function(obj) {
