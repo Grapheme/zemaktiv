@@ -1747,7 +1747,7 @@ Garden.infraMap = function() {
     function init(){
         myMap = new ymaps.Map("infra-map", {
             center: Dictionary.gardenPos,
-            zoom: 12,
+            zoom: 13,
             controls: []
         });
         var zoomControl = new ymaps.control.ZoomControl(Dictionary.zoomOptions);
