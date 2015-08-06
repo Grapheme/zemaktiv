@@ -16,13 +16,7 @@ $news_list = News::with('meta.seo', 'meta.photo', 'meta.gallery.photos')->orderB
             <div class="wrapper">
                 <div class="tabs-title many-tabs">
                     <h1 class="us-title title-yellow"><span>{{ $page->seo->h1 }}</span></h1>
-                    <div class="tabs-right">
-                        <div class="right-cont">
-                            <a href="{{ pageurl('about-company') }}" class="title__link">О компании</a>
-                            <a href="{{ pageurl('documents') }}" class="title__link">Документы</a>
-                            <a href="{{ pageurl('about') }}" class="title__link">О проекте</a>
-                        </div>
-                    </div>
+                    @include(Helper::layout('about-menu'),array('hidden'=>'news'))
                 </div>
             </div>
             <div class="us-news">
@@ -61,13 +55,7 @@ $news_list = News::with('meta.seo', 'meta.photo', 'meta.gallery.photos')->orderB
                         </li>
                     @endforeach
                 </ul>
-                {{-- $news_list->links() --}}
-                <ul class="pagination">
-                  <li class="disabled"><span>«</span></li>
-                  <li class="active"><span>1</span></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#" rel="next">»</a></li>
-                </ul>
+                {{  $news_list->links() }}
             </div>
         </div>
     </div>
