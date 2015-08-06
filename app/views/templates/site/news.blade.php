@@ -5,7 +5,7 @@
  */
 ?>
 <?php
-$news_list = News::with('meta.seo', 'meta.photo', 'meta.gallery.photos')->orderBy('published_at', 'DESC')->paginate(10);
+$news_list = News::with('meta.seo', 'meta.photo', 'meta.gallery.photos')->orderBy('published_at', 'DESC')->paginate(6);
 ?>
 @extends(Helper::layout())
 @section('style')
@@ -36,20 +36,15 @@ $news_list = News::with('meta.seo', 'meta.photo', 'meta.gallery.photos')->orderB
                                     </div>
                                 </div>
                                 <div class="page__right">
+                                @if(isset($news->meta->gallery->photos) && !empty($news->meta->gallery->photos))
                                     <div class="news-images">
-                                        <a class="images__item js-fancybox" href="theme/build/images/tmp/index-slider1.jpg" rel="gallery{{ $news->id }}">
-                                            <span style="background-image: url('theme/build/images/tmp/index-slider1.jpg');"></span>
+                                    @foreach($news->meta->gallery->photos as $photo)
+                                        <a class="images__item js-fancybox" href="{{ asset(Config::get('site.galleries_photo_public_dir').'/'.$photo->name) }}" rel="gallery{{ $news->id }}">
+                                            <span style="background-image: url('{{ asset(Config::get('site.galleries_thumb_public_dir').'/'.$photo->name) }}');"></span>
                                         </a>
-                                        <a class="images__item js-fancybox" href="theme/build/images/tmp/index-slider1.jpg" rel="gallery{{ $news->id }}">
-                                            <span style="background-image: url('theme/build/images/tmp/index-slider1.jpg');"></span>
-                                        </a>
-                                        <a class="images__item js-fancybox" href="theme/build/images/tmp/index-slider1.jpg" rel="gallery{{ $news->id }}">
-                                            <span style="background-image: url('theme/build/images/tmp/index-slider1.jpg');"></span>
-                                        </a>
-                                        <a class="images__item js-fancybox" href="theme/build/images/tmp/index-slider1.jpg" rel="gallery{{ $news->id }}">
-                                            <span style="background-image: url('theme/build/images/tmp/index-slider1.jpg');"></span>
-                                        </a>
+                                    @endforeach
                                     </div>
+                                @endif
                                 </div>
                             </div>
                         </li>
