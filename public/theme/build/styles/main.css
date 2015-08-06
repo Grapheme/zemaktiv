@@ -603,6 +603,9 @@ h2 {
   text-transform: uppercase;
   margin: 3.125rem 0 0.625rem; }
 
+.us-article a {
+  color: inherit; }
+
 .us-article p {
   line-height: 1.5; }
 
@@ -1665,8 +1668,7 @@ h2 {
       display: inline-block;
       vertical-align: top;
       width: 11.25rem;
-      margin: 0 1.25rem;
-      cursor: pointer; }
+      margin: 1.25rem 1.25rem 0.625rem; }
       .way-container .way-list .list__item:hover .item__image, .way-container .way-list .list__item.active .item__image {
         -webkit-transform: scale(1);
             -ms-transform: scale(1);
@@ -1674,7 +1676,7 @@ h2 {
       .way-container .way-list .list__item:hover .item__desc, .way-container .way-list .list__item.active .item__desc {
         opacity: 1; }
       .way-container .way-list .list__item .item__image {
-        height: 11.25rem;
+        height: 11.875rem;
         background-size: 100% auto;
         background-position: center center;
         background-repeat: no-repeat;

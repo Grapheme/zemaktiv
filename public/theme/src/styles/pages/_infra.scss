@@ -152,8 +152,7 @@
 			display: inline-block;
 			vertical-align: top;
 			width: 180rem / $fs;
-			margin: 0 20rem / $fs;
-			cursor: pointer;
+			margin: 20rem / $fs 20rem / $fs 10rem / $fs;
 
 			&:hover, &.active {
 				.item__image {
@@ -166,7 +165,7 @@
 			}
 
 			.item__image {
-				height: 180rem / $fs;
+				height: 190rem / $fs;
 				background-size: 100% auto;
 				background-position: center center;
 				background-repeat: no-repeat;
