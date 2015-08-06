@@ -5,6 +5,7 @@
 @section('content')
     @include($module['tpl'].'land.menu')
     {{ Form::model($land,array('route'=>array('land.update',$land->id),'class'=>'smart-form','id'=>'land-form','role'=>'form','method'=>'put')) }}
+    {{ Form::hidden('description') }}
     <div class="row">
         <section class="col col-6">
             <div class="well">
@@ -85,12 +86,6 @@
                         <label class="label">Галерея</label>
                         <label class="input">
                             {{ ExtForm::gallery('gallery', is_object($land->gallery) ? $land->gallery->id : NULL) }}
-                        </label>
-                    </section>
-                    <section>
-                        <label class="label">Описание</label>
-                        <label class="input">
-                            {{ Form::text('description') }}
                         </label>
                     </section>
                     <section>
