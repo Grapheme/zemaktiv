@@ -1790,7 +1790,7 @@ Garden.infraMap = function() {
 	        </div>');
 	    var i = 0;
 	    $('.js-balloon-item').each(function(){
-	    	var placemark = new ymaps.Placemark([$(this).attr('data-longitude'), $(this).attr('data-latitude')], {
+	    	var placemark = new ymaps.Placemark([parseInt($(this).attr('data-longitude')), parseInt($(this).attr('data-latitude'))], {
 	    	        image: $(this).attr('data-image'),
 	    	        title: $(this).attr('data-title'),
 	    	        desc: $(this).attr('data-desc')
