@@ -329,7 +329,7 @@ Garden.infraMap = function() {
 	        </div>');
 	    var i = 0;
 	    $('.js-balloon-item').each(function(){
-	    	var placemark = new ymaps.Placemark([parseInt($(this).attr('data-longitude')), parseInt($(this).attr('data-latitude'))], {
+	    	var placemark = new ymaps.Placemark([parseFloat($(this).attr('data-longitude')), parseFloat($(this).attr('data-latitude'))], {
 	    	        image: $(this).attr('data-image'),
 	    	        title: $(this).attr('data-title'),
 	    	        desc: $(this).attr('data-desc')
@@ -356,7 +356,7 @@ Garden.infraMap = function() {
 			var balloonId = $(this).attr('data-balloon-id');
 			//myMap.setCenter();
 			var thisCoors = placemarks[balloonId].mark.geometry.getCoordinates();
-			myMap.panTo([parseInt(thisCoors[0]), parseInt(thisCoors[1])], {
+			myMap.panTo([parseFloat(thisCoors[0]), parseFloat(thisCoors[1])], {
 	            delay: 1500
 	        });
 			placemarks[balloonId].mark.balloon.open();
