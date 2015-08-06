@@ -107,11 +107,23 @@
 	list-style: none;
 
 	.list__item {
-		margin-bottom: 20rem / $fs;
 		line-height: 1.5;
+		padding-bottom: 40rem / $fs;
+		overflow: hidden;
+		border-bottom: 1px solid $borderColor;
+
+		h2 {
+			margin-bottom: 0;
+		}
 
 		.item__date {
-			color: #8c8c8c;
+			margin-top: 20rem / $fs;
+
+			span {
+				display: inline-block;
+				background: $borderColor;
+				padding: 0 5rem / $fs;
+			}
 		}
 
 		.item__link {
@@ -124,6 +136,37 @@
 					left: -15rem / $fs;
 				}
 			}
+		}
+
+		.item__content {
+			margin-top: 20rem / $fs;
+		}
+
+		.page__left, .page__right {
+			border: none;
+			padding-top: 0;
+		}
+	}
+}
+
+.news-images {
+	overflow: hidden;
+
+	.images__item {
+		float: left;
+		display: inline-block;
+		vertical-align: top;
+		position: relative;
+		width: 120rem / $fs;
+		height: 120rem / $fs;
+		margin: 1px;
+
+		span {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
 		}
 	}
 }

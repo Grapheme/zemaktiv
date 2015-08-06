@@ -14,19 +14,14 @@
             <div class="page__left">
                 <div class="tabs-title">
                     <h1 class="us-title title-red"><span>{{ $page->seo->h1 }}</span></h1>
-                    <a href="{{ pageurl('infrastructure') }}" class="title__link">Путеводитель</a>
+                    <div class="tabs-right">
+                        <div class="right-cont">
+                            <a href="{{ pageurl('putevoditel') }}" class="title__link">Путеводитель</a>
+                        </div>
+                    </div>
                 </div>
                 {{ $page->block('title') }}
                 <div class="way-container">
-                    <div class="way-list">
-                        <div class="list__item active">
-                            <div class="item__image image-bus"></div>
-                            <div class="item__desc">На транспорте</div>
-                        </div>
-                    </div>
-                    <div class="us-article">
-                        {{ $page->block('description_bus') }}
-                    </div>
                     <div class="way-list">
                         <div class="list__item active">
                             <div class="item__image image-car"></div>
@@ -36,9 +31,19 @@
                     <div class="us-article">
                         {{ $page->block('description_car') }}
                     </div>
-                    <div class="way-btns"><a href="#"
-                                             class="us-btn btn-white"><span>Через Вяземское шоссе</span></a><a
-                                href="#" class="us-btn btn-white"><span>Через Дмитровское шоссе</span></a></div>
+                    <div class="way-list">
+                        <div class="list__item active">
+                            <div class="item__image image-bus"></div>
+                            <div class="item__desc">На транспорте</div>
+                        </div>
+                    </div>
+                    <div class="us-article">
+                        {{ $page->block('description_bus') }}
+                    </div>
+                    <div class="way-btns">
+                        <a href="#" class="us-btn btn-white js-way-btn"><span>Через «Чехов»</span></a><!--
+                     --><a href="#" class="us-btn btn-white js-way-btn"><span>Через переезд</span></a>
+                    </div>
                 </div>
             </div>
             <div class="clearfix"></div>

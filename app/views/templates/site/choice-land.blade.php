@@ -23,10 +23,13 @@ $lands = Land::all();
                     </div>
                 </div>
                 <div class="wrapper-params">
-                    <a href="#" class="choise__toparams js-show-filter">
+                    <a href="#" class="us-btn btn-black-white js-show-filter">
+                        <span>Участки списком</span>
+                    </a>
+                    <!-- <a href="#" class="choise__toparams js-show-filter">
                         <span class="toparams__title">Подбор по параметрам</span>
                         <span class="toparams__desc">Цена и площадь</span>
-                    </a>
+                    </a> -->
                 </div>
             </div>
             <div class="choise__map js-map-container">
@@ -81,7 +84,7 @@ $lands = Land::all();
                                 </div>
                                 <div class="form__right">
                                     <div class="right__block">
-                                        <div class="form__title">Цена, руб.</div>
+                                        <div class="form__title">Цена участка, руб.</div>
                                         <div class="form__desc">
                                             от <span class="js-price-from"></span>
                                             до <span class="js-price-to"></span>
@@ -93,7 +96,7 @@ $lands = Land::all();
                                         </div>
                                     </div>
                                     <div class="right__block">
-                                        <div class="form__title">Площадь, сот.</div>
+                                        <div class="form__title">Площадь участка, соток</div>
                                         <div class="form__desc">
                                             от <span class="js-area-from"></span>
                                             до <span class="js-area-to"></span></div>
@@ -117,7 +120,7 @@ $lands = Land::all();
                         <ul class="table__head">
                             <li class="body__item">
                                 <div class="wrapper">
-                                    <span>Участок</span><span>Очередь</span><span>Площадь, сот.</span><span>Статус</span><span>Цена, руб.</span>
+                                    <span>Участок</span><span>Очередь</span><span>Площадь, сот.</span><span>Статус</span><span>Цена участка, руб.</span><span>Цена участка с домом, руб.</span>
                                 </div>
                             </li>
                         </ul>

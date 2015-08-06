@@ -3,6 +3,15 @@ window.Garden = {};
 window.Dictionary = window.Dictionary || {};
 Dictionary.gardenPos = [55.04122958, 37.35616642];
 Dictionary.mkadPos = [55.577007, 37.589141];
+Dictionary.zoomOptions = {
+	options: {
+	    position: {
+	    	left: 'auto',
+	    	right: '43rem',
+	    	top: '3rem'
+	    }
+	}
+};
 Help.ajaxSubmit = function(form, callbacks) {
     var response_cont = $(form).find('.js-response-text'),
         options = { 
@@ -276,20 +285,13 @@ Garden.infraMap = function() {
     function init(){
         myMap = new ymaps.Map("infra-map", {
             center: Dictionary.gardenPos,
-            zoom: 14
+            zoom: 13,
+            controls: []
         });
-        myPlacemark = new ymaps.Placemark([55.760768, 37.554879], { content: '2-я Звенигородская улица' });
-        myMap.geoObjects.add(myPlacemark);
-        myMap.controls	.add('zoomControl'
-        						/*{
-        							float: 'none',
-    							    position: {
-										right: 500,
-										top: 5,
-										left: 'auto'
-									}
-        						}*/)
-					    .remove('searchControl')
+        var zoomControl = new ymaps.control.ZoomControl(Dictionary.zoomOptions);
+        myMap.controls.add(zoomControl);
+        myMap.behaviors.disable("scrollZoom")
+        myMap.controls	.remove('searchControl')
 					    .remove('typeSelector')
 					    .remove('mapTools');
 
@@ -327,7 +329,7 @@ Garden.infraMap = function() {
 	        </div>');
 	    var i = 0;
 	    $('.js-balloon-item').each(function(){
-	    	var placemark = new ymaps.Placemark([$(this).attr('data-longitude'), $(this).attr('data-latitude')], {
+	    	var placemark = new ymaps.Placemark([parseFloat($(this).attr('data-longitude')), parseFloat($(this).attr('data-latitude'))], {
 	    	        image: $(this).attr('data-image'),
 	    	        title: $(this).attr('data-title'),
 	    	        desc: $(this).attr('data-desc')
@@ -352,6 +354,11 @@ Garden.infraMap = function() {
 	    });
 		$('.js-balloon-item').on('click', function(){
 			var balloonId = $(this).attr('data-balloon-id');
+			//myMap.setCenter();
+			var thisCoordinates = placemarks[balloonId].mark.geometry.getCoordinates();
+			myMap.panTo(thisCoordinates, {
+	            delay: 1500
+	        });
 			placemarks[balloonId].mark.balloon.open();
 		});
     }
@@ -361,29 +368,51 @@ Garden.locationMap = function() {
 	ymaps.ready(init);
     var myMap,
     	myPlacemark,
-    	multiRouteModel,
-    	multiRouteView;
+    	routeModel = [],
+    	routeViews = [];
 
     function init(){
     	myMap = new ymaps.Map("location-map", {
     	    center: Dictionary.gardenPos,
-    	    zoom: 14
-    	});     
-		multiRouteModel = new ymaps.multiRouter.MultiRouteModel(['Россия, Москва, МКАД, 31-й километр', '', 'Россия, Московская область, Серпуховский район, коттеджный посёлок Вяземские сады'], {
-		    avoidTrafficJams: false,
-		    viaIndexes: [1],
+    	    zoom: 14,
+    	    controls: []
+    	});
+    	var zoomControl = new ymaps.control.ZoomControl(Dictionary.zoomOptions);
+    	myMap.controls.add(zoomControl);
+    	myMap.behaviors.disable("scrollZoom")
+		routeModel[0] = new ymaps.multiRouter.MultiRouteModel(['Россия, Москва, МКАД, 31-й километр', 'Россия, Московская область, Серпуховский район, коттеджный посёлок Вяземские сады'], {
+		    avoidTrafficJams: false
 		});
-		multiRouteView = new ymaps.multiRouter.MultiRoute(multiRouteModel);
-		myMap.geoObjects.add(multiRouteView);
+		routeModel[1] = new ymaps.multiRouter.MultiRouteModel(['Россия, Москва, МКАД, 31-й километр', [55.029864, 37.467662], 'Россия, Московская область, Серпуховский район, коттеджный посёлок Вяземские сады'], {
+		    avoidTrafficJams: false
+		});
+		routeViews[0] = new ymaps.multiRouter.MultiRoute(routeModel[0], {
+			wayPointDraggable: true,
+	        boundsAutoApply: true
+		});
+		routeViews[1] = new ymaps.multiRouter.MultiRoute(routeModel[1], {
+			wayPointDraggable: true,
+	        boundsAutoApply: true
+		});
+		//myMap.geoObjects.add(routeViews[1]);
         myMap.controls	.remove('searchControl')
 					    .remove('typeSelector')
 					    .remove('mapTools');
+		$('.js-way-btn').on('click', function(){
+			showWay($(this).index());
+			return false;
+		});
+		showWay(0);
     }
-    function showBusWay() {
-    	multiRouteModel.setParams({ routingMode: 'masstransit' }, true);
-    }
-    function showCarWay() {
-    	multiRouteModel.setParams({ routingMode: 'auto' }, true);
+    function showWay(index) {
+    	$('.js-way-btn').eq(index).addClass('active')
+    		.siblings().removeClass('active');
+    	$.each(routeViews, function(i, v){
+    		if(i != index) {
+    			myMap.geoObjects.remove(routeViews[i]);
+    		}
+    	});
+    	myMap.geoObjects.add(routeViews[index]);
     }
 }
 Garden.fancybox = function() {
@@ -566,7 +595,6 @@ Garden.map = function() {
 			self.tooltip.find('.js-bcont').text(numToContract(thisObj.status));
 			self.tooltip.find('.js-barea').text(thisObj.land_area);
 			self.tooltip.find('.js-book').attr('data-id', thisObj.id);
-			console.log(thisObj.sold);
 			if(thisObj.sold == 0) {
 				self.tooltip.find('.js-bbtn').show();
 			} else {
@@ -574,12 +602,26 @@ Garden.map = function() {
 			}
 			var thisMark = $('.js-mark[data-id="' + id + '"]');
 			var markPos = thisMark.position();
+			var bottomPos = $('.js-map').height() - markPos.top;
+			lines.setActive(thisObj.turn);
 			setMapCenter(markPos.left, markPos.top - (mapCont.height()/100)*20);
 			self.tooltip.hide().removeClass('transition active');
-			self.tooltip.css({
-				left: markPos.left,
-				bottom: $('.js-map').height() - markPos.top
-			}).show();
+			self.tooltip.show();
+			if(markPos.top - self.tooltip.outerHeight() < 0) {
+				self.tooltip.addClass('fromtop');
+				self.tooltip.css({
+					left: markPos.left,
+					bottom: 'auto',
+					top: markPos.top
+				});
+			} else {
+				self.tooltip.removeClass('fromtop');
+				self.tooltip.css({
+					left: markPos.left,
+					bottom: bottomPos,
+					top: 'auto'
+				});
+			}
 			setTimeout(function(){
 				self.tooltip.addClass('transition active');
 			}, 10);
@@ -785,7 +827,11 @@ Garden.map = function() {
 		var html = [];
 		var count = 0;
 		$.each(suitedArray, function(i, v){
-			html.push('<li class="body__item js-filter-item" data-id="' + v.id + '"><div class="wrapper"><span>' + v.number + '</span><span>' + v.turn + '</span><span>' + v.land_area + '</span><span>' + numToContract(v.status) + '</span><span>' + v.price.formatMoney() + '</span></div></li>');
+			var totalPrice = '';
+			if(v.status == 2) {
+				totalPrice = v.price_total.formatMoney();
+			}
+			html.push('<li class="body__item js-filter-item" data-id="' + v.id + '"><div class="wrapper"><span>' + v.number + '</span><span>' + v.turn + '</span><span>' + v.land_area + '</span><span>' + numToContract(v.status) + '</span><span>' + v.price.formatMoney() + '</span><span>' + totalPrice + '</span></div></li>');
 			count++;
 		});
 		if(count != 0) {

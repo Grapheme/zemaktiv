@@ -32,12 +32,14 @@ $lands = Land::all();
                         <div class="wrapper">
                             <div class="house__left">
                                 <div style="{{ $hasImage ? 'background-image: url('.asset(Config::get('site.galleries_photo_public_dir').'/'.$build->photo->name).')' : '' }};"
-                                     class="left__main-image"></div>
+                                     class="left__main-image">
+                                     <a {{ $hasImage ? 'href="'.asset(Config::get('site.galleries_photo_public_dir').'/'.$build->photo->name).'"' : '' }} class="js-fancybox" rel="gallery-{{ $build->id }}"></a>
+                                </div>
                                 @if($hasGallery)
                                     <div class="left__images">
                                         @foreach($build->gallery->photos as $photo)
                                             @if(File::exists(Config::get('site.galleries_photo_dir').'/'.$photo->name))
-                                                <a href="#" class="images__item">
+                                                <a href="{{ asset(Config::get('site.galleries_photo_public_dir').'/'.$photo->name) }}" class="images__item js-fancybox" rel="gallery-{{ $build->id }}">
                                                     <span style="background-image: url({{ asset(Config::get('site.galleries_photo_public_dir').'/'.$photo->name) }});"
                                                           class="item__image"></span>
                                                 </a>
@@ -47,7 +49,7 @@ $lands = Land::all();
                                 @endif
                             </div>
                             <div class="house__right">
-                                <div class="right__title">{{ $build->title }},<br>участок №{{ $build->number }}</div>
+                                <div class="right__title">{{ $build->title }},<br>участок №{{ $build->land->number }}</div>
                                 <div class="right__info">
                                     <div class="info__block">
                                         <div class="block__left">Площадь:</div>
