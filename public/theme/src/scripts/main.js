@@ -354,7 +354,7 @@ Garden.infraMap = function() {
 		$('.js-balloon-item').on('click', function(){
 			var balloonId = $(this).attr('data-balloon-id');
 			//myMap.setCenter();
-			myMap.panTo([$(this).attr('data-longitude'), $(this).attr('data-latitude')], {
+			myMap.panTo([55.75396, 37.620393], {
 	            // Задержка между перемещениями.
 	            delay: 1500
 	        });
