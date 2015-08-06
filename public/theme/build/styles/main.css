@@ -1083,9 +1083,18 @@ h2 {
     float: left;
     width: 40%; }
     .done .done__house .house__left .left__main-image {
+      position: relative;
       height: 25rem;
       background-size: cover;
       background-position: center center; }
+      .done .done__house .house__left .left__main-image a {
+        display: inline-block;
+        vertical-align: middle;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0; }
     .done .done__house .house__left .left__images {
       margin: 0.375rem 0 0 -0.375rem;
       overflow: hidden;
@@ -1906,6 +1915,13 @@ h2 {
           -webkit-transform: translateY(0);
               -ms-transform: translateY(0);
                   transform: translateY(0); }
+        .wrapper-choise .choise__map .map__image .image__tooltip.fromtop {
+          margin-top: 1.25rem; }
+          .wrapper-choise .choise__map .map__image .image__tooltip.fromtop:after {
+            top: auto;
+            bottom: 100%;
+            border-width: 0 1.25rem 1.25rem 1.25rem;
+            border-color: transparent transparent #fff transparent; }
         .wrapper-choise .choise__map .map__image .image__tooltip:before {
           content: "";
           position: absolute;
@@ -2282,14 +2298,14 @@ h2 {
       overflow: hidden; }
       .overlay .overlay__form .form__block.block-phone .block__input .phone__number {
         float: left;
-        width: 25%;
+        width: 24.2%;
         font-family: 'pf_agora_slab_pro';
         font-size: 3rem;
         font-weight: 500;
         line-height: 3.125rem; }
       .overlay .overlay__form .form__block.block-phone .block__input .input__item {
         float: left;
-        width: 75%;
+        width: 75.8%;
         font-family: 'pf_agora_slab_pro';
         font-weight: 700;
         font-size: 1.5625rem; }

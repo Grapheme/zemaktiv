@@ -101,6 +101,17 @@
 					transform: translateY(0);
 				}
 
+				&.fromtop {
+					margin-top: 20rem / $fs;
+
+					&:after {
+						top: auto;
+						bottom: 100%;
+						border-width: 0 20rem / $fs 20rem / $fs 20rem / $fs;
+						border-color: transparent transparent #fff transparent;
+					}
+				}
+
 				&:before {
 					content: "";
 					position: absolute;
