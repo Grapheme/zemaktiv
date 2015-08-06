@@ -1,6 +1,6 @@
 <?
 /**
- * TITLE: Документы
+ * TITLE: Контакты
  * AVAILABLE_ONLY_IN_ADVANCED_MODE
  */
 ?>
@@ -13,7 +13,7 @@
             <div class="page__left">
                 <div class="tabs-title many-tabs">
                     <h1 class="us-title title-yellow"><span>{{ $page->seo->h1 }}</span></h1>
-                    @include(Helper::layout('about-menu'),array('hidden'=>'documents'))
+                    @include(Helper::layout('about-menu'),array('hidden'=>'contacts'))
                 </div>
                 <div class="us-article">
                     {{ $page->block('content') }}

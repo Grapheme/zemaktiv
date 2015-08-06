@@ -5,7 +5,7 @@
  */
 ?>
 <?php
-$news_list = News::with('meta.seo', 'meta.photo', 'meta.gallery.photos')->orderBy('published_at', 'DESC')->paginate(10);
+$news_list = News::with('meta.seo', 'meta.photo', 'meta.gallery.photos')->orderBy('published_at', 'DESC')->paginate(6);
 ?>
 @extends(Helper::layout())
 @section('style')
@@ -16,13 +16,7 @@ $news_list = News::with('meta.seo', 'meta.photo', 'meta.gallery.photos')->orderB
             <div class="wrapper">
                 <div class="tabs-title many-tabs">
                     <h1 class="us-title title-yellow"><span>{{ $page->seo->h1 }}</span></h1>
-                    <div class="tabs-right">
-                        <div class="right-cont">
-                            <a href="{{ pageurl('about-company') }}" class="title__link">О компании</a>
-                            <a href="{{ pageurl('documents') }}" class="title__link">Документы</a>
-                            <a href="{{ pageurl('about') }}" class="title__link">О проекте</a>
-                        </div>
-                    </div>
+                    @include(Helper::layout('about-menu'),array('hidden'=>'news'))
                 </div>
             </div>
             <div class="us-news">
@@ -42,32 +36,21 @@ $news_list = News::with('meta.seo', 'meta.photo', 'meta.gallery.photos')->orderB
                                     </div>
                                 </div>
                                 <div class="page__right">
+                                @if(isset($news->meta->gallery->photos) && !empty($news->meta->gallery->photos))
                                     <div class="news-images">
-                                        <a class="images__item js-fancybox" href="theme/build/images/tmp/index-slider1.jpg" rel="gallery{{ $news->id }}">
-                                            <span style="background-image: url('theme/build/images/tmp/index-slider1.jpg');"></span>
+                                    @foreach($news->meta->gallery->photos as $photo)
+                                        <a class="images__item js-fancybox" href="{{ asset(Config::get('site.galleries_photo_public_dir').'/'.$photo->name) }}" rel="gallery{{ $news->id }}">
+                                            <span style="background-image: url('{{ asset(Config::get('site.galleries_thumb_public_dir').'/'.$photo->name) }}');"></span>
                                         </a>
-                                        <a class="images__item js-fancybox" href="theme/build/images/tmp/index-slider1.jpg" rel="gallery{{ $news->id }}">
-                                            <span style="background-image: url('theme/build/images/tmp/index-slider1.jpg');"></span>
-                                        </a>
-                                        <a class="images__item js-fancybox" href="theme/build/images/tmp/index-slider1.jpg" rel="gallery{{ $news->id }}">
-                                            <span style="background-image: url('theme/build/images/tmp/index-slider1.jpg');"></span>
-                                        </a>
-                                        <a class="images__item js-fancybox" href="theme/build/images/tmp/index-slider1.jpg" rel="gallery{{ $news->id }}">
-                                            <span style="background-image: url('theme/build/images/tmp/index-slider1.jpg');"></span>
-                                        </a>
+                                    @endforeach
                                     </div>
+                                @endif
                                 </div>
                             </div>
                         </li>
                     @endforeach
                 </ul>
-                {{-- $news_list->links() --}}
-                <ul class="pagination">
-                  <li class="disabled"><span>«</span></li>
-                  <li class="active"><span>1</span></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#" rel="next">»</a></li>
-                </ul>
+                {{  $news_list->links() }}
             </div>
         </div>
     </div>

@@ -12,7 +12,7 @@ class CreateBuildingsTables extends Migration {
             $table->double('area')->default(0)->unsigned()->nullable();
             $table->double('land_area')->default(0)->unsigned()->nullable();
             $table->string('material', 100)->nullable();
-            $table->integer('number')->default(0)->unsigned()->nullable();
+            $table->string('number', 15)->nullable();
             $table->string('communication', 200)->nullable();
             $table->double('price')->default(0)->unsigned()->nullable();
             $table->integer('land_id')->default(0)->unsigned()->nullable();

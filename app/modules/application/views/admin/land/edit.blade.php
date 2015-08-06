@@ -5,6 +5,7 @@
 @section('content')
     @include($module['tpl'].'land.menu')
     {{ Form::model($land,array('route'=>array('land.update',$land->id),'class'=>'smart-form','id'=>'land-form','role'=>'form','method'=>'put')) }}
+    {{ Form::hidden('description') }}
     <div class="row">
         <section class="col col-6">
             <div class="well">
@@ -88,15 +89,8 @@
                         </label>
                     </section>
                     <section>
-                        <label class="label">Описание</label>
-                        <label class="input">
-                            {{ Form::text('description') }}
-                        </label>
-                    </section>
-                    <section>
-                        <label class="label">Участок продан</label>
-                        <label class="checkbox">
-                            {{ Form::checkbox('sold', 1) }}
+                        <label class="">
+                            {{ Form::checkbox('sold', 1) }} Участок продан
                         </label>
                     </section>
                 </fieldset>

@@ -13,13 +13,7 @@
             <div class="page__left">
                 <div class="tabs-title many-tabs">
                     <h1 class="us-title title-yellow"><span>{{ $page->seo->h1 }}</span></h1>
-                    <div class="tabs-right">
-                        <div class="right-cont">
-                            <a href="{{ pageurl('about') }}" class="title__link">О проекте</a>
-                            <a href="{{ pageurl('documents') }}" class="title__link">Документы</a>
-                            <a href="{{ pageurl('news') }}" class="title__link">Новости</a>
-                        </div>
-                    </div>
+                    @include(Helper::layout('about-menu'),array('hidden'=>'about-company'))
                 </div>
                 <div class="us-article">
                     {{ $page->block('content') }}
@@ -32,5 +26,4 @@
     </div>
 @stop
 @section('scripts')
-    <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
 @stop

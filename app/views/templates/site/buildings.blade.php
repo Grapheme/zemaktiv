@@ -57,7 +57,7 @@ $lands = Land::all();
                                                 кв.м</span></div>
                                     </div>
                                     <div class="info__block">
-                                        <div class="block__left">Метериал:</div>
+                                        <div class="block__left">Материал:</div>
                                         <div class="block__right"><span>{{ $build->material }}</span></div>
                                     </div>
                                     <div class="info__block">
@@ -68,7 +68,7 @@ $lands = Land::all();
                                     </div>
                                     <div class="info__block">
                                         <div class="block__left">Номер участка:</div>
-                                        <div class="block__right"><span>{{ $build->number }}</span></div>
+                                        <div class="block__right"><span>{{ $build->land->number }}</span></div>
                                     </div>
                                     <div class="info__block">
                                         <div class="block__left">Коммуникации:</div>
