@@ -41,8 +41,8 @@
                         {{ $page->block('description_bus') }}
                     </div>
                     <div class="way-btns">
-                        <a href="#" class="us-btn btn-white js-way-btn"><span>Через «Чехов»</span></a><!--
-                     --><a href="#" class="us-btn btn-white js-way-btn"><span>Через переезд</span></a>
+                        <a href="#" class="us-btn btn-white js-way-btn"><span>Через Чехов</span></a><!--
+                     --><a href="#" class="us-btn btn-white js-way-btn"><span>Через Бетонку</span></a>
                     </div>
                 </div>
             </div>

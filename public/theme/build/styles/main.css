@@ -1858,9 +1858,6 @@ h2 {
           -ms-transform: translate(0, 0);
               transform: translate(0, 0);
       opacity: 0; }
-      .wrapper-choise .choise__map .map__image.transition {
-        -webkit-transition: -webkit-transform 0.1s ease-out;
-                transition: transform 0.1s ease-out; }
       .wrapper-choise .choise__map .map__image.active {
         opacity: 1; }
       .wrapper-choise .choise__map .map__image .image__line {
