@@ -16,7 +16,7 @@
                     <h1 class="us-title title-red"><span>{{ $page->seo->h1 }}</span></h1>
                     <div class="tabs-right">
                         <div class="right-cont">
-                            <a href="{{ pageurl('infrastructure') }}" class="title__link">Путеводитель</a>
+                            <a href="{{ pageurl('putevoditel') }}" class="title__link">Путеводитель</a>
                         </div>
                     </div>
                 </div>
