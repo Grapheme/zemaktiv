@@ -533,7 +533,8 @@ Garden.map = function() {
 		prices,
 		areas,
 		suitedArray = {},
-		filterParams;
+		filterParams,
+		transitionTimeout;
 	var setMapPos = function(x, y) {
 		if(x > 0) x = 0;
 		if(y > 0) y = 0;
@@ -549,13 +550,23 @@ Garden.map = function() {
 			var centerx = map.width()/2,
 				centery = map.height()/2;
 			map.addClass('active');
-			setTimeout(function(){
+			/*setTimeout(function(){
 				map.addClass('transition');
-			}, 100);
+			}, 100);*/
 		}
 		var x = -(centerx - mapCont.width() / 2),
 			y = -(centery - mapCont.height() / 2);
 		setMapPos(x, y);
+	}
+	var setMapCenterAnim = function(x, y) {
+		clearTimeout(transitionTimeout);
+		map.addClass('transition');
+		setTimeout(function(){
+			setMapCenter(x, y);
+		}, 20);
+		transitionTimeout = setTimeout(function(){
+			map.removeClass('transition');
+		}, 320);
 	}
 	var move = function() {
 		var moveMap = function(pageX, pageY) {
@@ -623,7 +634,6 @@ Garden.map = function() {
 			var markPos = thisMark.position();
 			var bottomPos = $('.js-map').height() - markPos.top;
 			lines.setActive(thisObj.turn);
-			setMapCenter(markPos.left, markPos.top - (mapCont.height()/100)*20);
 			self.tooltip.hide().removeClass('transition active');
 			self.tooltip.show();
 			if(markPos.top - self.tooltip.outerHeight() < 0) {
@@ -644,6 +654,7 @@ Garden.map = function() {
 			setTimeout(function(){
 				self.tooltip.addClass('transition active');
 			}, 10);
+			setMapCenterAnim(markPos.left, markPos.top - (mapCont.height()/100)*20);
 		},
 		init: function() {
 			var self = this;
@@ -790,7 +801,7 @@ Garden.map = function() {
 			var thisBlock = $('.js-line-' + number);
 			var thisX = thisBlock.position().left + thisBlock.width() / 2;
 			var thisY = thisBlock.position().top + thisBlock.height() / 2;
-			setMapCenter(thisX, thisY);
+			setMapCenterAnim(thisX, thisY);
 		},
 		init: function() {
 			var self = this;
@@ -854,10 +865,17 @@ Garden.map = function() {
 		});
 		sortable.sort(function(obj1, obj2) {
 			var value = $('[data-sort]').attr('data-sort-name');
-			if($('[data-sort]').attr('data-sort') == 'ASC') {
-				return obj1[value] - obj2[value];
+			var sortType = $('[data-sort]').attr('data-sort');
+			var sort1 = obj1[value];
+			var sort2 = obj2[value];
+			if(value == 'number') {
+				sort1 = parseInt(sort1);
+				sort2 = parseInt(sort2);
+			}
+			if(sortType == 'ASC') {
+				return sort1 - sort2;
 			} else {
-				return obj2[value] - obj1[value];
+				return sort2 - sort1;
 			}
 		});
 		$.each(sortable, function(i, v){
@@ -1067,7 +1085,7 @@ Garden.map = function() {
 		}
 	}
 	var init = function() {
-		$('.js-map').addClass('active transition');
+		$('.js-map').addClass('active');
 		move();
 		setMarks();
 		tooltip.init();
