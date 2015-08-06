@@ -986,7 +986,7 @@ h2 {
     opacity: 0;
     -webkit-transition: all 0.2s ease;
             transition: all 0.2s ease; }
-  .us-btn:hover:before, .us-btn.loading:before {
+  .us-btn:hover:before, .us-btn.loading:before, .us-btn.active:before {
     -webkit-transform: translateY(0);
         -ms-transform: translateY(0);
             transform: translateY(0); }
@@ -1007,7 +1007,7 @@ h2 {
     border: 2px solid #111; }
     .us-btn.btn-white:before {
       background: #111; }
-    .us-btn.btn-white:hover, .us-btn.btn-white.loading {
+    .us-btn.btn-white:hover, .us-btn.btn-white.loading, .us-btn.btn-white.active {
       color: #fff; }
   .us-btn.btn-transparent {
     color: #fff;
