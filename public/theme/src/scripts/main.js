@@ -12,6 +12,19 @@ Dictionary.zoomOptions = {
 	    }
 	}
 };
+Help.getHash = function(index) {
+	var thisHash = window.location.hash.substr(1);
+	if(thisHash == '') {
+		return false;
+	}
+	var hashParts = thisHash.split('&');
+	var hashVal = [];
+	$.each(hashParts, function(index, value){
+		var sValue = value.split('=');
+		hashVal[sValue[0]] = sValue[1];
+	});
+	return hashVal[index];
+}
 Help.ajaxSubmit = function(form, callbacks) {
     var response_cont = $(form).find('.js-response-text'),
         options = { 
@@ -520,7 +533,8 @@ Garden.map = function() {
 		prices,
 		areas,
 		suitedArray = {},
-		filterParams;
+		filterParams,
+		transitionTimeout;
 	var setMapPos = function(x, y) {
 		if(x > 0) x = 0;
 		if(y > 0) y = 0;
@@ -536,13 +550,23 @@ Garden.map = function() {
 			var centerx = map.width()/2,
 				centery = map.height()/2;
 			map.addClass('active');
-			setTimeout(function(){
+			/*setTimeout(function(){
 				map.addClass('transition');
-			}, 100);
+			}, 100);*/
 		}
 		var x = -(centerx - mapCont.width() / 2),
 			y = -(centery - mapCont.height() / 2);
 		setMapPos(x, y);
+	}
+	var setMapCenterAnim = function(x, y) {
+		clearTimeout(transitionTimeout);
+		map.addClass('transition');
+		setTimeout(function(){
+			setMapCenter(x, y);
+		}, 20);
+		transitionTimeout = setTimeout(function(){
+			map.removeClass('transition');
+		}, 320);
 	}
 	var move = function() {
 		var moveMap = function(pageX, pageY) {
@@ -588,23 +612,28 @@ Garden.map = function() {
 			clearTimeout(self.closeTimeout);
 			if(id === self.activeId) return;
 			self.activeId = id;
-			var thisObj = Dictionary.buildings[id];
+			var thisObj = Dictionary.buildingsAll[id];
 			self.tooltip.find('.js-bnum').text(thisObj.number);
 			self.tooltip.find('.js-bturn').text(thisObj.turn);
-			self.tooltip.find('.js-bprice').text(thisObj.price.formatMoney(2));
+			if(parseInt(thisObj.price_total) == 0 || !thisObj.price_total) {
+				self.tooltip.find('.js-bprice').text(thisObj.price.formatMoney(2));
+			} else {
+				self.tooltip.find('.js-bprice').text(thisObj.price_total.formatMoney(2));
+			}
 			self.tooltip.find('.js-bcont').text(numToContract(thisObj.status));
 			self.tooltip.find('.js-barea').text(thisObj.land_area);
 			self.tooltip.find('.js-book').attr('data-id', thisObj.id);
 			if(thisObj.sold == 0) {
-				self.tooltip.find('.js-bbtn').show();
+				self.tooltip.find('.js-not-sold-block').show();
+				self.tooltip.find('.js-sold-block').hide();
 			} else {
-				self.tooltip.find('.js-bbtn').hide();
+				self.tooltip.find('.js-not-sold-block').hide();
+				self.tooltip.find('.js-sold-block').show();
 			}
 			var thisMark = $('.js-mark[data-id="' + id + '"]');
 			var markPos = thisMark.position();
 			var bottomPos = $('.js-map').height() - markPos.top;
 			lines.setActive(thisObj.turn);
-			setMapCenter(markPos.left, markPos.top - (mapCont.height()/100)*20);
 			self.tooltip.hide().removeClass('transition active');
 			self.tooltip.show();
 			if(markPos.top - self.tooltip.outerHeight() < 0) {
@@ -625,6 +654,7 @@ Garden.map = function() {
 			setTimeout(function(){
 				self.tooltip.addClass('transition active');
 			}, 10);
+			setMapCenterAnim(markPos.left, markPos.top - (mapCont.height()/100)*20);
 		},
 		init: function() {
 			var self = this;
@@ -674,7 +704,7 @@ Garden.map = function() {
 	}
 	var setMarks = function() {
 		setMinMax(Dictionary.buildings);
-		$.each(Dictionary.buildings, function(index, value){
+		$.each(Dictionary.buildingsAll, function(index, value){
 			var soldStr = value.sold == 1 ? ' sold' : '';
 			$('.js-map').append('<a class="image__mark js-mark' + soldStr + '" data-id="' + value.id + '" style="left: ' + value.coordinate_x/16 + 'rem; top: ' + value.coordinate_y/16 + 'rem;"></a>');
 		});
@@ -771,11 +801,11 @@ Garden.map = function() {
 			var thisBlock = $('.js-line-' + number);
 			var thisX = thisBlock.position().left + thisBlock.width() / 2;
 			var thisY = thisBlock.position().top + thisBlock.height() / 2;
-			setMapCenter(thisX, thisY);
+			setMapCenterAnim(thisX, thisY);
 		},
 		init: function() {
 			var self = this;
-			if(!Dictionary.buildings[window.location.hash.substr(1)]) {
+			if(!Dictionary.buildings[Help.getHash('id')]) {
 				self.setActive(1);
 				self.setCenter(1);
 			}
@@ -818,6 +848,9 @@ Garden.map = function() {
 			if(v.land_area < params.areafrom || v.land_area > params.areato) {
 				suited = false;
 			}
+			if(v.sold == 1) {
+				suited = false;
+			}
 			if(suited) {
 				suitedArray[i] = v;
 			}
@@ -826,7 +859,30 @@ Garden.map = function() {
 	var showSuited = function() {
 		var html = [];
 		var count = 0;
+		var sortable = [];
 		$.each(suitedArray, function(i, v){
+			sortable.push(v);
+		});
+		sortable.sort(function(obj1, obj2) {
+			var value = $('[data-sort]').attr('data-sort-name');
+			var sortType = $('[data-sort]').attr('data-sort');
+			var sort1 = obj1[value];
+			var sort2 = obj2[value];
+			if(value == 'number') {
+				if(sort1.replace(/[0-9]/g, '') != '') {
+					sort1 = parseInt(sort1) + 0.5;
+				}
+				if(sort2.replace(/[0-9]/g, '') != '') {
+					sort2 = parseInt(sort2) + 0.5;
+				}
+			}
+			if(sortType == 'ASC') {
+				return sort1 - sort2;
+			} else {
+				return sort2 - sort1;
+			}
+		});
+		$.each(sortable, function(i, v){
 			var totalPrice = '';
 			if(v.status == 2) {
 				totalPrice = v.price_total.formatMoney();
@@ -851,6 +907,9 @@ Garden.map = function() {
 			if(v.land_area < params.areafrom || v.land_area > params.areato) {
 				suited = false;
 			}
+			if(v.sold == 1) {
+				suited = false;
+			}
 			if(suited) {
 				thisObj[i] = v;
 			}
@@ -869,6 +928,9 @@ Garden.map = function() {
 				suited = false;
 			}
 			if(v.price < $('#range-price').slider('values', 0) || v.price > $('#range-price').slider('values', 1)) {
+				suited = false;
+			}
+			if(v.sold == 1) {
 				suited = false;
 			}
 			if(suited) {
@@ -897,6 +959,9 @@ Garden.map = function() {
 			if(v.land_area < $('#range-area').slider('values', 0) || v.land_area > $('#range-area').slider('values', 1)) {
 				suited = false;
 			}
+			if(v.sold == 1) {
+				suited = false;
+			}
 			if(suited) {
 				thisObj[i] = v;
 			}
@@ -918,6 +983,9 @@ Garden.map = function() {
 				(params.withhouse && v.status == 2)||
 				(params.withpod && v.status == 1)||
 				(params.withoutpod && v.status == 0))) {
+				suited = false;
+			}
+			if(v.sold == 1) {
 				suited = false;
 			}
 			if(suited) {
@@ -972,11 +1040,25 @@ Garden.map = function() {
 		$(document).on('sliderarea::update', function(){
 			updatePrice();
 		});
-		var thisHash = window.location.hash.substr(1);
-		if(thisHash != '' && Dictionary.buildings[thisHash]) {
+		if(window.location.hash.substr(1) != '') {
 			showMap();
-			tooltip.show(thisHash);
+			if(Dictionary.buildings[Help.getHash('id')]) {
+				tooltip.show(Help.getHash('id'));
+				$('.js-back-to-buildings').show()
+					.attr('href', $('.js-back-to-buildings').attr('href') + '?page=' + Help.getHash('backpage'));
+			}
+		} else {
+			$('.js-show-filter').show();
 		}
+		$('[data-sort-name]').on('click', function(){
+			if($(this).attr('data-sort') == 'ASC') {
+				$(this).attr('data-sort', 'DESC');
+			} else {
+				$(this).attr('data-sort', 'ASC');
+			}
+			$(this).siblings().removeAttr('data-sort');
+			showSuited();
+		});
 		checkBoxes(Dictionary.buildings);
 	}
 	var checkBoxes = function(obj) {
@@ -1007,7 +1089,7 @@ Garden.map = function() {
 		}
 	}
 	var init = function() {
-		$('.js-map').addClass('active transition');
+		$('.js-map').addClass('active');
 		move();
 		setMarks();
 		tooltip.init();
@@ -1029,8 +1111,16 @@ Garden.book = function() {
 		$('.js-book-number').text(thisObj.number);
 		$('.js-book-line').text(thisObj.turn);
 		$('.js-book-area').text(thisObj.land_area);
+		$('.js-book-price').text(thisObj.price.formatMoney());
+		$('.js-book-price-total').text(thisObj.price_total.formatMoney());
+		if(thisObj.status == 2) {
+			$('.js-book-title-with-house').show()
+				.siblings().hide();
+		} else {
+			$('.js-book-title').show()
+				.siblings().hide();
+		}
 		Garden.overlays.open('book');
-		console.log(thisObj);
 		return false;
 	});
 }

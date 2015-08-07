@@ -8,7 +8,22 @@
         <div class="wrapper">
             <a href="#" class="block__close js-close-overlay"></a>
             <div class="block-cont">
-                <div class="book__title"><span>Участок №<span class="js-book-number"></span>, <span class="js-book-line"></span>-ая очередь, <span class="js-book-area"></span> соток</span></div>
+                <div>
+                    <div class="book__title js-book-title-with-house">
+                        <span>
+                            Участок №<span class="js-book-number"></span> с домом, <span class="js-book-line"></span>-ая очередь,
+                            <br>
+                            <span class="js-book-area"></span> соток, <span class="js-book-price-total"></span> руб.</span>
+                        </span>
+                    </div>
+                    <div class="book__title js-book-title">
+                        <span>
+                            Участок №<span class="js-book-number"></span>, <span class="js-book-line"></span>-ая очередь,
+                            <br>
+                            <span class="js-book-area"></span> соток, <span class="js-book-price"></span> руб.</span>
+                        </span>
+                    </div>
+                </div>
                 <div class="overlay__form">
                     {{ Form::open(array('route'=>'request_bron','id'=>'book-form','class'=>'js-overlay-form')) }}
                         {{ Form::hidden('id',NULL,array('class'=>'js-input-book-id')) }}

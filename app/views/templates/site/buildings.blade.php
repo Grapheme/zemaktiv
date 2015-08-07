@@ -81,7 +81,14 @@ $lands = Land::all();
                                     </div>
                                 </div>
                                 <div class="right__btns">
-                                    <a href="{{ pageurl('choice-land').'#'.$build->land->id }}"
+                                    <?php
+                                        if(isset($_GET['page'])) {
+                                            $backPage = $_GET['page'];
+                                        } else {
+                                            $backPage = 1;
+                                        }
+                                    ?>
+                                    <a href="{{ pageurl('choice-land').'#id='.$build->land->id.'&backpage='.$backPage }}"
                                        class="us-btn btn-white"><span>Посмотреть на генплане</span></a>
                                     <a href="#" data-id="{{ $build->land->id }}" class="js-book us-btn btn-green"><span>Забронировать</span></a>
                                 </div>
@@ -105,9 +112,10 @@ $lands = Land::all();
                 @foreach($lands as $land)
                     "{{ $land->id }}": {
                         id: {{ $land->id }},
-                        number: {{ $land->number }},
+                        number: "{{ $land->number }}",
                         land_area: {{ $land->area }},
                         price: {{ $land->price }},
+                        price_total: {{ $land->price_house }},
                         coordinate_x: {{ $land->coordinate_x }},
                         coordinate_y: {{ $land->coordinate_y }},
                         sold: {{ $land->sold }},
@@ -117,6 +125,5 @@ $lands = Land::all();
                 @endforeach
             @endif
         };
-        console.log(Dictionary);
     </script>
 @stop

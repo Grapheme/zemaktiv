@@ -23,8 +23,11 @@ $lands = Land::all();
                     </div>
                 </div>
                 <div class="wrapper-params">
-                    <a href="#" class="us-btn btn-black-white js-show-filter">
+                    <a href="#" class="us-btn btn-black-white js-show-filter" style="display: none;">
                         <span>Участки списком</span>
+                    </a>
+                    <a href="{{ URL::to('/buildings') }}" class="us-btn btn-black-white js-back-to-buildings" style="display: none;">
+                        <span>Вернуться в список</span>
                     </a>
                     <!-- <a href="#" class="choise__toparams js-show-filter">
                         <span class="toparams__title">Подбор по параметрам</span>
@@ -39,16 +42,19 @@ $lands = Land::all();
                     <div class="image__line line-3 js-line-3"></div>
                     <div class="image__tooltip js-tooltip">
                         <a href="#" class="tooltip__close js-close"></a>
-
                         <div class="tooltip__title">Участок №<span class="js-bnum"></span></div>
-                        <div class="tooltip__subtitle">Очередь: <span class="js-bturn"></span></div>
-                        <ul class="tooltip__list">
-                            <li class="list__item"><span class="js-barea"></span> соток</li>
-                            <li class="list__item"><span class="js-bcont"></span></li>
-                            <li class="list__item"><span class="js-bprice"></span> руб.</li>
-                        </ul>
-                        <div class="tooltip__btn js-bbtn"><a href="#" data-id class="js-book us-btn btn-white"><span>Забронировать</span></a>
+                        <div class="js-not-sold-block">
+                            <div class="tooltip__subtitle">Очередь: <span class="js-bturn"></span></div>
+                            <ul class="tooltip__list">
+                                <li class="list__item"><span class="js-barea"></span> соток</li>
+                                <li class="list__item"><span class="js-bcont"></span></li>
+                                <li class="list__item"><span class="js-bprice"></span> руб.</li>
+                            </ul>
+                            <div class="tooltip__btn js-bbtn">
+                                <a href="#" data-id class="js-book us-btn btn-white"><span>Забронировать</span></a>
+                            </div>
                         </div>
+                        <div class="js-sold-block tooltip-sold">Данный участок продан</div>
                     </div>
                 </div>
             </div>
@@ -120,7 +126,7 @@ $lands = Land::all();
                         <ul class="table__head">
                             <li class="body__item">
                                 <div class="wrapper">
-                                    <span>Участок</span><span>Очередь</span><span>Площадь, сот.</span><span>Статус</span><span>Цена участка, руб.</span><span>Цена участка с домом, руб.</span>
+                                    <span data-sort="ASC" data-sort-name="number">Участок</span><span data-sort-name="turn">Очередь</span><span data-sort-name="land_area">Площадь, сот.</span><span data-sort-name="status">Статус</span><span data-sort-name="price">Цена участка, руб.</span><span data-sort-name="price_total">Цена участка с домом, руб.</span>
                                 </div>
                             </li>
                         </ul>
@@ -144,16 +150,16 @@ $lands = Land::all();
 @section('scripts')
     <script>
         Dictionary = window.Dictionary || {};
-        Dictionary.buildings = {
+        Dictionary.buildingsAll = {
             @if($lands->count())
                 @foreach($lands as $land)
                     "{{ $land->id }}": {
                         id: {{ $land->id }},
-                        number: {{ $land->number }},
+                        number: "{{ $land->number }}",
                         land_area: {{ $land->area }},
                         price: {{ $land->price }},
                         price_house: {{ $land->price_house }},
-                        price_total: {{ $land->price + $land->price_house }},
+                        price_total: {{ $land->price_house }},
                         coordinate_x: {{ $land->coordinate_x }},
                         coordinate_y: {{ $land->coordinate_y }},
                         sold: {{ $land->sold }},
@@ -163,5 +169,26 @@ $lands = Land::all();
                 @endforeach
             @endif
         };
+        Dictionary.buildings = {
+            @if($lands->count())
+                @foreach($lands as $land)
+                    @if($land->sold == 0)
+                        "{{ $land->id }}": {
+                            id: {{ $land->id }},
+                            number: "{{ $land->number }}",
+                            land_area: {{ $land->area }},
+                            price: {{ $land->price }},
+                            price_house: {{ $land->price_house }},
+                            price_total: {{ $land->price_house }},
+                            coordinate_x: {{ $land->coordinate_x }},
+                            coordinate_y: {{ $land->coordinate_y }},
+                            sold: {{ $land->sold }},
+                            status: {{ $land->status }},
+                            turn: {{ $land->turn }}
+                        },
+                    @endif
+                @endforeach
+            @endif
+        }
     </script>
 @stop
