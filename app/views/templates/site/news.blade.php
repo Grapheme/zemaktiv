@@ -14,7 +14,7 @@ $news_list = News::with('meta.seo', 'meta.photo', 'meta.gallery.photos')->orderB
     <div class="half-page">
         <div class="page-full">
             <div class="wrapper">
-                <div class="tabs-title many-tabs">
+                <div class="tabs-title">
                     <h1 class="us-title title-yellow"><span>{{ $page->seo->h1 }}</span></h1>
                     @include(Helper::layout('about-menu'),array('hidden'=>'news'))
                 </div>
