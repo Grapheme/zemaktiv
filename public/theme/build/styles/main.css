@@ -1729,10 +1729,10 @@ h2 {
     position: absolute;
     bottom: 100%;
     left: 50%;
-    margin-left: -1.25rem;
+    margin-left: -0.78125rem;
     margin-bottom: 1.25rem;
-    width: 25px;
-    height: 35px;
+    width: 1.5625rem;
+    height: 2.1875rem;
     background: url(../images/mark.png) 0 0/100% auto no-repeat; }
   .map-ballon:before {
     content: "";

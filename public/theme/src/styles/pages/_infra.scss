@@ -221,10 +221,10 @@
 		position: absolute;
 		bottom: 100%;
 		left: 50%;
-		margin-left: -1.25rem;
+		margin-left: -25rem / $fs / 2;
 		margin-bottom: 20rem / $fs;
-		width: 25px;
-		height: 35px;
+		width: 25rem / $fs;
+		height: 35rem / $fs;
 		background: url(../images/mark.png) 0 0 / 100% auto no-repeat;
 	}
 
