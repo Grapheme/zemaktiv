@@ -689,16 +689,12 @@ Garden.map = function() {
 		};
 		$.each(obj, function(index, value){
 			if(priceCondition) {
-				if(value.price > thisPrices.max) thisPrices.max = value.price + 1;
-				if(value.price < thisPrices.min || thisPrices.min === false) thisPrices.min = value.price - 1;
+				if(value.price > thisPrices.max) thisPrices.max = value.price;
+				if(value.price < thisPrices.min || thisPrices.min === false) thisPrices.min = value.price;
 			}
 			if(areaCondition) {
-				if(value.land_area > thisAreas.max) {
-					thisAreas.max = value.land_area;
-				}
-				if(value.land_area < thisAreas.min || thisAreas.min === false) {
-					thisAreas.min = value.land_area;
-				}
+				if(value.land_area > thisAreas.max) thisAreas.max = value.land_area;
+				if(value.land_area < thisAreas.min || thisAreas.min === false) thisAreas.min = value.land_area;
 			}
 		});
 		if(type) {
@@ -732,8 +728,6 @@ Garden.map = function() {
 				$('[name="pricefrom"]').val(ui.values[ 0 ]);
 				$('[name="priceto"]').val(ui.values[ 1 ]);
 				$(document).trigger('sliders::update');
-			},
-			change: function() {
 				$(document).trigger('sliderprice::update');
 			}
 		});
@@ -742,15 +736,13 @@ Garden.map = function() {
 			min: areas.min,
 			max: areas.max,
 			values: [areas.min, areas.max],
-			step: 0.01,
+			step: 0.05,
 			slide: function(event, ui) {
 				$('.js-area-from').text(ui.values[ 0 ]);
 				$('.js-area-to').text(ui.values[ 1 ]);
 				$('[name="areafrom"]').val(ui.values[ 0 ]);
 				$('[name="areato"]').val(ui.values[ 1 ]);
 				$(document).trigger('sliders::update');
-			},
-			change: function() {
 				$(document).trigger('sliderarea::update');
 			}
 		});
