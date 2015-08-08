@@ -728,6 +728,8 @@ Garden.map = function() {
 				$('[name="pricefrom"]').val(ui.values[ 0 ]);
 				$('[name="priceto"]').val(ui.values[ 1 ]);
 				$(document).trigger('sliders::update');
+			},
+			change: function() {
 				$(document).trigger('sliderprice::update');
 			}
 		});
@@ -743,6 +745,8 @@ Garden.map = function() {
 				$('[name="areafrom"]').val(ui.values[ 0 ]);
 				$('[name="areato"]').val(ui.values[ 1 ]);
 				$(document).trigger('sliders::update');
+			},
+			change: function() {
 				$(document).trigger('sliderarea::update');
 			}
 		});
