@@ -2331,6 +2331,7 @@ Garden.map = function() {
 		var sortable = [];
 		$.each(suitedArray, function(i, v){
 			sortable.push(v);
+			if(v.number == '238') console.log(v);
 		});
 		sortable.sort(function(obj1, obj2) {
 			var value = $('[data-sort]').attr('data-sort-name');
