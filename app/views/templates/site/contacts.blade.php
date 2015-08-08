@@ -16,7 +16,7 @@
                     @include(Helper::layout('about-menu'),array('hidden'=>'contacts'))
                 </div>
                 <div class="right__contacts full-contacts">
-                    <h2>Контакты</h2>
+                    <!-- <h2>Контакты</h2> -->
                     <?php
                     $contacts = array();
                     if (isset($page->blocks['contacts']['meta']['content']) && !empty($page->blocks['contacts']['meta']['content'])):
