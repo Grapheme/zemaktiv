@@ -2310,15 +2310,19 @@ Garden.map = function() {
 				(params.withpod && v.status == 1)||
 				(params.withoutpod && v.status == 0))) {
 				suited = false;
+				console.log('WTF');
 			}
 			if(v.price < params.pricefrom || v.price > params.priceto) {
 				suited = false;
+				console.log('PRICE');
 			}
 			if(v.land_area < params.areafrom || v.land_area > params.areato) {
 				suited = false;
+				console.log('AREA');
 			}
 			if(v.sold == 1) {
 				suited = false;
+				console.log('SOLD');
 			}
 			if(suited) {
 				suitedArray[i] = v;
@@ -2333,7 +2337,6 @@ Garden.map = function() {
 		var sortable = [];
 		$.each(suitedArray, function(i, v){
 			sortable.push(v);
-			if(v.number == '238') console.log(v);
 		});
 		sortable.sort(function(obj1, obj2) {
 			var value = $('[data-sort]').attr('data-sort-name');
