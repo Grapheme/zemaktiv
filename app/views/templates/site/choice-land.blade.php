@@ -37,6 +37,15 @@ $lands = Land::all();
             </div>
             <div class="choise__map js-map-container">
                 <div class="map__image js-map">
+                    <div class="image__hint hint-1"></div>
+                    <div class="image__hint hint-2"></div>
+                    <div class="image__hint hint-3"></div>
+                    <div class="image__hint hint-4"></div>
+                    <div class="image__hint hint-5"></div>
+                    <div class="image__hint hint-6"></div>
+                    <div class="image__hint hint-7"></div>
+                    <div class="image__hint hint-8"></div>
+                    <div class="image__hint hint-9"></div>
                     <div class="image__line line-1 js-line-1"></div>
                     <div class="image__line line-2 js-line-2"></div>
                     <div class="image__line line-3 js-line-3"></div>

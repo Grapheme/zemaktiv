@@ -214,6 +214,19 @@
 	margin-top: 20rem / $fs;
 	padding: 20rem / $fs 30rem / $fs 30rem / $fs;
 	box-sizing: border-box;
+	box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, .2);
+
+	&:after {
+		content: "";
+		position: absolute;
+		bottom: 100%;
+		left: 50%;
+		margin-left: -1.25rem;
+		margin-bottom: 20rem / $fs
+		width: 25px;
+		height: 35px;
+		background: url(../images/mark.png) 0 0 / 100% auto no-repeat;
+	}
 
 	&:before {
 		content: "";
