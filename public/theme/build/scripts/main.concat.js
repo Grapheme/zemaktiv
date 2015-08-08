@@ -2155,9 +2155,11 @@ Garden.map = function() {
 				if(value.price < thisPrices.min || thisPrices.min === false) thisPrices.min = value.price - 1;
 			}
 			if(areaCondition) {
-				if(value.land_area > 30) console.log(value.land_area);
 				if(value.land_area > thisAreas.max) thisAreas.max = value.land_area;
-				if(value.land_area < thisAreas.min || thisAreas.min === false) thisAreas.min = value.land_area;
+				if(value.land_area < thisAreas.min || thisAreas.min === false) {
+					thisAreas.min = value.land_area;
+					if(value.land_area > 30) console.log(value.land_area);
+				}
 			}
 		});
 		if(type) {
@@ -2191,6 +2193,8 @@ Garden.map = function() {
 				$('[name="pricefrom"]').val(ui.values[ 0 ]);
 				$('[name="priceto"]').val(ui.values[ 1 ]);
 				$(document).trigger('sliders::update');
+			},
+			change: function() {
 				$(document).trigger('sliderprice::update');
 			}
 		});
@@ -2205,6 +2209,8 @@ Garden.map = function() {
 				$('[name="areafrom"]').val(ui.values[ 0 ]);
 				$('[name="areato"]').val(ui.values[ 1 ]);
 				$(document).trigger('sliders::update');
+			},
+			change: function() {
 				$(document).trigger('sliderarea::update');
 			}
 		});
