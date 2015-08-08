@@ -2158,7 +2158,7 @@ Garden.map = function() {
 				if(value.land_area > thisAreas.max) thisAreas.max = value.land_area;
 				if(value.land_area < thisAreas.min || thisAreas.min === false) {
 					thisAreas.min = value.land_area;
-					if(value.land_area > 30) console.log(value.land_area);
+					console.log(thisAreas.min);
 				}
 			}
 		});
