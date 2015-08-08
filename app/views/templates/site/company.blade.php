@@ -10,7 +10,7 @@
 @section('content')
     <div class="half-page">
         <div class="wrapper">
-            <div class="page__full">
+            <div class="page-full">
                 <div class="tabs-title">
                     <h1 class="us-title title-yellow"><span>{{ $page->seo->h1 }}</span></h1>
                     @include(Helper::layout('about-menu'),array('hidden'=>'about-company'))
