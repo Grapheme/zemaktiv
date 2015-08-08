@@ -15,6 +15,10 @@
                 <div class="block__link"><a href="{{ pageurl('contacts') }}">Контакты</a></div>
             </div>
         </div>
-        <div class="footer__right"><span>Симферопольское шоссе, 70 км от МКАД, +7 (495) 407-78-87</span></div>
+        <div class="footer__right">
+            <span>Симферопольское шоссе, 70 км от МКАД, +7 (495) 407-78-87</span>
+            <br>
+            <a href="http://grapheme.ru" target="_blank">Разработано в ГРАФЕМА</a>
+        </div>
     </div>
 </footer>
