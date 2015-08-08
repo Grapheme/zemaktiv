@@ -1724,6 +1724,16 @@ h2 {
   padding: 1.25rem 1.875rem 1.875rem;
   box-sizing: border-box;
   box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, 0.2); }
+  .map-ballon:after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -1.25rem;
+    margin-bottom: 1.25rem;
+    width: 25px;
+    height: 35px;
+    background: url(../images/mark.png) 0 0/100% auto no-repeat; }
   .map-ballon:before {
     content: "";
     position: absolute;
