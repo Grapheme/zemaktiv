@@ -2322,6 +2322,8 @@ Garden.map = function() {
 			}
 			if(suited) {
 				suitedArray[i] = v;
+			} else {
+				console.log(v);
 			}
 		});
 	}
@@ -2329,7 +2331,6 @@ Garden.map = function() {
 		var html = [];
 		var count = 0;
 		var sortable = [];
-		console.log(suitedArray);
 		$.each(suitedArray, function(i, v){
 			sortable.push(v);
 			if(v.number == '238') console.log(v);
