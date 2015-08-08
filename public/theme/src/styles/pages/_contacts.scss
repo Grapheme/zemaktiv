@@ -1,6 +1,10 @@
 .right__contacts {
 	padding-left: 50rem / $fs;
 
+	&.full-contacts {
+		padding-left: 0;
+	}
+
 	h2:first-child {
 		margin-top: 0;
 		line-height: 65rem / $fs;

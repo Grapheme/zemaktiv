@@ -1445,6 +1445,8 @@ h2 {
 
 .right__contacts {
   padding-left: 3.125rem; }
+  .right__contacts.full-contacts {
+    padding-left: 0; }
   .right__contacts h2:first-child {
     margin-top: 0;
     line-height: 4.0625rem; }
