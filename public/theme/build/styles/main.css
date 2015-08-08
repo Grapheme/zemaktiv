@@ -1529,6 +1529,8 @@ h2 {
     padding-bottom: 2.5rem;
     overflow: hidden;
     border-bottom: 1px solid #f1f1f1; }
+    .news__list .list__item:last-child {
+      border-bottom: none; }
     .news__list .list__item h2 {
       margin-bottom: 0; }
     .news__list .list__item .item__date {

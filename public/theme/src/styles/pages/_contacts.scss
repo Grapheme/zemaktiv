@@ -112,6 +112,10 @@
 		overflow: hidden;
 		border-bottom: 1px solid $borderColor;
 
+		&:last-child {
+			border-bottom: none;
+		}
+
 		h2 {
 			margin-bottom: 0;
 		}

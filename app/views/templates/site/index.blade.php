@@ -59,7 +59,7 @@ endif;
         <div class="wrapper">
             <div class="block__map-icon"></div>
             <div class="block__text">{{ $page->block('card') }}</div>
-            <div class="block__btn"><a href="{{ pageurl('about') }}" class="us-btn btn-white"><span>Карта</span></a>
+            <div class="block__btn"><a href="{{ pageurl('location') }}" class="us-btn btn-white"><span>Карта</span></a>
             </div>
         </div>
     </div>
