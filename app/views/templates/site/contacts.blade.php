@@ -15,7 +15,7 @@
                     <h1 class="us-title title-yellow"><span>{{ $page->seo->h1 }}</span></h1>
                     @include(Helper::layout('about-menu'),array('hidden'=>'contacts'))
                 </div>
-                <div class="right__contacts">
+                <div class="right__contacts full-contacts">
                     <h2>Контакты</h2>
                     <?php
                     $contacts = array();
