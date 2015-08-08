@@ -59,6 +59,10 @@
 .right__form {
 	padding: 0 0 20rem / $fs 50rem / $fs;
 
+	&.full-form {
+		padding: 40rem / $fs 0 0;
+	}
+
 	.form__input {
 		margin-top: 20rem / $fs;
 

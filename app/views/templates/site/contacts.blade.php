@@ -44,7 +44,7 @@
                         <span class="block__right">{{ @$contacts['address'] }}</span>
                     </div>
                     <div id="contact-map"></div>
-                    <div class="right__form">
+                    <div class="right__form full-form">
                         <h2>Обратная связь</h2>
                         {{ Form::open(array('route'=>'contact_feedback','class'=>'js-contact-form')) }}
                         <div class="form__input">
