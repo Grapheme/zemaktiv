@@ -43,6 +43,28 @@
                         <span class="block__left">Адрес:</span>
                         <span class="block__right">{{ @$contacts['address'] }}</span>
                     </div>
+                    <div id="contact-map"></div>
+                    <div class="right__form">
+                        <h2>Обратная связь</h2>
+                        {{ Form::open(array('route'=>'contact_feedback','class'=>'js-contact-form')) }}
+                        <div class="form__input">
+                            <input name="name" placeholder="Имя">
+                        </div>
+                        <div class="form__input">
+                            <input name="email" placeholder="E-mail">
+                        </div>
+                        <div class="form__input">
+                            <textarea name="message" placeholder="Вопрос" class="js-autosize"></textarea>
+                        </div>
+                        <div class="form__input">
+                            <button type="submit" class="us-btn btn-green"><span>Отправить</span></button>
+                        </div>
+                        <div style="display: none;" class="form__input js-response-text"></div>
+                        {{ Form::close() }}
+                        <div style="display: none;" class="js-contact-success">
+                            <div class="form__input">Ваше сообщение успешно отправлено!</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

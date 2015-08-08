@@ -10,7 +10,7 @@
 @section('content')
     <div class="half-page">
         <div class="wrapper">
-            <div class="page__left">
+            <div class="page-full">
                 <div class="tabs-title">
                     <h1 class="us-title title-yellow"><span>{{ $page->seo->h1 }}</span></h1>
                     @include(Helper::layout('about-menu'),array('hidden'=>'about'))
@@ -32,6 +32,7 @@
                     </ul>
                 </div>
             </div>
+            @if(0)
             <div class="page__right">
                 <div class="right__contacts">
                     <h2>Контакты</h2>
@@ -85,6 +86,7 @@
                     </div>
                 </div>
             </div>
+            @endif
         </div>
     </div>
 @stop
