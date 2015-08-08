@@ -2155,6 +2155,7 @@ Garden.map = function() {
 				if(value.price < thisPrices.min || thisPrices.min === false) thisPrices.min = value.price - 1;
 			}
 			if(areaCondition) {
+				if(value.land_area > 30) console.log(value.land_area);
 				if(value.land_area > thisAreas.max) thisAreas.max = value.land_area;
 				if(value.land_area < thisAreas.min || thisAreas.min === false) thisAreas.min = value.land_area;
 			}
@@ -2326,8 +2327,6 @@ Garden.map = function() {
 			}
 			if(suited) {
 				suitedArray[i] = v;
-			} else {
-				console.log(v);
 			}
 		});
 	}
