@@ -694,7 +694,6 @@ Garden.map = function() {
 			}
 			if(areaCondition) {
 				if(value.land_area > thisAreas.max) {
-					console.log(thisAreas.max);
 					thisAreas.max = value.land_area;
 				}
 				if(value.land_area < thisAreas.min || thisAreas.min === false) {
@@ -743,6 +742,7 @@ Garden.map = function() {
 			min: areas.min,
 			max: areas.max,
 			values: [areas.min, areas.max],
+			step: 0.01,
 			slide: function(event, ui) {
 				$('.js-area-from').text(ui.values[ 0 ]);
 				$('.js-area-to').text(ui.values[ 1 ]);
