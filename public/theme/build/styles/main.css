@@ -1487,7 +1487,7 @@ h2 {
 .right__form {
   padding: 0 0 1.25rem 3.125rem; }
   .right__form.full-form {
-    padding: 2.5rem 0 0; }
+    padding: 2.5rem 0 2.5rem; }
   .right__form .form__input {
     margin-top: 1.25rem; }
     .right__form .form__input input, .right__form .form__input textarea {
