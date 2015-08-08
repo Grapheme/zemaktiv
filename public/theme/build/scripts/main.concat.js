@@ -1827,6 +1827,13 @@ Garden.infraMap = function() {
 	    	myMap.geoObjects.add(placemark);
 	    	i++;
 	    });
+	    var locationMark = new ymaps.Placemark(Dictionary.gardenPos, {}, {
+			iconLayout: 'default#image',
+			iconImageHref: '/theme/build/images/header/apple_min.png',
+			iconImageSize: [32, 36],
+			iconImageOffset: [-16, -18]
+		});
+		myMap.geoObjects.add(locationMark);
 		$('.js-balloon-item').on('click', function(){
 			var balloonId = $(this).attr('data-balloon-id');
 			//myMap.setCenter();
@@ -2144,12 +2151,12 @@ Garden.map = function() {
 		};
 		$.each(obj, function(index, value){
 			if(priceCondition) {
-				if(value.price > thisPrices.max) thisPrices.max = value.price;
-				if(value.price < thisPrices.min || thisPrices.min === false) thisPrices.min = value.price;
+				if(value.price > thisPrices.max) thisPrices.max = value.price + 1;
+				if(value.price < thisPrices.min || thisPrices.min === false) thisPrices.min = value.price - 1;
 			}
 			if(areaCondition) {
-				if(value.land_area > thisAreas.max) thisAreas.max = value.land_area;
-				if(value.land_area < thisAreas.min || thisAreas.min === false) thisAreas.min = value.land_area;
+				if(value.land_area > thisAreas.max) thisAreas.max = value.land_area + 0.1;
+				if(value.land_area < thisAreas.min || thisAreas.min === false) thisAreas.min = value.land_area - 0.1;
 			}
 		});
 		if(type) {
