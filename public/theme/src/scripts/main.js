@@ -236,6 +236,7 @@ Garden.overlayForms = function() {
 	    submitHandler: function(form) {
 	        Help.ajaxSubmit(form, {
 	            success: function() {
+	            	bookSubmitEvent();
 	                $(form).slideUp();
 	                $('.js-book-success').slideDown();
 	                setTimeout(function(){
