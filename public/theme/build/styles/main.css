@@ -925,9 +925,9 @@ h2 {
       text-decoration: none;
       -webkit-transition: border-color 0.2s ease;
               transition: border-color 0.2s ease;
-      border-bottom: 1px solid transparent; }
+      border-bottom: 1px solid #42b974; }
       .footer .footer__right a:hover {
-        border-color: inherit; }
+        border-color: transparent; }
 
 .us-title {
   font-size: 2.5rem;

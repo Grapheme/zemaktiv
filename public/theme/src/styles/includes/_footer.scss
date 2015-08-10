@@ -54,10 +54,10 @@
 			color: #42b974;
 			text-decoration: none;
 			transition: border-color .2s ease;
-			border-bottom: 1px solid transparent;
+			border-bottom: 1px solid #42b974;
 
 			&:hover {
-				border-color: inherit;
+				border-color: transparent;
 			}
 		}
 	}
