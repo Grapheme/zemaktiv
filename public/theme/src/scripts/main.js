@@ -285,7 +285,7 @@ Garden.ymap = function() {
             center: [55.76135, 37.551708],
             zoom: 16
         });
-        myPlacemark = new ymaps.Placemark([55.760768, 37.554879], { content: '2-я Звенигородская улица' });
+        myPlacemark = new ymaps.Placemark([55.76135, 37.551708], { content: '2-я Звенигородская улица' });
         myMap.geoObjects.add(myPlacemark);
     }
 }
