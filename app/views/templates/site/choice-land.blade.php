@@ -69,11 +69,9 @@ $lands = Land::all();
             </div>
             <div class="js-choise-filter choise-filter">
                 <div class="wrapper">
-                    <div class="page-full">
+                    <div class="page-full relative">
                         <h1 class="us-title title-choise"><span>{{ $page->seo->h1 }}</span></h1>
-                        <a href="#"
-                           class="choise__tomap us-btn btn-white js-show-map"><span>Выбрать на генплане</span></a>
-
+                        <a href="#" class="choise__tomap us-btn btn-white js-show-map"><span>Выбрать на генплане</span></a>
                         <div class="filter__form">
                             <form class="js-filter-form">
                                 <div class="form__left">

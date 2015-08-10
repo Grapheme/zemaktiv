@@ -2131,7 +2131,7 @@ h2 {
       margin-top: 5rem; }
     .wrapper-choise .choise-filter .choise__tomap {
       position: absolute;
-      top: 0;
+      top: 5rem;
       right: 0; }
     .wrapper-choise .choise-filter .filter__form {
       width: 57.5rem;
