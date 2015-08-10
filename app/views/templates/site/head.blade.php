@@ -67,3 +67,5 @@ if (isset($page->seos) && is_object($page->seos) && isset($page->seos[Config::ge
 
 {{ HTML::style(Config::get('site.theme_path').'/styles/vendor.css') }}
 {{ HTML::style(Config::get('site.theme_path').'/styles/main.css') }}
+
+<script src="//st.yagla.ru/js/y.c.js"></script>

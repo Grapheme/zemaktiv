@@ -1894,7 +1894,7 @@ h2 {
       .wrapper-choise .choise__map .map__image .image__hint {
         position: absolute;
         height: 3.375rem;
-        z-index: 3;
+        z-index: 1;
         pointer-events: none; }
         .wrapper-choise .choise__map .map__image .image__hint.hint-1 {
           top: 80rem;
