@@ -417,6 +417,10 @@
 						font-family: "room";
 						color: #111;
 					}
+
+					.ui-state-disabled, .ui-widget-content .ui-state-disabled, .ui-widget-header .ui-state-disabled {
+						opacity: 1;
+					}
 				}
 			}
 
