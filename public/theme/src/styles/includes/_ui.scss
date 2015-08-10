@@ -195,6 +195,15 @@
 	}
 }
 
+.metro-icon {
+	display: inline-block;
+	vertical-align: middle;
+	width: 7rem / $fs;
+	height: 7rem / $fs;
+	border-radius: 7rem / $fs;
+	background: #ac55a2;
+}
+
 .fancybox-close {
 	background: url(../images/ui/close.svg);
 
