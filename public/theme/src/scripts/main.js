@@ -282,7 +282,7 @@ Garden.ymap = function() {
 
     function init(){     
         myMap = new ymaps.Map("contact-map", {
-            center: [55.760768, 37.554879],
+            center: [55.76135, 37.551708],
             zoom: 16
         });
         myPlacemark = new ymaps.Placemark([55.760768, 37.554879], { content: '2-я Звенигородская улица' });
