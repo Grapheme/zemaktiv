@@ -2191,6 +2191,8 @@ h2 {
             font-size: 1rem;
             font-family: "room";
             color: #111; }
+          .wrapper-choise .choise-filter .filter__form .form__left .left__check .ui-state-disabled, .wrapper-choise .choise-filter .filter__form .form__left .left__check .ui-widget-content .ui-state-disabled, .wrapper-choise .choise-filter .filter__form .form__left .left__check .ui-widget-header .ui-state-disabled {
+            opacity: 1; }
       .wrapper-choise .choise-filter .filter__form .form__right {
         float: left;
         width: 65%; }
