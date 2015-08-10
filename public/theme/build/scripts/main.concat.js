@@ -2483,11 +2483,11 @@ Garden.map = function() {
 				$('.js-choise-filter').animate({
 					scrollTop: $('.js-choise-filter .page-full').outerHeight(true)
 				}, 300);
-				setTimeout(function(){
-					$('html, body').animate({
-						scrollTop: $('.js-choise-filter').offset().top - 100
-					}, 300);
-				}, 10);
+				// setTimeout(function(){
+				// 	$('html, body').animate({
+				// 		scrollTop: $('.js-choise-filter').offset().top - 100
+				// 	}, 300);
+				// }, 10);
 			}, 150);
 		}
 	}
@@ -2562,6 +2562,15 @@ Garden.map = function() {
 			$('[name="withhouse"]').parent().show();
 		}
 	}
+	var filterScroll = function() {
+		var oldScroll = 0;
+		$('.js-choise-filter').on('scroll', function(e){
+			if($(window).scrollTop() < 113 && oldScroll < $(this).scrollTop()) {
+				$(window).scrollTop($(window).scrollTop() + ($(this).scrollTop() - oldScroll));
+			}
+			oldScroll = $(this).scrollTop();
+		});
+	}
 	var init = function() {
 		$('.js-map').addClass('active');
 		move();
@@ -2573,6 +2582,7 @@ Garden.map = function() {
 		countSuited();
 		submitFilter($('.js-filter-form'), true);
 		lines.init();
+		filterScroll();
 	}
 	init();
 }
