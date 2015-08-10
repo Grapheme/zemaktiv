@@ -1059,6 +1059,14 @@ h2 {
   .us-link:hover {
     border-bottom: 1px solid transparent; }
 
+.metro-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 0.4375rem;
+  height: 0.4375rem;
+  border-radius: 0.4375rem;
+  background: #ac55a2; }
+
 .fancybox-close {
   background: url(../images/ui/close.svg); }
   .fancybox-close:hover {

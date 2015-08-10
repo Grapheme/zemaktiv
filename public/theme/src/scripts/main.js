@@ -1019,7 +1019,7 @@ Garden.map = function() {
 		if(!noscroll) {
 			setTimeout(function(){
 				$('.js-choise-filter').animate({
-					scrollTop: $('.js-choise-filter .page__full').outerHeight(true)
+					scrollTop: $('.js-choise-filter .page-full').outerHeight(true)
 				}, 300);
 				setTimeout(function(){
 					$('html, body').animate({
