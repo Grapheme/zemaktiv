@@ -18,19 +18,6 @@
                 <div class="us-article">
                     {{ $page->block('content') }}
                 </div>
-                <div class="us-news">
-                    <h2>Новости</h2>
-                    <ul class="news__list">
-                        @foreach(News::with('meta')->take(4)->orderBy('published_at','DESC')->get() as $news)
-                            <li class="list__item">
-                                <div class="item__date">{{ (new myDateTime())->setDateString($news->published_at)->format('d/m/y') }}</div>
-                                <div class="item__link">
-                                    {{ $news->meta->title }}
-                                </div>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
             </div>
             @if(0)
             <div class="page__right">
