@@ -22,3 +22,7 @@
     for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);
     mixpanel.init("4ca48e28506e153791b8b2d5b291f3ca");</script>
     <!-- end Mixpanel -->
+
+    <!-- start Optimizely -->
+    <script src="//cdn.optimizely.com/js/3263420233.js"></script>
+    <!-- end Optimizely -->
