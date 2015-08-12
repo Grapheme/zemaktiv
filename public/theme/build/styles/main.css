@@ -2145,59 +2145,20 @@ h2 {
       width: 57.5rem;
       margin-top: 1.875rem;
       padding-bottom: 3.75rem; }
+      .wrapper-choise .choise-filter .filter__form .left__check {
+        margin-top: 0.8125rem; }
       .wrapper-choise .choise-filter .filter__form .form__left {
         float: left;
         width: 35%; }
         .wrapper-choise .choise-filter .filter__form .form__left .form__title {
           margin-bottom: 1.25rem; }
-        .wrapper-choise .choise-filter .filter__form .form__left .left__check {
-          margin-top: 0.8125rem; }
-          .wrapper-choise .choise-filter .filter__form .form__left .left__check .ui-button {
-            position: relative;
-            border: none;
-            background: transparent;
-            padding-left: 1.6875rem; }
-            .wrapper-choise .choise-filter .filter__form .form__left .left__check .ui-button:before {
-              content: "";
-              position: absolute;
-              left: 0;
-              top: -0.0625rem;
-              width: 1.25rem;
-              height: 1.25rem;
-              box-sizing: border-box;
-              border: 2px solid #42b974;
-              border-radius: 2px; }
-            .wrapper-choise .choise-filter .filter__form .form__left .left__check .ui-button:after {
-              content: "";
-              position: absolute;
-              left: 0.4375rem;
-              top: 0.375rem;
-              width: 0.375rem;
-              height: 0.375rem;
-              background: #42b974;
-              opacity: 0;
-              -webkit-transform: scale(2);
-                  -ms-transform: scale(2);
-                      transform: scale(2);
-              -webkit-transition: all 0.2s;
-                      transition: all 0.2s; }
-            .wrapper-choise .choise-filter .filter__form .form__left .left__check .ui-button.ui-state-active:after {
-              opacity: 1;
-              -webkit-transform: scale(1);
-                  -ms-transform: scale(1);
-                      transform: scale(1); }
-          .wrapper-choise .choise-filter .filter__form .form__left .left__check .ui-button-text {
-            padding: 0;
-            font-size: 1rem;
-            font-family: "room";
-            color: #111; }
-          .wrapper-choise .choise-filter .filter__form .form__left .left__check .ui-state-disabled, .wrapper-choise .choise-filter .filter__form .form__left .left__check .ui-widget-content .ui-state-disabled, .wrapper-choise .choise-filter .filter__form .form__left .left__check .ui-widget-header .ui-state-disabled {
-            opacity: 1; }
       .wrapper-choise .choise-filter .filter__form .form__right {
         float: left;
         width: 65%; }
         .wrapper-choise .choise-filter .filter__form .form__right .right__block {
-          margin-top: 1.875rem; }
+          margin-top: 1.875rem;
+          float: left;
+          width: 50%; }
           .wrapper-choise .choise-filter .filter__form .form__right .right__block .form__title {
             margin-top: 0; }
         .wrapper-choise .choise-filter .filter__form .form__right .right__btn {
@@ -2226,6 +2187,47 @@ h2 {
           background: #42b974; }
         .wrapper-choise .choise-filter .filter__form .form__slider .ui-slider-handle {
           cursor: pointer; }
+    .wrapper-choise .choise-filter .ui-button {
+      position: relative;
+      border: none;
+      background: transparent;
+      padding-left: 1.6875rem; }
+      .wrapper-choise .choise-filter .ui-button:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: -0.0625rem;
+        width: 1.25rem;
+        height: 1.25rem;
+        box-sizing: border-box;
+        border: 2px solid #42b974;
+        border-radius: 2px; }
+      .wrapper-choise .choise-filter .ui-button:after {
+        content: "";
+        position: absolute;
+        left: 0.4375rem;
+        top: 0.375rem;
+        width: 0.375rem;
+        height: 0.375rem;
+        background: #42b974;
+        opacity: 0;
+        -webkit-transform: scale(2);
+            -ms-transform: scale(2);
+                transform: scale(2);
+        -webkit-transition: all 0.2s;
+                transition: all 0.2s; }
+      .wrapper-choise .choise-filter .ui-button.ui-state-active:after {
+        opacity: 1;
+        -webkit-transform: scale(1);
+            -ms-transform: scale(1);
+                transform: scale(1); }
+    .wrapper-choise .choise-filter .ui-button-text {
+      padding: 0;
+      font-size: 1rem;
+      font-family: "room";
+      color: #111; }
+    .wrapper-choise .choise-filter .ui-state-disabled, .wrapper-choise .choise-filter .ui-widget-content .ui-state-disabled, .wrapper-choise .choise-filter .ui-widget-header .ui-state-disabled {
+      opacity: 1; }
   .wrapper-choise .filter__list {
     display: none;
     background: #fff;
