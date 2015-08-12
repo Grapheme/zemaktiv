@@ -218,6 +218,7 @@ Garden.overlayForms = function() {
 	                setTimeout(function(){
 	                	Garden.overlays.close();
 	                }, 1500);
+	                dataLayer.push({'event': 'CallBackFormSend'});
 	            }
 	        });
 	        return false;
@@ -234,6 +235,9 @@ Garden.overlayForms = function() {
 	        }
 	    },
 	    submitHandler: function(form) {
+	    		var landNumber = Dictionary.buildings[$(form).find('[name="id"]').val()].number;
+	    		dataLayer.push({'event': 'ReserveFormSend', 'landId': landNumber});
+	    		console.log(landNumber);
 	        Help.ajaxSubmit(form, {
 	            success: function() {
 	            	bookSubmitEvent();
@@ -265,6 +269,7 @@ Garden.contactForm = function() {
 	        },
 	    },
 	    submitHandler: function(form) {
+	    		dataLayer.push({'event': 'ContactFormSend'});
 	        Help.ajaxSubmit(form, {
 	            success: function() {
 	                $(form).slideUp();
@@ -668,6 +673,9 @@ Garden.map = function() {
 			var self = this;
 			$(document).on('click', '.js-mark', function(){
 				var thisId = $(this).attr('data-id');
+				var thisNumber = Dictionary.buildings[thisId].number;
+				console.log(thisNumber);
+				dataLayer.push({'event': 'ChooseLandMapClick', 'landId': thisNumber});
 				self.show(thisId);
 				return false;
 			});
@@ -719,7 +727,7 @@ Garden.map = function() {
 	}
 	var filter = function() {
 		$('.js-radio').on('change', function(){
-			$(document).trigger('sliders::update');
+			//$(document).trigger('sliders::update');
 		});
 		/*$('#range-price').slider({
 			range: true,
@@ -767,7 +775,7 @@ Garden.map = function() {
 		});
 	}
 	var updateFilterText = function(type) {
-		return false;
+		return;
 		if(!type || (type && type == 'price')) {
 			$('.js-price-from').text($('#range-price').slider('values', 0).formatMoney());
 			$('.js-price-to').text($('#range-price').slider('values', 1).formatMoney());
@@ -1058,6 +1066,8 @@ Garden.map = function() {
 		});
 		$(document).on('click', '.js-filter-item', function(){
 			var thisId = $(this).attr('data-id');
+			var thisNumber = Dictionary.buildings[thisId].number;
+			dataLayer.push({'event': 'ChooseLandListClick', 'landId': thisNumber});
 			showMap();
 			tooltip.show(thisId);
 			$('html, body').animate({
@@ -1196,6 +1206,9 @@ Garden.checkbox = function() {
 	$('.js-radio').button();
 }
 Garden.init = function() {
+	$('.js-gallery-track').on('click', function(){
+		dataLayer.push({'event': 'HousePhotoClick', 'landId': $(this).attr('data-number')});
+	});
 	this.header();
 	this.indexSlider();
 	this.ymap();
