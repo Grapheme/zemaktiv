@@ -101,15 +101,15 @@ $lands = Land::all();
                                         <div class="form__desc">
                                             <div class="left__check">
                                                 <input type="radio" class="js-radio" id="price1" name="priceto" value="1000000">
-                                                <label for="price1">До 1 млн. рублей</label>
+                                                <label for="price1">До 1 млн рублей</label>
                                             </div>
                                             <div class="left__check">
-                                                <input type="radio" class="js-radio" id="price2" name="priceto" value="3000000">
-                                                <label for="price2">До 3 млн. рублей</label>
+                                                <input type="radio" class="js-radio" id="price2" name="priceto" value="2000000">
+                                                <label for="price2">До 2 млн рублей</label>
                                             </div>
                                             <div class="left__check">
-                                                <input type="radio" class="js-radio" id="price3" name="priceto" value="5000000" checked="checked">
-                                                <label for="price3">До 5 млн. рублей</label>
+                                                <input type="radio" class="js-radio" id="price3" name="priceto" value="10000000" checked="checked">
+                                                <label for="price3">Любая цена</label>
                                             </div>
                                             <!-- от <span class="js-price-from"></span>
                                             до <span class="js-price-to"></span> -->
