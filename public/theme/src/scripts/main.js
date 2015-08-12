@@ -718,7 +718,10 @@ Garden.map = function() {
 		});
 	}
 	var filter = function() {
-		$('#range-price').slider({
+		$('.js-radio').on('change', function(){
+			$(document).trigger('sliders::update');
+		});
+		/*$('#range-price').slider({
 			range: true,
 			min: prices.min,
 			max: prices.max,
@@ -733,8 +736,8 @@ Garden.map = function() {
 			change: function() {
 				$(document).trigger('sliderprice::update');
 			}
-		});
-		$('#range-area').slider({
+		});*/
+		/*$('#range-area').slider({
 			range: true,
 			min: areas.min,
 			max: areas.max,
@@ -750,8 +753,8 @@ Garden.map = function() {
 			change: function() {
 				$(document).trigger('sliderarea::update');
 			}
-		});
-		updateFilterText();
+		});*/
+		//updateFilterText();
 		$('.js-filter-form input[type="checkbox"]').on('change', function(){
 			countSuited();
 			updateSliders();
@@ -847,8 +850,18 @@ Garden.map = function() {
 	var countSuited = function() {
 		var inputs = $('.js-filter-form').serialize().split('&');
 		filterParams = {};
+		/*$.each(inputs, function(i, v){
+			var iArray = v.split('=');
+			filterParams[iArray[0]] = iArray[1] || false;
+		});*/
 		$.each(inputs, function(i, v){
 			var iArray = v.split('=');
+			if(iArray[0] == 'range') {
+				var rangeArray = iArray[1].split('-');
+				filterParams['areafrom'] = rangeArray[0] || false;
+				filterParams['areato'] = rangeArray[1] || false;
+				return;
+			}
 			filterParams[iArray[0]] = iArray[1] || false;
 		});
 		suitedArray = {};
@@ -1021,6 +1034,7 @@ Garden.map = function() {
 		updateFilterText('area');
 	}
 	var submitFilter = function(form, noscroll) {
+		countSuited();
 		showSuited();
 		$('.js-filter-list').slideDown(300);
 		if(!noscroll) {
@@ -1054,10 +1068,10 @@ Garden.map = function() {
 			updateChecks();
 		});
 		$(document).on('sliderprice::update', function(){
-			updateArea();
+			//updateArea();
 		});
 		$(document).on('sliderarea::update', function(){
-			updatePrice();
+			//updatePrice();
 		});
 		if(window.location.hash.substr(1) != '') {
 			showMap();
@@ -1178,6 +1192,7 @@ Garden.overlays = {
 }
 Garden.checkbox = function() {
 	$('.js-checkbox').button();
+	$('.js-radio').button();
 }
 Garden.init = function() {
 	this.header();

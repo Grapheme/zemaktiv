@@ -99,26 +99,52 @@ $lands = Land::all();
                                     <div class="right__block">
                                         <div class="form__title">Цена участка, руб.</div>
                                         <div class="form__desc">
-                                            от <span class="js-price-from"></span>
-                                            до <span class="js-price-to"></span>
+                                            <div class="left__check">
+                                                <input type="radio" class="js-radio" id="price1" name="priceto" value="1000000">
+                                                <label for="price1">До 1 млн. рублей</label>
+                                            </div>
+                                            <div class="left__check">
+                                                <input type="radio" class="js-radio" id="price2" name="priceto" value="3000000">
+                                                <label for="price2">До 3 млн. рублей</label>
+                                            </div>
+                                            <div class="left__check">
+                                                <input type="radio" class="js-radio" id="price3" name="priceto" value="5000000" checked="checked">
+                                                <label for="price3">До 5 млн. рублей</label>
+                                            </div>
+                                            <!-- от <span class="js-price-from"></span>
+                                            до <span class="js-price-to"></span> -->
                                         </div>
                                         <div class="form__slider">
-                                            <div id="range-price"></div>
-                                            <input name="pricefrom" type="hidden">
-                                            <input name="priceto" type="hidden">
+                                            <!-- <div id="range-price"></div> -->
+                                            <input name="pricefrom" type="hidden" value="0">
+                                            <!-- <input name="priceto" type="hidden"> -->
                                         </div>
                                     </div>
                                     <div class="right__block">
                                         <div class="form__title">Площадь участка, соток</div>
                                         <div class="form__desc">
-                                            от <span class="js-area-from"></span>
-                                            до <span class="js-area-to"></span></div>
+                                            <div class="left__check">
+                                                <input type="radio" class="js-radio" id="area1" name="range" value="7-15">
+                                                <label for="area1">От 7 до 15 соток</label>
+                                            </div>
+                                            <div class="left__check">
+                                                <input type="radio" class="js-radio" id="area2" name="range" value="15-32">
+                                                <label for="area2">От 15 до 32 соток</label>
+                                            </div>
+                                            <div class="left__check">
+                                                <input type="radio" class="js-radio" id="area3" name="range" value="0-999" checked="checked">
+                                                <label for="area3">Любая площадь</label>
+                                            </div>
+                                            <!-- от <span class="js-area-from"></span>
+                                            до <span class="js-area-to"></span> -->
+                                        </div>
                                         <div class="form__slider">
-                                            <div id="range-area"></div>
-                                            <input name="areafrom" type="hidden">
-                                            <input name="areato" type="hidden">
+                                            <!-- <div id="range-area"></div> -->
+                                            <!-- <input name="areafrom" type="hidden" value="0"> -->
+                                            <!-- <input name="areato" type="hidden"> -->
                                         </div>
                                     </div>
+                                    <div class="clearfix"></div>
                                     <div class="right__btn">
                                         <button type="submit" class="us-btn btn-green"><span>Подбор</span></button>
                                     </div>
