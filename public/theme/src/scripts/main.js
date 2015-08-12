@@ -767,6 +767,7 @@ Garden.map = function() {
 		});
 	}
 	var updateFilterText = function(type) {
+		return false;
 		if(!type || (type && type == 'price')) {
 			$('.js-price-from').text($('#range-price').slider('values', 0).formatMoney());
 			$('.js-price-to').text($('#range-price').slider('values', 1).formatMoney());
@@ -975,7 +976,7 @@ Garden.map = function() {
 		// $('#range-area').slider('option', 'min', areaRange.min);
 		// $('#range-area').slider('option', 'max', areaRange.max);
 		$('#range-area').slider('option', 'values', [areaRange.min, areaRange.max]);
-		//updateFilterText('area');
+		updateFilterText('area');
 	}
 	var updatePrice = function() {
 		var thisObj = {};
@@ -1004,7 +1005,7 @@ Garden.map = function() {
 		// $('#range-price').slider('option', 'min', priceRange.min);
 		// $('#range-price').slider('option', 'max', priceRange.max);
 		$('#range-price').slider('option', 'values', [priceRange.min, priceRange.max]);
-		//updateFilterText('price');
+		updateFilterText('price');
 	}
 	var updateSliders = function() {
 		var thisObj = {};
