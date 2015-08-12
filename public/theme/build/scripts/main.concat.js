@@ -2266,9 +2266,11 @@ Garden.map = function() {
 			updateSliders();
 			var checkedButtons = $('.js-filter-form input[type="checkbox"]:visible:checked');
 			if(checkedButtons.length == 1) {
-				checkedButtons.button('disable');
+				checkedButtons.parent().addClass('disabledCheck');
 			} else {
-				$('.js-filter-form input[type="checkbox"]').button('enable');
+				$('.js-filter-form input[type="checkbox"]').each(function(){
+					$(this).parent().removeClass('disabledCheck');
+				});
 			}
 		});
 	}

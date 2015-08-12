@@ -363,6 +363,10 @@
 
 			.left__check {
 				margin-top: 13rem / $fs;
+
+				&.disabledCheck {
+					pointer-events: none;
+				}
 			}
 
 			.form__left {
