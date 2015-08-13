@@ -60,7 +60,7 @@ $lands = Land::all();
                                 <li class="list__item"><span class="js-bprice"></span> руб.</li>
                             </ul>
                             <div class="tooltip__btn js-bbtn">
-                                <a href="#" data-id class="js-book us-btn btn-white"><span>Забронировать</span></a>
+                                <a href="#" data-id class="js-book us-btn btn-white" onclick="carrotquest.track('TELLMEMORE');"><span>Забронировать</span></a>
                             </div>
                         </div>
                         <div class="js-sold-block tooltip-sold">Данный участок продан</div>
