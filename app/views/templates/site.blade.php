@@ -15,6 +15,10 @@
 <head>
     @include(Helper::layout('head'))
     @yield('style')
+
+    <!-- start Optimizely -->
+    <script src="//cdn.optimizely.com/js/3263420233.js"></script>
+    <!-- end Optimizely -->
 </head>
 <body>
 
