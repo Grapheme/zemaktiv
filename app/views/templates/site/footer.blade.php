@@ -14,10 +14,11 @@
                 <div class="block__link"><a href="{{ pageurl('about') }}">О проекте</a></div>
                 <div class="block__link"><a href="{{ pageurl('contacts') }}">Контакты</a></div>
             </div>
-            <a href="https://mixpanel.com/f/partner"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_blue.png" alt="Mobile Analytics" /></a>
         </div>
         <div class="footer__right">
             <span>Симферопольское шоссе, 70 км от МКАД, +7 (495) 407-78-87</span>
+            <br>
+            <a href="https://mixpanel.com/f/partner"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_blue.png" alt="Mobile Analytics" /></a>
             <br>
             <a href="http://grapheme.ru" target="_blank">Разработано в ГРАФЕМА</a>
         </div>
