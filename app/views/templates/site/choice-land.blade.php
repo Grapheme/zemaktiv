@@ -159,7 +159,7 @@ $lands = Land::all();
                         <ul class="table__head">
                             <li class="body__item">
                                 <div class="wrapper">
-                                    <span data-sort="ASC" data-sort-name="number">Участок</span><span data-sort-name="turn">Очередь</span><span data-sort-name="land_area">Площадь, сот.</span><span data-sort-name="status">Статус</span><span data-sort-name="price">Цена участка, руб.</span><span data-sort-name="price_total">Цена участка с домом, руб.</span>
+                                    <span data-sort-name="number">Участок</span><span data-sort-name="turn">Очередь</span><span data-sort-name="land_area">Площадь, сот.</span><span data-sort-name="status">Статус</span><span data-sort="ASC" data-sort-name="price">Цена участка, руб.</span><span data-sort-name="price_total">Цена участка с домом, руб.</span>
                                 </div>
                             </li>
                         </ul>
