@@ -2171,8 +2171,8 @@ Garden.map = function() {
 			var self = this;
 			$(document).on('click', '.js-mark', function(){
 				var thisId = $(this).attr('data-id');
-				var thisNumber = Dictionary.buildings[thisId].number;
-				console.log(thisNumber);
+				var thisNumber = Dictionary.buildingsAll[thisId].number;
+				//console.log(thisNumber);
 				dataLayer.push({'event': 'ChooseLandMapClick', 'landId': thisNumber});
 				self.show(thisId);
 				return false;

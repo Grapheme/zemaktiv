@@ -63,7 +63,7 @@ $lands = Land::all();
                                 <a href="#" data-id class="js-book us-btn btn-white" onclick="carrotquest.track('TELLMEMORE');"><span>Забронировать</span></a>
                             </div>
                         </div>
-                        <div class="js-sold-block tooltip-sold">Данный участок продан</div>
+                        <div class="js-sold-block tooltip-sold">Этот участок уже нашел своего владельца</div>
                     </div>
                 </div>
             </div>
@@ -159,7 +159,7 @@ $lands = Land::all();
                         <ul class="table__head">
                             <li class="body__item">
                                 <div class="wrapper">
-                                    <span data-sort="ASC" data-sort-name="number">Участок</span><span data-sort-name="turn">Очередь</span><span data-sort-name="land_area">Площадь, сот.</span><span data-sort-name="status">Статус</span><span data-sort-name="price">Цена участка, руб.</span><span data-sort-name="price_total">Цена участка с домом, руб.</span>
+                                    <span data-sort-name="number">Участок</span><span data-sort-name="turn">Очередь</span><span data-sort-name="land_area">Площадь, сот.</span><span data-sort-name="status">Статус</span><span data-sort="ASC" data-sort-name="price">Цена участка, руб.</span><span data-sort-name="price_total">Цена участка с домом, руб.</span>
                                 </div>
                             </li>
                         </ul>
