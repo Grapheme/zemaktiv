@@ -18,7 +18,7 @@
         <div class="footer__right">
             <span>Симферопольское шоссе, 70 км от МКАД, +7 (495) 407-78-87</span>
             <br>
-            <a style="text-decoration: none; border: 0 none; margin-top: 10px;" href="https://mixpanel.com/f/partner"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_blue.png" alt="Mobile Analytics" /></a>
+            <a style="text-decoration: none; border: 0 none; margin-top: 10px; display: inline-block;" href="https://mixpanel.com/f/partner"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_blue.png" alt="Mobile Analytics" /></a>
             <!-- <br>
             <a href="http://grapheme.ru" target="_blank">Разработано в ГРАФЕМА</a> -->
         </div>
