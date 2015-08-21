@@ -60,6 +60,7 @@ if (isset($page->seos) && is_object($page->seos) && isset($page->seos[Config::ge
 <title>@yield('title')</title>
 <meta name="description" content="@yield('description')">
 <meta name="keywords" content="@yield('keywords')">
+<meta name='yandex-verification' content='54f47d13d029f566' /> 
 <!-- <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui"> -->
 
 <!-- <link rel="icon" type="image/png" href="{{ Config::get('site.theme_path') }}/images/build/favicon-32x32.png" sizes="32x32">
