@@ -2337,8 +2337,8 @@ Garden.map = function() {
 		init: function() {
 			var self = this;
 			if(!Dictionary.buildings[Help.getHash('id')]) {
-				self.setActive(1);
-				self.setCenter(1);
+				self.setActive(3);
+				self.setCenter(3);
 			}
 			$('.js-choice-left').on('click', function(){
 				if($(this).attr('disabled')) return false;
