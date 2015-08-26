@@ -33,7 +33,7 @@
             {{ Menu::placement('main_menu') }}
             <ul>
                 <li class="nav__item item-call js-open-overlay" data-open="call">
-                    <a href="#" class="item__link"><span>Заказать звонок</span></a>
+                    <a href="#" class="item__link"><span>Визит в посёлок</span></a>
                 </li>
                 <li class="nav__item item-phone">
                     <a href="tel:+74954077887" class="item__link"><span>+7 (495) 407-78-87</span></a>

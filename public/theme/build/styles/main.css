@@ -1940,13 +1940,13 @@ h2 {
           width: 8.5625rem;
           background: url(../images/ui/hint2.png) center center/100% auto no-repeat; }
         .wrapper-choise .choise__map .map__image .image__hint.hint-8 {
-          top: 38rem;
-          left: 143rem;
+          top: 15rem;
+          left: 149rem;
           width: 8.5625rem;
           background: url(../images/ui/hint2.png) center center/100% auto no-repeat; }
         .wrapper-choise .choise__map .map__image .image__hint.hint-9 {
-          top: 34rem;
-          left: 133rem;
+          top: 22rem;
+          left: 130rem;
           width: 8.5625rem;
           background: url(../images/ui/hint2.png) center center/100% auto no-repeat; }
       .wrapper-choise .choise__map .map__image .image__line {
@@ -2045,7 +2045,30 @@ h2 {
           border-width: 1.25rem 1.25rem 0 1.25rem;
           border-color: #fff transparent transparent transparent; }
         .wrapper-choise .choise__map .map__image .image__tooltip .tooltip-sold {
-          padding-top: 0.9375rem; }
+          padding-top: 0.625rem; }
+          .wrapper-choise .choise__map .map__image .image__tooltip .tooltip-sold .sold__status {
+            font-size: 0.75rem; }
+            .wrapper-choise .choise__map .map__image .image__tooltip .tooltip-sold .sold__status .status__icon {
+              position: relative;
+              display: inline-block;
+              vertical-align: middle;
+              border-radius: 1.0625rem;
+              width: 1.0625rem;
+              height: 1.0625rem;
+              margin-right: 0.9375rem;
+              background: rgba(206, 46, 46, 0.8); }
+              .wrapper-choise .choise__map .map__image .image__tooltip .tooltip-sold .sold__status .status__icon:after {
+                content: "";
+                position: absolute;
+                top: -2px;
+                left: -2px;
+                right: -2px;
+                bottom: -2px;
+                border-radius: 1.25rem;
+                border: 1px solid rgba(206, 46, 46, 0.8); }
+          .wrapper-choise .choise__map .map__image .image__tooltip .tooltip-sold .status__text {
+            display: inline-block;
+            vertical-align: middle; }
         .wrapper-choise .choise__map .map__image .image__tooltip .tooltip__close {
           position: absolute;
           display: inline-block;
@@ -2275,28 +2298,32 @@ h2 {
   .wrapper-choise .lines-choice {
     position: relative;
     margin-top: 1.25rem;
-    height: 4.0625rem;
+    height: 5rem;
     width: 20.375rem;
     text-align: center;
-    pointer-events: initial; }
+    pointer-events: initial;
+    background: rgba(255, 255, 255, 0.85); }
     .wrapper-choise .lines-choice .choice__left, .wrapper-choise .lines-choice .choice__right {
       display: inline-block;
       vertical-align: middle;
       height: 100%;
       width: 4.6875rem;
-      background-size: cover;
-      background-position: center center; }
+      background-size: 75%;
+      background-position: center center;
+      background-repeat: no-repeat; }
       .wrapper-choise .lines-choice .choice__left[disabled="disabled"], .wrapper-choise .lines-choice .choice__right[disabled="disabled"] {
         opacity: 0;
         cursor: default; }
     .wrapper-choise .lines-choice .choice__left {
-      float: left; }
+      float: left;
+      margin-left: 15px; }
       .wrapper-choise .lines-choice .choice__left[data-number="1"] {
         background-image: url(../images/ui/line1left.svg); }
       .wrapper-choise .lines-choice .choice__left[data-number="2"] {
         background-image: url(../images/ui/line2left.svg); }
     .wrapper-choise .lines-choice .choice__right {
-      float: right; }
+      float: right;
+      margin-right: 15px; }
       .wrapper-choise .lines-choice .choice__right[data-number="2"] {
         background-image: url(../images/ui/line2right.svg); }
       .wrapper-choise .lines-choice .choice__right[data-number="3"] {
@@ -2306,8 +2333,9 @@ h2 {
       vertical-align: middle;
       height: 100%;
       width: 8.4375rem;
-      background-size: cover;
-      background-position: center center; }
+      background-size: 85%;
+      background-position: center center;
+      background-repeat: no-repeat; }
       .wrapper-choise .lines-choice .choice__center[data-number="1"] {
         background-image: url(../images/ui/line1block.svg); }
       .wrapper-choise .lines-choice .choice__center[data-number="2"] {
