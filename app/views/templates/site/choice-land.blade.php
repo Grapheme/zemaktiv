@@ -63,7 +63,10 @@ $lands = Land::all();
                                 <a href="#" data-id class="js-book us-btn btn-white" onclick="carrotquest.track('TELLMEMORE');"><span>Забронировать</span></a>
                             </div>
                         </div>
-                        <div class="js-sold-block tooltip-sold">Этот участок уже нашел своего владельца</div>
+                        <div class="js-sold-block tooltip-sold">
+                            <div class="sold__status"><span class="status__icon"></span><span class="status__text">Продан</span></div>
+                            <p>Этот участок уже нашел своего владельца</p>
+                        </div>
                     </div>
                 </div>
             </div>
