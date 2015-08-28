@@ -204,6 +204,26 @@ Garden.autosize = function() {
 }
 Garden.overlayForms = function() {
 	var forms = $('.js-overlay-form');
+	forms.filter('#mortgage-form').validate({
+	    rules: {
+	        phone: {
+	            required: true
+	        }
+	    },
+	    submitHandler: function(form) {
+	        Help.ajaxSubmit(form, {
+	            success: function() {
+	                $(form).slideUp();
+	                $('.js-mortgage-success').slideDown();
+	                setTimeout(function(){
+	                	Garden.overlays.close();
+	                }, 1500);
+	                //dataLayer.push({'event': 'CallBackFormSend'});
+	            }
+	        });
+	        return false;
+	    }
+	});
 	forms.filter('#call-form').validate({
 	    rules: {
 	        phone: {
@@ -1207,6 +1227,27 @@ Garden.checkbox = function() {
 	$('.js-checkbox').button();
 	$('.js-radio').button();
 }
+Garden.stagesForm = function() {
+	$('.js-stages-form').each(function(){
+		var parent = $(this);
+		var stage = function(n) {
+			parent.find('.js-stage').eq(n).addClass('active')
+				.siblings().removeClass('active');
+			parent.find('.js-status-dot').eq(n).addClass('active')
+				.siblings().removeClass('active');
+		}
+		parent.find('input[type="radio"]').on('change', function(){
+			stage(1);
+			$('.js-status-dot').removeClass('disabled');
+		});
+		parent.find('.js-status-dot').on('click', function(){
+			if($(this).hasClass('disabled')) return false;
+			stage($(this).index()/2);
+			return false;
+		});
+		stage(0);
+	});
+}
 Garden.init = function() {
 	$('.js-gallery-track').on('click', function(){
 		dataLayer.push({'event': 'HousePhotoClick', 'landId': $(this).attr('data-number')});
@@ -1226,6 +1267,7 @@ Garden.init = function() {
 	this.indexLines();
 	this.book();
 	this.overlayForms();
+	this.stagesForm();
 	//this.speedUp();
 	//this.smartHover();
 }

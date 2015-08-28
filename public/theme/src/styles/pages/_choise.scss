@@ -466,56 +466,6 @@
 				}
 			}
 		}
-
-		.ui-button {
-			position: relative;
-			border: none;
-			background: transparent;
-			padding-left: 27rem / $fs;
-
-			&:before {
-				content: "";
-				position: absolute;
-				left: 0;
-				top: -1rem / $fs;
-				width: 20rem / $fs;
-				height: 20rem / $fs;
-				box-sizing: border-box;
-				border: 2px solid #42b974;
-				border-radius: 2px;
-			}
-
-			&:after {
-				content: "";
-				position: absolute;
-				left: 7rem / $fs;
-				top: 6rem / $fs;
-				width: 6rem / $fs;
-				height: 6rem / $fs;
-				background: #42b974;
-				opacity: 0;
-				transform: scale(2);
-				transition: all .2s;
-			}
-
-			&.ui-state-active {
-				&:after {
-					opacity: 1;
-					transform: scale(1);
-				}
-			}
-		}
-
-		.ui-button-text {
-			padding: 0;
-			font-size: 16rem / $fs;
-			font-family: "room";
-			color: #111;
-		}
-
-		.ui-state-disabled, .ui-widget-content .ui-state-disabled, .ui-widget-header .ui-state-disabled {
-			opacity: 1;
-		}
 	}
 
 	.filter__list {
@@ -692,4 +642,54 @@
 			content: "↑";
 		}
 	}
+}
+
+.ui-button {
+	position: relative;
+	border: none;
+	background: transparent;
+	padding-left: 27rem / $fs;
+
+	&:before {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: -1rem / $fs;
+		width: 20rem / $fs;
+		height: 20rem / $fs;
+		box-sizing: border-box;
+		border: 2px solid #42b974;
+		border-radius: 2px;
+	}
+
+	&:after {
+		content: "";
+		position: absolute;
+		left: 7rem / $fs;
+		top: 6rem / $fs;
+		width: 6rem / $fs;
+		height: 6rem / $fs;
+		background: #42b974;
+		opacity: 0;
+		transform: scale(2);
+		transition: all .2s;
+	}
+
+	&.ui-state-active {
+		&:after {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+}
+
+.ui-button-text {
+	padding: 0;
+	font-size: 16rem / $fs;
+	font-family: "room";
+	color: #111;
+}
+
+.ui-state-disabled, .ui-widget-content .ui-state-disabled, .ui-widget-header .ui-state-disabled {
+	opacity: 1;
 }

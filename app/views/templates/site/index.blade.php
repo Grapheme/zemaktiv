@@ -71,6 +71,21 @@ endif;
             <div class="item__title">{{ $page->block('btn_land') }}</div>
         </a>
     </div>
+    @if(0)
+    <div class="index-block mortgage-block">
+        <div class="wrapper">
+            <div class="block__title">Схемы покупки</div>
+            <div class="block__text text-min">Воспользуйтесь ипотекой от Сбербанка или рассрочкой от застройщика.</div>
+            <div class="mortgage">
+                <div class="mortgage__item" style="background-image: url(/theme/build/images/mortgage/sberbank.png)"></div>
+                <div class="mortgage__item" style="background-image: url(/theme/build/images/mortgage/zemaktiv.png)"></div>
+            </div>
+            <div class="block__btn">
+                <a href="#" class="us-btn btn-blue js-open-overlay" data-open="mortgage"><span>Получить консультацию</span></a>
+            </div>
+        </div>
+    </div>
+    @endif
     <div class="index-block">
         <div class="wrapper">
             <div class="block__title">Коммуникации</div>

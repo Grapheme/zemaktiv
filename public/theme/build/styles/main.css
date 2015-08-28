@@ -1281,6 +1281,8 @@ h2 {
 .index-block {
   padding: 2.5rem 0;
   text-align: center; }
+  .index-block.mortgage-block {
+    padding-bottom: 6.25rem; }
   .index-block.block-choise {
     padding: 0;
     color: #fff;
@@ -1341,6 +1343,17 @@ h2 {
       .index-block .block-line .inside__slide.transition {
         -webkit-transition: all 0.5s ease;
                 transition: all 0.5s ease; }
+  .index-block .mortgage {
+    padding: 30px 0; }
+    .index-block .mortgage .mortgage__item {
+      display: inline-block;
+      vertical-align: middle;
+      width: 300px;
+      height: 75px;
+      margin: 0 85px;
+      background-size: auto 100%;
+      background-position: center center;
+      background-repeat: no-repeat; }
 
 .index-filter {
   width: 75rem;
@@ -1450,6 +1463,83 @@ h2 {
       background-position: center center;
       width: 12.1875rem;
       height: 12.1875rem; }
+
+.stages-form .ui-button:before {
+  border-color: #fff; }
+
+.stages-form .ui-button:after {
+  background: #fff; }
+
+.stages-form .ui-button-text {
+  color: #fff; }
+
+.stages-form .ui-button-text-only .ui-button-text {
+  padding: 0; }
+
+.stages-form .stage__checks {
+  display: inline-block;
+  text-align: left;
+  width: 18.75rem;
+  margin-top: 0.9375rem; }
+  .stages-form .stage__checks label {
+    margin-top: 0.625rem; }
+
+.stages-status {
+  font-size: 0; }
+  .stages-status .status__dot {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 1.0625rem;
+    height: 1.0625rem;
+    border-radius: 1.0625rem;
+    background: #fff;
+    -webkit-transition: all 0.5s ease;
+            transition: all 0.5s ease; }
+    .stages-status .status__dot:before {
+      content: "";
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      right: -4px;
+      bottom: -4px;
+      border: 2px solid transparent;
+      border-radius: 50%;
+      -webkit-transition: all 0.5s ease;
+              transition: all 0.5s ease; }
+    .stages-status .status__dot.active {
+      -webkit-transform: scale(0.7);
+          -ms-transform: scale(0.7);
+              transform: scale(0.7); }
+      .stages-status .status__dot.active:before {
+        border-color: #fff; }
+  .stages-status .status__line {
+    display: inline-block;
+    vertical-align: middle;
+    height: 1px;
+    width: 4.375rem;
+    background: #fff; }
+
+.form-mortgage {
+  height: 200px;
+  position: relative; }
+  .form-mortgage .form__stage {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    -webkit-transition: all 0.5s ease;
+            transition: all 0.5s ease; }
+    .form-mortgage .form__stage.active {
+      z-index: 3;
+      opacity: 1; }
+  .form-mortgage .stages-status {
+    position: relative;
+    z-index: 1;
+    padding-top: 230px; }
 
 .right__contacts {
   padding-left: 3.125rem; }
@@ -2212,47 +2302,6 @@ h2 {
           background: #42b974; }
         .wrapper-choise .choise-filter .filter__form .form__slider .ui-slider-handle {
           cursor: pointer; }
-    .wrapper-choise .choise-filter .ui-button {
-      position: relative;
-      border: none;
-      background: transparent;
-      padding-left: 1.6875rem; }
-      .wrapper-choise .choise-filter .ui-button:before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: -0.0625rem;
-        width: 1.25rem;
-        height: 1.25rem;
-        box-sizing: border-box;
-        border: 2px solid #42b974;
-        border-radius: 2px; }
-      .wrapper-choise .choise-filter .ui-button:after {
-        content: "";
-        position: absolute;
-        left: 0.4375rem;
-        top: 0.375rem;
-        width: 0.375rem;
-        height: 0.375rem;
-        background: #42b974;
-        opacity: 0;
-        -webkit-transform: scale(2);
-            -ms-transform: scale(2);
-                transform: scale(2);
-        -webkit-transition: all 0.2s;
-                transition: all 0.2s; }
-      .wrapper-choise .choise-filter .ui-button.ui-state-active:after {
-        opacity: 1;
-        -webkit-transform: scale(1);
-            -ms-transform: scale(1);
-                transform: scale(1); }
-    .wrapper-choise .choise-filter .ui-button-text {
-      padding: 0;
-      font-size: 1rem;
-      font-family: "room";
-      color: #111; }
-    .wrapper-choise .choise-filter .ui-state-disabled, .wrapper-choise .choise-filter .ui-widget-content .ui-state-disabled, .wrapper-choise .choise-filter .ui-widget-header .ui-state-disabled {
-      opacity: 1; }
   .wrapper-choise .filter__list {
     display: none;
     background: #fff;
@@ -2353,6 +2402,50 @@ h2 {
     content: "↓"; }
   .wrapper-choise [data-sort="DESC"]:after {
     content: "↑"; }
+
+.ui-button {
+  position: relative;
+  border: none;
+  background: transparent;
+  padding-left: 1.6875rem; }
+  .ui-button:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -0.0625rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    box-sizing: border-box;
+    border: 2px solid #42b974;
+    border-radius: 2px; }
+  .ui-button:after {
+    content: "";
+    position: absolute;
+    left: 0.4375rem;
+    top: 0.375rem;
+    width: 0.375rem;
+    height: 0.375rem;
+    background: #42b974;
+    opacity: 0;
+    -webkit-transform: scale(2);
+        -ms-transform: scale(2);
+            transform: scale(2);
+    -webkit-transition: all 0.2s;
+            transition: all 0.2s; }
+  .ui-button.ui-state-active:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1); }
+
+.ui-button-text {
+  padding: 0;
+  font-size: 1rem;
+  font-family: "room";
+  color: #111; }
+
+.ui-state-disabled, .ui-widget-content .ui-state-disabled, .ui-widget-header .ui-state-disabled {
+  opacity: 1; }
 
 .overlay {
   display: none;

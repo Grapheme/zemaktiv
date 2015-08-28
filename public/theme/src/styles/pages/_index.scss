@@ -129,6 +129,10 @@
 	padding: 40rem / $fs 0;
 	text-align: center;
 
+	&.mortgage-block {
+		padding-bottom: 100rem / $fs;
+	}
+
 	&.block-choise {
 		padding: 0;
 		color: #fff;
@@ -208,6 +212,23 @@
 
 			&.transition {
 				transition: all .5s ease;
+			}
+		}
+	}
+
+	.mortgage {
+		padding: 30px 0;
+
+		.mortgage__item {
+			display: inline-block;
+			vertical-align: middle;
+			width: 300px;
+			height: 75px;
+			margin: 0 85px;
+			background: {
+				size: auto 100%;
+				position: center center;
+				repeat: no-repeat;
 			}
 		}
 	}
@@ -358,5 +379,106 @@
 			width: 195rem / $fs;
 			height: 195rem / $fs;
 		}
+	}
+}
+
+.stages-form {
+	.ui-button {
+		&:before {
+			border-color: #fff;
+		}
+		
+		&:after {
+			background: #fff;
+		}
+	}
+
+	.ui-button-text {
+		color: #fff;
+	}
+
+	.ui-button-text-only .ui-button-text {
+		padding: 0;
+	}
+
+	.stage__checks {
+		display: inline-block;
+		text-align: left;
+		width: 300rem / $fs;
+		margin-top: 15rem / $fs;
+
+		label {
+			margin-top: 10rem / $fs;
+		}
+	}
+}
+
+.stages-status {
+	font-size: 0;
+
+	.status__dot {
+		position: relative;
+		display: inline-block;
+		vertical-align: middle;
+		width: 17rem / $fs;
+		height: 17rem / $fs;
+		border-radius: 17rem / $fs;
+		background: #fff;
+		transition: all .5s ease;
+
+		&:before {
+			content: "";
+			position: absolute;
+			top: -4px;
+			left: -4px;
+			right: -4px;
+			bottom: -4px;
+			border: 2px solid transparent;
+			border-radius: 50%;
+			transition: all .5s ease;
+		}
+
+		&.active {
+			transform: scale(.7);
+
+			&:before {
+				border-color: #fff;
+			}
+		}
+	}
+
+	.status__line {
+		display: inline-block;
+		vertical-align: middle;
+		height: 1px;
+		width: 70rem / $fs;
+		background: #fff;
+	}
+}
+
+.form-mortgage {
+	height: 200px;
+	position: relative;
+
+	.form__stage {
+		position: absolute;
+		z-index: 2;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		opacity: 0;
+		transition: all .5s ease;
+
+		&.active {
+			z-index: 3;
+			opacity: 1;
+		}
+	}
+
+	.stages-status {
+		position: relative;
+		z-index: 1;
+		padding-top: 230px;
 	}
 }
