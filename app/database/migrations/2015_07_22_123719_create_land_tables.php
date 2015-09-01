@@ -20,6 +20,7 @@ class CreateLandTables extends Migration {
 			$table->text('description')->nullable();
 			$table->integer('photo_id')->unsigned()->nullable();
 			$table->integer('gallery_id')->unsigned()->nullable();
+			$table->integer('click')->default(0)->unsigned()->nullable();
 			$table->boolean('sold')->default(0)->unsigned()->nullable();
 			$table->timestamps();
 		});

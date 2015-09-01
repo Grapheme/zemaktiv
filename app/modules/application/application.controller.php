@@ -9,6 +9,7 @@ class ApplicationController extends BaseController {
     public static function returnRoutes($prefix = null) {
         $class = __CLASS__;
         Route::get('ya-feed', array('as' => 'yandex-feed', 'uses' => $class . '@yandexFeed'));
+        Route::post('click-tracker', array('as' => 'click.tracker', 'uses' => $class . '@clickTracker'));
     }
 
     /****************************************************************************/
@@ -99,8 +100,26 @@ class ApplicationController extends BaseController {
 
         $vars = array();
         $lands = Land::where('sold', 0)->where('price_house', 0)->with('photo')->get();
-        $ya_feed = View::make(Helper::layout('yandex-feed'),compact('lands'))->render();
+        $ya_feed = View::make(Helper::layout('yandex-feed'), compact('lands'))->render();
         $this->make_xml();
         return Response::xml($vars, 200, array(), $ya_feed);
+    }
+
+    public function clickTracker() {
+
+        $json_request = array('status' => FALSE, 'responseText' => '', 'redirect' => FALSE);
+        if (Request::ajax()):
+            $validator = Validator::make(Input::all(), array('land_id' => 'required'));
+            if ($validator->passes()):
+                if ($land = Lang::where('id', Input::get('land_id'))->first()):
+                    $land->click = $land->click + 1;
+                    $land->save;
+                    $json_request['status'] = TRUE;
+                endif;
+            endif;
+        else:
+            return Redirect::back();
+        endif;
+        return Response::json($json_request, 200);
     }
 }

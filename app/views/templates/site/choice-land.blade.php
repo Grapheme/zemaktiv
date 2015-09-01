@@ -186,6 +186,7 @@ $lands = Land::all();
 @section('scripts')
     <script>
         Dictionary = window.Dictionary || {};
+        Dictionary.click_tracker_url = '{{ URL::route('click.tracker') }}';
         Dictionary.buildingsAll = {
             @if($lands->count())
                 @foreach($lands as $land)
@@ -200,7 +201,8 @@ $lands = Land::all();
                         coordinate_y: {{ $land->coordinate_y }},
                         sold: {{ $land->sold }},
                         status: {{ $land->status }},
-                        turn: {{ $land->turn }}
+                        turn: {{ $land->turn }},
+                        clicks: {{ $land->click }}
                     },
                 @endforeach
             @endif
@@ -220,7 +222,8 @@ $lands = Land::all();
                             coordinate_y: {{ $land->coordinate_y }},
                             sold: {{ $land->sold }},
                             status: {{ $land->status }},
-                            turn: {{ $land->turn }}
+                            turn: {{ $land->turn }},
+                            clicks: {{ $land->click }}
                         },
                     @endif
                 @endforeach
