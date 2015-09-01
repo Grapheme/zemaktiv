@@ -30,6 +30,11 @@ class ApplicationController extends BaseController {
     public static function returnMenu() {
 
         $menu_child[] = array(
+            'title' => 'Макеты домов',
+            'link' => 'layouts-homes',
+            'class' => 'fa-circle',
+        );
+        $menu_child[] = array(
             'title' => 'Готовые дома',
             'link' => 'buildings',
             'class' => 'fa-circle',
@@ -37,7 +42,7 @@ class ApplicationController extends BaseController {
         $menu_child[] = array(
             'title' => 'Участки',
             'link' => 'land',
-            'class' => 'fa-circle-o',
+            'class' => 'fa-circle',
         );
         $menu[] = array(
             'title' => 'Каталог',
