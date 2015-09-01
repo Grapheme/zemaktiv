@@ -544,41 +544,40 @@ body {
       .half-page .page__right .benefits__item:last-child {
         border-bottom: none; }
 
-.tabs-title .us-title {
-  float: left;
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 1.5625rem; }
-
-.tabs-title .title__link {
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: 1.5625rem;
-  font-family: 'pf_agora_slab_pro';
-  font-weight: 700;
-  color: #3eadda;
-  text-decoration: none;
-  border-bottom: 1px dotted #3eadda;
-  -webkit-transition: all 0.2s ease;
-          transition: all 0.2s ease; }
-  .tabs-title .title__link:first-child {
-    margin-left: 0; }
-  .tabs-title .title__link:hover {
-    border-bottom: 1px dotted transparent; }
-
-.tabs-title .tabs-right {
-  position: relative;
-  height: 4.0625rem;
-  line-height: 4.0625rem; }
-  .tabs-title .tabs-right a {
+.tabs-title {
+  overflow: hidden; }
+  .tabs-title .us-title {
+    float: left;
     display: inline-block;
     vertical-align: middle;
-    line-height: normal;
-    margin-left: 0;
-    margin-right: 0.625rem; }
-
-.tabs-title.many-tabs .tabs-right {
-  line-height: 2.03125rem; }
+    margin-right: 1.5625rem; }
+  .tabs-title .title__link {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 1.5625rem;
+    font-family: 'pf_agora_slab_pro';
+    font-weight: 700;
+    color: #3eadda;
+    text-decoration: none;
+    border-bottom: 1px dotted #3eadda;
+    -webkit-transition: all 0.2s ease;
+            transition: all 0.2s ease; }
+    .tabs-title .title__link:first-child {
+      margin-left: 0; }
+    .tabs-title .title__link:hover {
+      border-bottom: 1px dotted transparent; }
+  .tabs-title .tabs-right {
+    position: relative;
+    height: 4.0625rem;
+    line-height: 4.0625rem; }
+    .tabs-title .tabs-right a {
+      display: inline-block;
+      vertical-align: middle;
+      line-height: normal;
+      margin-left: 0;
+      margin-right: 0.625rem; }
+  .tabs-title.many-tabs .tabs-right {
+    line-height: 2.03125rem; }
 
 h2 {
   font-family: 'pf_agora_slab_pro';

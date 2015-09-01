@@ -202,7 +202,7 @@ $lands = Land::all();
                         sold: {{ $land->sold }},
                         status: {{ $land->status }},
                         turn: {{ $land->turn }},
-                        clicks: {{ $land->click }}
+                        clicks: "{{ $land->click }}"
                     },
                 @endforeach
             @endif
@@ -223,7 +223,7 @@ $lands = Land::all();
                             sold: {{ $land->sold }},
                             status: {{ $land->status }},
                             turn: {{ $land->turn }},
-                            clicks: {{ $land->click }}
+                            clicks: "{{ $land->click }}"
                         },
                     @endif
                 @endforeach
