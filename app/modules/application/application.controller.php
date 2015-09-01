@@ -111,9 +111,9 @@ class ApplicationController extends BaseController {
         if (Request::ajax()):
             $validator = Validator::make(Input::all(), array('land_id' => 'required'));
             if ($validator->passes()):
-                if ($land = Lang::where('id', Input::get('land_id'))->first()):
+                if ($land = Land::where('id', Input::get('land_id'))->first()):
                     $land->click = $land->click + 1;
-                    $land->save;
+                    $land->save();
                     $json_request['status'] = TRUE;
                 endif;
             endif;
