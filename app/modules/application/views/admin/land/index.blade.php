@@ -10,8 +10,9 @@
                         <th class="text-center" style="width:40px">#</th>
                         <th style="width:40%;" class="text-center">Название</th>
                         <th style="width:25%;" class="text-center">Цена участка</th>
-                        <th style="width:25%;" class="text-center">Цена участка с домом</th>
+                        <th style="width:25%;" class="text-center">Цена с домом</th>
                         <th style="width:10%;" class="text-center">Статус</th>
+                        <th style="width:10%;" class="text-center">Просмотры</th>
                         <th class="width-250 text-center">Действия</th>
                     </tr>
                     </thead>
@@ -24,6 +25,7 @@
                             <td>{{ number_format($land->price, 2, '.', ' ') }} руб.</td>
                             <td>{{ number_format($land->price_house, 2, '.', ' ') }} руб.</td>
                             <td>{{ $land->sold ? 'Продан' : '' }}</td>
+                            <td>{{ $land->click }}</td>
                             <td class="text-center" style="white-space:nowrap;">
                                 @if(Allow::action('application','edit'))
                                     <a class="btn btn-success margin-right-5"
