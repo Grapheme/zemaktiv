@@ -18,7 +18,14 @@
                         <tr>
                             <?php $sub_index = Input::has('page') ? (int)Input::get('page')-1 : 0;?>
                             <td>{{ ($index+1)+($sub_index*25) }}</td>
-                            <td>Участок №{{ $build->land->number }}. {{ $build->title }}</td>
+                            <td>
+                            @if(!empty($build->land))
+                                Участок №{{ $build->land->number }}.
+                            @else
+                                Без участка.
+                            @endif
+                                {{ $build->title }}
+                            </td>
                             <td>{{ number_format($build->price, 2, '.', ' ') }} руб.</td>
                             <td class="text-center" style="white-space:nowrap;">
                                 @if(Allow::action('application','edit'))
