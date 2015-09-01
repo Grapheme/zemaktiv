@@ -15,21 +15,104 @@ $lands = Land::all();
     <div class="us-page">
         <div class="wrapper">
             <h1 class="us-title title-green"><span>{{ $page->seo->h1 }}</span></h1>
+            <div class="us-desc">
+                Воспользуйтесь фильтрами для поиска подходящего варианта. На этой странице – готовые дома и некоторые типовые проекты наших партнеров.
+            </div>
+            <div class="build-filter">
+                <div class="filter__block">
+                    <div class="block__title">Я хочу</div>
+                    <div class="block__check">
+                        <input value="0" name="" type="checkbox" class="js-checkbox js-set-for">
+                        <label class="js-set-for">Уже готовый дом</label>
+                    </div>
+                    <div class="block__check">
+                        <input value="0" name="" type="checkbox" class="js-checkbox js-set-for">
+                        <label class="js-set-for">Построить дом</label>
+                    </div>
+                    <div class="block__check">
+                        <input value="0" name="" type="checkbox" class="js-checkbox js-set-for">
+                        <label class="js-set-for">Все варианты</label>
+                    </div>
+                </div>
+                <div class="filter__block">
+                    <div class="block__title">Технология</div>
+                    <div class="block__check">
+                        <input value="0" name="" type="checkbox" class="js-checkbox js-set-for">
+                        <label class="js-set-for">Каркасные дома</label>
+                    </div>
+                    <div class="block__check">
+                        <input value="0" name="" type="checkbox" class="js-checkbox js-set-for">
+                        <label class="js-set-for">Газобетонные блоки</label>
+                    </div>
+                    <div class="block__check">
+                        <input value="0" name="" type="checkbox" class="js-checkbox js-set-for">
+                        <label class="js-set-for">Оцилиндрованное дерево</label>
+                    </div>
+                    <div class="block__check">
+                        <input value="0" name="" type="checkbox" class="js-checkbox js-set-for">
+                        <label class="js-set-for">Все технологии</label>
+                    </div>
+                </div>
+                <div class="filter__block">
+                    <div class="block__title">Площадь дома, кв. м</div>
+                    <div class="block__check">
+                        <input value="0" name="" type="checkbox" class="js-checkbox js-set-for">
+                        <label class="js-set-for">до 150</label>
+                    </div>
+                    <div class="block__check">
+                        <input value="0" name="" type="checkbox" class="js-checkbox js-set-for">
+                        <label class="js-set-for">151-180</label>
+                    </div>
+                    <div class="block__check">
+                        <input value="0" name="" type="checkbox" class="js-checkbox js-set-for">
+                        <label class="js-set-for">от 181</label>
+                    </div>
+                    <div class="block__check">
+                        <input value="0" name="" type="checkbox" class="js-checkbox js-set-for">
+                        <label class="js-set-for">Любая площадь</label>
+                    </div>
+                </div>
+                <div class="filter__block">
+                    <div class="block__title">Цена, руб.</div>
+                    <div class="block__check">
+                        <input value="0" name="" type="checkbox" class="js-checkbox js-set-for">
+                        <label class="js-set-for">до 2 млн</label>
+                    </div>
+                    <div class="block__check">
+                        <input value="0" name="" type="checkbox" class="js-checkbox js-set-for">
+                        <label class="js-set-for">от 2 до 2,5 млн</label>
+                    </div>
+                    <div class="block__check">
+                        <input value="0" name="" type="checkbox" class="js-checkbox js-set-for">
+                        <label class="js-set-for">от 2,5 до 3,5 млн</label>
+                    </div>
+                    <div class="block__check">
+                        <input value="0" name="" type="checkbox" class="js-checkbox js-set-for">
+                        <label class="js-set-for">от 3,5 млн</label>
+                    </div>
+                    <div class="block__check">
+                        <input value="0" name="" type="checkbox" class="js-checkbox js-set-for">
+                        <label class="js-set-for">не имеет значения</label>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <a href="#" class="filter__update"></a>
+            </div>
         </div>
         @if($buildings->count())
             <div class="done">
-                @foreach($buildings as $build)
-                    <?php
-                    $hasImage = $hasGallery = FALSE;
-                    if (!empty($build->photo) && File::exists(Config::get('site.galleries_photo_dir') . '/' . $build->photo->name)):
-                        $hasImage = TRUE;
-                    endif;
-                    if (isset($build->gallery->photos) && !empty($build->gallery->photos)):
-                        $hasGallery = TRUE;
-                    endif;
-                    ?>
-                    <div class="done__house">
-                        <div class="wrapper">
+                <div class="wrapper">
+                    @foreach($buildings as $build)
+                        <?php
+                        $hasImage = $hasGallery = FALSE;
+                        if (!empty($build->photo) && File::exists(Config::get('site.galleries_photo_dir') . '/' . $build->photo->name)):
+                            $hasImage = TRUE;
+                        endif;
+                        if (isset($build->gallery->photos) && !empty($build->gallery->photos)):
+                            $hasGallery = TRUE;
+                        endif;
+                        ?>
+                        <div class="done__house">
                             <div class="house__left">
                                 <div style="{{ $hasImage ? 'background-image: url('.asset(Config::get('site.galleries_photo_public_dir').'/'.$build->photo->name).')' : '' }};"
                                      class="left__main-image">
@@ -95,8 +178,8 @@ $lands = Land::all();
                             </div>
                             <div class="clearfix"></div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
             <div class="wrapper">
                 {{ $buildings->links() }}

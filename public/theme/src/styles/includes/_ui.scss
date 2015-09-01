@@ -195,6 +195,15 @@
 	}
 }
 
+.us-desc {
+	font-size: 16rem / $fs;
+	color: rgb(0, 0, 0);
+	font-weight: 700;
+	line-height: 1.063;
+	width: 500rem / $fs;
+	margin-top: 20rem / $fs;
+}
+
 .metro-icon {
 	display: inline-block;
 	vertical-align: middle;

@@ -1248,10 +1248,22 @@ Garden.stagesForm = function() {
 		stage(0);
 	});
 }
+Garden.setFor = function() {
+	var count = 0;
+	$('input.js-set-for').each(function(){
+		var input = $(this);
+		var parent = input.parent();
+		var setStr = 'input' + count;
+		input.attr('id', setStr);
+		parent.find('label').attr('for', setStr);
+		count++;
+	});
+}
 Garden.init = function() {
 	$('.js-gallery-track').on('click', function(){
 		dataLayer.push({'event': 'HousePhotoClick', 'landId': $(this).attr('data-number')});
 	});
+	this.setFor();
 	this.header();
 	this.indexSlider();
 	this.ymap();
