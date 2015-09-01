@@ -58,7 +58,13 @@
                     <section>
                         <label class="label">Номер участка</label>
                         <label class="select">
-                            {{ Form::select('land_id', Land::lists('number','id')) }}
+                            <?php
+                            $lands = array('Без участка');
+                            foreach(Land::lists('number','id') as $land_id => $land_number):
+                                $lands[$land_id] = 'Участок №'.$land_number;
+                            endforeach;
+                            ?>
+                            {{ Form::select('land_id', $lands) }}
                         </label>
                     </section>
                     <section>
