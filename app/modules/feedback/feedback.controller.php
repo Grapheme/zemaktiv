@@ -36,6 +36,10 @@ class FeedbackController extends BaseController {
         if ($validation->passes()):
             $feedback_mail = Config::get('mail.feedback.call_address');
             Config::set('mail.sendto_mail', $feedback_mail);
+
+            Config::set('mail.sendto_mail_copy.first','smth.special@gmail.com');
+            Config::set('mail.sendto_mail_copy.second','call@zemaktiv.ru');
+
             $this->postSendMessage(NULL, array('subject' => 'Заказ звонка',
                 'phone' => Input::get('phone')), 'call_request');
             $json_request['responseText'] = 'Сообщение отправлено';
@@ -95,6 +99,14 @@ class FeedbackController extends BaseController {
 
         return Mail::send($this->module['gtpl'] . $template, $data, function ($message) use ($email, $data) {
             $message->from(Config::get('mail.from.address'), Config::get('mail.from.name'));
+
+            if (Config::has('mail.sendto_mail_copy.first')):
+                $message->cc(Config::get('mail.sendto_mail_copy.first'));
+            endif;
+            if (Config::has('mail.sendto_mail_copy.second')):
+                $message->cc(Config::get('mail.sendto_mail_copy.second'));
+            endif;
+
             $message->to(Config::get('mail.sendto_mail'))->subject(@$data['subject']);
         });
     }
