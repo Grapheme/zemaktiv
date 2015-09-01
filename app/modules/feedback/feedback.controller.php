@@ -32,16 +32,17 @@ class FeedbackController extends BaseController {
 
         if (!Request::ajax()) return App::abort(404);
         $json_request = array('status' => FALSE, 'responseText' => '', 'redirect' => FALSE);
-        $validation = Validator::make(Input::all(), array('phone' => 'required'));
+        $validation = Validator::make(Input::all(), array('phone' => 'required', 'request'=>'required'));
         if ($validation->passes()):
             $feedback_mail = Config::get('mail.feedback.call_address');
+            $feedback_mail = 'vkharseev@gmail.com';
             Config::set('mail.sendto_mail', $feedback_mail);
 
-            Config::set('mail.sendto_mail_copy.first','smth.special@gmail.com');
-            Config::set('mail.sendto_mail_copy.second','call@zemaktiv.ru');
+//            Config::set('mail.sendto_mail_copy.first','smth.special@gmail.com');
+//            Config::set('mail.sendto_mail_copy.second','call@zemaktiv.ru');
 
             $this->postSendMessage(NULL, array('subject' => 'Заказ звонка',
-                'phone' => Input::get('phone')), 'call_request');
+                'phone' => Input::get('phone'), 'request' => Input::get('request')), 'call_request');
             $json_request['responseText'] = 'Сообщение отправлено';
             $json_request['status'] = TRUE;
         else:
