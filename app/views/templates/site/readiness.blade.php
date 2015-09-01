@@ -13,7 +13,6 @@
             <div class="page-full">
                 <div class="tabs-title">
                     <h1 class="us-title title-yellow"><span>{{ $page->seo->h1 }}</span></h1>
-                    @include(Helper::layout('about-menu'),array('hidden'=>'readiness'))
                 </div>
                 <div class="us-article">
                     {{ $page->block('content') }}
