@@ -3,7 +3,6 @@
  * TEMPLATE_IS_NOT_SETTABLE
  */
 ?>
-{{ $hidden }}
 <div class="tabs-right">
     <div class="right-cont">
         <a href="{{ pageurl('about') }}" class="title__link" @if ($hidden == 'about')style="display: none;"@endif>О проекте</a>
