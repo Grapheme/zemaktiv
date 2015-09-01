@@ -8,9 +8,9 @@
                     <thead>
                     <tr>
                         <th class="text-center" style="width:40px">#</th>
-                        <th style="width:40%;" class="text-center">Название</th>
-                        <th style="width:25%;" class="text-center">Цена участка</th>
-                        <th style="width:25%;" class="text-center">Цена с домом</th>
+                        <th style="width:20%;" class="text-center">Название</th>
+                        <th style="width:15%;" class="text-center"><nobr>Цена участка</nobr></th>
+                        <th style="width:15%;" class="text-center"><nobr>Цена с домом</nobr></th>
                         <th style="width:10%;" class="text-center">Статус</th>
                         <th style="width:10%;" class="text-center">Просмотры</th>
                         <th class="width-250 text-center">Действия</th>
