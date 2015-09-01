@@ -7,7 +7,7 @@
     <div class="wrapper">
         <div class="footer__left">
             <div class="left__block">
-                <div class="block__link"><span>&copy; Земактив 2015.<? if (date('Y') > 2015) { echo '-' . date('Y'); } ?></span></div>
+                <div class="block__link"><span>&copy; Земактив 2015<? if (date('Y') > 2015) { echo '-' . date('Y'); } ?></span></div>
                 <div class="block__link"><a href="{{ pageurl('about-company') }}">О компании</a></div>
             </div>
             <div class="left__block">
