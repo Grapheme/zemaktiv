@@ -127,6 +127,7 @@ body {
 }
 
 .tabs-title {
+	overflow: hidden;
 
 	.us-title {
 		float: left;
@@ -277,6 +278,10 @@ h2 {
 			}
 		}
 	}	
+}
+
+.no-border {
+	border: none !important;
 }
 
 .martop40 {
