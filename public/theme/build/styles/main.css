@@ -650,6 +650,9 @@ h2 {
     .download-block .block__item .item__link:hover span {
       border-bottom: 1px solid transparent; }
 
+.no-border {
+  border: none !important; }
+
 .martop40 {
   margin-top: 2.5rem !important; }
 
