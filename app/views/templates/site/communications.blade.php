@@ -20,7 +20,7 @@ endif;
     <div class="half-page">
         <div class="wrapper">
             <div class="page__left">
-                <h1 class="us-title title-blue"><span>{{ $page->seo->h1 }}</span></h1>
+                <h1 class="us-title title-yellow"><span>{{ $page->seo->h1 }}</span></h1>
 
                 <div class="us-article">
                     {{ $page->block('content') }}

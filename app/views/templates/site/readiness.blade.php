@@ -12,9 +12,8 @@
         <div class="wrapper">
             <div class="page-full">
                 <div class="tabs-title">
-                    <h1 class="us-title title-yellow"><span>{{ $page->seo->h1 }}</span></h1>
+                    <h1 class="us-title title-blue"><span>{{ $page->seo->h1 }}</span></h1>
                 </div>
-                <br>
                 <div class="us-article">
                     {{ $page->block('content') }}
                 </div>
