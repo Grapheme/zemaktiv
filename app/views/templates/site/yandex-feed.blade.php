@@ -7,7 +7,7 @@
 <realty-feed xmlns="http://webmaster.yandex.ru/schemas/feed/realty/2010-06">
     <generation-date>{{ date('c') }}</generation-date>
     @foreach($lands as $land)
-        <offer internal-id="17">
+        <offer internal-id="{{ $land->number }}">
             <type>продажа</type>
             <property-type>жилая</property-type>
             <category>участок</category>
