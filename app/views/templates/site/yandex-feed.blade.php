@@ -4,7 +4,7 @@
  */
 ?>
 <?= '<?xml version="1.0" encoding="utf-8"?>'; ?>
-<realty-feed xmlns="http://webmaster.yandex.ru/schemas/feed/realty/2010-06">
+<realty-feed xmlns="http://webmaster.yandex.ru/schemas/feed/realty/2010-06-01">
     <generation-date>{{ date('c') }}</generation-date>
     @foreach($lands as $land)
         <offer internal-id="{{ $land->number }}">
