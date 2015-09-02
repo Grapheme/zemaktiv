@@ -39,7 +39,7 @@
                 <currency>RUR</currency>
             </price>
             <mortgage>1</mortgage>
-            <image>@if(!empty($land->photo)) {{ $land->photo->name }} {{ asset('uploads/galleries/1438850036_1591.jpg') }} @endif</image>
+            <image>@if(!empty($land->photo)) {{ $land->photo->name }} @else {{ asset('uploads/galleries/1438850036_1591.jpg') }} @endif</image>
             <description>
                 Симферопольское шоссе, 69 км от МКАД. Участки без подряда и готовые дома в окружении леса с действующими
                 коммуникациями от 699 000 рублей. Охраняемый коттеджный посёлок с детскими площадками и зонами отдыха.
