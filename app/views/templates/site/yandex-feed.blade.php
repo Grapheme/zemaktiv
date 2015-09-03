@@ -46,7 +46,7 @@
                 От застройщика.
             </description>
             <lot-area>
-                <value>{{ $land->area }}</value>
+                <value>{{ number_format($land->area, 2, ',', '') }}</value>
                 <unit>сот</unit>
             </lot-area>
             <gas-supply>1</gas-supply>
