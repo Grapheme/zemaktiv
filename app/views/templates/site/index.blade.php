@@ -156,7 +156,6 @@ endif;
             </div>
         </div>
     @endif
-    <!--TEST67890-->
 @stop
 @section('scripts')
 @stop

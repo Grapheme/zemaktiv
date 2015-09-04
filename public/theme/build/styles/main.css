@@ -1061,6 +1061,14 @@ h2 {
   .us-link:hover {
     border-bottom: 1px solid transparent; }
 
+.us-desc {
+  font-size: 1rem;
+  color: black;
+  font-weight: 700;
+  line-height: 1.063;
+  width: 31.25rem;
+  margin-top: 1.25rem; }
+
 .metro-icon {
   display: inline-block;
   vertical-align: middle;
@@ -1099,79 +1107,131 @@ h2 {
   html {
     font-size: 12px; } }
 
+.done .done-wrapper {
+  margin-right: -3.4375rem; }
+
 .done .done__house {
+  box-sizing: border-box;
   padding: 1.875rem 0 0.9375rem;
-  border-bottom: 1px solid #f1f1f1; }
-  .done .done__house .house__left {
+  border-bottom: 1px solid #f1f1f1;
+  float: left;
+  width: 50%;
+  padding-right: 3.4375rem; }
+  .done .done__house .house__title {
+    padding: 1.5625rem 0;
+    font-size: 1.5rem;
+    font-family: 'pf_agora_slab_pro';
+    font-weight: 800; }
+  .done .done__house .house__left .left__main-image {
+    position: relative;
     float: left;
-    width: 40%; }
-    .done .done__house .house__left .left__main-image {
-      position: relative;
-      height: 25rem;
+    width: 76%;
+    height: 21.875rem; }
+    .done .done__house .house__left .left__main-image a {
+      display: inline-block;
+      vertical-align: middle;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 1.125rem;
+      bottom: 0;
       background-size: cover;
       background-position: center center; }
-      .done .done__house .house__left .left__main-image a {
-        display: inline-block;
-        vertical-align: middle;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0; }
-    .done .done__house .house__left .left__images {
-      margin: 0.375rem 0 0 -0.375rem;
-      overflow: hidden;
-      width: 26rem; }
-      .done .done__house .house__left .left__images .images__item {
-        position: relative;
-        display: inline-block;
-        float: left;
-        width: 33%;
-        height: 8.25rem;
-        box-sizing: border-box; }
-        .done .done__house .house__left .left__images .images__item .item__image {
-          position: absolute;
-          top: 0.375rem;
-          left: 0.375rem;
-          right: 0.375rem;
-          bottom: 0.375rem;
-          background-size: cover;
-          background-position: center center; }
-  .done .done__house .house__right {
+  .done .done__house .house__left .left__images {
+    position: relative;
     float: left;
-    width: 60%;
-    box-sizing: border-box;
-    padding-left: 3.4375rem; }
-    .done .done__house .house__right .right__title {
-      padding: 1.5625rem 0;
-      font-size: 1.5rem;
-      font-family: 'pf_agora_slab_pro';
-      font-weight: 800; }
+    width: 24%;
+    height: 33.3333%;
+    overflow: hidden;
+    margin-top: -1.125rem; }
+    .done .done__house .house__left .left__images .images__item {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 7.66667rem;
+      box-sizing: border-box; }
+      .done .done__house .house__left .left__images .images__item .item__image {
+        position: absolute;
+        top: 1.125rem;
+        left: 0;
+        right: 0.5625rem;
+        bottom: 0;
+        background-size: cover;
+        background-position: center center; }
+  .done .done__house .house__right {
+    box-sizing: border-box; }
     .done .done__house .house__right .right__info {
-      border-top: 1px solid #f1f1f1;
-      line-height: 2.5rem;
-      padding: 1.25rem 0; }
+      line-height: 1.25rem;
+      padding: 1.875rem 0; }
       .done .done__house .house__right .right__info .info__block {
-        font-size: 0; }
+        font-size: 0;
+        padding: 0.625rem 0; }
         .done .done__house .house__right .right__info .info__block .block__left,
         .done .done__house .house__right .right__info .info__block .block__right {
           display: inline-block;
           vertical-align: top;
-          font-size: 1rem; }
+          font-size: 1rem;
+          line-height: normal; }
         .done .done__house .house__right .right__info .info__block .block__left {
           width: 40%; }
         .done .done__house .house__right .right__info .info__block .block__right {
           width: 60%; }
           .done .done__house .house__right .right__info .info__block .block__right span {
-            display: inline-block;
+            display: inline;
             background: #f1f1f1;
             line-height: 1.4em;
             padding: 0 0.3125rem; }
+          .done .done__house .house__right .right__info .info__block .block__right a {
+            color: #3eadda;
+            text-decoration: none;
+            font-weight: 700;
+            border-bottom: 1px dotted;
+            margin-left: 10px; }
+            .done .done__house .house__right .right__info .info__block .block__right a:first-child {
+              margin-left: 0; }
+          .done .done__house .house__right .right__info .info__block .block__right .right__link {
+            border-bottom: none; }
     .done .done__house .house__right .right__btns {
       padding-top: 1.5625rem;
       border-top: 1px solid #f1f1f1; }
       .done .done__house .house__right .right__btns .us-btn {
         margin-right: 0.625rem; }
+
+.build-filter {
+  margin-top: 3.125rem;
+  border-bottom: 1px solid #f1f1f1; }
+  .build-filter .filter__block {
+    float: left;
+    box-sizing: border-box;
+    width: 25%;
+    padding-right: 1.875rem; }
+    .build-filter .filter__block .block__title {
+      font-family: 'pf_agora_slab_pro';
+      font-weight: 600;
+      margin-bottom: 1.25rem; }
+    .build-filter .filter__block .block__check {
+      margin-top: 0.625rem;
+      font-weight: 700; }
+      .build-filter .filter__block .block__check .ui-button-text {
+        text-align: left;
+        padding: 0; }
+  .build-filter .filter__update {
+    position: relative;
+    display: block;
+    height: 6.875rem; }
+    .build-filter .filter__update:before {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 2.5rem;
+      height: 2.5rem;
+      margin-top: -1.25rem;
+      margin-left: -1.25rem;
+      background: url(../images/ui/loader.png) 0 0/100% auto no-repeat;
+      -webkit-animation: fa-spin 1s infinite;
+              animation: fa-spin 1s infinite; }
+    .build-filter .filter__update.loading:before {
+      content: ""; }
 
 .index-slider {
   position: relative;
