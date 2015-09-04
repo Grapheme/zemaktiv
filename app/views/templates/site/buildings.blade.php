@@ -4,10 +4,7 @@
  * AVAILABLE_ONLY_IN_ADVANCED_MODE
  */
 ?>
-<?php
-$buildings = Buildings::orderBy('number', 'ASC')->with('land', 'photo', 'gallery.photos');
-$lands = Land::all();
-?>
+<?php $lands = Land::all(); ?>
 @extends(Helper::layout())
 @section('style')
 @stop

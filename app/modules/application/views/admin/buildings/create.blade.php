@@ -6,6 +6,7 @@
     {{ Form::open(array('route'=>'buildings.store','class'=>'smart-form','id'=>'buildings-form','role'=>'form','method'=>'post')) }}
     {{ Form::hidden('number', (int) Buildings::orderBy('number','DESC')->pluck('number') + 1) }}
     {{ Form::hidden('description') }}
+    {{ Form::hidden('land_area') }}
     <div class="row">
         <section class="col col-6">
             <div class="well">
@@ -21,12 +22,6 @@
                         <label class="label">Площадь (кв.м)</label>
                         <label class="input">
                             {{ Form::text('area') }}
-                        </label>
-                    </section>
-                    <section>
-                        <label class="label">Площадь участка (сотка)</label>
-                        <label class="input">
-                            {{ Form::text('land_area') }}
                         </label>
                     </section>
                     <section>

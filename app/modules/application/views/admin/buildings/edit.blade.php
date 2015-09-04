@@ -7,6 +7,7 @@
     {{ Form::hidden('number') }}
     {{ Form::hidden('sold') }}
     {{ Form::hidden('description') }}
+    {{ Form::hidden('land_area') }}
     <div class="row">
         <section class="col col-6">
             <div class="well">
@@ -22,12 +23,6 @@
                         <label class="label">Площадь (кв.м)</label>
                         <label class="input">
                             {{ Form::text('area') }}
-                        </label>
-                    </section>
-                    <section>
-                        <label class="label">Площадь участка (сотка)</label>
-                        <label class="input">
-                            {{ Form::text('land_area') }}
                         </label>
                     </section>
                     <section>
