@@ -81,7 +81,7 @@ class LayoutHomesController extends BaseController {
                 'gallery' => Input::get('gallery'), 'single' => TRUE));
             $build->save();
 
-            $json_request['responseText'] = "Макет добавлен";
+            $json_request['responseText'] = "Проект добавлен";
             $json_request['redirect'] = URL::route('layouts_homes.index');
             $json_request['status'] = TRUE;
         else:
@@ -121,7 +121,7 @@ class LayoutHomesController extends BaseController {
                 'gallery' => Input::get('gallery'), 'single' => TRUE));
             $build->save();
 
-            $json_request['responseText'] = "Макет сохранен";
+            $json_request['responseText'] = "Проект сохранен";
             $json_request['redirect'] = URL::route('layouts_homes.index');
             $json_request['status'] = TRUE;
         else:
@@ -159,7 +159,7 @@ class LayoutHomesController extends BaseController {
             endif;
             Layout_homes::where('id', $badge_id)->delete();
 
-            $json_request['responseText'] = "Макет удален.";
+            $json_request['responseText'] = "Проект удален.";
             $json_request['status'] = TRUE;
         else:
             return Redirect::back();
