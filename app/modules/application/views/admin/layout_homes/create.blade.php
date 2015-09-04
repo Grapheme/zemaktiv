@@ -43,8 +43,8 @@
                     </section>
                     <section>
                         <label class="label">Материалы</label>
-                        <label class="input">
-                            {{ Form::text('material') }}
+                        <label class="select">
+                            {{ Form::select('material', LayoutHomesController::$materials) }}
                         </label>
                     </section>
                     <section>

@@ -5,6 +5,8 @@ class LayoutHomesController extends BaseController {
 
     public static $name = 'layout_homes';
     public static $group = 'application';
+    public static $materials = array('Каркасные дома' => 'Каркасные дома', 'Гозобетонный блок' => 'Гозобетонный блок',
+        'Оцилиндрованное дерево' => 'Оцилиндрованное дерево');
 
     /****************************************************************************/
     public static function returnRoutes() {
@@ -48,7 +50,7 @@ class LayoutHomesController extends BaseController {
     /****************************************************************************/
     public function index() {
 
-        $buildings = Layout_homes::orderBy('created_at','DESC')->with('land')->paginate(25);
+        $buildings = Layout_homes::orderBy('created_at', 'DESC')->with('land')->paginate(25);
         return View::make($this->module['tpl'] . 'layout_homes.index', compact('buildings'));
     }
 
@@ -74,11 +76,12 @@ class LayoutHomesController extends BaseController {
             $build->photo_id = (int)Input::get('photo_id');
             $build->save();
 
-            $build->gallery_id = ExtForm::process('gallery', array('module' => 'Готовый макет дом', 'unit_id' => $build->id,
+            $build->gallery_id = ExtForm::process('gallery', array('module' => 'Готовый макет дом',
+                'unit_id' => $build->id,
                 'gallery' => Input::get('gallery'), 'single' => TRUE));
             $build->save();
 
-            $json_request['responseText'] = "Макет добавлен";
+            $json_request['responseText'] = "Проект добавлен";
             $json_request['redirect'] = URL::route('layouts_homes.index');
             $json_request['status'] = TRUE;
         else:
@@ -118,7 +121,7 @@ class LayoutHomesController extends BaseController {
                 'gallery' => Input::get('gallery'), 'single' => TRUE));
             $build->save();
 
-            $json_request['responseText'] = "Макет сохранен";
+            $json_request['responseText'] = "Проект сохранен";
             $json_request['redirect'] = URL::route('layouts_homes.index');
             $json_request['status'] = TRUE;
         else:
@@ -156,7 +159,7 @@ class LayoutHomesController extends BaseController {
             endif;
             Layout_homes::where('id', $badge_id)->delete();
 
-            $json_request['responseText'] = "Макет удален.";
+            $json_request['responseText'] = "Проект удален.";
             $json_request['status'] = TRUE;
         else:
             return Redirect::back();

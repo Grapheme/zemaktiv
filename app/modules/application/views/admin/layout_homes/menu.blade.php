@@ -7,7 +7,7 @@ $menus[] = array(
 );
 ?>
 <h1 class="top-module-menu">
-    <a href="{{ Request::path() }}">Макеты домов</a>
+    <a href="{{ Request::path() }}">Проекты домов</a>
 </h1>
 
 {{ Helper::drawmenu($menus) }}
