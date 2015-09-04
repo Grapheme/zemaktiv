@@ -1276,8 +1276,9 @@ Garden.housesFilter = {
 		var loader = $('.js-filter-loading');
 		loader.addClass('loading');
 		t.ajax = $.ajax({
+			type: 'POST',
 			url: t.form.attr('action'),
-			data: t.form.serialize
+			data: t.form.serialize()
 		}).done(function(data){
 			if(data.status) {
 				$('.js-done-wrapper').html(data.html);
