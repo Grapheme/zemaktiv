@@ -24,6 +24,7 @@ class BuildingsController extends BaseController {
                 )
             );
         });
+        Route::any('buildings/set-filter', array('as' => 'buildings.filter', 'uses' => $class . '@setBuildingFilter'));
     }
 
     /****************************************************************************/
@@ -168,4 +169,10 @@ class BuildingsController extends BaseController {
         return Response::json($json_request, 200);
     }
     /****************************************************************************/
+
+    public function setBuildingFilter(){
+
+
+
+    }
 }
