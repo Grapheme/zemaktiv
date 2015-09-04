@@ -410,6 +410,12 @@
 		label {
 			margin-top: 10rem / $fs;
 		}
+
+		.checks__title {
+			font-family: 'pf_agora_slab_pro';
+			font-weight: 700;
+			margin: 10px 0;
+		}
 	}
 }
 
@@ -456,25 +462,36 @@
 	}
 }
 
+.js-stage {
+	position: absolute;
+	z-index: 2;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	opacity: 0;
+	transition: all .5s ease;
+
+	&.active {
+		z-index: 3;
+		opacity: 1;
+	}
+}
+
+.form-book {
+	position: relative;
+	height: 400px;
+
+	.stages-status {
+		position: relative;
+		z-index: 1;
+		padding-top: 430px;
+	}
+}
+
 .form-mortgage {
 	height: 200px;
 	position: relative;
-
-	.form__stage {
-		position: absolute;
-		z-index: 2;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		opacity: 0;
-		transition: all .5s ease;
-
-		&.active {
-			z-index: 3;
-			opacity: 1;
-		}
-	}
 
 	.stages-status {
 		position: relative;

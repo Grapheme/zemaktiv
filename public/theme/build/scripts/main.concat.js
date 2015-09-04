@@ -2847,6 +2847,7 @@ Garden.overlays = {
 		});
 	}
 }
+Garden.overlays.open('book');
 Garden.checkbox = function() {
 	$('.js-checkbox').button();
 	$('.js-radio').button();
@@ -2854,15 +2855,17 @@ Garden.checkbox = function() {
 Garden.stagesForm = function() {
 	$('.js-stages-form').each(function(){
 		var parent = $(this);
+		var activeStage = 0;
 		var stage = function(n) {
+			activeStage = n;
 			parent.find('.js-stage').eq(n).addClass('active')
 				.siblings().removeClass('active');
 			parent.find('.js-status-dot').eq(n).addClass('active')
 				.siblings().removeClass('active');
 		}
 		parent.find('input[type="radio"]').on('change', function(){
-			stage(1);
-			$('.js-status-dot').removeClass('disabled');
+			stage(activeStage+1);
+			$('.js-status-dot').eq(activeStage).removeClass('disabled');
 		});
 		parent.find('.js-status-dot').on('click', function(){
 			if($(this).hasClass('disabled')) return false;

@@ -1545,6 +1545,10 @@ h2 {
   margin-top: 0.9375rem; }
   .stages-form .stage__checks label {
     margin-top: 0.625rem; }
+  .stages-form .stage__checks .checks__title {
+    font-family: 'pf_agora_slab_pro';
+    font-weight: 700;
+    margin: 10px 0; }
 
 .stages-status {
   font-size: 0; }
@@ -1582,22 +1586,31 @@ h2 {
     width: 4.375rem;
     background: #fff; }
 
+.js-stage {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  -webkit-transition: all 0.5s ease;
+          transition: all 0.5s ease; }
+  .js-stage.active {
+    z-index: 3;
+    opacity: 1; }
+
+.form-book {
+  position: relative;
+  height: 400px; }
+  .form-book .stages-status {
+    position: relative;
+    z-index: 1;
+    padding-top: 430px; }
+
 .form-mortgage {
   height: 200px;
   position: relative; }
-  .form-mortgage .form__stage {
-    position: absolute;
-    z-index: 2;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0;
-    -webkit-transition: all 0.5s ease;
-            transition: all 0.5s ease; }
-    .form-mortgage .form__stage.active {
-      z-index: 3;
-      opacity: 1; }
   .form-mortgage .stages-status {
     position: relative;
     z-index: 1;
