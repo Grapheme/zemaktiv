@@ -1,15 +1,19 @@
 .done {
 	.done-wrapper {
 		margin-right: -55rem / $fs;
+		padding-bottom: 50rem / $fs;
+		font-size: 0;
 	}
 
 	.done__house {
 		box-sizing: border-box;
 		padding: 30rem / $fs 0 15rem / $fs;
 		border-bottom: 1px solid $borderColor;
-		float: left;
+		display: inline-block;
+		vertical-align: top;
 		width: 50%;
 		padding-right: 55rem / $fs;
+		font-size: 1rem;
 
 		.house__title {
 			padding: 25rem / $fs 0;

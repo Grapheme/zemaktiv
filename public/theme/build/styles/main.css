@@ -1108,15 +1108,19 @@ h2 {
     font-size: 12px; } }
 
 .done .done-wrapper {
-  margin-right: -3.4375rem; }
+  margin-right: -3.4375rem;
+  padding-bottom: 3.125rem;
+  font-size: 0; }
 
 .done .done__house {
   box-sizing: border-box;
   padding: 1.875rem 0 0.9375rem;
   border-bottom: 1px solid #f1f1f1;
-  float: left;
+  display: inline-block;
+  vertical-align: top;
   width: 50%;
-  padding-right: 3.4375rem; }
+  padding-right: 3.4375rem;
+  font-size: 1rem; }
   .done .done__house .house__title {
     padding: 1.5625rem 0;
     font-size: 1.5rem;
