@@ -10,6 +10,7 @@ class ApplicationController extends BaseController {
         $class = __CLASS__;
         Route::get('ya-feed', array('as' => 'yandex-feed', 'uses' => $class . '@yandexFeed'));
         Route::post('click-tracker', array('as' => 'click.tracker', 'uses' => $class . '@clickTracker'));
+        Route::post('buildings/set-filter', array('as' => 'buildings.filter', 'uses' => $class . '@setBuildingFilter'));
     }
 
     /****************************************************************************/
@@ -122,6 +123,36 @@ class ApplicationController extends BaseController {
                     $json_request['status'] = TRUE;
                 endif;
             endif;
+        else:
+            return Redirect::back();
+        endif;
+        return Response::json($json_request, 200);
+    }
+
+    public function setBuildingFilter() {
+
+        $json_request = array('status' => FALSE, 'html' => '', 'redirect' => FALSE);
+        if (Request::ajax()):
+//            Helper::tad(Input::all());
+
+            $buildings_all = $buildings = $layout = $materials = array();
+            $materials[0] = '';
+            foreach(LayoutHomesController::$materials as $material):
+                $materials[] = $material;
+            endforeach;
+            Helper::tad($materials);
+            if (Input::has('house_build')):
+                $buildings = new Buildings();
+            endif;
+            if (Input::has('house_layout')):
+                $layout = new Layout_homes();
+            endif;
+            if (Input::has('technology_1')):
+//                $buildings = $buildings->where('')
+            endif;
+
+            Helper::ta($buildings);
+            Helper::tad($layout);
         else:
             return Redirect::back();
         endif;
