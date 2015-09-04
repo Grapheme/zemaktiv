@@ -1,4 +1,5 @@
 @foreach($buildings as $build)
+
     <?php
     $hasImage = $hasGallery = FALSE;
     if (!empty($build->photo) && File::exists(Config::get('site.galleries_photo_dir') . '/' . $build->photo->name)):
@@ -55,7 +56,7 @@
                     <div class="block__left">Материал:</div>
                     <div class="block__right"><span>{{ $build->material }}</span></div>
                 </div>
-                @if(!empty($build->land)))
+                @if(!empty($build->land))
                 <div class="info__block">
                     <div class="block__left">Площадь участка:</div>
                     <div class="block__right">
@@ -71,7 +72,7 @@
                     </div>
                 </div>
                 @endif
-                @if(!isset($build->communication)))
+                @if(isset($build->communication))
                 <div class="info__block">
                     <div class="block__left">Коммуникации:</div>
                     <div class="block__right"><span>{{ $build->communication }}</span></div>
@@ -84,7 +85,7 @@
                     </div>
                 </div>
             </div>
-            @if(!empty($build->land)))
+            @if(!empty($build->land))
             <div class="right__btns">
                 <a href="#" data-id="{{ $build->land->id }}" class="js-book us-btn btn-green"><span>Узнать больше</span></a>
             </div>
@@ -93,4 +94,3 @@
         <div class="clearfix"></div>
     </div>
 @endforeach
-<div class="clearfix"></div>

@@ -23,6 +23,13 @@
                 <div class="filter__update js-filter-loading"></div>
             </div>
         </div>
+        <div class="done">
+            <div class="wrapper">
+                <div class="done-wrapper js-done-wrapper">
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
     </div>
 @stop
 @section('scripts')
