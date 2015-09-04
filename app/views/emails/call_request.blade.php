@@ -1,3 +1,6 @@
+<?php
+$ipoteka = array('Ипотекой от Сбербанка', 'Рассрочка от застройщика');
+?>
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -8,6 +11,7 @@
     <p>
         Посетитель заказал звонок.<br>
         Тел.номер: {{ @$phone }}<br>
+        {{ @$ipoteka[$request] }}
     </p>
 </div>
 </body>
