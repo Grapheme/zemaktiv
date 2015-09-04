@@ -2,15 +2,15 @@
     <div class="filter__block">
         <div class="block__title">Я хочу</div>
         <div class="block__check">
-            <input name="housetype" type="checkbox" class="js-checkbox js-set-for">
+            <input name="house_build" value="1" type="checkbox" class="js-checkbox js-set-for">
             <label class="js-set-for">Уже готовый дом</label>
         </div>
         <div class="block__check">
-            <input name="housetype1" type="checkbox" class="js-checkbox js-set-for">
+            <input name="house_maket" value="1" type="checkbox" class="js-checkbox js-set-for">
             <label class="js-set-for">Построить дом</label>
         </div>
         <div class="block__check">
-            <input name="housetype2" type="checkbox" class="js-checkbox js-set-for">
+            <input name="house_all" value="1" type="checkbox" class="js-checkbox js-set-for">
             <label class="js-set-for">Все варианты</label>
         </div>
     </div>
