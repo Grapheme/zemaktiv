@@ -42,6 +42,7 @@ gulp.task('scripts', function() {
   		'bower_components/jquery-form/jquery.form.js',
   		'bower_components/fancybox/source/jquery.fancybox.pack.js',
   		'bower_components/jquery-ui/jquery-ui.min.js',
+      'bower_components/jquery.cookie/jquery.cookie.js',
   		app_path + '/scripts/config.js',
   		app_path + '/scripts/main.js'])
     .pipe(concat('main.concat.js'))

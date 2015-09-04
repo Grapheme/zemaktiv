@@ -12,18 +12,26 @@ Dictionary.zoomOptions = {
 	    }
 	}
 };
-Help.getHash = function(index) {
-	var thisHash = window.location.hash.substr(1);
+Help.getHash = function(index, str) {
+	if(str) {
+		var thisHash = str;
+	} else {
+		var thisHash = window.location.hash.substr(1);
+	}
 	if(thisHash == '') {
 		return false;
 	}
 	var hashParts = thisHash.split('&');
-	var hashVal = [];
+	var hashVal = {};
 	$.each(hashParts, function(index, value){
 		var sValue = value.split('=');
 		hashVal[sValue[0]] = sValue[1];
 	});
-	return hashVal[index];
+	if(index) {
+		return hashVal[index];
+	} else {
+		return hashVal;
+	}
 }
 Help.ajaxSubmit = function(form, callbacks) {
     var response_cont = $(form).find('.js-response-text'),
@@ -1110,8 +1118,8 @@ Garden.map = function() {
 			showMap();
 			if(Dictionary.buildings[Help.getHash('id')]) {
 				tooltip.show(Help.getHash('id'));
-				$('.js-back-to-buildings').show()
-					.attr('href', $('.js-back-to-buildings').attr('href') + '?page=' + Help.getHash('backpage'));
+				$('.js-back-to-buildings').show();
+					//.attr('href', $('.js-back-to-buildings').attr('href') + '?page=' + Help.getHash('backhash'));
 			}
 		} else {
 			$('.js-show-filter').show();
@@ -1259,10 +1267,58 @@ Garden.setFor = function() {
 		count++;
 	});
 }
+Garden.housesFilter = {
+	form: $('.js-houses-filter'),
+	ajax: false,
+	getItems: function() {
+		var t = this;
+		if(t.ajax) t.ajax.abort();
+		var loader = $('.js-filter-loading');
+		loader.addClass('loading');
+		t.ajax = $.ajax({
+			url: t.form.attr('action'),
+			data: t.form.serialize
+		}).done(function(data){
+			if(data.status) {
+				$('.js-done-wrapper').html(data.html);
+			}
+		}).fail(function(data){
+			console.log(data);
+		}).always(function(data){
+			loader.removeClass('loading');
+		});
+	},
+	setFilter: function() {
+		if($.cookie('housesFilter')) {
+			var hash = Help.getHash(false, $.cookie('housesFilter'));
+			$.each(hash, function(i, v){
+				$('input[name="' + i + '"]').attr('checked', 'checked');
+			});
+		}
+	},
+	init: function() {
+		var t = this;
+		if(!t.form.length) return;
+		t.setFilter();
+		t.getItems();
+		t.form.find('input').on('change', function(){
+			var tHash = window.location.hash;
+			if(t.form.serialize() == '') {
+				$.removeCookie('housesFilter');
+			} else {
+				$.cookie('housesFilter', t.form.serialize(), {
+					path: '/'
+				});
+			}
+			t.getItems();
+		});
+	}
+}
 Garden.init = function() {
 	$('.js-gallery-track').on('click', function(){
 		dataLayer.push({'event': 'HousePhotoClick', 'landId': $(this).attr('data-number')});
 	});
+	this.housesFilter.init();
 	this.setFor();
 	this.header();
 	this.indexSlider();
