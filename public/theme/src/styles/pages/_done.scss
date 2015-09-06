@@ -1,17 +1,33 @@
 .done {
+	.done-wrapper {
+		margin-right: -55rem / $fs;
+		padding-bottom: 50rem / $fs;
+		font-size: 0;
+	}
+
 	.done__house {
+		box-sizing: border-box;
 		padding: 30rem / $fs 0 15rem / $fs;
 		border-bottom: 1px solid $borderColor;
+		display: inline-block;
+		vertical-align: top;
+		width: 50%;
+		padding-right: 55rem / $fs;
+		font-size: 1rem;
+
+		.house__title {
+			padding: 25rem / $fs 0;
+			font-size: 24rem / $fs;
+			font-family: 'pf_agora_slab_pro';
+			font-weight: 800;
+		}
 
 		.house__left {
-			float: left;
-			width: 40%;
-
 			.left__main-image {
 				position: relative;
-				height: 400rem / $fs;
-				background-size: cover;
-				background-position: center center;
+				float: left;
+				width: 76%;
+				height: 350rem / $fs;
 
 				a {
 					display: inline-block;
@@ -19,30 +35,34 @@
 					position: absolute;
 					top: 0;
 					left: 0;
-					right: 0;
+					right: 18rem / $fs;
 					bottom: 0;
+					background-size: cover;
+					background-position: center center;
 				}
 			}
 
 			.left__images {
-				margin: 6rem / $fs 0 0 -6rem / $fs;
+				position: relative;
+				float: left;
+				width: 24%;
+				height: 33.3333%;
 				overflow: hidden;
-				width: 416rem / $fs;
+				margin-top: -18rem / $fs;
 
 				.images__item {
 					position: relative;
-					display: inline-block;
-					float: left;
-					width: 33%;
-					height: 132rem / $fs;
+					display: block;
+					width: 100%;
+					height: ((350+18)/3/$fs) + rem;
 					box-sizing: border-box;
 
 					.item__image {
 						position: absolute;
-						top: 6rem / $fs;
-						left: 6rem / $fs;
-						right: 6rem / $fs;
-						bottom: 6rem / $fs;
+						top: 18rem / $fs;
+						left: 0;
+						right: 9rem / $fs;
+						bottom: 0;
 						background-size: cover;
 						background-position: center center;
 					}
@@ -51,31 +71,22 @@
 		}
 
 		.house__right {
-			float: left;
-			width: 60%;
 			box-sizing: border-box;
-			padding-left: 55rem / $fs;
-
-			.right__title {
-				padding: 25rem / $fs 0;
-				font-size: 24rem / $fs;
-				font-family: 'pf_agora_slab_pro';
-				font-weight: 800;
-			}
 
 			.right__info {
-				border-top: 1px solid $borderColor;
-				line-height: 40rem / $fs;
-				padding: 20rem / $fs 0;
+				line-height: 20rem / $fs;
+				padding: 30rem / $fs 0;
 
 				.info__block {
 					font-size: 0;
+					padding: 10rem / $fs 0;
 
 					.block__left,
 					.block__right {
 						display: inline-block;
 						vertical-align: top;
 						font-size: 1rem;
+						line-height: normal;
 					}
 
 					.block__left {
@@ -86,10 +97,26 @@
 						width: 60%;
 
 						span {
-							display: inline-block;
+							display: inline;
 							background: $borderColor;
 							line-height: 1.4em;
 							padding: 0 5rem / $fs;
+						}
+
+						a {
+							color: #3eadda;
+							text-decoration: none;
+							font-weight: 700;
+							border-bottom: 1px dotted;
+							margin-left: 10px;
+
+							&:first-child {
+								margin-left: 0;
+							}
+						}
+
+						.right__link {
+							border-bottom: none;
 						}
 					}
 				}
@@ -102,6 +129,58 @@
 				.us-btn {
 					margin-right: 10rem / $fs;
 				}
+			}
+		}
+	}
+}
+
+.build-filter {
+	margin-top: 50rem / $fs;
+	border-bottom: 1px solid $borderColor;
+
+	.filter__block {
+		float: left;
+		box-sizing: border-box;
+		width: 25%;
+		padding-right: 30rem / $fs;
+
+		.block__title {
+			font-family: 'pf_agora_slab_pro';
+			font-weight: 600;
+			margin-bottom: 20rem / $fs;
+		}
+
+		.block__check {
+			margin-top: 10rem / $fs;
+			font-weight: 700;
+
+			.ui-button-text {
+				text-align: left;
+				padding: 0;
+			}
+		}
+	}
+
+	.filter__update {
+		position: relative;
+		display: block;
+		height: 110rem / $fs;
+
+		&:before {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			width: 40rem / $fs;
+			height: 40rem / $fs;
+			margin-top: -20rem / $fs;
+			margin-left: -20rem / $fs;
+			background: url(../images/ui/loader.png) 0 0 / 100% auto no-repeat;
+			animation: fa-spin 1s infinite;
+		}
+
+		&.loading {
+			&:before {
+				content: "";
 			}
 		}
 	}
