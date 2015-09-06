@@ -480,12 +480,12 @@
 
 .form-book {
 	position: relative;
-	height: 400px;
+	height: 430rem / $fs;
 
 	.stages-status {
 		position: relative;
 		z-index: 1;
-		padding-top: 430px;
+		padding-top: 455rem / $fs;
 	}
 }
 

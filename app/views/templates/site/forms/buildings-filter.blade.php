@@ -9,6 +9,10 @@
             <input name="house_layout" value="1" type="checkbox" class="js-checkbox js-set-for">
             <label class="js-set-for">Построить дом</label>
         </div>
+        <div class="block__check">
+            <input type="checkbox" class="js-checkbox js-set-for js-set-all">
+            <label class="js-set-for">Все варианты</label>
+        </div>
     </div>
     <div class="filter__block">
         <div class="block__title">Технология</div>
@@ -20,6 +24,10 @@
             </div>
             <?php $index++;?>
         @endforeach
+        <div class="block__check">
+            <input type="checkbox" class="js-checkbox js-set-for js-set-all">
+            <label class="js-set-for">Любая технология</label>
+        </div>
     </div>
     <div class="filter__block">
         <div class="block__title">Площадь дома, кв. м</div>
@@ -34,6 +42,10 @@
         <div class="block__check">
             <input name="area_181" value="1" type="checkbox" class="js-checkbox js-set-for">
             <label class="js-set-for">от 181</label>
+        </div>
+        <div class="block__check">
+            <input type="checkbox" class="js-checkbox js-set-for js-set-all">
+            <label class="js-set-for">Любая площадь</label>
         </div>
     </div>
     <div class="filter__block">
@@ -53,6 +65,10 @@
         <div class="block__check">
             <input name="price_35" value="1" type="checkbox" class="js-checkbox js-set-for">
             <label class="js-set-for">от 3,5 млн</label>
+        </div>
+        <div class="block__check">
+            <input type="checkbox" class="js-checkbox js-set-for js-set-all">
+            <label class="js-set-for">Любая цена</label>
         </div>
     </div>
 </form>
