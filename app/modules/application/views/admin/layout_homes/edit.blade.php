@@ -7,6 +7,7 @@
     {{ Form::hidden('number') }}
     {{ Form::hidden('sold') }}
     {{ Form::hidden('description') }}
+    {{ Form::hidden('land_id', 0) }}
     <div class="row">
         <section class="col col-6">
             <div class="well">
@@ -53,18 +54,6 @@
                         <label class="label">Цена с участком (руб.)</label>
                         <label class="input">
                             {{ Form::text('price') }}
-                        </label>
-                    </section>
-                    <section>
-                        <label class="label">Номер участка</label>
-                        <label class="select">
-                            <?php
-                            $lands = array('Без участка');
-                            foreach(Land::lists('number','id') as $land_id => $land_number):
-                                $lands[$land_id] = 'Участок №'.$land_number;
-                            endforeach;
-                            ?>
-                            {{ Form::select('land_id', $lands) }}
                         </label>
                     </section>
                     <section>
