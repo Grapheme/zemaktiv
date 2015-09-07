@@ -21,7 +21,7 @@
                         <tr>
                             <?php $sub_index = Input::has('page') ? (int)Input::get('page')-1 : 0;?>
                             <td>{{ ($index+1)+($sub_index*25) }}</td>
-                            <td>Участок №{{ $land->number }}.</td>
+                            <td>Участок №{{ $land->number }}</td>
                             <td>{{ number_format($land->price, 2, '.', ' ') }} руб.</td>
                             <td>{{ number_format($land->price_house, 2, '.', ' ') }} руб.</td>
                             <td>{{ $land->sold ? 'Продан' : '' }}</td>

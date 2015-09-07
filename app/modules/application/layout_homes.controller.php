@@ -51,7 +51,7 @@ class LayoutHomesController extends BaseController {
     public function index() {
 
         if(Input::has('search')):
-            $buildings = Layout_homes::where('title','LIKE', '%'.Input::get('search').'%')->paginate(1);
+            $buildings = Layout_homes::where('title','LIKE', '"%'.Input::get('search').'%"')->paginate(1);
         else:
             $buildings = Layout_homes::orderBy('created_at','DESC')->paginate(25);
         endif;
