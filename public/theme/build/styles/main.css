@@ -1201,6 +1201,12 @@ h2 {
       .done .done__house .house__right .right__btns .us-btn {
         margin-right: 0.625rem; }
 
+.done .builds-empty {
+  text-align: center;
+  font-size: 1.125rem;
+  height: 3.125rem;
+  line-height: 3.125rem; }
+
 .build-filter {
   margin-top: 3.125rem;
   border-bottom: 1px solid #f1f1f1; }
@@ -1615,11 +1621,11 @@ h2 {
 
 .form-book {
   position: relative;
-  height: 26.875rem; }
+  height: 20.625rem; }
   .form-book .stages-status {
     position: relative;
     z-index: 1;
-    padding-top: 28.4375rem; }
+    padding-top: 22.5rem; }
 
 .form-mortgage {
   height: 200px;

@@ -53,8 +53,7 @@ class FeedbackController extends BaseController {
 
         if (!Request::ajax()) return App::abort(404);
         $json_request = array('status' => FALSE, 'responseText' => '', 'redirect' => FALSE);
-        $validation = Validator::make(Input::all(), array('id' => 'required', 'name' => 'required',
-            'email' => 'required|email', 'phone' => 'required'));
+        $validation = Validator::make(Input::all(), array('id' => 'required', 'name' => 'required', 'phone' => 'required'));
         if ($validation->passes()):
             $feedback_mail = Config::get('mail.feedback.bran_address');
             $feedback_mail = 'vkharseev@gmail.com';
@@ -62,7 +61,6 @@ class FeedbackController extends BaseController {
             $this->postSendMessage(NULL, array('subject' => 'Бронирование участка',
                 'land_id' => Input::get('id'),
                 'name' => Input::get('name'),
-                'email' => Input::get('email'),
                 'phone' => Input::get('phone')
             ), 'bron_request');
             $json_request['responseText'] = 'Сообщение отправлено';

@@ -255,11 +255,10 @@ Garden.overlayForms = function() {
 	forms.filter('#book-form').validate({
 	    rules: {
 	        name: {
-	            required: true
+            required: true
 	        },
-	        email: {
-	        	required: true,
-	        	email: true
+	        phone: {
+	        	required: true
 	        }
 	    },
 	    submitHandler: function(form) {
