@@ -1871,11 +1871,10 @@ Garden.overlayForms = function() {
 	forms.filter('#book-form').validate({
 	    rules: {
 	        name: {
-	            required: true
+            required: true
 	        },
-	        email: {
-	        	required: true,
-	        	email: true
+	        phone: {
+	        	required: true
 	        }
 	    },
 	    submitHandler: function(form) {
@@ -2926,6 +2925,9 @@ Garden.housesFilter = {
 			data: t.form.serialize()
 		}).done(function(data){
 			if(data.status) {
+				if(data.html == '') {
+					data.html = '<div class="builds-empty">К сожалению по заданым параметрам ничего не нашлось</div>';
+				}
 				$('.js-done-wrapper').html(data.html);
 			}
 		}).fail(function(data){

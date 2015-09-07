@@ -7,7 +7,7 @@
 <div>
 	<p>
 		Посетитель: {{ @$name }} <br>
-		Email: {{ @$email }}<br>
+		Телефон: {{ @$phone }}<br>
 		Сообщение: <br>{{ $content }}
 	</p>
 </div>
