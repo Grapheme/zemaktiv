@@ -15,7 +15,6 @@
 <head>
     @include(Helper::layout('head'))
     @yield('style')
-    @if(App::environment() != 'vkharseev')
             <!-- start Optimizely -->
     <script src="//cdn.optimizely.com/js/3263420233.js"></script>
     <!-- end Optimizely -->
@@ -32,10 +31,8 @@
         }, 1);
     </script>
     <!-- end Statistics -->
-    @endif
 </head>
 <body>
-@if(App::environment() != 'vkharseev')
         <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
     (function (d, w, c) {
@@ -119,7 +116,6 @@
     </div>
 </noscript>
 <!-- //Rating@Mail.ru counter -->
-@endif
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
