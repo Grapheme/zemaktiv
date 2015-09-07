@@ -2946,31 +2946,42 @@ Garden.housesFilter = {
 			});
 		}
 	},
+	disable: function() {
+		this.form.find('input').each(function(){
+			var listParent = $(this).parent().parent();
+			var thisAll = listParent.find('input');
+			var isAllCheked = 0;
+			thisAll.each(function(){
+				if($(this).is(':checked')) isAllCheked++;
+			});
+			if(isAllCheked == 1) {
+				thisAll.filter(':checked').parent().addClass('disabled');
+			} else {
+				thisAll.filter(':checked').parent().removeClass('disabled');
+			}
+		});
+	},
 	init: function() {
 		var t = this;
 		if(!t.form.length) return;
 		t.setFilter();
 		t.getItems();
+		t.disable();
 		t.form.find('input').on('change', function(){
-			var listParent = $(this).parent().parent();
-			var thisAll = listParent.find('input').not('.js-set-all');
-			var allCheck = listParent.find('.js-set-all');
-			if($(this).hasClass('js-set-all')) {
-				if($(this).is(':checked')) {
-					thisAll.each(function(){
-						$(this)[0].checked = true;
-					});
-					thisAll.button('refresh');
-				}
-			}
-			var isAllCheked = true;
-			thisAll.each(function(){
-				if(!$(this).is(':checked')) isAllCheked = false;
-			});
-			if(!isAllCheked) {
+			// var allCheck = listParent.find('.js-set-all');
+			// if($(this).hasClass('js-set-all')) {
+			// 	if($(this).is(':checked')) {
+			// 		thisAll.each(function(){
+			// 			$(this)[0].checked = true;
+			// 		});
+			// 		thisAll.button('refresh');
+			// 	}
+			// }
+			/*if(!isAllCheked) {
 				allCheck[0].checked = false;
 				allCheck.button('refresh');
-			}
+			}*/
+			t.disable();
 			var tHash = window.location.hash;
 			if(t.form.serialize() == '') {
 				$.removeCookie('housesFilter');
