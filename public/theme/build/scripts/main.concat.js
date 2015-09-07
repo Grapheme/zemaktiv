@@ -2952,7 +2952,7 @@ Garden.housesFilter = {
 		t.setFilter();
 		t.getItems();
 		t.form.find('input').on('change', function(){
-			var listParent = $(this).parent().parent();
+			/*var listParent = $(this).parent().parent();
 			var thisAll = listParent.find('input').not('.js-set-all');
 			var allCheck = listParent.find('.js-set-all');
 			if($(this).hasClass('js-set-all')) {
@@ -2970,7 +2970,7 @@ Garden.housesFilter = {
 			if(!isAllCheked) {
 				allCheck[0].checked = false;
 				allCheck.button('refresh');
-			}
+			}*/
 			var tHash = window.location.hash;
 			if(t.form.serialize() == '') {
 				$.removeCookie('housesFilter');
