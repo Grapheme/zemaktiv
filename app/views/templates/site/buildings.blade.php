@@ -12,7 +12,6 @@
     <div class="us-page">
         <div class="wrapper">
             <h1 class="us-title title-green"><span>{{ $page->seo->h1 }}</span></h1>
-
             <div class="us-desc">
                 Воспользуйтесь фильтрами для поиска подходящего варианта. На этой странице – готовые дома и некоторые
                 типовые проекты наших партнеров.
