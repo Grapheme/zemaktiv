@@ -115,7 +115,7 @@ class BuildingsController extends BaseController {
             $build->price = Input::get('price');
             $build->land_id = Input::get('land_id');
             $build->photo_id = (int)Input::get('photo_id');
-            $build->sold = Input::has('sold') ? 1 : 0;
+            $build->sold = 0;
             $build->save();
 
             $build->gallery_id = ExtForm::process('gallery', array('module' => 'Готовый дом', 'unit_id' => $build->id,

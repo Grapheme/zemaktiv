@@ -5,7 +5,7 @@ class LayoutHomesController extends BaseController {
 
     public static $name = 'layout_homes';
     public static $group = 'application';
-    public static $materials = array('Каркасные дома' => 'Каркасные дома', 'Гозобетонный блок' => 'Гозобетонный блок',
+    public static $materials = array('Каркасные дома' => 'Каркасные дома', 'Газобетонный блок' => 'Газобетонный блок',
         'Оцилиндрованное дерево' => 'Оцилиндрованное дерево');
 
     /****************************************************************************/
