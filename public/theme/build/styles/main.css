@@ -1560,7 +1560,6 @@ h2 {
 .stages-form .stage__checks {
   display: inline-block;
   text-align: left;
-  width: 18.75rem;
   margin-top: 0.9375rem; }
   .stages-form .stage__checks label {
     margin-top: 0.625rem; }
@@ -2314,12 +2313,14 @@ h2 {
       .wrapper-choise .wrapper-params .choise__toparams .toparams__desc {
         font-size: 0.9375rem;
         margin-top: 0.625rem; }
-  .wrapper-choise .choise-map .choise__toparams, .wrapper-choise .choise-map .wrapper-photos, .wrapper-choise .choise-map .wrapper-params, .wrapper-choise .choise-map .image__mark {
-    opacity: 0;
-    -webkit-transition: all 0.5s ease;
-            transition: all 0.5s ease; }
-  .wrapper-choise .choise-map.active .choise__toparams, .wrapper-choise .choise-map.active .wrapper-photos, .wrapper-choise .choise-map.active .wrapper-params, .wrapper-choise .choise-map.active .image__mark {
-    opacity: 1; }
+  .wrapper-choise .choise-map {
+    overflow: hidden; }
+    .wrapper-choise .choise-map .choise__toparams, .wrapper-choise .choise-map .wrapper-photos, .wrapper-choise .choise-map .wrapper-params, .wrapper-choise .choise-map .image__mark {
+      opacity: 0;
+      -webkit-transition: all 0.5s ease;
+              transition: all 0.5s ease; }
+    .wrapper-choise .choise-map.active .choise__toparams, .wrapper-choise .choise-map.active .wrapper-photos, .wrapper-choise .choise-map.active .wrapper-params, .wrapper-choise .choise-map.active .image__mark {
+      opacity: 1; }
   .wrapper-choise .choise-filter {
     position: relative;
     z-index: 3;
@@ -2327,6 +2328,8 @@ h2 {
     height: 90vh;
     max-height: 100vw;
     overflow: auto;
+    padding-right: 150px;
+    width: 100%;
     z-index: -1;
     opacity: 0;
     -webkit-transform: translateY(-20px);
@@ -2616,7 +2619,7 @@ h2 {
     .overlay .block-call .overlay__form .input__item {
       background: #50de8c; }
   .overlay .overlay__form .form__block {
-    width: 25rem;
+    width: 33rem;
     margin: 1.25rem auto 0; }
     .overlay .overlay__form .form__block .block__title {
       font-size: 1.25rem;

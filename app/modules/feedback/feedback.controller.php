@@ -61,7 +61,9 @@ class FeedbackController extends BaseController {
             $this->postSendMessage(NULL, array('subject' => 'Бронирование участка',
                 'land_id' => Input::get('id'),
                 'name' => Input::get('name'),
-                'phone' => Input::get('phone')
+                'phone' => Input::get('phone'),
+                'livetype' => Input::get('livetype'),
+                'technology' => Input::get('technology')
             ), 'bron_request');
             $json_request['responseText'] = 'Сообщение отправлено';
             $json_request['status'] = TRUE;

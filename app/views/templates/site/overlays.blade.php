@@ -3,6 +3,7 @@
  * TEMPLATE_IS_NOT_SETTABLE
  */
 ?>
+<a href="#" class="js-scroll-top scroll-top"></a>
 <div class="overlay js-overlay">
     <div data-name="book" class="overlay__block block-book js-overlay-block">
         <div class="wrapper">
@@ -37,14 +38,15 @@
                                 <div class="form__block block-phone">
                                     <div class="stage__checks">
                                         <span>
-                                            <input value="0" name="livetype" type="radio"
+                                            <input value="Хочу дом, где можно жить круглый год" name="livetype" type="radio"
                                                    class="js-checkbox js-set-for" autocomplete="off">
-                                            <label>Дом для постоянного проживания</label>
+                                            <label>Хочу дом, где можно жить круглый год</label>
                                         </span>
+                                        <br>
                                         <span>
-                                            <input value="1" name="livetype" type="radio"
+                                            <input value="Летний дом, дачу" name="livetype" type="radio"
                                                    class="js-checkbox js-set-for" autocomplete="off">
-                                            <label>Летний дом, дача</label>
+                                            <label>Летний дом, дачу</label>
                                         </span>
                                     </div>
                                 </div>
@@ -53,14 +55,15 @@
                                 <div class="form__block block-phone">
                                     <div class="stage__checks">
                                         <span>
-                                            <input value="0" name="technology" type="radio"
+                                            <input value="Мне нужна консультация – я не знаю какой дом выбрать" name="technology" type="radio"
                                                    class="js-checkbox js-set-for" autocomplete="off">
-                                            <label>Строительные конструкции</label>
+                                            <label>Мне нужна консультация – я не знаю какой дом выбрать</label>
                                         </span>
+                                        <br>
                                         <span>
-                                            <input value="1" name="technology" type="radio"
+                                            <input value="Хочу знать подробности о комплектации представленных домов" name="technology" type="radio"
                                                    class="js-checkbox js-set-for" autocomplete="off">
-                                            <label>Комплектация домов</label>
+                                            <label>Хочу знать подробности о комплектации представленных домов</label>
                                         </span>
                                     </div>
                                 </div>
