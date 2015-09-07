@@ -8,7 +8,9 @@
 	<p>
 		Посетитель: {{ @$name }} <br>
 		Телефон: {{ @$phone }}<br>
-		Сообщение: <br>{{ $content }}
+		Сообщение: <br>{{ @$content }},
+    <br>{{ @$livetype }}
+    <br>{{ @$technology }}
 	</p>
 </div>
 </body>

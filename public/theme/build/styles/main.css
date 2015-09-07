@@ -1560,7 +1560,6 @@ h2 {
 .stages-form .stage__checks {
   display: inline-block;
   text-align: left;
-  width: 18.75rem;
   margin-top: 0.9375rem; }
   .stages-form .stage__checks label {
     margin-top: 0.625rem; }
@@ -2620,7 +2619,7 @@ h2 {
     .overlay .block-call .overlay__form .input__item {
       background: #50de8c; }
   .overlay .overlay__form .form__block {
-    width: 25rem;
+    width: 33rem;
     margin: 1.25rem auto 0; }
     .overlay .overlay__form .form__block .block__title {
       font-size: 1.25rem;
