@@ -40,12 +40,12 @@
                                         <div class="checks__title">Период проживания</div>
                                         <span>
                                             <input value="0" name="livetype" type="radio"
-                                                   class="js-checkbox js-set-for">
+                                                   class="js-checkbox js-set-for" autocomplete="off">
                                             <label>Дом для постоянного проживания</label>
                                         </span>
                                         <span>
                                             <input value="1" name="livetype" type="radio"
-                                                   class="js-checkbox js-set-for">
+                                                   class="js-checkbox js-set-for" autocomplete="off">
                                             <label>Летний дом, дача</label>
                                         </span>
                                     </div>
@@ -58,12 +58,12 @@
                                         <div class="checks__title">Технология строительства</div>
                                         <span>
                                             <input value="0" name="technology" type="radio"
-                                                   class="js-checkbox js-set-for">
+                                                   class="js-checkbox js-set-for" autocomplete="off">
                                             <label>Строительные конструкции</label>
                                         </span>
                                         <span>
                                             <input value="1" name="technology" type="radio"
-                                                   class="js-checkbox js-set-for">
+                                                   class="js-checkbox js-set-for" autocomplete="off">
                                             <label>Комплектация домов</label>
                                         </span>
                                     </div>
@@ -76,12 +76,12 @@
                                         <div class="checks__title">Цена:</div>
                                         <span>
                                             <input value="0" name="price" type="radio"
-                                                   class="js-checkbox js-set-for">
+                                                   class="js-checkbox js-set-for" autocomplete="off">
                                             <label>Купить дом и участок в рассрочку</label>
                                         </span>
                                         <span>
                                             <input value="1" name="price" type="radio"
-                                                   class="js-checkbox js-set-for">
+                                                   class="js-checkbox js-set-for" autocomplete="off">
                                             <label>Наличие скидки при 100% оплате</label>
                                         </span>
                                     </div>

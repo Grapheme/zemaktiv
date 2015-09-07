@@ -49,9 +49,13 @@
                 sold: {{ $land->sold }},
                 status: {{ $land->status }},
                 turn: {{ $land->turn }}
+
+
             },
             @endforeach
         @endif
+
+
 
         };
     </script>

@@ -51,6 +51,9 @@ class FeedbackController extends BaseController {
 
     public function requestBron() {
 
+
+        Helper::tad(Input::all());
+
         if (!Request::ajax()) return App::abort(404);
         $json_request = array('status' => FALSE, 'responseText' => '', 'redirect' => FALSE);
         $validation = Validator::make(Input::all(), array('id' => 'required', 'name' => 'required',

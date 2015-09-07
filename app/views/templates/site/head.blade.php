@@ -1,10 +1,5 @@
 <?
 /**
- * TEMPLATE_IS_NOT_SETTABLE
- */
-?>
-<?
-/**
  * META TITLE
  */
 if (isset($page) && is_object($page)) {
@@ -60,13 +55,11 @@ if (isset($page->seos) && is_object($page->seos) && isset($page->seos[Config::ge
 <title>@yield('title')</title>
 <meta name="description" content="@yield('description')">
 <meta name="keywords" content="@yield('keywords')">
-<meta name='yandex-verification' content='4ebd5ca95af5d887' /> 
-<!-- <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui"> -->
-
-<!-- <link rel="icon" type="image/png" href="{{ Config::get('site.theme_path') }}/images/build/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="{{ Config::get('site.theme_path') }}/images/build/favicon-16x16.png" sizes="16x16"> -->
+<meta name='yandex-verification' content='4ebd5ca95af5d887'/>
 
 {{ HTML::style(Config::get('site.theme_path').'/styles/vendor.css') }}
 {{ HTML::style(Config::get('site.theme_path').'/styles/main.css') }}
 
-<script src="//st.yagla.ru/js/y.c.js"></script>
+@if(App::environment() != 'vkharseev')
+    <script src="//st.yagla.ru/js/y.c.js"></script>
+@endif
