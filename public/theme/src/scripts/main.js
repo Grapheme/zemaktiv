@@ -1380,10 +1380,34 @@ Garden.housesFilter = {
 		});
 	}
 }
+Garden.scrollTop = function() {
+	var link = $('.js-scroll-top');
+	var scrollBlocks = $(window).add('.js-choise-filter');
+	var show = function() {
+		if($(window).scrollTop() > $(window).height() || $('.js-choise-filter').scrollTop() > $(window).height() || $(window).scrollTop() >= $(document).height()) {
+			link.addClass('active');
+		} else {
+			link.removeClass('active');
+		}
+	}
+	link.on('click', function(){
+		$('html, body, .js-choise-filter').each(function(){
+			$(this).animate({
+				scrollTop: 0
+			}, 300);
+		});
+		return false;
+	});
+	scrollBlocks.on('scroll', function(){
+		show();
+	});
+	show();
+}
 Garden.init = function() {
 	$('.js-gallery-track').on('click', function(){
 		dataLayer.push({'event': 'HousePhotoClick', 'landId': $(this).attr('data-number')});
 	});
+	this.scrollTop();
 	this.housesFilter.init();
 	this.setFor();
 	this.header();
