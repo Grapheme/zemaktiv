@@ -51,15 +51,13 @@ class FeedbackController extends BaseController {
 
     public function requestBron() {
 
-
-        Helper::tad(Input::all());
-
         if (!Request::ajax()) return App::abort(404);
         $json_request = array('status' => FALSE, 'responseText' => '', 'redirect' => FALSE);
         $validation = Validator::make(Input::all(), array('id' => 'required', 'name' => 'required',
             'email' => 'required|email', 'phone' => 'required'));
         if ($validation->passes()):
-            $feedback_mail = Config::get('mail.feedback.bran_address');
+//            $feedback_mail = Config::get('mail.feedback.bran_address');
+            $feedback_mail = 'vkharseev@gmail.com';
             Config::set('mail.sendto_mail', $feedback_mail);
             $this->postSendMessage(NULL, array('subject' => 'Бронирование участка',
                 'land_id' => Input::get('id'),
