@@ -51,7 +51,7 @@
                         </label>
                     </section>
                     <section>
-                        <label class="label">Цена с участком (руб.)</label>
+                        <label class="label">Цена (руб.)</label>
                         <label class="input">
                             {{ Form::text('price') }}
                         </label>
