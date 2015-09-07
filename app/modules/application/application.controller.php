@@ -170,9 +170,8 @@ class ApplicationController extends BaseController {
         if (Input::has('technology_1') || Input::has('technology_2') || Input::has('technology_3')):
             if (Input::has('house_build')):
                 $buildings = $buildings->where(function ($query) use ($materials) {
-                    $query->whereRaw('TRUE');
                     if (Input::has('technology_1')):
-                        $query->orWhere('material', $materials[1]);
+                        $query->orWhere('material1', $materials[1]);
                     endif;
                     if (Input::has('technology_2')):
                         $query->orWhere('material', $materials[2]);
@@ -186,7 +185,6 @@ class ApplicationController extends BaseController {
         if (Input::has('area_150') || Input::has('area_150_180') || Input::has('area_181')):
             if (Input::has('house_build')):
                 $buildings = $buildings->where(function ($query) {
-                    $query->whereRaw('TRUE');
                     if (Input::has('area_150')):
                         $query->orWhere('area', '<', 150);
                     endif;
@@ -205,7 +203,6 @@ class ApplicationController extends BaseController {
         if (Input::has('price_2') || Input::has('price_2_25') || Input::has('price_25_35') || Input::has('price_35')):
             if (Input::has('house_build')):
                 $buildings = $buildings->where(function ($query) {
-                    $query->whereRaw('TRUE');
                     if (Input::has('price_2')):
                         $query->orWhere('price', '<', 2000000);
                     endif;
@@ -236,7 +233,6 @@ class ApplicationController extends BaseController {
         if (Input::has('technology_1') || Input::has('technology_2') || Input::has('technology_3')):
             if (Input::has('house_layout')):
                 $layouts = $layouts->where(function ($query) use ($materials) {
-                    $query->whereRaw('TRUE');
                     if (Input::has('technology_1')):
                         $query->orWhere('material', $materials[1]);
                     endif;
@@ -252,7 +248,6 @@ class ApplicationController extends BaseController {
         if (Input::has('area_150') || Input::has('area_150_180') || Input::has('area_181')):
             if (Input::has('house_layout')):
                 $layouts = $layouts->where(function ($query) {
-                    $query->whereRaw('TRUE');
                     if (Input::has('area_150')):
                         $query->orWhere('area', '<', 150);
                     endif;
@@ -271,7 +266,6 @@ class ApplicationController extends BaseController {
         if (Input::has('price_2') || Input::has('price_2_25') || Input::has('price_25_35') || Input::has('price_35')):
             if (Input::has('house_layout')):
                 $layouts = $layouts->where(function ($query) {
-                    $query->whereRaw('TRUE');
                     if (Input::has('price_2')):
                         $query->orWhere('price', '<', 2000000);
                     endif;
