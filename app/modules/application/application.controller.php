@@ -171,7 +171,7 @@ class ApplicationController extends BaseController {
             if (Input::has('house_build')):
                 $buildings = $buildings->where(function ($query) use ($materials) {
                     if (Input::has('technology_1')):
-                        $query->orWhere('material1', $materials[1]);
+                        $query->orWhere('material', $materials[1]);
                     endif;
                     if (Input::has('technology_2')):
                         $query->orWhere('material', $materials[2]);
