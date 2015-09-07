@@ -263,9 +263,9 @@ Garden.overlayForms = function() {
 	        }
 	    },
 	    submitHandler: function(form) {
-	    		var landNumber = Dictionary.buildings[$(form).find('[name="id"]').val()].number;
-	    		dataLayer.push({'event': 'ReserveFormSend', 'landId': landNumber});
-	    		console.log(landNumber);
+	    		//var landNumber = Dictionary.buildings[$(form).find('[name="id"]').val()].number;
+	    		//dataLayer.push({'event': 'ReserveFormSend', 'landId': landNumber});
+	    		//console.log(landNumber);
 	        Help.ajaxSubmit(form, {
 	            success: function() {
 	            	bookSubmitEvent();
