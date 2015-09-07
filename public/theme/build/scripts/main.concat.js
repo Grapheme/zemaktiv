@@ -1879,9 +1879,14 @@ Garden.overlayForms = function() {
 	        }
 	    },
 	    submitHandler: function(form) {
-	    		//var landNumber = Dictionary.buildings[$(form).find('[name="id"]').val()].number;
-	    		//dataLayer.push({'event': 'ReserveFormSend', 'landId': landNumber});
-	    		//console.log(landNumber);
+	    		var landObj = Dictionary.buildings[$(form).find('[name="id"]').val()];
+	    		console.log(landObj);
+	    		if(landObj) {
+	    			var landNumber = landObj.number;
+	    			dataLayer.push({'event': 'ReserveFormSend', 'landId': landNumber});
+	    		} else {
+	    			var landNumber = 0;
+	    		}
 	        Help.ajaxSubmit(form, {
 	            success: function() {
 	            	bookSubmitEvent();
@@ -2839,6 +2844,8 @@ Garden.book = function() {
 				$('.js-book-title').show()
 					.siblings().hide();
 			}
+		} else {
+			
 		}
 		Garden.overlays.open('book');
 		return false;

@@ -85,16 +85,15 @@
                     </div>
                 </div>
             </div>
-            @if(0)
-                @if(!empty($build->land))
+            @if(!empty($build->land))
                 <div class="right__btns">
                     <a href="#" data-id="{{ $build->land->id }}" class="js-book us-btn btn-green"><span>Узнать больше</span></a>
                 </div>
-                @endif
+            @else
+                <div class="right__btns">
+                    <a href="#" data-id="0" class="js-book us-btn btn-green"><span>Узнать больше</span></a>
+                </div>
             @endif
-            <div class="right__btns">
-                <a href="#" data-id="0" class="js-book us-btn btn-green"><span>Узнать больше</span></a>
-            </div>
         </div>
         <div class="clearfix"></div>
     </div>
