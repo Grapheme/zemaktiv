@@ -10,7 +10,7 @@
     endif;
     ?>
     <div class="done__house">
-        <div class="house__title">{{ $build->title }},<br>участок №{{ !empty($build->land)? $build->land->number : '' }}
+        <div class="house__title">{{ trim($build->title) }},<br>участок №{{ !empty($build->land)? $build->land->number : '' }}
         </div>
         <div class="house__left">
             <div class="left__main-image">
