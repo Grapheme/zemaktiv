@@ -143,118 +143,10 @@ class ApplicationController extends BaseController {
                 $materials[] = $material;
             endforeach;
             if (Input::has('house_build')):
-                $buildings = new Buildings();
+                $buildings = $this->builds_filter($materials);
             endif;
             if (Input::has('house_layout')):
-                $layouts = new Layout_homes();
-            endif;
-            if (Input::has('technology_1') || Input::has('technology_2') || Input::has('technology_3')):
-                if (Input::has('house_build')):
-                    $buildings = $buildings->where(function ($query) use ($materials) {
-                        if (Input::has('technology_1')):
-                            $query->where('material', $materials[1]);
-                        endif;
-                        if (Input::has('technology_2')):
-                            $query->orWhere('material', $materials[2]);
-                        endif;
-                        if (Input::has('technology_3')):
-                            $query->orWhere('material', $materials[3]);
-                        endif;
-                    });
-                endif;
-                if (Input::has('house_layout')):
-                    $layouts = $layouts->where(function ($query) use ($materials) {
-                        if (Input::has('technology_1')):
-                            $query->where('material', $materials[1]);
-                        endif;
-                        if (Input::has('technology_2')):
-                            $query->orWhere('material', $materials[2]);
-                        endif;
-                        if (Input::has('technology_3')):
-                            $query->orWhere('material', $materials[3]);
-                        endif;
-                    });
-                endif;
-            endif;
-            if (Input::has('area_150') || Input::has('area_151_180') || Input::has('area_181')):
-                if (Input::has('house_build')):
-                    $buildings = $buildings->where(function ($query) use ($materials) {
-                        if (Input::has('area_150')):
-                            $query->where('area', '<', 150);
-                        endif;
-                        if (Input::has('area_151_180')):
-                            $query->orWhere(function ($query_150_180) {
-                                $query_150_180->where('area', '>=', 150);
-                                $query_150_180->where('area', '<=', 180);
-                            });
-                        endif;
-                        if (Input::has('area_181')):
-                            $query->orWhere('area', '>=', 181);
-                        endif;
-                    });
-                endif;
-                if (Input::has('house_layout')):
-                    $layouts = $layouts->where(function ($query) use ($materials) {
-                        if (Input::has('area_150')):
-                            $query->where('area', '<', 150);
-                        endif;
-                        if (Input::has('area_150_180')):
-                            $query->orWhere(function ($query_150_180) {
-                                $query_150_180->where('area', '>=', 150);
-                                $query_150_180->where('area', '<=', 180);
-                            });
-                        endif;
-                        if (Input::has('area_181')):
-                            $query->orWhere('area', '>=', 181);
-                        endif;
-                    });
-                endif;
-            endif;
-            if (Input::has('price_2') || Input::has('price_2_25') || Input::has('price_25_35') || Input::has('price_35')):
-                if (Input::has('house_build')):
-                    $buildings = $buildings->where(function ($query) {
-                        if (Input::has('price_2')):
-                            $query->where('price', '<', 2000000);
-                        endif;
-                        if (Input::has('price_2_25')):
-                            $query->orWhere(function ($query_2_25) {
-                                $query_2_25->where('price', '>=', 2000000);
-                                $query_2_25->where('price', '<=', 2500000);
-                            });
-                        endif;
-                        if (Input::has('price_25_35')):
-                            $query->orWhere(function ($query_25_35) {
-                                $query_25_35->where('price', '>', 2500000);
-                                $query_25_35->where('price', '<=', 3500000);
-                            });
-                        endif;
-                        if (Input::has('price_35')):
-                            $query->orWhere('price', '>', 3500000);
-                        endif;
-                    });
-                endif;
-                if (Input::has('house_layout')):
-                    $layouts = $layouts->where(function ($query) {
-                        if (Input::has('price_2')):
-                            $query->where('price', '<', 2000000);
-                        endif;
-                        if (Input::has('price_2_25')):
-                            $query->orWhere(function ($query_2_25) {
-                                $query_2_25->where('price', '>=', 2000000);
-                                $query_2_25->where('price', '<=', 2500000);
-                            });
-                        endif;
-                        if (Input::has('price_25_35')):
-                            $query->orWhere(function ($query_25_35) {
-                                $query_25_35->where('price', '>', 2500000);
-                                $query_25_35->where('price', '<=', 3500000);
-                            });
-                        endif;
-                        if (Input::has('price_35')):
-                            $query->orWhere('price', '>', 3500000);
-                        endif;
-                    });
-                endif;
+                $layouts = $this->layaut_filter($materials);
             endif;
             if (Input::has('house_build')):
                 $buildings = $buildings->where('sold', 0)->orderBy('price')->orderBy('area')->with('land', 'photo', 'gallery.photos')->get();
@@ -270,5 +162,137 @@ class ApplicationController extends BaseController {
             return Redirect::back();
         endif;
         return Response::json($json_request, 200);
+    }
+
+    private function builds_filter($materials) {
+
+        $buildings = new Buildings();
+        if (Input::has('technology_1') || Input::has('technology_2') || Input::has('technology_3')):
+            if (Input::has('house_build')):
+                $buildings = $buildings->where(function ($query) use ($materials) {
+                    $query->whereRaw('TRUE');
+                    if (Input::has('technology_1')):
+                        $query->orWhere('material', $materials[1]);
+                    endif;
+                    if (Input::has('technology_2')):
+                        $query->orWhere('material', $materials[2]);
+                    endif;
+                    if (Input::has('technology_3')):
+                        $query->orWhere('material', $materials[3]);
+                    endif;
+                });
+            endif;
+        endif;
+        if (Input::has('area_150') || Input::has('area_150_180') || Input::has('area_181')):
+            if (Input::has('house_build')):
+                $buildings = $buildings->where(function ($query) {
+                    $query->whereRaw('TRUE');
+                    if (Input::has('area_150')):
+                        $query->orWhere('area', '<', 150);
+                    endif;
+                    if (Input::has('area_150_180')):
+                        $query->orWhere(function ($query_150_180) {
+                            $query_150_180->where('area', '>=', 150);
+                            $query_150_180->where('area', '<=', 180);
+                        });
+                    endif;
+                    if (Input::has('area_181')):
+                        $query->orWhere('area', '>=', 181);
+                    endif;
+                });
+            endif;
+        endif;
+        if (Input::has('price_2') || Input::has('price_2_25') || Input::has('price_25_35') || Input::has('price_35')):
+            if (Input::has('house_build')):
+                $buildings = $buildings->where(function ($query) {
+                    $query->whereRaw('TRUE');
+                    if (Input::has('price_2')):
+                        $query->orWhere('price', '<', 2000000);
+                    endif;
+                    if (Input::has('price_2_25')):
+                        $query->orWhere(function ($query_2_25) {
+                            $query_2_25->where('price', '>=', 2000000);
+                            $query_2_25->where('price', '<=', 2500000);
+                        });
+                    endif;
+                    if (Input::has('price_25_35')):
+                        $query->orWhere(function ($query_25_35) {
+                            $query_25_35->where('price', '>', 2500000);
+                            $query_25_35->where('price', '<=', 3500000);
+                        });
+                    endif;
+                    if (Input::has('price_35')):
+                        $query->orWhere('price', '>', 3500000);
+                    endif;
+                });
+            endif;
+        endif;
+        return $buildings;
+    }
+
+    private function layaut_filter($materials) {
+
+        $layouts = new Layout_homes();
+        if (Input::has('technology_1') || Input::has('technology_2') || Input::has('technology_3')):
+            if (Input::has('house_layout')):
+                $layouts = $layouts->where(function ($query) use ($materials) {
+                    $query->whereRaw('TRUE');
+                    if (Input::has('technology_1')):
+                        $query->orWhere('material', $materials[1]);
+                    endif;
+                    if (Input::has('technology_2')):
+                        $query->orWhere('material', $materials[2]);
+                    endif;
+                    if (Input::has('technology_3')):
+                        $query->orWhere('material', $materials[3]);
+                    endif;
+                });
+            endif;
+        endif;
+        if (Input::has('area_150') || Input::has('area_150_180') || Input::has('area_181')):
+            if (Input::has('house_layout')):
+                $layouts = $layouts->where(function ($query) {
+                    $query->whereRaw('TRUE');
+                    if (Input::has('area_150')):
+                        $query->orWhere('area', '<', 150);
+                    endif;
+                    if (Input::has('area_150_180')):
+                        $query->orWhere(function ($query_150_180) {
+                            $query_150_180->where('area', '>=', 150);
+                            $query_150_180->where('area', '<=', 180);
+                        });
+                    endif;
+                    if (Input::has('area_181')):
+                        $query->orWhere('area', '>=', 181);
+                    endif;
+                });
+            endif;
+        endif;
+        if (Input::has('price_2') || Input::has('price_2_25') || Input::has('price_25_35') || Input::has('price_35')):
+            if (Input::has('house_layout')):
+                $layouts = $layouts->where(function ($query) {
+                    $query->whereRaw('TRUE');
+                    if (Input::has('price_2')):
+                        $query->orWhere('price', '<', 2000000);
+                    endif;
+                    if (Input::has('price_2_25')):
+                        $query->orWhere(function ($query_2_25) {
+                            $query_2_25->where('price', '>=', 2000000);
+                            $query_2_25->where('price', '<=', 2500000);
+                        });
+                    endif;
+                    if (Input::has('price_25_35')):
+                        $query->orWhere(function ($query_25_35) {
+                            $query_25_35->where('price', '>', 2500000);
+                            $query_25_35->where('price', '<=', 3500000);
+                        });
+                    endif;
+                    if (Input::has('price_35')):
+                        $query->orWhere('price', '>', 3500000);
+                    endif;
+                });
+            endif;
+        endif;
+        return $layouts;
     }
 }
