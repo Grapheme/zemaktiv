@@ -231,5 +231,17 @@
 }
 
 .scroll-top {
-	
+	position: fixed;
+	z-index: 99;
+	right: 40rem / $fs;
+	bottom: 40rem / $fs;
+	height: 40rem / $fs;
+	width: 40rem / $fs;
+	background: url(../images/ui/scroll-top.svg) center center / contain no-repeat;
+	transform: translateY(300%);
+	transition: all .3s ease;
+
+	&.active {
+		transform: translateY(0);
+	}
 }
