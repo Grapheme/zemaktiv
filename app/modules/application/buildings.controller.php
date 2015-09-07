@@ -49,7 +49,8 @@ class BuildingsController extends BaseController {
     public function index() {
 
         if(Input::has('search')):
-            $buildings = Land::where('title','LIKE', '"%'.Input::get('search').'%"')->paginate(1);
+            $search = Input::get('search');
+            $buildings = Buildings::where('title', 'LIKE', "%$search%")->paginate(25);
         else:
             $buildings = Buildings::orderBy('created_at','DESC')->with('land')->paginate(25);
         endif;
