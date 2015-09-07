@@ -6,7 +6,6 @@
 
 {{ HTML::scriptmod(Config::get('site.theme_path').'/scripts/main.concat.js') }}
 
-@if(App::environment() != 'vkharseev')
         <!-- Targetix -->
 <script src="http://content.targetix.net/Tags/55b2245e9341f9b5bc56e580.js"></script>
 <!-- End Targetix -->
@@ -109,4 +108,3 @@
 <script type="text/javascript" src="http://smartcallback.ru/api/SmartCallBack.js"></script>
 <script type="text/javascript">SCBinit("bBrLaQfSDP7CZhiK07rL");</script>
 <!--END SCB-->
-@endif

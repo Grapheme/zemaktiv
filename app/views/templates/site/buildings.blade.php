@@ -35,27 +35,11 @@
     <script>
         Dictionary = window.Dictionary || {};
         Dictionary.buildings = {
-            @if($lands->count())
-                @foreach($lands as $land)
-                    "{{ $land->id }}": {
-                id: {{ $land->id }},
-                number: "{{ $land->number }}",
-                land_area: {{ $land->area }},
-                price: {{ $land->price }},
-                price_total: {{ $land->price_house }},
-                coordinate_x: {{ $land->coordinate_x }},
-                coordinate_y: {{ $land->coordinate_y }},
-                sold: {{ $land->sold }},
-                status: {{ $land->status }},
-                turn: {{ $land->turn }}
-
-
-            },
-            @endforeach
-        @endif
-
-
-
+@if($lands->count())
+    @foreach($lands as $land)
+            "{{ $land->id }}": {id: {{ $land->id }}, number: "{{ $land->number }}", land_area: {{ $land->area }}, price: {{ $land->price }}, price_total: {{ $land->price_house }}, coordinate_x: {{ $land->coordinate_x }}, coordinate_y: {{ $land->coordinate_y }}, sold: {{ $land->sold }}, status: {{ $land->status }}, turn: {{ $land->turn }}},
+    @endforeach
+@endif
         };
     </script>
 @stop
