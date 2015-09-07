@@ -1214,11 +1214,20 @@ h2 {
       font-weight: 600;
       margin-bottom: 1.25rem; }
     .build-filter .filter__block .block__check {
+      position: relative;
       margin-top: 0.625rem;
       font-weight: 700; }
       .build-filter .filter__block .block__check .ui-button-text {
         text-align: left;
         padding: 0; }
+      .build-filter .filter__block .block__check.disabled:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2; }
   .build-filter .filter__update {
     position: relative;
     display: block;
