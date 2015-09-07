@@ -99,6 +99,3 @@
         <div class="clearfix"></div>
     </div>
 @endforeach
-@if(!$buildings->count())
-    <div class="builds-empty">К сожалению по заданым параметрам ничего не нашлось</div>
-@endif

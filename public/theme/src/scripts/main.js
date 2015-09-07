@@ -1309,6 +1309,9 @@ Garden.housesFilter = {
 			data: t.form.serialize()
 		}).done(function(data){
 			if(data.status) {
+				if(data.html == '') {
+					data.html = '<div class="builds-empty">К сожалению по заданым параметрам ничего не нашлось</div>';
+				}
 				$('.js-done-wrapper').html(data.html);
 			}
 		}).fail(function(data){
