@@ -977,7 +977,7 @@ Garden.map = function() {
 			if(v.status == 2) {
 				totalPrice = v.price_total.formatMoney();
 			}
-			html.push('<li class="body__item js-filter-item" data-id="' + v.id + '"><div class="wrapper"><span>' + v.number + '</span><span>' + v.turn + '</span><span>' + v.land_area + '</span><span>' + numToContract(v.status) + '</span><span>' + v.price.formatMoney() + '</span><span>' + totalPrice + '</span></div></li>');
+			html.push('<li class="body__item js-filter-item" data-id="' + v.id + '"><div class="wrapper"><span><a href="#" class="js-favorite favorite-link"></a>' + v.number + '</span><span>' + v.turn + '</span><span>' + v.land_area + '</span><span>' + numToContract(v.status) + '</span><span>' + v.price.formatMoney() + '</span><span>' + totalPrice + '</span></div></li>');
 			count++;
 		});
 		if(count != 0) {
@@ -1327,7 +1327,7 @@ Garden.housesFilter = {
 				$('input[name="' + i + '"]').attr('checked', 'checked');
 			});
 		} else {
-			$('.js-houses-filter').find('input[type="checkbox"]').each(function(){
+			$('.js-houses-filter').find('input.default').each(function(){
 				$(this)[0].checked = true;
 			});
 		}
@@ -1335,16 +1335,8 @@ Garden.housesFilter = {
 	disable: function() {
 		this.form.find('input').each(function(){
 			var listParent = $(this).parent().parent();
-			var thisAll = listParent.find('input');
-			var isAllCheked = 0;
-			thisAll.each(function(){
-				if($(this).is(':checked')) isAllCheked++;
-			});
-			if(isAllCheked == 1) {
-				thisAll.filter(':checked').parent().addClass('disabled');
-			} else {
-				thisAll.filter(':checked').parent().removeClass('disabled');
-			}
+			listParent.find('input').not(':checked').parent().removeClass('disabled');
+			listParent.find('input:checked').parent().addClass('disabled');
 		});
 	},
 	init: function() {
@@ -1353,8 +1345,9 @@ Garden.housesFilter = {
 		t.setFilter();
 		t.getItems();
 		t.disable();
-		t.form.find('input').on('change', function(){
-			// var allCheck = listParent.find('.js-set-all');
+		t.form.find('input').not('.js-set-all').on('change', function(){
+			var listParent = $(this).parent().parent();
+			var others = listParent.find('input').not($(this));
 			// if($(this).hasClass('js-set-all')) {
 			// 	if($(this).is(':checked')) {
 			// 		thisAll.each(function(){
@@ -1367,8 +1360,10 @@ Garden.housesFilter = {
 				allCheck[0].checked = false;
 				allCheck.button('refresh');
 			}*/
-			t.disable();
-			var tHash = window.location.hash;
+			others.each(function(){
+				$(this)[0].checked = false;
+				$(this).button('refresh');
+			});
 			if(t.form.serialize() == '') {
 				$.removeCookie('housesFilter');
 			} else {
@@ -1377,6 +1372,7 @@ Garden.housesFilter = {
 				});
 			}
 			t.getItems();
+			t.disable();
 		});
 	}
 }
@@ -1403,10 +1399,96 @@ Garden.scrollTop = function() {
 	});
 	show();
 }
+Garden.favorite = {
+	add: function(parent) {
+		var json = $.cookie('favorite-areas');
+		if(json) {
+			var data = JSON.parse(json);
+		} else {
+			var data = {};
+		}
+		data[parent.attr('data-id')] = {};
+		$.cookie('favorite-areas', JSON.stringify(data));
+		console.log($.cookie('favorite-areas'));
+	},
+	remove: function(parent) {
+
+	},
+	click: function(elem) {
+		var t = this;
+		var parent = elem.parents('.js-filter-item');
+		if(elem.hasClass('active')) {
+			t.remove(parent);
+		} else {
+			t.add(parent);
+		}
+	},
+	set: function() {
+		var json = $.cookie('favorite-areas');
+		if(json) {
+			var data = JSON.parse(json);
+			var html = [];
+			$.each(data, function(i){
+				var v = Dictionary.buildingsAll[i];
+				var totalPrice = '';
+				if(v.status == 2) {
+					totalPrice = v.price_total.formatMoney();
+				}
+				html.push('<li class="body__item js-filter-item" data-id="' + v.id + '"><div class="wrapper"><span><a href="#" class="js-favorite favorite-link"></a>' + v.number + '</span><span>' + v.turn + '</span><span>' + v.land_area + '</span><span>' + numToContract(v.status) + '</span><span>' + v.price.formatMoney() + '</span><span>' + totalPrice + '</span></div></li>');
+			});
+			$('.js-favorite-cont').show().html(html.join(''));
+		} else {
+			$('.js-favorite-cont').hide();
+		}
+	},
+	init: function() {
+		var t = this;
+		if(!$('.js-favorite-cont').length) return;
+		t.set();
+		$(document).on('click', '.js-favorite', function(){
+			t.click($(this));
+			return false;
+		});
+	}
+}
+Garden.tooltip = {
+	block: $('.js-info-overlay'),
+	timeout: false,
+	close: function() {
+		var t = this;
+		t.timeout = setTimeout(function(){
+			t.block.hide();
+		}, 1000);
+	},
+	show: function(elem) {
+		var t = this;
+		var text = elem.attr('data-tooltip');
+		clearTimeout(t.timeout);
+		t.block.show().css({
+			top: elem.offset().top - 10 * parseInt($('html').css('font-size')) / 16,
+			left: elem.offset().left + 30 * parseInt($('html').css('font-size')) / 16
+		}).html(text);
+	},
+	init: function() {
+		var t = this;
+		$(document).on('mouseenter', '[data-tooltip]', function(){
+			t.show($(this));
+		}).on('mouseleave', '[data-tooltip]', function(){
+			t.close();
+		});
+		t.block.on('mouseenter', function(){
+			clearTimeout(t.timeout);
+		}).on('mouseleave', function(){
+			t.close();
+		});
+	}
+}
 Garden.init = function() {
 	$('.js-gallery-track').on('click', function(){
 		dataLayer.push({'event': 'HousePhotoClick', 'landId': $(this).attr('data-number')});
 	});
+	this.tooltip.init();
+	this.favorite.init();
 	this.scrollTop();
 	this.housesFilter.init();
 	this.setFor();

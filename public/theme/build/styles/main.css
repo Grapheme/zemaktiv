@@ -1109,6 +1109,56 @@ h2 {
         -ms-transform: translateY(0);
             transform: translateY(0); }
 
+.favorite-link {
+  position: absolute;
+  display: inline-block;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-top: -0.625rem;
+  top: 50%;
+  left: 2.1875rem;
+  background: url(../images/ui/star-empty.png) center center/contain no-repeat; }
+  .favorite-link.active {
+    background: url(../images/ui/star.png) center center/contain no-repeat; }
+
+.info-tooltip {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 1rem;
+  background: #3eadda;
+  color: #fff;
+  font-family: 'pf_agora_slab_pro';
+  font-size: 0.875rem;
+  text-align: center;
+  margin: 0 3px; }
+  .info-tooltip:before {
+    content: "i"; }
+
+.info-overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.75rem;
+  width: 16.875rem;
+  background: #f5f1ed;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.702);
+  font-weight: bold;
+  line-height: 1.417; }
+  .info-overlay:before {
+    position: absolute;
+    right: 100%;
+    top: 0.625rem;
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0.46875rem 0.625rem 0.46875rem 0;
+    border-color: transparent #f5f1ed transparent transparent; }
+
 @media only screen and (max-width: 1300px) {
   html {
     font-size: 15px; } }
@@ -1198,7 +1248,7 @@ h2 {
           width: 40%; }
         .done .done__house .house__right .right__info .info__block .block__right {
           width: 60%; }
-          .done .done__house .house__right .right__info .info__block .block__right span {
+          .done .done__house .house__right .right__info .info__block .block__right .right__text {
             display: inline;
             background: #f1f1f1;
             line-height: 1.4em;
@@ -2422,6 +2472,8 @@ h2 {
     display: none;
     background: #fff;
     padding: 1.5625rem 0 3.125rem; }
+    .wrapper-choise .filter__list .list__table.favorite-cont {
+      display: none; }
     .wrapper-choise .filter__list .list__table ul {
       list-style: none;
       padding: 0;
@@ -2431,6 +2483,11 @@ h2 {
       font-family: 'pf_agora_slab_pro';
       font-size: 1rem;
       font-weight: 700; }
+    .wrapper-choise .filter__list .list__table .table__title {
+      font-family: 'pf_agora_slab_pro';
+      font-weight: 900;
+      font-size: 1.5rem;
+      padding-bottom: 0.9375rem; }
     .wrapper-choise .filter__list .list__table .table__body .body__item {
       font-size: 0.9375rem;
       -webkit-transition: all 0.2s ease;

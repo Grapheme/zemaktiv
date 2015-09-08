@@ -7,6 +7,11 @@ class LayoutHomesController extends BaseController {
     public static $group = 'application';
     public static $materials = array('Каркасные дома' => 'Каркасные дома', 'Газобетонный блок' => 'Газобетонный блок',
         'Оцилиндрованное дерево' => 'Оцилиндрованное дерево');
+    public static $materials_desc = array(
+        'Каркасные дома' => '',
+        'Газобетонный блок' => '',
+        'Оцилиндрованное дерево' => ''
+        );
 
     /****************************************************************************/
     public static function returnRoutes() {

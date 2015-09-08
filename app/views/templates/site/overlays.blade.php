@@ -4,6 +4,7 @@
  */
 ?>
 <a href="#" class="js-scroll-top scroll-top"></a>
+<div class="info-overlay js-info-overlay"></div>
 <div class="overlay js-overlay">
     <div data-name="book" class="overlay__block block-book js-overlay-block">
         <div class="wrapper">

@@ -479,6 +479,10 @@
 		padding: 25rem / $fs 0 50rem / $fs;
 
 		.list__table {
+			&.favorite-cont {
+				display: none;
+			}
+
 			ul {
 				list-style: none;
 				padding: 0;
@@ -492,6 +496,13 @@
 					font-size: 16rem / $fs;
 					font-weight: 700;
 				}
+			}
+
+			.table__title {
+				font-family: 'pf_agora_slab_pro';
+				font-weight: 900;
+				font-size: 24rem / $fs;
+				padding-bottom: 15rem / $fs;
 			}
 
 			.table__body {

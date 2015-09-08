@@ -245,3 +245,62 @@
 		transform: translateY(0);
 	}
 }
+
+.favorite-link {
+	position: absolute;
+	display: inline-block;
+	width: 18rem / $fs;
+	height: 18rem / $fs;
+	margin-top: -10rem / $fs;
+	top: 50%;
+	left: 35rem / $fs;
+	background: url(../images/ui/star-empty.png) center center / contain no-repeat;
+
+	&.active {
+		background: url(../images/ui/star.png) center center / contain no-repeat;
+	}
+}
+
+.info-tooltip {
+	display: inline-block;
+	vertical-align: middle;
+	width: 16rem / $fs;
+	height: 16rem / $fs;
+	border-radius: 16rem / $fs;
+	background: #3eadda;
+	color: #fff;
+	font-family: 'pf_agora_slab_pro';
+	font-size: 14rem / $fs;
+	text-align: center;
+	margin: 0 3px;
+
+	&:before {
+		content: "i";
+	}
+}
+
+.info-overlay {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 12rem / $fs;
+	width: 270rem / $fs;
+	background: #f5f1ed;
+	font-size: 12px;
+	color: rgba(0, 0, 0, 0.702);
+	font-weight: bold;
+	line-height: 1.417;
+
+	&:before {
+		position: absolute;
+		right: 100%;
+		top: 10rem / $fs;
+		content: "";
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 7.5rem / $fs 10rem / $fs 7.5rem / $fs 0;
+		border-color: transparent #f5f1ed transparent transparent;
+	}
+}
