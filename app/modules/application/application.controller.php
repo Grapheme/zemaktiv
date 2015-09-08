@@ -142,10 +142,10 @@ class ApplicationController extends BaseController {
             foreach (LayoutHomesController::$materials as $material):
                 $materials[] = $material;
             endforeach;
-            if (Input::has('house_build')):
+            if (Input::has('house_build') || Input::has('house_all')):
                 $buildings = $this->builds_filter($materials);
             endif;
-            if (Input::has('house_layout')):
+            if (Input::has('house_layout') || Input::has('house_all')):
                 $layouts = $this->layaut_filter($materials);
             endif;
             if (Input::has('house_build')):
@@ -170,13 +170,13 @@ class ApplicationController extends BaseController {
         if (Input::has('technology_1') || Input::has('technology_2') || Input::has('technology_3')):
             if (Input::has('house_build')):
                 $buildings = $buildings->where(function ($query) use ($materials) {
-                    if (Input::has('technology_1')):
+                    if (Input::has('technology_1') || Input::has('technology_all')):
                         $query->orWhere('material', $materials[1]);
                     endif;
-                    if (Input::has('technology_2')):
+                    if (Input::has('technology_2') || Input::has('technology_all')):
                         $query->orWhere('material', $materials[2]);
                     endif;
-                    if (Input::has('technology_3')):
+                    if (Input::has('technology_3') || Input::has('technology_all')):
                         $query->orWhere('material', $materials[3]);
                     endif;
                 });
@@ -197,6 +197,9 @@ class ApplicationController extends BaseController {
                     if (Input::has('area_181')):
                         $query->orWhere('area', '>=', 181);
                     endif;
+                    if (Input::has('area_all')):
+                        $query->orWhere('area', '>=', 0);
+                    endif;
                 });
             endif;
         endif;
@@ -206,20 +209,23 @@ class ApplicationController extends BaseController {
                     if (Input::has('price_2')):
                         $query->orWhere('price', '<', 2000000);
                     endif;
-                    if (Input::has('price_2_25')):
+                    if (Input::has('price_2_3')):
                         $query->orWhere(function ($query_2_25) {
                             $query_2_25->where('price', '>=', 2000000);
-                            $query_2_25->where('price', '<=', 2500000);
+                            $query_2_25->where('price', '<=', 3000000);
                         });
                     endif;
-                    if (Input::has('price_25_35')):
+                    if (Input::has('price_3_5')):
                         $query->orWhere(function ($query_25_35) {
-                            $query_25_35->where('price', '>', 2500000);
-                            $query_25_35->where('price', '<=', 3500000);
+                            $query_25_35->where('price', '>', 3000000);
+                            $query_25_35->where('price', '<=', 5000000);
                         });
                     endif;
-                    if (Input::has('price_35')):
-                        $query->orWhere('price', '>', 3500000);
+                    if (Input::has('price_5')):
+                        $query->orWhere('price', '>', 5000000);
+                    endif;
+                    if (Input::has('price_all')):
+                        $query->orWhere('price', '>', 0);
                     endif;
                 });
             endif;
@@ -269,20 +275,23 @@ class ApplicationController extends BaseController {
                     if (Input::has('price_2')):
                         $query->orWhere('price', '<', 2000000);
                     endif;
-                    if (Input::has('price_2_25')):
+                    if (Input::has('price_2_3')):
                         $query->orWhere(function ($query_2_25) {
                             $query_2_25->where('price', '>=', 2000000);
-                            $query_2_25->where('price', '<=', 2500000);
+                            $query_2_25->where('price', '<=', 3000000);
                         });
                     endif;
-                    if (Input::has('price_25_35')):
+                    if (Input::has('price_3_5')):
                         $query->orWhere(function ($query_25_35) {
-                            $query_25_35->where('price', '>', 2500000);
-                            $query_25_35->where('price', '<=', 3500000);
+                            $query_25_35->where('price', '>', 3000000);
+                            $query_25_35->where('price', '<=', 5000000);
                         });
                     endif;
-                    if (Input::has('price_35')):
-                        $query->orWhere('price', '>', 3500000);
+                    if (Input::has('price_5')):
+                        $query->orWhere('price', '>', 5000000);
+                    endif;
+                    if (Input::has('price_all')):
+                        $query->orWhere('price', '>', 0);
                     endif;
                 });
             endif;

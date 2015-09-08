@@ -55,7 +55,7 @@
                 </div>
                 <div class="info__block">
                     <div class="block__left">Материал:</div>
-                    <div class="block__right"><span>{{ $build->material }}</span></div>
+                    <div class="block__right"><span class="right__text">{{ $build->material }}</span><!-- <span class="info-tooltip" data-tooltip="{{ LayoutHomesController::$materials_desc[$build->material] }}"></span> --></div>
                 </div>
                 @if(!empty($build->land))
                 <div class="info__block">

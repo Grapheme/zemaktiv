@@ -158,7 +158,23 @@ $lands = Land::all();
                     </div>
                 </div>
                 <div class="filter__list js-filter-list">
+                    <div class="list__table js-favorite-cont favorite-cont">
+                        <div class="wrapper">
+                            <div class="table__title">Избранное</div>
+                        </div>
+                        <ul class="table__head">
+                            <li class="body__item">
+                                <div class="wrapper">
+                                    <span data-sort-name="number">Участок</span><span data-sort-name="turn">Очередь</span><span data-sort-name="land_area">Площадь, сот.</span><span data-sort-name="status">Статус</span><span data-sort="ASC" data-sort-name="price">Цена участка, руб.</span><span data-sort-name="price_total">Цена участка с домом, руб.</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="table__body js-favorite-items"></ul>
+                    </div>
                     <div class="list__table">
+                        <div class="wrapper">
+                            <div class="table__title">Участки</div>
+                        </div>
                         <ul class="table__head">
                             <li class="body__item">
                                 <div class="wrapper">
