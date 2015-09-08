@@ -658,6 +658,7 @@ Garden.map = function() {
 			if(id === self.activeId) return;
 			self.activeId = id;
 			var thisObj = Dictionary.buildingsAll[id];
+			self.tooltip.attr('data-id', id);
 			self.tooltip.find('.js-bnum').text(thisObj.number);
 			self.tooltip.find('.js-bturn').text(thisObj.turn);
 			if(parseInt(thisObj.price_total) == 0 || !thisObj.price_total) {
@@ -671,9 +672,20 @@ Garden.map = function() {
 			if(thisObj.sold == 0) {
 				self.tooltip.find('.js-not-sold-block').show();
 				self.tooltip.find('.js-sold-block').hide();
+				self.tooltip.find('.js-favorite').show();
 			} else {
 				self.tooltip.find('.js-not-sold-block').hide();
 				self.tooltip.find('.js-sold-block').show();
+				self.tooltip.find('.js-favorite').hide();
+			}
+			if($.cookie('favorite-areas')) {
+				var favoriteData = JSON.parse($.cookie('favorite-areas'));
+				var isFavorite = false;
+				$.each(favoriteData, function(i){
+					if(id == i) {
+						self.tooltip.find('.js-favorite').addClass('active').attr('title', 'Убрать из избранного');
+					}
+				});
 			}
 			var thisMark = $('.js-mark[data-id="' + id + '"]');
 			var markPos = thisMark.position();
@@ -977,7 +989,17 @@ Garden.map = function() {
 			if(v.status == 2) {
 				totalPrice = v.price_total.formatMoney();
 			}
-			html.push('<li class="body__item js-filter-item" data-id="' + v.id + '"><div class="wrapper"><span><a href="#" class="js-favorite favorite-link"></a>' + v.number + '</span><span>' + v.turn + '</span><span>' + v.land_area + '</span><span>' + numToContract(v.status) + '</span><span>' + v.price.formatMoney() + '</span><span>' + totalPrice + '</span></div></li>');
+			var isFavorite = false;
+			if($.cookie('favorite-areas')) {
+				var favoriteData = JSON.parse($.cookie('favorite-areas'));
+				var isFavorite = false;
+				$.each(favoriteData, function(favId){
+					if(favId == v.id) {
+						isFavorite = true;
+					}
+				});
+			}
+			html.push('<li class="body__item js-filter-item" data-id="' + v.id + '"><div class="wrapper"><span><a href="#" class="js-favorite favorite-link' + (isFavorite ? ' active':'') + '" title="' + (isFavorite ? 'Убрать из избранного':'Добавить в избранное') + '"></a>' + v.number + '</span><span>' + v.turn + '</span><span>' + v.land_area + '</span><span>' + numToContract(v.status) + '</span><span>' + v.price.formatMoney() + '</span><span>' + totalPrice + '</span></div></li>');
 			count++;
 		});
 		if(count != 0) {
@@ -1098,6 +1120,7 @@ Garden.map = function() {
 			_txq.push(['track', 'till_1']);
 		}
 		$('.js-filter-list').slideDown(300);
+		Garden.favorite.set();
 		if(!noscroll) {
 			setTimeout(function(){
 				$('.js-choise-filter').animate({
@@ -1400,7 +1423,7 @@ Garden.scrollTop = function() {
 	show();
 }
 Garden.favorite = {
-	add: function(parent) {
+	add: function(parent, scroll) {
 		var json = $.cookie('favorite-areas');
 		if(json) {
 			var data = JSON.parse(json);
@@ -1409,19 +1432,35 @@ Garden.favorite = {
 		}
 		data[parent.attr('data-id')] = {};
 		$.cookie('favorite-areas', JSON.stringify(data));
-		console.log($.cookie('favorite-areas'));
+		if(scroll) $('.js-choise-filter').scrollTop($('.js-choise-filter').scrollTop() + $('.js-filter-item').first().height());
 	},
-	remove: function(parent) {
-
+	remove: function(parent, scroll) {
+		var json = $.cookie('favorite-areas');
+		var thisId = parent.attr('data-id');
+		if(json) {
+			var data = JSON.parse(json);
+		} else {
+			var data = {};
+		}
+		delete data[thisId];
+		$('[data-id="' + thisId + '"] .js-favorite').removeClass('active').attr('title', 'Добавить в избранное');
+		$.cookie('favorite-areas', JSON.stringify(data));
+		if(scroll) $('.js-choise-filter').scrollTop($('.js-choise-filter').scrollTop() - $('.js-filter-item').first().height());
 	},
 	click: function(elem) {
 		var t = this;
-		var parent = elem.parents('.js-filter-item');
-		if(elem.hasClass('active')) {
-			t.remove(parent);
+		var parent = elem.parents('[data-id]').first();
+		if(parent.hasClass('js-filter-item')) {
+			var doScroll = true;
 		} else {
-			t.add(parent);
+			var doScroll = false;
 		}
+		if(elem.hasClass('active')) {
+			t.remove(parent, doScroll);
+		} else {
+			t.add(parent, doScroll);
+		}
+		t.set();
 	},
 	set: function() {
 		var json = $.cookie('favorite-areas');
@@ -1429,15 +1468,29 @@ Garden.favorite = {
 			var data = JSON.parse(json);
 			var html = [];
 			$.each(data, function(i){
+				if(i == undefined || i == 'undefined') return;
+				$('[data-id="' + i + '"] .js-favorite').addClass('active').attr('title', 'Убрать из избранного');
 				var v = Dictionary.buildingsAll[i];
 				var totalPrice = '';
 				if(v.status == 2) {
 					totalPrice = v.price_total.formatMoney();
 				}
-				html.push('<li class="body__item js-filter-item" data-id="' + v.id + '"><div class="wrapper"><span><a href="#" class="js-favorite favorite-link"></a>' + v.number + '</span><span>' + v.turn + '</span><span>' + v.land_area + '</span><span>' + numToContract(v.status) + '</span><span>' + v.price.formatMoney() + '</span><span>' + totalPrice + '</span></div></li>');
+				html.push('<li class="body__item js-filter-item" data-id="' + v.id + '"><div class="wrapper"><span><a href="#" class="js-favorite favorite-link active" title="Убрать из избранного"></a>' + v.number + '</span><span>' + v.turn + '</span><span>' + v.land_area + '</span><span>' + numToContract(v.status) + '</span><span>' + v.price.formatMoney() + '</span><span>' + totalPrice + '</span></div></li>');
 			});
-			$('.js-favorite-cont').show().html(html.join(''));
+			$('.js-favorite-cont').show()
+				.find('.js-favorite-items').html(html.join(''));
 		} else {
+			$('.js-favorite-cont').hide();
+		}
+		var realCount = 0;
+		if($.cookie('favorite-areas')) {
+			$.each(JSON.parse($.cookie('favorite-areas')), function(i){
+				if(i != 'undefined' && i != undefined) {
+					realCount++;
+				}
+			});
+		}
+		if(realCount == 0) {
 			$('.js-favorite-cont').hide();
 		}
 	},
@@ -1488,7 +1541,6 @@ Garden.init = function() {
 		dataLayer.push({'event': 'HousePhotoClick', 'landId': $(this).attr('data-number')});
 	});
 	this.tooltip.init();
-	this.favorite.init();
 	this.scrollTop();
 	this.housesFilter.init();
 	this.setFor();
@@ -1508,6 +1560,7 @@ Garden.init = function() {
 	this.book();
 	this.overlayForms();
 	this.stagesForm();
+	this.favorite.init();
 	//this.speedUp();
 	//this.smartHover();
 }

@@ -283,8 +283,13 @@
 				}
 
 				.tooltip__title {
+					position: relative;
 					font-family: 'pf_agora_slab_pro';
 					font-weight: 700;
+
+					.favorite-link {
+						left: -25rem / $fs;
+					}
 				}
 
 				.tooltip__subtitle {
@@ -481,6 +486,7 @@
 		.list__table {
 			&.favorite-cont {
 				display: none;
+				margin-bottom: 25rem / $fs;
 			}
 
 			ul {

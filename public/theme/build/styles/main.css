@@ -2345,8 +2345,11 @@ h2 {
                 -ms-transform: rotate(45deg);
                     transform: rotate(45deg); }
         .wrapper-choise .choise__map .map__image .image__tooltip .tooltip__title {
+          position: relative;
           font-family: 'pf_agora_slab_pro';
           font-weight: 700; }
+          .wrapper-choise .choise__map .map__image .image__tooltip .tooltip__title .favorite-link {
+            left: -1.5625rem; }
         .wrapper-choise .choise__map .map__image .image__tooltip .tooltip__subtitle {
           margin-top: 0.4375rem; }
         .wrapper-choise .choise__map .map__image .image__tooltip .tooltip__list {
@@ -2473,7 +2476,8 @@ h2 {
     background: #fff;
     padding: 1.5625rem 0 3.125rem; }
     .wrapper-choise .filter__list .list__table.favorite-cont {
-      display: none; }
+      display: none;
+      margin-bottom: 1.5625rem; }
     .wrapper-choise .filter__list .list__table ul {
       list-style: none;
       padding: 0;

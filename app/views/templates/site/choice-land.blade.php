@@ -51,7 +51,7 @@ $lands = Land::all();
                     <div class="image__line line-3 js-line-3"></div>
                     <div class="image__tooltip js-tooltip">
                         <a href="#" class="tooltip__close js-close"></a>
-                        <div class="tooltip__title">Участок №<span class="js-bnum"></span></div>
+                        <div class="tooltip__title"><a href="#" class="favorite-link js-favorite"></a>Участок №<span class="js-bnum"></span></div>
                         <div class="js-not-sold-block">
                             <div class="tooltip__subtitle">Очередь: <span class="js-bturn"></span></div>
                             <ul class="tooltip__list">
@@ -165,7 +165,7 @@ $lands = Land::all();
                         <ul class="table__head">
                             <li class="body__item">
                                 <div class="wrapper">
-                                    <span data-sort-name="number">Участок</span><span data-sort-name="turn">Очередь</span><span data-sort-name="land_area">Площадь, сот.</span><span data-sort-name="status">Статус</span><span data-sort="ASC" data-sort-name="price">Цена участка, руб.</span><span data-sort-name="price_total">Цена участка с домом, руб.</span>
+                                    <span>Участок</span><span>Очередь</span><span>Площадь, сот.</span><span>Статус</span><span>Цена участка, руб.</span><span>Цена участка с домом, руб.</span>
                                 </div>
                             </li>
                         </ul>
