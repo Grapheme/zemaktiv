@@ -148,12 +148,12 @@ class ApplicationController extends BaseController {
             if (Input::has('house_layout') || Input::has('house_all')):
                 $layouts = $this->layaut_filter($materials);
             endif;
-            if (Input::has('house_build')):
+            if (Input::has('house_build') || Input::has('house_all')):
                 $buildings = $buildings->where('sold', 0)->orderBy('price')->orderBy('area')->with('land', 'photo', 'gallery.photos')->get();
                 $json_request['html'] .= View::make(Helper::layout('assets.builds'), array('buildings' => $buildings))->render();
                 $json_request['status'] = TRUE;
             endif;
-            if (Input::has('house_layout')):
+            if (Input::has('house_layout') || Input::has('house_all')):
                 $layouts = $layouts->orderBy('price')->orderBy('area')->with('land', 'photo', 'gallery.photos')->get();
                 $json_request['html'] .= View::make(Helper::layout('assets.builds'), array('buildings' => $layouts))->render();
                 $json_request['status'] = TRUE;
@@ -168,7 +168,7 @@ class ApplicationController extends BaseController {
 
         $buildings = new Buildings();
         if (Input::has('technology_1') || Input::has('technology_2') || Input::has('technology_3')):
-            if (Input::has('house_build')):
+            if (Input::has('house_build') || Input::has('house_all')):
                 $buildings = $buildings->where(function ($query) use ($materials) {
                     if (Input::has('technology_1') || Input::has('technology_all')):
                         $query->orWhere('material', $materials[1]);
@@ -183,7 +183,7 @@ class ApplicationController extends BaseController {
             endif;
         endif;
         if (Input::has('area_150') || Input::has('area_150_180') || Input::has('area_181')):
-            if (Input::has('house_build')):
+            if (Input::has('house_build') || Input::has('house_all')):
                 $buildings = $buildings->where(function ($query) {
                     if (Input::has('area_150')):
                         $query->orWhere('area', '<', 150);
@@ -204,7 +204,7 @@ class ApplicationController extends BaseController {
             endif;
         endif;
         if (Input::has('price_2') || Input::has('price_2_25') || Input::has('price_25_35') || Input::has('price_35')):
-            if (Input::has('house_build')):
+            if (Input::has('house_build') || Input::has('house_all')):
                 $buildings = $buildings->where(function ($query) {
                     if (Input::has('price_2')):
                         $query->orWhere('price', '<', 2000000);
@@ -237,7 +237,7 @@ class ApplicationController extends BaseController {
 
         $layouts = new Layout_homes();
         if (Input::has('technology_1') || Input::has('technology_2') || Input::has('technology_3')):
-            if (Input::has('house_layout')):
+            if (Input::has('house_layout') || Input::has('house_all')):
                 $layouts = $layouts->where(function ($query) use ($materials) {
                     if (Input::has('technology_1')):
                         $query->orWhere('material', $materials[1]);
@@ -252,7 +252,7 @@ class ApplicationController extends BaseController {
             endif;
         endif;
         if (Input::has('area_150') || Input::has('area_150_180') || Input::has('area_181')):
-            if (Input::has('house_layout')):
+            if (Input::has('house_layout') || Input::has('house_all')):
                 $layouts = $layouts->where(function ($query) {
                     if (Input::has('area_150')):
                         $query->orWhere('area', '<', 150);
@@ -270,7 +270,7 @@ class ApplicationController extends BaseController {
             endif;
         endif;
         if (Input::has('price_2') || Input::has('price_2_25') || Input::has('price_25_35') || Input::has('price_35')):
-            if (Input::has('house_layout')):
+            if (Input::has('house_layout') || Input::has('house_all')):
                 $layouts = $layouts->where(function ($query) {
                     if (Input::has('price_2')):
                         $query->orWhere('price', '<', 2000000);

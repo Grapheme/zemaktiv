@@ -41,13 +41,13 @@
                                         <span>
                                             <input value="Хочу дом, где можно жить круглый год" name="livetype" type="radio"
                                                    class="js-checkbox js-set-for" autocomplete="off">
-                                            <label>Хочу дом, где можно жить круглый год</label>
+                                            <label id="wholeyear">Хочу дом, где можно жить круглый год</label>
                                         </span>
                                         <br>
                                         <span>
                                             <input value="Летний дом, дачу" name="livetype" type="radio"
                                                    class="js-checkbox js-set-for" autocomplete="off">
-                                            <label>Летний дом, дачу</label>
+                                            <label id="summerhouse">Летний дом, дачу</label>
                                         </span>
                                     </div>
                                 </div>
@@ -58,13 +58,13 @@
                                         <span>
                                             <input value="Мне нужна консультация – я не знаю какой дом выбрать" name="technology" type="radio"
                                                    class="js-checkbox js-set-for" autocomplete="off">
-                                            <label>Мне нужна консультация – я не знаю какой дом выбрать</label>
+                                            <label id="needconsult">Мне нужна консультация – я не знаю какой дом выбрать</label>
                                         </span>
                                         <br>
                                         <span>
                                             <input value="Хочу знать подробности о комплектации представленных домов" name="technology" type="radio"
                                                    class="js-checkbox js-set-for" autocomplete="off">
-                                            <label>Хочу знать подробности о комплектации представленных домов</label>
+                                            <label id="needinfo">Хочу знать подробности о комплектации представленных домов</label>
                                         </span>
                                     </div>
                                 </div>
