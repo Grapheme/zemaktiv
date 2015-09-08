@@ -683,9 +683,16 @@ Garden.map = function() {
 				var isFavorite = false;
 				$.each(favoriteData, function(i){
 					if(id == i) {
-						self.tooltip.find('.js-favorite').addClass('active').attr('title', 'Убрать из избранного');
+						isFavorite = true;
 					}
 				});
+				if(isFavorite) {
+					self.tooltip.find('.js-favorite').addClass('active').attr('title', 'Убрать из избранного');
+				} else {
+					self.tooltip.find('.js-favorite').removeClass('active').attr('title', 'Добавить в избранное');
+				}
+			} else {
+				self.tooltip.find('.js-favorite').removeClass('active').attr('title', 'Добавить в избранное');
 			}
 			var thisMark = $('.js-mark[data-id="' + id + '"]');
 			var markPos = thisMark.position();
