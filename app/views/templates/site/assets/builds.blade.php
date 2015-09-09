@@ -55,29 +55,31 @@
                 </div>
                 <div class="info__block">
                     <div class="block__left">Материал:</div>
-                    <div class="block__right"><span class="right__text">{{ $build->material }}</span><!-- <span class="info-tooltip" data-tooltip="{{ LayoutHomesController::$materials_desc[$build->material] }}"></span> --></div>
+                    <div class="block__right"><span
+                                class="right__text">{{ $build->material }}</span><!-- <span class="info-tooltip" data-tooltip="{{ LayoutHomesController::$materials_desc[$build->material] }}"></span> -->
+                    </div>
                 </div>
                 @if(!empty($build->land))
-                <div class="info__block">
-                    <div class="block__left">Площадь участка:</div>
-                    <div class="block__right">
-                        <span>{{ $build->land->area }} {{ Lang::choice('сотка|сотки|соток', $build->land->area) }}</span>
+                    <div class="info__block">
+                        <div class="block__left">Площадь участка:</div>
+                        <div class="block__right">
+                            <span>{{ $build->land->area }} {{ Lang::choice('сотка|сотки|соток', $build->land->area) }}</span>
+                        </div>
                     </div>
-                </div>
-                <div class="info__block">
-                    <div class="block__left">Номер участка:</div>
-                    <div class="block__right">
-                        <span>{{ $build->land->number }}</span>
-                        <a href="{{ pageurl('choice-land').'#id='.$build->land->id }}"
-                           class="js-gen-link">Смотреть на генплане</a>
+                    <div class="info__block">
+                        <div class="block__left">Номер участка:</div>
+                        <div class="block__right">
+                            <span>{{ $build->land->number }}</span>
+                            <a href="{{ pageurl('choice-land').'#id='.$build->land->id }}"
+                               class="js-gen-link">Смотреть на генплане</a>
+                        </div>
                     </div>
-                </div>
                 @endif
                 @if(isset($build->communication))
-                <div class="info__block">
-                    <div class="block__left">Коммуникации:</div>
-                    <div class="block__right"><span>{{ $build->communication }}</span></div>
-                </div>
+                    <div class="info__block">
+                        <div class="block__left">Коммуникации:</div>
+                        <div class="block__right"><span>{{ $build->communication }}</span></div>
+                    </div>
                 @endif
                 <div class="info__block">
                     <div class="block__left">Цена @if(!empty($build->land))с участком@endif:</div>
@@ -88,7 +90,8 @@
             </div>
             @if(!empty($build->land))
                 <div class="right__btns">
-                    <a href="#" data-id="{{ $build->land->id }}" class="js-book us-btn btn-green"><span>Узнать больше</span></a>
+                    <a href="#" data-id="{{ $build->land->id }}"
+                       class="js-book us-btn btn-green"><span>Узнать больше</span></a>
                 </div>
             @else
                 <div class="right__btns">

@@ -83,7 +83,11 @@ class LandController extends BaseController {
             $land->gallery_id = ExtForm::process('gallery', array('module' => 'Участок', 'unit_id' => $land->id,
                 'gallery' => Input::get('gallery'), 'single' => TRUE));
             $land->save();
-
+            if (Input::has('recommended_lands')):
+                $land->recommended_lands()->sync(Input::get('recommended_lands'));
+            else:
+                $land->recommended_lands()->detach();
+            endif;
             $json_request['responseText'] = "Участок добавлен";
             $json_request['redirect'] = URL::route('land.index');
             $json_request['status'] = TRUE;
@@ -125,7 +129,11 @@ class LandController extends BaseController {
             $land->gallery_id = ExtForm::process('gallery', array('module' => 'Участок', 'unit_id' => $land->id,
                 'gallery' => Input::get('gallery'), 'single' => TRUE));
             $land->save();
-
+            if (Input::has('recommended_lands')):
+                $land->recommended_lands()->sync(Input::get('recommended_lands'));
+            else:
+                $land->recommended_lands()->detach();
+            endif;
             $json_request['responseText'] = "Участок сохранен";
             $json_request['redirect'] = URL::route('land.index');
             $json_request['status'] = TRUE;
@@ -162,7 +170,9 @@ class LandController extends BaseController {
                 endif;
                 $photo->delete();
             endif;
+            Land::where('id', $land_id)->first()->recommended_lands()->detach();
             Land::where('id', $land_id)->delete();
+
 
             $json_request['responseText'] = "Участок удален.";
             $json_request['status'] = TRUE;
