@@ -751,6 +751,32 @@ Garden.map = function() {
 			});
 		}
 	}
+	var zoom = {
+		amount: 1,
+		sizes: {
+			width: $('.js-map').width(),
+			height: $('.js-map').height(),
+		},
+		set: function(amount) {
+			var t = this;
+			t.amount = t.amount + amount;
+			$('.js-map').css({
+				width: t.sizes.width * t.amount,
+				height: t.sizes.height * t.amount
+			});
+		},
+		init: function() {
+			var t = this;
+			$('.js-map-zoom').on('click', function(){
+				t.set(0.2);
+				return false;
+			});
+			$('.js-map-zoomout').on('click', function(){
+				t.set(-0.2);
+				return false;
+			});
+		}
+	}
 	var setMinMax = function(obj, type) {
 		var priceCondition = (type && type == 'price') || !type;
 		var areaCondition = (type && type == 'area') || !type;
@@ -1228,6 +1254,7 @@ Garden.map = function() {
 		move();
 		setMarks();
 		tooltip.init();
+		zoom.init();
 		filter();
 		mapTabs();
 		filterForm();

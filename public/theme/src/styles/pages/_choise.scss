@@ -13,6 +13,41 @@
 		overflow: hidden;
 		backface-visibility: hidden;
 
+		.map__control {
+			position: absolute;
+			z-index: 3;
+			top: 80rem / $fs;
+			left: 80rem / $fs;
+
+			.control__link {
+				a {
+					display: inline-block;
+					vertical-align: middle;
+					height: 35rem / $fs;
+					width: 35rem / $fs;
+					border-radius: 35rem / $fs;
+					line-height: 35rem / $fs;
+					text-align: center;
+					background: #e8a348;
+					font-size: 3.5rem;
+					color: #000;
+					text-decoration: none;
+				}
+
+				.link__plus {
+					&:before {
+						content: "+";
+					}
+				}
+
+				.link__minus {
+					&:before {
+						content: "-";
+					}
+				}
+			}
+		}
+
 		.map__image {
 			position: absolute;
 			top: 0;
@@ -21,8 +56,12 @@
 			height: 2625rem / $fs;
 			background: url(../images/map.jpg) 0 0 / 100% 100% no-repeat;
 			cursor: move;
+			transform-origin: 0 0;
 			transform: translate(0, 0);
 			opacity: 0;
+			transition-property: width, height;
+			transition-duration: .3s;
+			transition-timing-function: ease-out;
 
 			&.transition {
 				transition: transform .3s ease-out;
