@@ -5,7 +5,7 @@
  */
 ?>
 <?php
-$lands = Land::orderByRaw('number + 0')->with('recommended')->get();
+$lands = Land::orderByRaw('number + 0')->with('recommended.recommended_land')->get();
 ?>
 @extends(Helper::layout())
 @section('style')
