@@ -4,7 +4,7 @@
 @stop
 @section('content')
     @include($module['tpl'].'land.menu')
-    {{ Form::model($land,array('route'=>array('land.update',$land->id),'class'=>'smart-form','id'=>'land-form','role'=>'form','method'=>'put')) }}
+    {{ Form::model($land, array('route'=>array('land.update',$land->id),'class'=>'smart-form','id'=>'land-form','role'=>'form','method'=>'put')) }}
     {{ Form::hidden('description') }}
     <div class="row">
         <section class="col col-6">
@@ -93,6 +93,19 @@
                             {{ Form::checkbox('sold', 1) }} Участок продан
                         </label>
                     </section>
+                    <section>
+                        <label class="label">Товарные рекомендации</label>
+
+                        <div class="input select-multiple ">
+                            <?php
+                            $lands = array();
+                            foreach (Land::where('sold', 0)->orderByRaw('number + 0')->lists('number', 'id') as $id => $number):
+                                $lands[$id] = "Участок №$number";
+                            endforeach;
+                            ?>
+                            {{ Form::select('recommended_lands[]', $lands, RecommendedLands::where('land_id', $land->id)->lists('recommended_land_id'), array('class'=>'select-multiple select2', 'multiple'=>'multiple')) }}
+                        </div>
+                    </section>
                 </fieldset>
                 <footer>
                     <a class="btn btn-default no-margin regular-10 uppercase pull-left btn-spinner"
@@ -129,7 +142,7 @@
     </script>
 
     {{ HTML::script('private/js/modules/standard.js') }}
-
+    {{ HTML::script('private/js/plugin/select2/select2.min.js') }}
     {{ HTML::script('private/js/vendor/redactor.min.js') }}
     {{ HTML::script('private/js/system/redactor-config.js') }}
     {{ HTML::script(Config::get('site.theme_path').'/scripts/map.js') }}

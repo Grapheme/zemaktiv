@@ -4,7 +4,9 @@
  * AVAILABLE_ONLY_IN_ADVANCED_MODE
  */
 ?>
-<?php $lands = Land::all(); ?>
+<?php
+$lands = Land::orderByRaw('number + 0')->get();
+?>
 @extends(Helper::layout())
 @section('style')
 @stop
@@ -37,12 +39,6 @@
 @section('scripts')
     <script>
         Dictionary = window.Dictionary || {};
-        Dictionary.buildings = {
-@if($lands->count())
-    @foreach($lands as $land)
-            "{{ $land->id }}": {id: {{ $land->id }}, number: "{{ $land->number }}", land_area: {{ $land->area }}, price: {{ $land->price }}, price_total: {{ $land->price_house }}, coordinate_x: {{ $land->coordinate_x }}, coordinate_y: {{ $land->coordinate_y }}, sold: {{ $land->sold }}, status: {{ $land->status }}, turn: {{ $land->turn }}},
-    @endforeach
-@endif
-        };
+        Dictionary.buildings = {@if($lands->count()) @foreach($lands as $land){{ View::make(Helper::layout('assets.buildings-js'),compact('land'))->render() }}@endforeach @endif};
     </script>
 @stop

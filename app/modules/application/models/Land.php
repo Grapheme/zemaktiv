@@ -4,7 +4,7 @@ class Land extends \BaseModel {
 
     protected $table = 'land';
     protected $guarded = array('id', '_method', '_token');
-    protected $fillable = array('description','turn' , 'number', 'area', 'price', 'status',
+    protected $fillable = array('description', 'turn', 'number', 'area', 'price', 'status',
         'description', 'photo_id', 'gallery_id', 'sold', 'coordinate_x', 'coordinate_y');
     public static $rules = array('turn' => 'required', 'number' => 'required', 'price' => 'required',
         'coordinate_x' => 'required', 'coordinate_y' => 'required');
@@ -15,5 +15,15 @@ class Land extends \BaseModel {
 
     public function gallery() {
         return $this->hasOne('Gallery', 'id', 'gallery_id');
+    }
+
+    public function recommended_lands() {
+
+        return $this->belongsToMany('RecommendedLands', 'recommended_lands', 'land_id', 'recommended_land_id')->withTimestamps();
+    }
+
+    public function recommended() {
+
+        return $this->hasMany('RecommendedLands', 'land_id', 'id');
     }
 }

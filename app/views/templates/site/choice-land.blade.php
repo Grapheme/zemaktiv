@@ -5,7 +5,7 @@
  */
 ?>
 <?php
-$lands = Land::all();
+$lands = Land::orderByRaw('number + 0')->with('recommended')->get();
 ?>
 @extends(Helper::layout())
 @section('style')
@@ -16,6 +16,7 @@ $lands = Land::all();
             <div class="wrapper relative">
                 <div class="wrapper-photos js-map-title">
                     <h1 class="us-title title-choise page-full"><span>{{ $page->seo->h1 }}</span></h1>
+
                     <div class="lines-choice">
                         <a href="#" data-number="1" class="choice__left js-choice-left"></a>
                         <a data-number="2" class="choice__center js-choice-center"></a>
@@ -26,7 +27,8 @@ $lands = Land::all();
                     <a href="#" class="us-btn btn-black-white js-show-filter" style="display: none;">
                         <span>Участки списком</span>
                     </a>
-                    <a href="{{ URL::to('/buildings') }}" class="us-btn btn-black-white js-back-to-buildings" style="display: none;">
+                    <a href="{{ URL::to('/buildings') }}" class="us-btn btn-black-white js-back-to-buildings"
+                       style="display: none;">
                         <span>Вернуться в список</span>
                     </a>
                     <!-- <a href="#" class="choise__toparams js-show-filter">
@@ -66,7 +68,9 @@ $lands = Land::all();
                     <div class="image__line line-3 js-line-3"></div>
                     <div class="image__tooltip js-tooltip">
                         <a href="#" class="tooltip__close js-close"></a>
-                        <div class="tooltip__title"><a href="#" class="favorite-link js-favorite"></a>Участок №<span class="js-bnum"></span></div>
+
+                        <div class="tooltip__title"><a href="#" class="favorite-link js-favorite"></a>Участок №<span
+                                    class="js-bnum"></span></div>
                         <div class="js-not-sold-block">
                             <div class="tooltip__subtitle">Очередь: <span class="js-bturn"></span></div>
                             <ul class="tooltip__list">
@@ -75,11 +79,13 @@ $lands = Land::all();
                                 <li class="list__item"><span class="js-bprice"></span> руб.</li>
                             </ul>
                             <div class="tooltip__btn js-bbtn">
-                                <a href="#" data-id class="js-book us-btn btn-white" onclick="carrotquest.track('TELLMEMORE');"><span>Забронировать</span></a>
+                                <a href="#" data-id class="js-book us-btn btn-white"
+                                   onclick="carrotquest.track('TELLMEMORE');"><span>Забронировать</span></a>
                             </div>
                         </div>
                         <div class="js-sold-block tooltip-sold">
-                            <div class="sold__status"><span class="status__icon"></span><span class="status__text">Продан</span></div>
+                            <div class="sold__status"><span class="status__icon"></span><span class="status__text">Продан</span>
+                            </div>
                             <p>Этот участок уже нашел своего владельца</p>
                         </div>
                     </div>
@@ -90,6 +96,7 @@ $lands = Land::all();
                     <div class="page-full relative">
                         <h1 class="us-title title-choise"><span>{{ $page->seo->h1 }}</span></h1>
                         <a href="#" class="choise__tomap us-btn btn-white js-show-map"><span>Выбрать на генплане</span></a>
+
                         <div class="filter__form">
                             <form class="js-filter-form">
                                 <div class="form__left">
@@ -118,15 +125,18 @@ $lands = Land::all();
                                         <div class="form__title">Цена участка, руб.</div>
                                         <div class="form__desc">
                                             <div class="left__check">
-                                                <input type="radio" class="js-radio" id="price1" name="priceto" value="1000000">
+                                                <input type="radio" class="js-radio" id="price1" name="priceto"
+                                                       value="1000000">
                                                 <label for="price1">До 1 млн рублей</label>
                                             </div>
                                             <div class="left__check">
-                                                <input type="radio" class="js-radio" id="price2" name="priceto" value="2000000">
+                                                <input type="radio" class="js-radio" id="price2" name="priceto"
+                                                       value="2000000">
                                                 <label for="price2">До 2 млн рублей</label>
                                             </div>
                                             <div class="left__check">
-                                                <input type="radio" class="js-radio" id="price3" name="priceto" value="10000000" checked="checked">
+                                                <input type="radio" class="js-radio" id="price3" name="priceto"
+                                                       value="10000000" checked="checked">
                                                 <label for="price3">Любая цена</label>
                                             </div>
                                             <!-- от <span class="js-price-from"></span>
@@ -142,15 +152,18 @@ $lands = Land::all();
                                         <div class="form__title">Площадь участка, соток</div>
                                         <div class="form__desc">
                                             <div class="left__check">
-                                                <input type="radio" class="js-radio" id="area1" name="range" value="7-15">
+                                                <input type="radio" class="js-radio" id="area1" name="range"
+                                                       value="7-15">
                                                 <label for="area1">От 7 до 15 соток</label>
                                             </div>
                                             <div class="left__check">
-                                                <input type="radio" class="js-radio" id="area2" name="range" value="15-32">
+                                                <input type="radio" class="js-radio" id="area2" name="range"
+                                                       value="15-32">
                                                 <label for="area2">От 15 до 32 соток</label>
                                             </div>
                                             <div class="left__check">
-                                                <input type="radio" class="js-radio" id="area3" name="range" value="0-999" checked="checked">
+                                                <input type="radio" class="js-radio" id="area3" name="range"
+                                                       value="0-999" checked="checked">
                                                 <label for="area3">Любая площадь</label>
                                             </div>
                                             <!-- от <span class="js-area-from"></span>
@@ -193,7 +206,11 @@ $lands = Land::all();
                         <ul class="table__head">
                             <li class="body__item">
                                 <div class="wrapper">
-                                    <span data-sort-name="number">Участок</span><span data-sort-name="turn">Очередь</span><span data-sort-name="land_area">Площадь, сот.</span><span data-sort-name="status">Статус</span><span data-sort="ASC" data-sort-name="price">Цена участка, руб.</span><span data-sort-name="price_total">Цена участка с домом, руб.</span>
+                                    <span data-sort-name="number">Участок</span><span
+                                            data-sort-name="turn">Очередь</span><span data-sort-name="land_area">Площадь, сот.</span><span
+                                            data-sort-name="status">Статус</span><span data-sort="ASC"
+                                                                                       data-sort-name="price">Цена участка, руб.</span><span
+                                            data-sort-name="price_total">Цена участка с домом, руб.</span>
                                 </div>
                             </li>
                         </ul>
@@ -203,7 +220,6 @@ $lands = Land::all();
             </div>
         </div>
     </div>
-    </main>
     <div style="position: fixed; top: -9999px; left: -9999px; visibility: hidden;">
         <img src="{{ Config::get('site.theme_path') }}/images/ui/line1block.svg" alt="">
         <img src="{{ Config::get('site.theme_path') }}/images/ui/line1left.svg" alt="">
@@ -218,47 +234,7 @@ $lands = Land::all();
     <script>
         Dictionary = window.Dictionary || {};
         Dictionary.click_tracker_url = '{{ URL::route('click.tracker') }}';
-        Dictionary.buildingsAll = {
-            @if($lands->count())
-                @foreach($lands as $land)
-                    "{{ $land->id }}": {
-                        id: {{ $land->id }},
-                        number: "{{ $land->number }}",
-                        land_area: {{ $land->area }},
-                        price: {{ $land->price }},
-                        price_house: {{ $land->price_house }},
-                        price_total: {{ $land->price_house }},
-                        coordinate_x: {{ $land->coordinate_x }},
-                        coordinate_y: {{ $land->coordinate_y }},
-                        sold: {{ $land->sold }},
-                        status: {{ $land->status }},
-                        turn: {{ $land->turn }},
-                        clicks: "{{ $land->click }}"
-                    },
-                @endforeach
-            @endif
-        };
-        Dictionary.buildings = {
-            @if($lands->count())
-                @foreach($lands as $land)
-                    @if($land->sold == 0)
-                        "{{ $land->id }}": {
-                            id: {{ $land->id }},
-                            number: "{{ $land->number }}",
-                            land_area: {{ $land->area }},
-                            price: {{ $land->price }},
-                            price_house: {{ $land->price_house }},
-                            price_total: {{ $land->price_house }},
-                            coordinate_x: {{ $land->coordinate_x }},
-                            coordinate_y: {{ $land->coordinate_y }},
-                            sold: {{ $land->sold }},
-                            status: {{ $land->status }},
-                            turn: {{ $land->turn }},
-                            clicks: "{{ $land->click }}"
-                        },
-                    @endif
-                @endforeach
-            @endif
-        }
+        Dictionary.buildingsAll = {@if($lands->count()) @foreach($lands as $land){{ View::make(Helper::layout('assets.lands-js'),compact('land'))->render() }}@endforeach @endif};
+        Dictionary.buildings = {@if($lands->count()) @foreach($lands as $land) @if($land->sold == 0){{ View::make(Helper::layout('assets.lands-js'),compact('land'))->render() }}@endif @endforeach @endif}
     </script>
 @stop

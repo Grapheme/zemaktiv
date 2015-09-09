@@ -47,12 +47,14 @@
                             {{ Form::text('price_house') }}
                         </label>
                     </section>
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
                         <section class="map-container js-admin-map">
                             <div class="container_12">
                                 <div class="map-block js-map-block">
                                 </div>
-                                <button type="button" class="btn btn-default" data-dismiss="modal" style="position:fixed; top:10px; left:10px;">
+                                <button type="button" class="btn btn-default" data-dismiss="modal"
+                                        style="position:fixed; top:10px; left:10px;">
                                     Закрыть
                                 </button>
                             </div>
@@ -92,6 +94,19 @@
                             {{ Form::checkbox('sold', 1) }} Участок продан
                         </label>
                     </section>
+                    <section>
+                        <label class="label">Товарные рекомендации</label>
+
+                        <div class="input select-multiple ">
+                            <?php
+                            $lands = array();
+                            foreach (Land::where('sold', 0)->orderByRaw('number + 0')->lists('number', 'id') as $id => $number):
+                                $lands[$id] = "Участок №$number";
+                            endforeach;
+                            ?>
+                            {{ Form::select('recommended_lands[]', $lands, NULL, array('class'=>'select-multiple select2', 'multiple'=>'multiple')) }}
+                        </div>
+                    </section>
                 </fieldset>
                 <footer>
                     <a class="btn btn-default no-margin regular-10 uppercase pull-left btn-spinner"
@@ -115,8 +130,8 @@
             turn: {required: true, maxlength: 100},
             number: {required: true, maxlength: 100},
             price: {required: true, maxlength: 100},
-            coordinate_x: { required: true, min: 0, max: 4200 },
-            coordinate_y: { required: true, min: 0, max: 2625 }
+            coordinate_x: {required: true, min: 0, max: 4200},
+            coordinate_y: {required: true, min: 0, max: 2625}
         };
         var validation_messages = {
             turn: {required: "Укажите очередь"},
@@ -128,7 +143,7 @@
     </script>
 
     {{ HTML::script('private/js/modules/standard.js') }}
-
+    {{ HTML::script('private/js/plugin/select2/select2.min.js') }}
     {{ HTML::script('private/js/vendor/redactor.min.js') }}
     {{ HTML::script('private/js/system/redactor-config.js') }}
     {{ HTML::script(Config::get('site.theme_path').'/scripts/map.js') }}
