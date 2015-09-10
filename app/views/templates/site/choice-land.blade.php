@@ -153,22 +153,22 @@ $lands = Land::orderByRaw('number + 0')->with('recommended.recommended_land')->g
                                         <div class="form__desc">
                                             <div class="left__check">
                                                 <input type="radio" class="js-radio" id="area1" name="range"
-                                                       value="6-7">
+                                                       value="6-7.99">
                                                 <label for="area1">От 6 до 7</label>
                                             </div>
                                             <div class="left__check">
                                                 <input type="radio" class="js-radio" id="area2" name="range"
-                                                       value="8-9">
+                                                       value="8-9.99">
                                                 <label for="area2">От 8 до 9</label>
                                             </div>
                                             <div class="left__check">
                                                 <input type="radio" class="js-radio" id="area3" name="range"
-                                                       value="10-12">
+                                                       value="10-12.99">
                                                 <label for="area3">От 10 до 12</label>
                                             </div>
                                             <div class="left__check">
                                                 <input type="radio" class="js-radio" id="area4" name="range"
-                                                       value="13-17">
+                                                       value="13-17.99">
                                                 <label for="area4">От 13 до 17</label>
                                             </div>
                                             <div class="left__check">
