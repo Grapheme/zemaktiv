@@ -1168,6 +1168,9 @@ Garden.map = function() {
 		}
 	}
 	var filterForm = function() {
+		$('.js-filter-form input').on('change', function(){
+			submitFilter($('.js-filter-form'), true);
+		});
 		$('.js-filter-form').on('submit', function(e){
 			e.preventDefault();
 			submitFilter($(this));

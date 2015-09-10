@@ -447,6 +447,10 @@
 				&.disabledCheck {
 					pointer-events: none;
 				}
+
+				.ui-button-text-only .ui-button-text {
+					padding: 0;
+				}
 			}
 
 			.form__left {

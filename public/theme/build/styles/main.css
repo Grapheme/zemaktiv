@@ -2461,6 +2461,8 @@ h2 {
         margin-top: 0.8125rem; }
         .wrapper-choise .choise-filter .filter__form .left__check.disabledCheck {
           pointer-events: none; }
+        .wrapper-choise .choise-filter .filter__form .left__check .ui-button-text-only .ui-button-text {
+          padding: 0; }
       .wrapper-choise .choise-filter .filter__form .form__left {
         float: left;
         width: 35%; }
