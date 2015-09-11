@@ -2196,12 +2196,21 @@ Garden.map = function() {
 		suitedArray = {},
 		filterParams,
 		transitionTimeout;
+		activePos = {};
 	var setMapPos = function(x, y) {
 		if(x > 0) x = 0;
 		if(y > 0) y = 0;
 		if(x < -(map.width() - mapCont.width())) x = -(map.width() - mapCont.width());
 		if(y < -(map.height() - mapCont.height())) y = -(map.height() - mapCont.height());
 		map.css('transform', 'translate(' + x + 'px, ' + y + 'px)');
+		activePos.x = x;
+		activePos.y = y;
+	}
+	var getMapCenter = function() {
+		var cX, cY;
+		cX = activePos.x - $('.js-map-container').width()/2;
+		cY = activePos.y - $('.js-map-container').height()/2;
+		return {x: cX, y: cY};
 	}
 	var setMapCenter = function(newx, newy) {
 		if(newx && newy) {
@@ -2294,6 +2303,18 @@ Garden.map = function() {
 				self.tooltip.find('.js-sold-block').show();
 				self.tooltip.find('.js-favorite').hide();
 			}
+			var countRec = 0;
+			var rhtml = [];
+			$.each(thisObj.recommended, function(index, value){
+				countRec++;
+				rhtml.push('<a href="#" data-id="' + index + '" class="js-recommend-link">' + value + '</a>');
+			});
+			if(countRec == 0) {
+				$('.js-recommend').hide();
+			} else {
+				$('.js-recommend').show();
+				$('.js-recommend-list').html(rhtml.join(''));
+			}
 			if($.cookie('favorite-areas')) {
 				var favoriteData = JSON.parse($.cookie('favorite-areas'));
 				var isFavorite = false;
@@ -2375,20 +2396,40 @@ Garden.map = function() {
 		},
 		set: function(amount) {
 			var t = this;
+			var oldAmount = t.amount;
 			t.amount = t.amount + amount;
+			/*if(t.amount == 0.8) {
+				$('.js-map-zoomout').addClass('disabled');
+			} else {
+				$('.js-map-zoomout').removeClass('disabled');
+			}
+			if(t.amount == 1.3) {
+				$('.js-map-zoom').addClass('disabled');
+			} else {
+				$('.js-map-zoom').removeClass('disabled');
+			}*/
 			$('.js-map').css({
 				width: t.sizes.width * t.amount,
 				height: t.sizes.height * t.amount
 			});
+			var thisCenter = {
+				x: ((activePos.x - $('.js-map-container').width()/2) * (1+amount)) + $('.js-map-container').width()/2,
+				y: ((activePos.y - $('.js-map-container').height()/2) * (1+amount)) + $('.js-map-container').height()/2
+			};
+			console.log(activePos.x);
+			console.log($('.js-map').css('transform'));
+			setMapPos(thisCenter.x, thisCenter.y);
 		},
 		init: function() {
 			var t = this;
 			$('.js-map-zoom').on('click', function(){
-				t.set(0.2);
+				if($(this).hasClass('disabled')) return false;
+				t.set(0.3);
 				return false;
 			});
 			$('.js-map-zoomout').on('click', function(){
-				t.set(-0.2);
+				if($(this).hasClass('disabled')) return false;
+				t.set(-0.3);
 				return false;
 			});
 		}
@@ -2430,7 +2471,21 @@ Garden.map = function() {
 		setMinMax(Dictionary.buildings);
 		$.each(Dictionary.buildingsAll, function(index, value){
 			var soldStr = value.sold == 1 ? ' sold' : '';
-			$('.js-map').append('<a class="image__mark js-mark' + soldStr + '" data-id="' + value.id + '" style="left: ' + value.coordinate_x/16 + 'rem; top: ' + value.coordinate_y/16 + 'rem;"></a>');
+			var cof = parseInt($('html').css('font-size')) / 16;
+			var widthPers = $('.js-map').width()/100;
+			var heightPers =  $('.js-map').height()/100;
+			var thisLeft = value.coordinate_x * cof / widthPers;
+			var thisTop = value.coordinate_y * cof / heightPers;
+			$('.js-map').append('<a class="image__mark js-mark' + soldStr + '" data-id="' + value.id + '" style="left: ' + thisLeft + '%; top: ' + thisTop + '%;"></a>');
+			/*$('.js-hint-item, .js-line-item').each(function(){
+				var tPos = $(this).position();
+				var tLeft = tPos.left * cof / widthPers;
+				var tTop = tPos.top * cof / heightPers;
+				$(this).css({
+					top: tTop,
+					left: tLeft
+				});
+			});*/
 		});
 	}
 	var filter = function() {
@@ -2800,6 +2855,13 @@ Garden.map = function() {
 			$('html, body').animate({
 				scrollTop: $('.js-choise-wrapper').offset().top - 100
 			});
+		});
+		$(document).on('click', '.js-recommend-link', function(){
+			var thisId = $(this).attr('data-id');
+			var thisNumber = Dictionary.buildings[thisId].number;
+			dataLayer.push({'event': 'ChooseLandRecommendedClick', 'landId': thisNumber});
+			tooltip.show(thisId);
+			return false;
 		});
 		$(document).on('sliders::update', function(){
 			countSuited();
@@ -3220,3 +3282,9 @@ Garden.init = function() {
 $(function(){
 	Garden.init();
 });
+
+function counth(left, top) {
+	var nleft = left*16 / ($('.js-map').width() / 100);
+	var ntop = top*16 / ($('.js-map').height() / 100);
+	return 'left: ' + nleft + '%; top: ' + ntop + '%;';
+}

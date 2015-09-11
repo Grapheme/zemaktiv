@@ -54,18 +54,18 @@ $lands = Land::orderByRaw('number + 0')->with('recommended.recommended_land')->g
                     </div>
                 </div> -->
                 <div class="map__image js-map">
-                    <div class="image__hint hint-1"></div>
-                    <div class="image__hint hint-2"></div>
-                    <div class="image__hint hint-3"></div>
-                    <div class="image__hint hint-4"></div>
-                    <div class="image__hint hint-5"></div>
-                    <div class="image__hint hint-6"></div>
-                    <div class="image__hint hint-7"></div>
-                    <div class="image__hint hint-8"></div>
-                    <div class="image__hint hint-9"></div>
-                    <div class="image__line line-1 js-line-1"></div>
-                    <div class="image__line line-2 js-line-2"></div>
-                    <div class="image__line line-3 js-line-3"></div>
+                    <div class="image__hint hint-1 js-hint-item"></div>
+                    <div class="image__hint hint-2 js-hint-item"></div>
+                    <div class="image__hint hint-3 js-hint-item"></div>
+                    <div class="image__hint hint-4 js-hint-item"></div>
+                    <div class="image__hint hint-5 js-hint-item"></div>
+                    <div class="image__hint hint-6 js-hint-item"></div>
+                    <div class="image__hint hint-7 js-hint-item"></div>
+                    <div class="image__hint hint-8 js-hint-item"></div>
+                    <div class="image__hint hint-9 js-hint-item"></div>
+                    <div class="image__line line-1 js-line-1 js-line-item"></div>
+                    <div class="image__line line-2 js-line-2 js-line-item"></div>
+                    <div class="image__line line-3 js-line-3 js-line-item"></div>
                     <div class="image__tooltip js-tooltip">
                         <a href="#" class="tooltip__close js-close"></a>
 
@@ -87,6 +87,14 @@ $lands = Land::orderByRaw('number + 0')->with('recommended.recommended_land')->g
                             <div class="sold__status"><span class="status__icon"></span><span class="status__text">Продан</span>
                             </div>
                             <p>Этот участок уже нашел своего владельца</p>
+                        </div>
+                        <div class="js-recommend tooltip-recommend">
+                            <p>Похожие участки</p>
+                            <div class="js-recommend-list">
+                                <a href="#">25</a>
+                                <a href="#">453</a>
+                                <a href="#">2</a>
+                            </div>
                         </div>
                     </div>
                 </div>
