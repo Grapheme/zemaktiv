@@ -8,6 +8,7 @@ class ApplicationController extends BaseController {
     /****************************************************************************/
     public static function returnRoutes($prefix = null) {
         $class = __CLASS__;
+        #Route::get('import', array('uses' => $class . '@import'));
         Route::get('ya-feed', array('as' => 'yandex-feed', 'uses' => $class . '@yandexFeed'));
         Route::post('click-tracker', array('as' => 'click.tracker', 'uses' => $class . '@clickTracker'));
         Route::post('buildings/set-filter', array('as' => 'buildings.filter', 'uses' => $class . '@setBuildingFilter'));
@@ -64,6 +65,29 @@ class ApplicationController extends BaseController {
             'edit' => 'Редактирование',
             'delete' => 'Удаление',
         );
+    }
+
+    /****************************************************************************/
+    function import() {
+
+        if ($file_lands = file(public_path('lands.csv'))):
+            foreach(Land::orderByRaw('number + 0')->lists('id', 'number') as $number => $land_id):
+                $lands[trim($number)] = $land_id;
+            endforeach;
+            foreach ($file_lands as $land):
+                $land_numbers = preg_split("/;/", $land, NULL, PREG_SPLIT_NO_EMPTY);
+                $land_numbers[0] = trim($land_numbers[0]);
+                for ($i = 1; $i < count($land_numbers); $i++):
+                    $land_numbers[$i] = trim($land_numbers[$i]);
+                    if (isset($lands[$land_numbers[$i]])):
+                        RecommendedLands::create(array('land_id' => @$lands[$land_numbers[0]],
+                            'recommended_land_id' => @$lands[$land_numbers[$i]]));
+                    else:
+                        echo $land_numbers[$i]."<br>\n";
+                    endif;
+                endfor;
+            endforeach;
+        endif;
     }
 
     /****************************************************************************/
