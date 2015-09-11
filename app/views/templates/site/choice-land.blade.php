@@ -38,6 +38,21 @@ $lands = Land::orderByRaw('number + 0')->with('recommended.recommended_land')->g
                 </div>
             </div>
             <div class="choise__map js-map-container">
+                <!-- <div class="map__control">
+                    <div class="control__link">
+                        <a href="#" class="link__plus js-map-zoom"></a>
+                    </div>
+                    <div class="control__line"></div>
+                    <div class="control__nav"></div>
+                    <div class="control__line"></div>
+                    <div class="control__nav"></div>
+                    <div class="control__line"></div>
+                    <div class="control__nav"></div>
+                    <div class="control__line"></div>
+                    <div class="control__link">
+                        <a href="#" class="link__minus js-map-zoomout"></a>
+                    </div>
+                </div> -->
                 <div class="map__image js-map">
                     <div class="image__hint hint-1"></div>
                     <div class="image__hint hint-2"></div>
@@ -112,12 +127,12 @@ $lands = Land::orderByRaw('number + 0')->with('recommended.recommended_land')->g
                                             <div class="left__check">
                                                 <input type="radio" class="js-radio" id="price1" name="priceto"
                                                        value="1000000">
-                                                <label for="price1">До 1 млн рублей</label>
+                                                <label for="price1">До 1 млн</label>
                                             </div>
                                             <div class="left__check">
                                                 <input type="radio" class="js-radio" id="price2" name="priceto"
                                                        value="2000000">
-                                                <label for="price2">До 2 млн рублей</label>
+                                                <label for="price2">До 2 млн</label>
                                             </div>
                                             <div class="left__check">
                                                 <input type="radio" class="js-radio" id="price3" name="priceto"
@@ -138,18 +153,33 @@ $lands = Land::orderByRaw('number + 0')->with('recommended.recommended_land')->g
                                         <div class="form__desc">
                                             <div class="left__check">
                                                 <input type="radio" class="js-radio" id="area1" name="range"
-                                                       value="7-15">
-                                                <label for="area1">От 7 до 15 соток</label>
+                                                       value="6-7.99">
+                                                <label for="area1">От 6 до 7</label>
                                             </div>
                                             <div class="left__check">
                                                 <input type="radio" class="js-radio" id="area2" name="range"
-                                                       value="15-32">
-                                                <label for="area2">От 15 до 32 соток</label>
+                                                       value="8-9.99">
+                                                <label for="area2">От 8 до 9</label>
                                             </div>
                                             <div class="left__check">
                                                 <input type="radio" class="js-radio" id="area3" name="range"
+                                                       value="10-12.99">
+                                                <label for="area3">От 10 до 12</label>
+                                            </div>
+                                            <div class="left__check">
+                                                <input type="radio" class="js-radio" id="area4" name="range"
+                                                       value="13-17.99">
+                                                <label for="area4">От 13 до 17</label>
+                                            </div>
+                                            <div class="left__check">
+                                                <input type="radio" class="js-radio" id="area5" name="range"
+                                                       value="18-999">
+                                                <label for="area5">От 18</label>
+                                            </div>
+                                            <div class="left__check">
+                                                <input type="radio" class="js-radio" id="area6" name="range"
                                                        value="0-999" checked="checked">
-                                                <label for="area3">Любая площадь</label>
+                                                <label for="area6">Любая площадь</label>
                                             </div>
                                             <!-- от <span class="js-area-from"></span>
                                             до <span class="js-area-to"></span> -->
@@ -161,9 +191,9 @@ $lands = Land::orderByRaw('number + 0')->with('recommended.recommended_land')->g
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
-                                    <div class="right__btn">
+                                    <!-- <div class="right__btn">
                                         <button type="submit" class="us-btn btn-green"><span>Подбор</span></button>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </form>
                             <div class="clearfix"></div>

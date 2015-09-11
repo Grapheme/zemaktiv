@@ -2133,6 +2133,27 @@ h2 {
     overflow: hidden;
     -webkit-backface-visibility: hidden;
             backface-visibility: hidden; }
+    .wrapper-choise .choise__map .map__control {
+      position: absolute;
+      z-index: 3;
+      top: 5rem;
+      left: 5rem; }
+      .wrapper-choise .choise__map .map__control .control__link a {
+        display: inline-block;
+        vertical-align: middle;
+        height: 2.1875rem;
+        width: 2.1875rem;
+        border-radius: 2.1875rem;
+        line-height: 2.1875rem;
+        text-align: center;
+        background: #e8a348;
+        font-size: 3.5rem;
+        color: #000;
+        text-decoration: none; }
+      .wrapper-choise .choise__map .map__control .control__link .link__plus:before {
+        content: "+"; }
+      .wrapper-choise .choise__map .map__control .control__link .link__minus:before {
+        content: "-"; }
     .wrapper-choise .choise__map .map__image {
       position: absolute;
       top: 0;
@@ -2141,10 +2162,19 @@ h2 {
       height: 164.0625rem;
       background: url(../images/map.jpg) 0 0/100% 100% no-repeat;
       cursor: move;
+      -webkit-transform-origin: 0 0;
+          -ms-transform-origin: 0 0;
+              transform-origin: 0 0;
       -webkit-transform: translate(0, 0);
           -ms-transform: translate(0, 0);
               transform: translate(0, 0);
-      opacity: 0; }
+      opacity: 0;
+      -webkit-transition-property: width, height;
+              transition-property: width, height;
+      -webkit-transition-duration: .3s;
+              transition-duration: .3s;
+      -webkit-transition-timing-function: ease-out;
+              transition-timing-function: ease-out; }
       .wrapper-choise .choise__map .map__image.transition {
         -webkit-transition: -webkit-transform 0.3s ease-out;
                 transition: transform 0.3s ease-out; }
@@ -2431,6 +2461,8 @@ h2 {
         margin-top: 0.8125rem; }
         .wrapper-choise .choise-filter .filter__form .left__check.disabledCheck {
           pointer-events: none; }
+        .wrapper-choise .choise-filter .filter__form .left__check .ui-button-text-only .ui-button-text {
+          padding: 0; }
       .wrapper-choise .choise-filter .filter__form .form__left {
         float: left;
         width: 35%; }
