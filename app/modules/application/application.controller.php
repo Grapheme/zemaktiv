@@ -8,7 +8,7 @@ class ApplicationController extends BaseController {
     /****************************************************************************/
     public static function returnRoutes($prefix = null) {
         $class = __CLASS__;
-        Route::get('import', array('uses' => $class . '@import'));
+        #Route::get('import', array('uses' => $class . '@import'));
         Route::get('ya-feed', array('as' => 'yandex-feed', 'uses' => $class . '@yandexFeed'));
         Route::post('click-tracker', array('as' => 'click.tracker', 'uses' => $class . '@clickTracker'));
         Route::post('buildings/set-filter', array('as' => 'buildings.filter', 'uses' => $class . '@setBuildingFilter'));
