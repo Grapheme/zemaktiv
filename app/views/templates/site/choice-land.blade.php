@@ -90,11 +90,7 @@ $lands = Land::orderByRaw('number + 0')->with('recommended.recommended_land')->g
                         </div>
                         <div class="js-recommend tooltip-recommend">
                             <p>Похожие участки</p>
-                            <div class="js-recommend-list">
-                                <a href="#">25</a>
-                                <a href="#">453</a>
-                                <a href="#">2</a>
-                            </div>
+                            <div class="js-recommend-list"></div>
                         </div>
                     </div>
                 </div>
