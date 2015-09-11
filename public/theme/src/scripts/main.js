@@ -774,6 +774,7 @@ Garden.map = function() {
 	}
 	var zoom = {
 		amount: 1,
+		activeState: 1,
 		sizes: {
 			width: $('.js-map').width(),
 			height: $('.js-map').height(),
@@ -781,39 +782,48 @@ Garden.map = function() {
 		set: function(amount) {
 			var t = this;
 			var oldAmount = t.amount;
-			t.amount = t.amount + amount;
-			/*if(t.amount == 0.8) {
+			var states = {
+				0: 1.7,
+				1: 1,
+				2: 0.5
+			}
+			t.activeState = t.activeState + amount;
+			var thisAmount = states[t.activeState];
+			var diffAmount = thisAmount/oldAmount;
+			t.amount = thisAmount;
+			// t.amount = t.amount*amount;
+			if(t.activeState == 2) {
 				$('.js-map-zoomout').addClass('disabled');
 			} else {
 				$('.js-map-zoomout').removeClass('disabled');
 			}
-			if(t.amount == 1.3) {
+			if(t.activeState == 0) {
 				$('.js-map-zoom').addClass('disabled');
 			} else {
 				$('.js-map-zoom').removeClass('disabled');
-			}*/
+			}
+			$('.js-zoom-nav').eq(t.activeState).addClass('active')
+				.siblings().removeClass('active');
 			$('.js-map').css({
 				width: t.sizes.width * t.amount,
 				height: t.sizes.height * t.amount
 			});
 			var thisCenter = {
-				x: ((activePos.x - $('.js-map-container').width()/2) * (1+amount)) + $('.js-map-container').width()/2,
-				y: ((activePos.y - $('.js-map-container').height()/2) * (1+amount)) + $('.js-map-container').height()/2
+				x: ((activePos.x - $('.js-map-container').width()/2) * diffAmount) + $('.js-map-container').width()/2,
+				y: ((activePos.y - $('.js-map-container').height()/2) * diffAmount) + $('.js-map-container').height()/2
 			};
-			console.log(activePos.x);
-			console.log($('.js-map').css('transform'));
 			setMapPos(thisCenter.x, thisCenter.y);
 		},
 		init: function() {
 			var t = this;
 			$('.js-map-zoom').on('click', function(){
 				if($(this).hasClass('disabled')) return false;
-				t.set(0.3);
+				t.set(-1);
 				return false;
 			});
 			$('.js-map-zoomout').on('click', function(){
 				if($(this).hasClass('disabled')) return false;
-				t.set(-0.3);
+				t.set(1);
 				return false;
 			});
 		}

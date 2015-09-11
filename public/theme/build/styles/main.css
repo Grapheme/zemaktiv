@@ -2154,6 +2154,31 @@ h2 {
         content: "+"; }
       .wrapper-choise .choise__map .map__control .control__link .link__minus:before {
         content: "-"; }
+      .wrapper-choise .choise__map .map__control .control__line {
+        position: relative;
+        height: 0.9375rem; }
+        .wrapper-choise .choise__map .map__control .control__line:before {
+          content: "";
+          position: absolute;
+          width: 1px;
+          margin-left: -.5px;
+          left: 50%;
+          top: 0;
+          bottom: 0;
+          background: #fff; }
+      .wrapper-choise .choise__map .map__control .control__nav {
+        text-align: center;
+        height: 5px; }
+        .wrapper-choise .choise__map .map__control .control__nav:before {
+          content: "";
+          display: inline-block;
+          vertical-align: top;
+          width: 5px;
+          height: 5px;
+          border-radius: 5px;
+          border: 1px solid #fff; }
+        .wrapper-choise .choise__map .map__control .control__nav.active:before {
+          background: #fff; }
     .wrapper-choise .choise__map .map__image {
       position: absolute;
       top: 0;

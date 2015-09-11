@@ -38,21 +38,21 @@ $lands = Land::orderByRaw('number + 0')->with('recommended.recommended_land')->g
                 </div>
             </div>
             <div class="choise__map js-map-container">
-                <!-- <div class="map__control">
+                <div class="map__control">
                     <div class="control__link">
                         <a href="#" class="link__plus js-map-zoom"></a>
                     </div>
                     <div class="control__line"></div>
-                    <div class="control__nav"></div>
+                    <div class="control__nav js-zoom-nav"></div>
                     <div class="control__line"></div>
-                    <div class="control__nav"></div>
+                    <div class="control__nav js-zoom-nav active"></div>
                     <div class="control__line"></div>
-                    <div class="control__nav"></div>
+                    <div class="control__nav js-zoom-nav"></div>
                     <div class="control__line"></div>
                     <div class="control__link">
                         <a href="#" class="link__minus js-map-zoomout"></a>
                     </div>
-                </div> -->
+                </div>
                 <div class="map__image js-map">
                     <div class="image__hint hint-1 js-hint-item"></div>
                     <div class="image__hint hint-2 js-hint-item"></div>

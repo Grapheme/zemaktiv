@@ -46,6 +46,43 @@
 					}
 				}
 			}
+
+			.control__line {
+				position: relative;
+				height: 15rem / $fs;
+
+				&:before {
+					content: "";
+					position: absolute;
+					width: 1px;
+					margin-left: -.5px;
+					left: 50%;
+					top: 0;
+					bottom: 0;
+					background: #fff;
+				}
+			}
+
+			.control__nav {
+				text-align: center;
+				height: 5px;
+
+				&:before {
+					content: "";
+					display: inline-block;
+					vertical-align: top;
+					width: 5px;
+					height: 5px;
+					border-radius: 5px;
+					border: 1px solid #fff;
+				}
+
+				&.active {
+					&:before {
+						background: #fff;
+					}
+				}
+			}
 		}
 
 		.map__image {
