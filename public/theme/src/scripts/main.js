@@ -127,6 +127,12 @@ Garden.indexSlider = function() {
 			show($(this).index());
 			return false;
 		});
+		$('.js-index-scroll').on('click', function(){
+			$('html, body').animate({
+				scrollTop: $('.js-index-slider').offset().top + $('.js-index-slider').height() - 100 * (16/parseInt($('html').css('font-size')))
+			});
+			return false;
+		});
 	}
 	init();
 }

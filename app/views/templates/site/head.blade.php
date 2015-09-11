@@ -55,7 +55,7 @@ if (isset($page->seos) && is_object($page->seos) && isset($page->seos[Config::ge
 <title>@yield('title')</title>
 <meta name="description" content="@yield('description')">
 <meta name="keywords" content="@yield('keywords')">
-<meta name='yandex-verification' content='4ebd5ca95af5d887'/>
+<meta name='yandex-verification' content='517facf162938cec'>
 
 {{ HTML::style(Config::get('site.theme_path').'/styles/vendor.css') }}
 {{ HTML::style(Config::get('site.theme_path').'/styles/main.css') }}

@@ -141,6 +141,7 @@
                                         <input value="0" name="request" id="formstage1" type="radio"
                                                class="js-checkbox">
                                         <label for="formstage1">Ипотека Сбербанка</label>
+                                        <br>
                                         <input value="1" name="request" id="formstage2" type="radio"
                                                class="js-checkbox">
                                         <label for="formstage2">Рассрочка от застройщика</label>

@@ -498,3 +498,18 @@
 		padding-top: 230px;
 	}
 }
+
+.index-scroll-btn {
+	color: #fff;
+	text-decoration: none;
+
+	&:after {
+		content: "";
+		display: inline-block;
+		vertical-align: top;
+		width: 100rem / $fs;
+		height: 100rem / $fs;
+		margin-top: 15rem / $fs;
+		background: url(../images/ui/scroll-icon.svg) center center / contain no-repeat;
+	}
+}

@@ -1702,6 +1702,18 @@ h2 {
     z-index: 1;
     padding-top: 230px; }
 
+.index-scroll-btn {
+  color: #fff;
+  text-decoration: none; }
+  .index-scroll-btn:after {
+    content: "";
+    display: inline-block;
+    vertical-align: top;
+    width: 6.25rem;
+    height: 6.25rem;
+    margin-top: 0.9375rem;
+    background: url(../images/ui/scroll-icon.svg) center center/contain no-repeat; }
+
 .right__contacts {
   padding-left: 3.125rem; }
   .right__contacts.full-contacts {

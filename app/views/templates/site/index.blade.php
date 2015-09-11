@@ -40,12 +40,19 @@ endif;
                                     <div class="item__title">
                                         {{ $slider->content }}
                                     </div>
-                                    @if(!empty($slider['link']))
-                                        <div class="item__btns">
-                                            <a href="{{ $slider['link'] }}"
-                                               class="us-btn btn-transparent"><span>{{ $slider['link_title'] }}</span></a>
-                                        </div>
+                                    @if(0)
+                                        @if(!empty($slider['link']))
+                                            <div class="item__btns">
+                                                <a href="{{ $slider['link'] }}"
+                                                   class="us-btn btn-transparent"><span>{{ $slider['link_title'] }}</span></a>
+                                            </div>
+                                        @endif
                                     @endif
+                                    <div class="item__btns">
+                                        <a href="#" class="index-scroll-btn js-index-scroll">
+                                            Узнать подробнее<br>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
