@@ -2585,10 +2585,6 @@ h2 {
       padding: 0;
       margin: 0;
       font-size: 0; }
-    .wrapper-choise .filter__list .list__table .table__head .body__item {
-      font-family: 'pf_agora_slab_pro';
-      font-size: 1rem;
-      font-weight: 700; }
     .wrapper-choise .filter__list .list__table .table__title {
       font-family: 'pf_agora_slab_pro';
       font-weight: 900;
@@ -2603,26 +2599,6 @@ h2 {
         background: #f8f8f8; }
       .wrapper-choise .filter__list .list__table .table__body .body__item:hover {
         background: #e7f5ed; }
-    .wrapper-choise .filter__list .list__table .body__item {
-      height: 3.125rem;
-      line-height: 3.125rem; }
-      .wrapper-choise .filter__list .list__table .body__item .wrapper {
-        position: relative; }
-      .wrapper-choise .filter__list .list__table .body__item span {
-        display: inline-block;
-        vertical-align: top;
-        text-align: center; }
-        .wrapper-choise .filter__list .list__table .body__item span:nth-child(1), .wrapper-choise .filter__list .list__table .body__item span:nth-child(2), .wrapper-choise .filter__list .list__table .body__item span:nth-child(3) {
-          width: 13%; }
-        .wrapper-choise .filter__list .list__table .body__item span:nth-child(4), .wrapper-choise .filter__list .list__table .body__item span:nth-child(5) {
-          width: 18%; }
-        .wrapper-choise .filter__list .list__table .body__item span:nth-child(6) {
-          width: 25%; }
-      .wrapper-choise .filter__list .list__table .body__item.nothing-found {
-        text-align: center;
-        font-size: 1.125rem; }
-        .wrapper-choise .filter__list .list__table .body__item.nothing-found:hover {
-          background: #f8f8f8; }
   .wrapper-choise .lines-choice {
     position: relative;
     margin-top: 1.25rem;
@@ -2670,17 +2646,21 @@ h2 {
         background-image: url(../images/ui/line2block.svg); }
       .wrapper-choise .lines-choice .choice__center[data-number="3"] {
         background-image: url(../images/ui/line3block.svg); }
-  .wrapper-choise [data-sort-name] {
-    cursor: pointer; }
-  .wrapper-choise [data-sort]:after {
-    content: "↑";
-    margin-left: 0.3125rem;
-    font-size: .8em;
-    font-weight: 300; }
-  .wrapper-choise [data-sort="ASC"]:after {
-    content: "↓"; }
-  .wrapper-choise [data-sort="DESC"]:after {
-    content: "↑"; }
+
+[data-sort-name] {
+  cursor: pointer; }
+
+[data-sort]:after {
+  content: "↑";
+  margin-left: 0.3125rem;
+  font-size: .8em;
+  font-weight: 300; }
+
+[data-sort="ASC"]:after {
+  content: "↓"; }
+
+[data-sort="DESC"]:after {
+  content: "↑"; }
 
 .ui-button {
   position: relative;
@@ -2725,6 +2705,52 @@ h2 {
 
 .ui-state-disabled, .ui-widget-content .ui-state-disabled, .ui-widget-header .ui-state-disabled {
   opacity: 1; }
+
+.table__head {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+  .table__head.head-fixed {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 6.25rem;
+    background: #fff;
+    z-index: 999;
+    -webkit-transform: translateY(-400%);
+        -ms-transform: translateY(-400%);
+            transform: translateY(-400%);
+    -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease; }
+    .table__head.head-fixed.active {
+      -webkit-transform: translateY(0);
+          -ms-transform: translateY(0);
+              transform: translateY(0); }
+  .table__head .body__item {
+    font-family: 'pf_agora_slab_pro';
+    font-size: 1rem;
+    font-weight: 700; }
+
+.body__item {
+  height: 3.125rem;
+  line-height: 3.125rem; }
+  .body__item .wrapper {
+    position: relative; }
+  .body__item span {
+    display: inline-block;
+    vertical-align: top;
+    text-align: center; }
+    .body__item span:nth-child(1), .body__item span:nth-child(2), .body__item span:nth-child(3) {
+      width: 13%; }
+    .body__item span:nth-child(4), .body__item span:nth-child(5) {
+      width: 18%; }
+    .body__item span:nth-child(6) {
+      width: 25%; }
+  .body__item.nothing-found {
+    text-align: center;
+    font-size: 1.125rem; }
+    .body__item.nothing-found:hover {
+      background: #f8f8f8; }
 
 .overlay {
   display: none;

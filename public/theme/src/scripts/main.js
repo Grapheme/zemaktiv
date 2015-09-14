@@ -1284,15 +1284,30 @@ Garden.map = function() {
 			$('.js-show-filter').show();
 		}
 		$('[data-sort-name]').on('click', function(){
+			var thisName = $(this).attr('data-sort-name');
+			var blocks = $('[data-sort-name="' + thisName + '"]');
 			if($(this).attr('data-sort') == 'ASC') {
-				$(this).attr('data-sort', 'DESC');
+				blocks.attr('data-sort', 'DESC');
 			} else {
-				$(this).attr('data-sort', 'ASC');
+				blocks.attr('data-sort', 'ASC');
 			}
-			$(this).siblings().removeAttr('data-sort');
+			blocks.siblings().removeAttr('data-sort');
 			showSuited();
 		});
 		checkBoxes(Dictionary.buildings);
+	}
+	var fixedHead = function() {
+		var show = function() {
+			var headPos = $('.js-filter-items').offset().top + $('.js-choise-filter').scrollTop() - 100 * 2 * (16/parseInt($('html').css('font-size')));
+			if($('.js-choise-filter').scrollTop() >= headPos) {
+				$('.js-table-head').addClass('active');
+			} else {
+				$('.js-table-head').removeClass('active');
+			}
+			console.log($('.js-choise-filter').scrollTop());
+		}
+		show();
+		$('.js-choise-filter').on('scroll', show);
 	}
 	var checkBoxes = function(obj) {
 		var checks = {
@@ -1343,6 +1358,7 @@ Garden.map = function() {
 		submitFilter($('.js-filter-form'), true);
 		lines.init();
 		filterScroll();
+		fixedHead();
 	}
 	init();
 }

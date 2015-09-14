@@ -625,14 +625,6 @@
 				font-size: 0;
 			}
 
-			.table__head {
-				.body__item {
-					font-family: 'pf_agora_slab_pro';
-					font-size: 16rem / $fs;
-					font-weight: 700;
-				}
-			}
-
 			.table__title {
 				font-family: 'pf_agora_slab_pro';
 				font-weight: 900;
@@ -652,40 +644,6 @@
 
 					&:hover {
 						background: #e7f5ed;
-					}
-				}
-			}
-
-			.body__item {
-				height: 50rem / $fs;
-				line-height: 50rem / $fs;
-
-				.wrapper {
-					position: relative;
-				}
-
-				span {
-					display: inline-block;
-					vertical-align: top;
-					text-align: center;
-
-					&:nth-child(1), &:nth-child(2), &:nth-child(3) {
-						width: 13%;
-					}
-					&:nth-child(4), &:nth-child(5) {
-						width: 18%;
-					}
-					&:nth-child(6) {
-						width: 25%;
-					}
-				}
-
-				&.nothing-found {
-					text-align: center;
-					font-size: 18rem / $fs;
-
-					&:hover {
-						background: #f8f8f8;
 					}
 				}
 			}
@@ -768,30 +726,30 @@
 			}
 		}
 	}
+}
 
-	[data-sort-name] {
-		cursor: pointer;
+[data-sort-name] {
+	cursor: pointer;
+}
+
+[data-sort] {
+	&:after {
+		content: "↑";
+		margin-left: 5rem / $fs;
+		font-size: .8em;
+		font-weight: 300;
 	}
+}
 
-	[data-sort] {
-		&:after {
-			content: "↑";
-			margin-left: 5rem / $fs;
-			font-size: .8em;
-			font-weight: 300;
-		}
+[data-sort="ASC"] {
+	&:after {
+		content: "↓";
 	}
+}
 
-	[data-sort="ASC"] {
-		&:after {
-			content: "↓";
-		}
-	}
-
-	[data-sort="DESC"] {
-		&:after {
-			content: "↑";
-		}
+[data-sort="DESC"] {
+	&:after {
+		content: "↑";
 	}
 }
 
@@ -843,4 +801,65 @@
 
 .ui-state-disabled, .ui-widget-content .ui-state-disabled, .ui-widget-header .ui-state-disabled {
 	opacity: 1;
+}
+
+.table__head {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+
+	&.head-fixed {
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 100rem / $fs;
+		background: #fff;
+		z-index: 999;
+		transform: translateY(-400%);
+		transition: all .3s ease;
+
+		&.active {
+			transform: translateY(0);
+		}
+	}
+
+	.body__item {
+		font-family: 'pf_agora_slab_pro';
+		font-size: 16rem / $fs;
+		font-weight: 700;
+	}
+}
+
+.body__item {
+	height: 50rem / $fs;
+	line-height: 50rem / $fs;
+
+	.wrapper {
+		position: relative;
+	}
+
+	span {
+		display: inline-block;
+		vertical-align: top;
+		text-align: center;
+
+		&:nth-child(1), &:nth-child(2), &:nth-child(3) {
+			width: 13%;
+		}
+		&:nth-child(4), &:nth-child(5) {
+			width: 18%;
+		}
+		&:nth-child(6) {
+			width: 25%;
+		}
+	}
+
+	&.nothing-found {
+		text-align: center;
+		font-size: 18rem / $fs;
+
+		&:hover {
+			background: #f8f8f8;
+		}
+	}
 }
