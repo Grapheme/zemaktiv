@@ -87,19 +87,19 @@ endif;
                     <div class="item__image">
                         <img src="{{ Config::get('site.theme_path') }}/images/index/top-1.png" alt="">
                     </div>
-                    <div class="item__title">256 участков<br>уже нашли хозяина</div>
+                    <div class="item__title">224 участков<br>уже нашли хозяина</div>
                 </li>
                 <li class="list__item">
                     <div class="item__image">
                         <img src="{{ Config::get('site.theme_path') }}/images/index/top-2.png" alt="">
                     </div>
-                    <div class="item__title">32 дома построены<br>и заселены</div>
+                    <div class="item__title">42 дома построены<br>и заселены</div>
                 </li>
                 <li class="list__item">
                     <div class="item__image">
                         <img src="{{ Config::get('site.theme_path') }}/images/index/top-3.png" alt="">
                     </div>
-                    <div class="item__title">56 домов<br>строится</div>
+                    <div class="item__title">77 домов<br>строится</div>
                 </li>
             </ul>
             <div class="clearfix"></div>
@@ -107,7 +107,7 @@ endif;
     </div>
     <div class="index-block">
         <div class="wrapper">
-            <div class="block__title">Коомуникации</div>
+            <div class="block__title">Коммуникации</div>
             <div class="block__text text-min">Газ, электричество, водопровод входят в стоимость земельного участка.<br>Забор с калиткой и воротами тоже</div>
         </div>
     </div>
@@ -146,42 +146,42 @@ endif;
                     <img src="{{ Config::get('site.theme_path') }}/images/index/list-1.png" alt="">
                     Охрана
                 </div>
-                <div class="content__desc">Три охраняемых въезда со шлагбаумами. Пешее потрулирование.</div>
+                <div class="content__desc">Три охраняемых въезда со шлагбаумами. Пешее патрулирование</div>
             </div>
             <div class="benefits__block">
                 <div class="content__title">
                     <img src="{{ Config::get('site.theme_path') }}/images/index/list-2.png" alt="">
                     Природа
                 </div>
-                <div class="content__desc">Выходы в лес прямо из поселка. Река Нара. Лесной массив 23 кв. км</div>
+                <div class="content__desc">Выходы в лес прямо из посёлка. Река Нара. Лесной массив 23 кв. км</div>
             </div>
             <div class="benefits__block">
                 <div class="content__title">
                     <img src="{{ Config::get('site.theme_path') }}/images/index/list-3.png" alt="">
                     Детские площадки
                 </div>
-                <div class="content__desc">С горкой, песочницей, качелями и игровым домиком. В каждой очереди строительства.</div>
+                <div class="content__desc">С горкой, песочницей, качелями и игровым домиком. В каждой очереди строительства</div>
             </div>
             <div class="benefits__block">
                 <div class="content__title">
                     <img src="{{ Config::get('site.theme_path') }}/images/index/list-4.png" alt="">
                     Центральная аллея
                 </div>
-                <div class="content__desc">Чтобы можно было «разъехаться», не было тесно, как это часто бывает в поселках.</div>
+                <div class="content__desc">Чтобы можно было «разъехаться», не было тесно, как это часто бывает в посёлках</div>
             </div>
             <div class="benefits__block">
                 <div class="content__title">
                     <img src="{{ Config::get('site.theme_path') }}/images/index/list-5.png" alt="">
                     Купаться
                 </div>
-                <div class="content__desc">Карьер для купания, декоративный пруд в поселке, река.</div>
+                <div class="content__desc">Карьер для купания, декоративный пруд в посёлке, река</div>
             </div>
             <div class="benefits__block">
                 <div class="content__title">
                     <img src="{{ Config::get('site.theme_path') }}/images/index/list-6.png" alt="">
                     Магазины
                 </div>
-                <div class="content__desc">Продукты питания и товары повседневного спроса.</div>
+                <div class="content__desc">Продукты питания и товары повседневного спроса</div>
             </div>
         </div>
     </div>
