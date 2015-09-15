@@ -246,6 +246,19 @@
 				background: url(../images/ui/house.svg);
 				cursor: pointer;
 
+				&:before {
+					content: attr(data-number);
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					line-height: 20rem / $fs;
+					font-size: 8rem / $fs;
+					color: #484848;
+					text-align: center;
+				}
+
 				&.sold {
 					border-radius: 17rem / $fs;
 					width: 17rem / $fs;
@@ -253,6 +266,11 @@
 					margin-left: -17rem / $fs / 2;
 					margin-top: -17rem / $fs / 2;
 					background: rgba(206, 46, 46, .8);
+
+					&:before {
+						line-height: 17rem / $fs;
+						color: #fff;
+					}
 
 					&:after {
 						content: "";
@@ -618,6 +636,10 @@
 				margin-bottom: 25rem / $fs;
 			}
 
+			.wrapper {
+				width: 72rem;
+			}
+
 			ul {
 				list-style: none;
 				padding: 0;
@@ -836,6 +858,7 @@
 
 	.wrapper {
 		position: relative;
+		width: 72rem;
 	}
 
 	span {
@@ -843,14 +866,27 @@
 		vertical-align: top;
 		text-align: center;
 
-		&:nth-child(1), &:nth-child(2), &:nth-child(3) {
+		&:nth-child(1), &:nth-child(3) {
 			width: 13%;
 		}
-		&:nth-child(4), &:nth-child(5) {
-			width: 18%;
+		&:nth-child(2) {
+			width: 11%;
+		}
+		&:nth-child(4) {
+			width: 13%;
+		}
+		&:nth-child(5) {
+			width: 14%;
 		}
 		&:nth-child(6) {
-			width: 25%;
+			width: 26%;
+		}
+		&:nth-child(7) {
+			width: 10%;
+		}
+
+		a {
+			color: #2A2EAB;
 		}
 	}
 

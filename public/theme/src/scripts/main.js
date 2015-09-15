@@ -876,7 +876,7 @@ Garden.map = function() {
 			var heightPers =  $('.js-map').height()/100;
 			var thisLeft = value.coordinate_x * cof / widthPers;
 			var thisTop = value.coordinate_y * cof / heightPers;
-			$('.js-map').append('<a class="image__mark js-mark' + soldStr + '" data-id="' + value.id + '" style="left: ' + thisLeft + '%; top: ' + thisTop + '%;"></a>');
+			$('.js-map').append('<a class="image__mark js-mark' + soldStr + '" data-id="' + value.id + '" data-number="' + value.number + '" style="left: ' + thisLeft + '%; top: ' + thisTop + '%;"></a>');
 			/*$('.js-hint-item, .js-line-item').each(function(){
 				var tPos = $(this).position();
 				var tLeft = tPos.left * cof / widthPers;
@@ -1103,7 +1103,7 @@ Garden.map = function() {
 					}
 				});
 			}
-			html.push('<li class="body__item js-filter-item" data-id="' + v.id + '"><div class="wrapper"><span><a href="#" class="js-favorite favorite-link' + (isFavorite ? ' active':'') + '" title="' + (isFavorite ? 'Убрать из избранного':'Добавить в избранное') + '"></a>' + v.number + '</span><span>' + v.turn + '</span><span>' + v.land_area + '</span><span>' + numToContract(v.status) + '</span><span>' + v.price.formatMoney() + '</span><span>' + totalPrice + '</span></div></li>');
+			html.push('<li class="body__item js-filter-item" data-id="' + v.id + '"><div class="wrapper"><span><a href="#" class="js-favorite favorite-link' + (isFavorite ? ' active':'') + '" title="' + (isFavorite ? 'Убрать из избранного':'Добавить в избранное') + '"></a>' + v.number + '</span><span>' + v.turn + '</span><span>' + v.land_area + '</span><span>' + numToContract(v.status) + '</span><span>' + v.price.formatMoney() + '</span><span>' + totalPrice + '</span><span><a>Смотреть</a></span></div></li>');
 			count++;
 		});
 		if(count != 0) {
@@ -1606,7 +1606,7 @@ Garden.favorite = {
 				if(v.status == 2) {
 					totalPrice = v.price_total.formatMoney();
 				}
-				html.push('<li class="body__item js-filter-item" data-id="' + v.id + '"><div class="wrapper"><span><a href="#" class="js-favorite favorite-link active" title="Убрать из избранного"></a>' + v.number + '</span><span>' + v.turn + '</span><span>' + v.land_area + '</span><span>' + numToContract(v.status) + '</span><span>' + v.price.formatMoney() + '</span><span>' + totalPrice + '</span></div></li>');
+				html.push('<li class="body__item js-filter-item" data-id="' + v.id + '"><div class="wrapper"><span><a href="#" class="js-favorite favorite-link active" title="Убрать из избранного"></a>' + v.number + '</span><span>' + v.turn + '</span><span>' + v.land_area + '</span><span>' + numToContract(v.status) + '</span><span>' + v.price.formatMoney() + '</span><span>' + totalPrice + '</span><span><a>Смотреть</a></span></div></li>');
 			});
 			$('.js-favorite-cont').show()
 				.find('.js-favorite-items').html(html.join(''));

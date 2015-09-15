@@ -212,7 +212,7 @@ $lands = Land::orderByRaw('number + 0')->with('recommended.recommended_land')->g
                         <ul class="table__head">
                             <li class="body__item">
                                 <div class="wrapper">
-                                    <span>Участок</span><span>Очередь</span><span>Площадь, сот.</span><span>Статус</span><span>Цена участка, руб.</span><span>Цена участка с домом, руб.</span>
+                                    <span>Участок</span><span>Очередь</span><span>Площадь, сот.</span><span>Статус</span><span>Цена участка, руб.</span><span>Цена участка с домом, руб.</span><span>На генплане</span>
                                 </div>
                             </li>
                         </ul>
@@ -231,7 +231,8 @@ $lands = Land::orderByRaw('number + 0')->with('recommended.recommended_land')->g
                                         data-sort-name="land_area">Площадь, сот.</span><span
                                         data-sort-name="status">Статус</span><span
                                         data-sort="ASC" data-sort-name="price">Цена участка, руб.</span><span
-                                        data-sort-name="price_total">Цена участка с домом, руб.</span>
+                                        data-sort-name="price_total">Цена участка с домом, руб.</span><span
+                                        >На генплане</span>
                                 </div>
                             </li>
                         </ul>
@@ -250,7 +251,8 @@ $lands = Land::orderByRaw('number + 0')->with('recommended.recommended_land')->g
                     data-sort-name="land_area">Площадь, сот.</span><span
                     data-sort-name="status">Статус</span><span
                     data-sort="ASC" data-sort-name="price">Цена участка, руб.</span><span
-                    data-sort-name="price_total">Цена участка с домом, руб.</span>
+                    data-sort-name="price_total">Цена участка с домом, руб.</span><span
+                    >На генплане</span>
             </div>
         </li>
     </ul>

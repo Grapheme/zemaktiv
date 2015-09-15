@@ -70,6 +70,7 @@ endif;
             </div>
         </div>
     </div>
+    @if(FALSE)
     <div class="index-filter">
         <a href="{{ pageurl('buildings') }}" class="filter__item">
             <div class="item__title">{{ $page->block('btn_buildings') }}</div>
@@ -78,17 +79,36 @@ endif;
             <div class="item__title">{{ $page->block('btn_land') }}</div>
         </a>
     </div>
-    <div class="index-block mortgage-block">
+    @endif
+    <div class="index-block desc-block">
         <div class="wrapper">
-            <div class="block__title">Схемы покупки</div>
-            <div class="block__text text-min">Воспользуйтесь ипотекой от Сбербанка или рассрочкой от застройщика.</div>
-            <div class="mortgage">
-                <div class="mortgage__item" style="background-image: url({{ Config::get('site.theme_path') }}/images/mortgage/sberbank.png)"></div>
-                <div class="mortgage__item" style="background-image: url({{ Config::get('site.theme_path') }}/images/mortgage/zemaktiv.png)"></div>
-            </div>
-            <div class="block__btn">
-                <a href="#" class="us-btn btn-blue js-open-overlay" data-open="mortgage"><span>Получить консультацию</span></a>
-            </div>
+            <ul class="desc-list">
+                <li class="list__item">
+                    <div class="item__image">
+                        <img src="{{ Config::get('site.theme_path') }}/images/index/top-1.png" alt="">
+                    </div>
+                    <div class="item__title">256 участков<br>уже нашли хозяина</div>
+                </li>
+                <li class="list__item">
+                    <div class="item__image">
+                        <img src="{{ Config::get('site.theme_path') }}/images/index/top-2.png" alt="">
+                    </div>
+                    <div class="item__title">32 дома построены<br>и заселены</div>
+                </li>
+                <li class="list__item">
+                    <div class="item__image">
+                        <img src="{{ Config::get('site.theme_path') }}/images/index/top-3.png" alt="">
+                    </div>
+                    <div class="item__title">56 домов<br>строится</div>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="index-block">
+        <div class="wrapper">
+            <div class="block__title">Коомуникации</div>
+            <div class="block__text text-min">Газ, электричество, водопровод входят в стоимость земельного участка.<br>Забор с калиткой и воротами тоже</div>
         </div>
     </div>
     @if(FALSE)
@@ -119,6 +139,65 @@ endif;
             </div>
         </div>
     @endif
+    <div class="index-benefits benefits-blocks">
+        <div class="benefits-container">
+            <div class="benefits__block">
+                <div class="content__title">
+                    <img src="{{ Config::get('site.theme_path') }}/images/index/list-1.png" alt="">
+                    Охрана
+                </div>
+                <div class="content__desc">Три охраняемых въезда со шлагбаумами. Пешее потрулирование.</div>
+            </div>
+            <div class="benefits__block">
+                <div class="content__title">
+                    <img src="{{ Config::get('site.theme_path') }}/images/index/list-2.png" alt="">
+                    Природа
+                </div>
+                <div class="content__desc">Выходы в лес прямо из поселка. Река Нара. Лесной массив 23 кв. км</div>
+            </div>
+            <div class="benefits__block">
+                <div class="content__title">
+                    <img src="{{ Config::get('site.theme_path') }}/images/index/list-3.png" alt="">
+                    Детские площадки
+                </div>
+                <div class="content__desc">С горкой, песочницей, качелями и игровым домиком. В каждой очереди строительства.</div>
+            </div>
+            <div class="benefits__block">
+                <div class="content__title">
+                    <img src="{{ Config::get('site.theme_path') }}/images/index/list-4.png" alt="">
+                    Центральная аллея
+                </div>
+                <div class="content__desc">Чтобы можно было «разъехаться», не было тесно, как это часто бывает в поселках.</div>
+            </div>
+            <div class="benefits__block">
+                <div class="content__title">
+                    <img src="{{ Config::get('site.theme_path') }}/images/index/list-5.png" alt="">
+                    Купаться
+                </div>
+                <div class="content__desc">Карьер для купания, декоративный пруд в поселке, река.</div>
+            </div>
+            <div class="benefits__block">
+                <div class="content__title">
+                    <img src="{{ Config::get('site.theme_path') }}/images/index/list-6.png" alt="">
+                    Магазины
+                </div>
+                <div class="content__desc">Продукты питания и товары повседневного спроса.</div>
+            </div>
+        </div>
+    </div>
+    <div class="index-block mortgage-block">
+        <div class="wrapper">
+            <div class="block__title">Схемы покупки</div>
+            <div class="block__text text-min">Воспользуйтесь ипотекой от Сбербанка или рассрочкой от застройщика.</div>
+            <div class="mortgage">
+                <div class="mortgage__item" style="background-image: url({{ Config::get('site.theme_path') }}/images/mortgage/sberbank.png)"></div>
+                <div class="mortgage__item" style="background-image: url({{ Config::get('site.theme_path') }}/images/mortgage/zemaktiv.png)"></div>
+            </div>
+            <div class="block__btn">
+                <a href="#" class="us-btn btn-blue js-open-overlay" data-open="mortgage"><span>Получить консультацию</span></a>
+            </div>
+        </div>
+    </div>
     <div class="index-block block-choise">
         <div class="block-container">
             <div class="wrapper">
