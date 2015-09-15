@@ -163,8 +163,8 @@ class ApplicationController extends BaseController {
         if (Request::ajax()):
             $buildings = $layouts = $materials = array();
             $materials[0] = '';
-            foreach (LayoutHomesController::$materials as $material):
-                $materials[] = $material;
+            foreach (LayoutHomesController::$materials as $index => $material):
+                $materials[] = $index;
             endforeach;
             if (Input::has('house_build') || Input::has('house_all')):
                 $buildings = $this->builds_filter($materials);
