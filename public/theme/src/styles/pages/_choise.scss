@@ -111,87 +111,97 @@
 			.image__hint {
 				position: absolute;
 				height: 54rem / $fs;
+				margin-top: -54rem / $fs;
 				z-index: 1;
 				pointer-events: none;
 
 				&.hint-1 {
 					/* top: 80rem;
 					left: 183rem; */
-					left: 69.71428571428571%;
-					top: 48.76190476190476%;
+					left: 71.21428571428571%;
+					top: 50.76190476190476%;
 					width: 137rem / $fs;
+					margin-left: -(137/2/$fs) + rem;
 					background: url(../images/ui/hint1.png) center center / 100% auto no-repeat;
 				}
 
 				&.hint-2 {
 					/* top: 56rem;
 					left: 202rem; */
-					left: 76.95238095238095%;
-					top: 34.13333333333333%;
+					left: 78.45238095238095%;
+					top: 36.13333333333333%;
 					width: 137rem / $fs;
+					margin-left: -(137/2/$fs) + rem;
 					background: url(../images/ui/hint1.png) center center / 100% auto no-repeat;
 				}
 
 				&.hint-3 {
 					/* top: 119rem;
 					left: 77rem; */
-					left: 29.333333333333332%;
-					top: 72.53333333333333%;
+					left: 30.83333333333332%;
+					top: 74.53333333333333%;
 					width: 137rem / $fs;
+					margin-left: -(137/2/$fs) + rem;
 					background: url(../images/ui/hint1.png) center center / 100% auto no-repeat;
 				}
 
 				&.hint-4 {
 					/* top: 75rem;
 				  left: 153rem; */
-				  left: 58.285714285714285%;
-				  top: 45.714285714285715%;
+				  left: 60.285714285714285%;
+				  top: 47.714285714285715%;
 					width: 177rem / $fs;
+					margin-left: -(177/2/$fs) + rem;
 					background: url(../images/ui/hint3.png) center center / 100% auto no-repeat;
 				}
 
 				&.hint-5 {
 					/* top: 81rem;
 					left: 77rem; */
-					left: 29.333333333333332%;
-					top: 49.371428571428574%;
+					left: 30.833333333333332%;
+					top: 51.371428571428574%;
 					width: 137rem / $fs;
+					margin-left: -(137/2/$fs) + rem;
 					background: url(../images/ui/hint2.png) center center / 100% auto no-repeat;
 				}
 
 				&.hint-6 {
 					/* top: 81rem;
 				  left: 107rem; */
-				  left: 40.76190476190476%;
-				  top: 49.371428571428574%;
+				  left: 42.26190476190476%;
+				  top: 51.371428571428574%;
 					width: 137rem / $fs;
+					margin-left: -(137/2/$fs) + rem;
 					background: url(../images/ui/hint2.png) center center / 100% auto no-repeat;
 				}
 
 				&.hint-7 {
 					/* top: 61rem;
 				  left: 136rem; */
-				  left: 51.80952380952381%;
-				  top: 37.180952380952384%;
+				  left: 53.30952380952381%;
+				  top: 39.180952380952384%;
 					width: 137rem / $fs;
+					margin-left: -(137/2/$fs) + rem;
 					background: url(../images/ui/hint2.png) center center / 100% auto no-repeat;
 				}
 
 				&.hint-8 {
 					/* top: 15rem;
 			    left: 149rem; */
-			    left: 56.76190476190476%;
-			    top: 9.142857142857142%;
+			    left: 58.26190476190476%;
+			    top: 11.142857142857142%;
 					width: 137rem / $fs;
+					margin-left: -(137/2/$fs) + rem;
 					background: url(../images/ui/hint2.png) center center / 100% auto no-repeat;
 				}
 
 				&.hint-9 {
 					/* top: 22rem;
 					left: 130rem; */
-					left: 49.523809523809526%;
-					top: 13.40952380952381%;
+					left: 51.023809523809526%;
+					top: 15.40952380952381%;
 					width: 137rem / $fs;
+					margin-left: -(137/2/$fs) + rem;
 					background: url(../images/ui/hint2.png) center center / 100% auto no-repeat;
 				}
 			}
