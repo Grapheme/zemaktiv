@@ -3345,9 +3345,8 @@ Garden.init = function() {
 $(function(){
 	Garden.init();
 });
-
-function counth(left, top) {
+/*function counth(left, top) {
 	var nleft = left*16 / ($('.js-map').width() / 100);
 	var ntop = top*16 / ($('.js-map').height() / 100);
 	return 'left: ' + nleft + '%; top: ' + ntop + '%;';
-}
+}*/

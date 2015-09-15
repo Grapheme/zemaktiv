@@ -1329,6 +1329,9 @@ h2 {
               animation: fa-spin 1s infinite; }
     .build-filter .filter__update.loading:before {
       content: ""; }
+  .build-filter .ui-button.ui-state-active span {
+    background: #f1f1f1;
+    padding: 0 0.3125rem; }
 
 .index-slider {
   position: relative;
