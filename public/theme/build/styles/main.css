@@ -895,19 +895,23 @@ h2 {
 .footer {
   border-top: 1px solid #f1f1f1;
   padding: 3.125rem 0;
-  overflow: hidden;
-  height: 3.75rem; }
+  overflow: hidden; }
   .footer .footer__left {
     float: left;
     font-size: 0.875rem;
     font-weight: 700; }
+    .footer .footer__left .left__desc {
+      margin-bottom: 0.625rem;
+      font-size: 1.25rem;
+      font-weight: 500;
+      line-height: 1.875rem; }
     .footer .footer__left .left__block {
       display: inline-block;
-      vertical-align: middle;
+      vertical-align: top;
       line-height: 1.875rem;
-      margin-left: 135px; }
-      .footer .footer__left .left__block:first-child {
-        margin-left: 0; }
+      margin-right: 135px; }
+      .footer .footer__left .left__block:last-child {
+        margin-right: 0; }
       .footer .footer__left .left__block .block__link a {
         color: #3facd9;
         text-decoration: none;
