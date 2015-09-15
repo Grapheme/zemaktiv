@@ -6,10 +6,6 @@
 
 {{ HTML::scriptmod(Config::get('site.theme_path').'/scripts/main.concat.js') }}
 
-        <!-- Targetix -->
-<script src="http://content.targetix.net/Tags/55b2245e9341f9b5bc56e580.js"></script>
-<!-- End Targetix -->
-
 <!-- Solovei -->
 <script type="text/javascript">
     (function (h) {
@@ -103,8 +99,3 @@
     })(document, window.mixpanel || []);
     mixpanel.init("4ca48e28506e153791b8b2d5b291f3ca");</script>
 <!-- end Mixpanel -->
-
-<!--SCB-->
-<script type="text/javascript" src="http://smartcallback.ru/api/SmartCallBack.js"></script>
-<script type="text/javascript">SCBinit("bBrLaQfSDP7CZhiK07rL");</script>
-<!--END SCB-->
