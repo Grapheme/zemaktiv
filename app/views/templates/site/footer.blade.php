@@ -22,7 +22,7 @@
             <div class="left__block">
                 <div class="block__link"><a href="{{ pageurl('about') }}">О проекте</a></div>
                 <div class="block__link"><a href="{{ pageurl('readiness') }}">Готовность</a></div>
-                <div class="block__link"><a href="{{ pageurl('location') }}">Расположение</a></div>
+                <div class="block__link"><a href="{{ URL::to('location') }}">Расположение</a></div>
                 <div class="block__link"><a href="{{ pageurl('putevoditel') }}">Путеводитель</a></div>
                 <div class="block__link"><a href="{{ pageurl('photos') }}">Фотографии</a></div>
                 <div class="block__link"><a href="{{ pageurl('communications') }}">Коммуникации</a></div>
