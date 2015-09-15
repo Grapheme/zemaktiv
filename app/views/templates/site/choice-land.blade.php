@@ -38,34 +38,34 @@ $lands = Land::orderByRaw('number + 0')->with('recommended.recommended_land')->g
                 </div>
             </div>
             <div class="choise__map js-map-container">
-                <!-- <div class="map__control">
+                <div class="map__control">
                     <div class="control__link">
                         <a href="#" class="link__plus js-map-zoom"></a>
                     </div>
                     <div class="control__line"></div>
-                    <div class="control__nav"></div>
+                    <div class="control__nav js-zoom-nav"></div>
                     <div class="control__line"></div>
-                    <div class="control__nav"></div>
+                    <div class="control__nav js-zoom-nav active"></div>
                     <div class="control__line"></div>
-                    <div class="control__nav"></div>
+                    <div class="control__nav js-zoom-nav"></div>
                     <div class="control__line"></div>
                     <div class="control__link">
                         <a href="#" class="link__minus js-map-zoomout"></a>
                     </div>
-                </div> -->
+                </div>
                 <div class="map__image js-map">
-                    <div class="image__hint hint-1"></div>
-                    <div class="image__hint hint-2"></div>
-                    <div class="image__hint hint-3"></div>
-                    <div class="image__hint hint-4"></div>
-                    <div class="image__hint hint-5"></div>
-                    <div class="image__hint hint-6"></div>
-                    <div class="image__hint hint-7"></div>
-                    <div class="image__hint hint-8"></div>
-                    <div class="image__hint hint-9"></div>
-                    <div class="image__line line-1 js-line-1"></div>
-                    <div class="image__line line-2 js-line-2"></div>
-                    <div class="image__line line-3 js-line-3"></div>
+                    <div class="image__hint hint-1 js-hint-item"></div>
+                    <div class="image__hint hint-2 js-hint-item"></div>
+                    <div class="image__hint hint-3 js-hint-item"></div>
+                    <div class="image__hint hint-4 js-hint-item"></div>
+                    <div class="image__hint hint-5 js-hint-item"></div>
+                    <div class="image__hint hint-6 js-hint-item"></div>
+                    <div class="image__hint hint-7 js-hint-item"></div>
+                    <div class="image__hint hint-8 js-hint-item"></div>
+                    <div class="image__hint hint-9 js-hint-item"></div>
+                    <div class="image__line line-1 js-line-1 js-line-item"></div>
+                    <div class="image__line line-2 js-line-2 js-line-item"></div>
+                    <div class="image__line line-3 js-line-3 js-line-item"></div>
                     <div class="image__tooltip js-tooltip">
                         <a href="#" class="tooltip__close js-close"></a>
 
@@ -87,6 +87,10 @@ $lands = Land::orderByRaw('number + 0')->with('recommended.recommended_land')->g
                             <div class="sold__status"><span class="status__icon"></span><span class="status__text">Продан</span>
                             </div>
                             <p>Этот участок уже нашел своего владельца</p>
+                        </div>
+                        <div class="js-recommend tooltip-recommend">
+                            <p>Похожие участки</p>
+                            <div class="js-recommend-list"></div>
                         </div>
                     </div>
                 </div>
@@ -208,7 +212,7 @@ $lands = Land::orderByRaw('number + 0')->with('recommended.recommended_land')->g
                         <ul class="table__head">
                             <li class="body__item">
                                 <div class="wrapper">
-                                    <span>Участок</span><span>Очередь</span><span>Площадь, сот.</span><span>Статус</span><span>Цена участка, руб.</span><span>Цена участка с домом, руб.</span>
+                                    <span>Участок</span><span>Очередь</span><span>Площадь, сот.</span><span>Статус</span><span>Цена участка, руб.</span><span>Цена участка с домом, руб.</span><span>На генплане</span>
                                 </div>
                             </li>
                         </ul>
@@ -218,14 +222,17 @@ $lands = Land::orderByRaw('number + 0')->with('recommended.recommended_land')->g
                         <div class="wrapper">
                             <div class="table__title">Участки</div>
                         </div>
-                        <ul class="table__head">
+                        <ul class="table__head js-static-head">
                             <li class="body__item">
                                 <div class="wrapper">
-                                    <span data-sort-name="number">Участок</span><span
-                                            data-sort-name="turn">Очередь</span><span data-sort-name="land_area">Площадь, сот.</span><span
-                                            data-sort-name="status">Статус</span><span data-sort="ASC"
-                                                                                       data-sort-name="price">Цена участка, руб.</span><span
-                                            data-sort-name="price_total">Цена участка с домом, руб.</span>
+                                    <span
+                                        data-sort-name="number">Участок</span><span
+                                        data-sort-name="turn">Очередь</span><span
+                                        data-sort-name="land_area">Площадь, сот.</span><span
+                                        data-sort-name="status">Статус</span><span
+                                        data-sort="ASC" data-sort-name="price">Цена участка, руб.</span><span
+                                        data-sort-name="price_total">Цена участка с домом, руб.</span><span
+                                        >На генплане</span>
                                 </div>
                             </li>
                         </ul>
@@ -235,6 +242,20 @@ $lands = Land::orderByRaw('number + 0')->with('recommended.recommended_land')->g
             </div>
         </div>
     </div>
+    <ul class="table__head head-fixed js-table-head">
+        <li class="body__item">
+            <div class="wrapper">
+                <span
+                    data-sort-name="number">Участок</span><span
+                    data-sort-name="turn">Очередь</span><span
+                    data-sort-name="land_area">Площадь, сот.</span><span
+                    data-sort-name="status">Статус</span><span
+                    data-sort="ASC" data-sort-name="price">Цена участка, руб.</span><span
+                    data-sort-name="price_total">Цена участка с домом, руб.</span><span
+                    >На генплане</span>
+            </div>
+        </li>
+    </ul>
     <div style="position: fixed; top: -9999px; left: -9999px; visibility: hidden;">
         <img src="{{ Config::get('site.theme_path') }}/images/ui/line1block.svg" alt="">
         <img src="{{ Config::get('site.theme_path') }}/images/ui/line1left.svg" alt="">

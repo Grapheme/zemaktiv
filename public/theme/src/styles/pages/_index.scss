@@ -232,6 +232,43 @@
 			}
 		}
 	}
+
+	&.desc-block {
+		border-top: 1px solid $borderColor;
+		border-bottom: 1px solid $borderColor;
+		padding: 0;
+
+		.wrapper {
+			width: 75rem;
+		}
+	}
+
+	.desc-list {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		.list__item {
+			float: left;
+			width: 33.33333%;
+			box-sizing: border-box;
+			border-right: 1px solid $borderColor;
+			height: 420px;
+			padding-top: 80px;
+
+			&:last-child {
+				border-right: 0;
+			}
+
+			.item__title {
+				margin-top: 20px;
+				font-family: 'pf_agora_slab_pro';
+				font-size: 24rem / $fs;
+				font-weight: 800;
+			  line-height: 1.167;
+			}
+		}
+	}
 }
 
 .index-filter {
@@ -309,9 +346,30 @@
 	border-top: 1px solid $borderColor;
 	overflow: hidden;
 
+	&.benefits-blocks {
+		border-bottom: 1px solid $borderColor;
+	}
+
 	.benefits-container {
+		position: relative;
 		width: 1200rem / $fs;
 		margin: 0 auto;
+		overflow: hidden;
+
+		&:before, &:after {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 33.33333%;
+			bottom: 0;
+			width: 1px;
+			margin-left: -.5px;
+			background: $borderColor;
+		}
+
+		&:after {
+			left: 66.66666%;
+		}
 	}
 
 	.benefits__item {
@@ -319,7 +377,41 @@
 		width: 33.33333%;
 		padding: 80rem / $fs 80rem / $fs 120rem / $fs;
 		box-sizing: border-box;
-		border-right: 1px solid $borderColor;
+		//border-right: 1px solid $borderColor;
+	}
+
+	.benefits__block {
+		position: relative;
+		display: inline-block;
+		vertical-align: top;
+		width: 33.33333%;
+		margin-right: -.2em;
+		box-sizing: border-box;
+		padding: 60rem / $fs 25rem / $fs 60rem / $fs 80rem / $fs;
+
+		.content__title {
+			position: relative;
+		  font-size: 24px;
+		  font-family: "pf_agora_slab_pro";
+		  font-weight: 800;
+		  line-height: 1.167;
+
+		  img {
+		  	position: absolute;
+		  	right: 100%;
+		  	top: 50%;
+		  	margin-right: 25rem / $fs;
+		  	max-width: 33rem / $fs;
+		  	transform: translateY(-50%);
+		  }
+		}
+
+		.content__desc {
+		  font-size: 16rem / $fs;
+		  font-weight: bold;
+		  line-height: 1.5;
+		  margin-top: 15rem / $fs;
+		}
 	}
 }
 
@@ -331,7 +423,7 @@
 	.item__image {
 		height: 107rem / $fs;
 		background-size: auto 100%;
-		background-position: left center;
+		background-position: center center;
 		background-repeat: no-repeat;
 
 		&.image-light {
@@ -352,6 +444,7 @@
 		font-size: 36rem / $fs;
 		font-weight: 800;
 		margin-top: 20rem / $fs;
+		text-align: center;
 	}
 
 	.item__desc {
@@ -496,5 +589,20 @@
 		position: relative;
 		z-index: 1;
 		padding-top: 230px;
+	}
+}
+
+.index-scroll-btn {
+	color: #fff;
+	text-decoration: none;
+
+	&:after {
+		content: "";
+		display: inline-block;
+		vertical-align: top;
+		width: 100rem / $fs;
+		height: 100rem / $fs;
+		margin-top: 15rem / $fs;
+		background: url(../images/ui/scroll-icon.svg) center center / contain no-repeat;
 	}
 }

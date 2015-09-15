@@ -127,6 +127,12 @@ Garden.indexSlider = function() {
 			show($(this).index());
 			return false;
 		});
+		$('.js-index-scroll').on('click', function(){
+			$('html, body').animate({
+				scrollTop: $('.js-index-slider').offset().top + $('.js-index-slider').height() - 100 * (16/parseInt($('html').css('font-size')))
+			});
+			return false;
+		});
 	}
 	init();
 }
@@ -580,12 +586,21 @@ Garden.map = function() {
 		suitedArray = {},
 		filterParams,
 		transitionTimeout;
+		activePos = {};
 	var setMapPos = function(x, y) {
 		if(x > 0) x = 0;
 		if(y > 0) y = 0;
 		if(x < -(map.width() - mapCont.width())) x = -(map.width() - mapCont.width());
 		if(y < -(map.height() - mapCont.height())) y = -(map.height() - mapCont.height());
 		map.css('transform', 'translate(' + x + 'px, ' + y + 'px)');
+		activePos.x = x;
+		activePos.y = y;
+	}
+	var getMapCenter = function() {
+		var cX, cY;
+		cX = activePos.x - $('.js-map-container').width()/2;
+		cY = activePos.y - $('.js-map-container').height()/2;
+		return {x: cX, y: cY};
 	}
 	var setMapCenter = function(newx, newy) {
 		if(newx && newy) {
@@ -678,6 +693,18 @@ Garden.map = function() {
 				self.tooltip.find('.js-sold-block').show();
 				self.tooltip.find('.js-favorite').hide();
 			}
+			var countRec = 0;
+			var rhtml = [];
+			$.each(thisObj.recommended, function(index, value){
+				countRec++;
+				rhtml.push('<a href="#" data-id="' + index + '" class="js-recommend-link">' + value + '</a>');
+			});
+			if(countRec == 0) {
+				$('.js-recommend').hide();
+			} else {
+				$('.js-recommend').show();
+				$('.js-recommend-list').html(rhtml.join(''));
+			}
 			if($.cookie('favorite-areas')) {
 				var favoriteData = JSON.parse($.cookie('favorite-areas'));
 				var isFavorite = false;
@@ -753,26 +780,56 @@ Garden.map = function() {
 	}
 	var zoom = {
 		amount: 1,
+		activeState: 1,
 		sizes: {
 			width: $('.js-map').width(),
 			height: $('.js-map').height(),
 		},
 		set: function(amount) {
 			var t = this;
-			t.amount = t.amount + amount;
+			var oldAmount = t.amount;
+			var states = {
+				0: 1.7,
+				1: 1,
+				2: 0.5
+			}
+			t.activeState = t.activeState + amount;
+			var thisAmount = states[t.activeState];
+			var diffAmount = thisAmount/oldAmount;
+			t.amount = thisAmount;
+			// t.amount = t.amount*amount;
+			if(t.activeState == 2) {
+				$('.js-map-zoomout').addClass('disabled');
+			} else {
+				$('.js-map-zoomout').removeClass('disabled');
+			}
+			if(t.activeState == 0) {
+				$('.js-map-zoom').addClass('disabled');
+			} else {
+				$('.js-map-zoom').removeClass('disabled');
+			}
+			$('.js-zoom-nav').eq(t.activeState).addClass('active')
+				.siblings().removeClass('active');
 			$('.js-map').css({
 				width: t.sizes.width * t.amount,
 				height: t.sizes.height * t.amount
 			});
+			var thisCenter = {
+				x: ((activePos.x - $('.js-map-container').width()/2) * diffAmount) + $('.js-map-container').width()/2,
+				y: ((activePos.y - $('.js-map-container').height()/2) * diffAmount) + $('.js-map-container').height()/2
+			};
+			setMapPos(thisCenter.x, thisCenter.y);
 		},
 		init: function() {
 			var t = this;
 			$('.js-map-zoom').on('click', function(){
-				t.set(0.2);
+				if($(this).hasClass('disabled')) return false;
+				t.set(-1);
 				return false;
 			});
 			$('.js-map-zoomout').on('click', function(){
-				t.set(-0.2);
+				if($(this).hasClass('disabled')) return false;
+				t.set(1);
 				return false;
 			});
 		}
@@ -814,7 +871,21 @@ Garden.map = function() {
 		setMinMax(Dictionary.buildings);
 		$.each(Dictionary.buildingsAll, function(index, value){
 			var soldStr = value.sold == 1 ? ' sold' : '';
-			$('.js-map').append('<a class="image__mark js-mark' + soldStr + '" data-id="' + value.id + '" style="left: ' + value.coordinate_x/16 + 'rem; top: ' + value.coordinate_y/16 + 'rem;"></a>');
+			var cof = parseInt($('html').css('font-size')) / 16;
+			var widthPers = $('.js-map').width()/100;
+			var heightPers =  $('.js-map').height()/100;
+			var thisLeft = value.coordinate_x * cof / widthPers;
+			var thisTop = value.coordinate_y * cof / heightPers;
+			$('.js-map').append('<a class="image__mark js-mark' + soldStr + '" data-id="' + value.id + '" data-number="' + value.number + '" style="left: ' + thisLeft + '%; top: ' + thisTop + '%;"></a>');
+			/*$('.js-hint-item, .js-line-item').each(function(){
+				var tPos = $(this).position();
+				var tLeft = tPos.left * cof / widthPers;
+				var tTop = tPos.top * cof / heightPers;
+				$(this).css({
+					top: tTop,
+					left: tLeft
+				});
+			});*/
 		});
 	}
 	var filter = function() {
@@ -1032,7 +1103,7 @@ Garden.map = function() {
 					}
 				});
 			}
-			html.push('<li class="body__item js-filter-item" data-id="' + v.id + '"><div class="wrapper"><span><a href="#" class="js-favorite favorite-link' + (isFavorite ? ' active':'') + '" title="' + (isFavorite ? 'Убрать из избранного':'Добавить в избранное') + '"></a>' + v.number + '</span><span>' + v.turn + '</span><span>' + v.land_area + '</span><span>' + numToContract(v.status) + '</span><span>' + v.price.formatMoney() + '</span><span>' + totalPrice + '</span></div></li>');
+			html.push('<li class="body__item js-filter-item" data-id="' + v.id + '"><div class="wrapper"><span><a href="#" class="js-favorite favorite-link' + (isFavorite ? ' active':'') + '" title="' + (isFavorite ? 'Убрать из избранного':'Добавить в избранное') + '"></a>' + v.number + '</span><span>' + v.turn + '</span><span>' + v.land_area + '</span><span>' + numToContract(v.status) + '</span><span>' + v.price.formatMoney() + '</span><span>' + totalPrice + '</span><span><a>Смотреть</a></span></div></li>');
 			count++;
 		});
 		if(count != 0) {
@@ -1185,6 +1256,13 @@ Garden.map = function() {
 				scrollTop: $('.js-choise-wrapper').offset().top - 100
 			});
 		});
+		$(document).on('click', '.js-recommend-link', function(){
+			var thisId = $(this).attr('data-id');
+			var thisNumber = Dictionary.buildings[thisId].number;
+			dataLayer.push({'event': 'ChooseLandRecommendedClick', 'landId': thisNumber});
+			tooltip.show(thisId);
+			return false;
+		});
 		$(document).on('sliders::update', function(){
 			countSuited();
 			updateChecks();
@@ -1206,15 +1284,30 @@ Garden.map = function() {
 			$('.js-show-filter').show();
 		}
 		$('[data-sort-name]').on('click', function(){
+			var thisName = $(this).attr('data-sort-name');
+			var blocks = $('[data-sort-name="' + thisName + '"]');
 			if($(this).attr('data-sort') == 'ASC') {
-				$(this).attr('data-sort', 'DESC');
+				blocks.attr('data-sort', 'DESC');
 			} else {
-				$(this).attr('data-sort', 'ASC');
+				blocks.attr('data-sort', 'ASC');
 			}
-			$(this).siblings().removeAttr('data-sort');
+			blocks.siblings().removeAttr('data-sort');
 			showSuited();
 		});
 		checkBoxes(Dictionary.buildings);
+	}
+	var fixedHead = function() {
+		var show = function() {
+			var headPos = $('.js-filter-items').offset().top + $('.js-choise-filter').scrollTop() - 100 * 2 * (16/parseInt($('html').css('font-size')));
+			if($('.js-choise-filter').scrollTop() >= headPos) {
+				$('.js-table-head').addClass('active');
+			} else {
+				$('.js-table-head').removeClass('active');
+			}
+			console.log($('.js-choise-filter').scrollTop());
+		}
+		show();
+		$('.js-choise-filter').on('scroll', show);
 	}
 	var checkBoxes = function(obj) {
 		var checks = {
@@ -1265,6 +1358,7 @@ Garden.map = function() {
 		submitFilter($('.js-filter-form'), true);
 		lines.init();
 		filterScroll();
+		fixedHead();
 	}
 	init();
 }
@@ -1512,7 +1606,7 @@ Garden.favorite = {
 				if(v.status == 2) {
 					totalPrice = v.price_total.formatMoney();
 				}
-				html.push('<li class="body__item js-filter-item" data-id="' + v.id + '"><div class="wrapper"><span><a href="#" class="js-favorite favorite-link active" title="Убрать из избранного"></a>' + v.number + '</span><span>' + v.turn + '</span><span>' + v.land_area + '</span><span>' + numToContract(v.status) + '</span><span>' + v.price.formatMoney() + '</span><span>' + totalPrice + '</span></div></li>');
+				html.push('<li class="body__item js-filter-item" data-id="' + v.id + '"><div class="wrapper"><span><a href="#" class="js-favorite favorite-link active" title="Убрать из избранного"></a>' + v.number + '</span><span>' + v.turn + '</span><span>' + v.land_area + '</span><span>' + numToContract(v.status) + '</span><span>' + v.price.formatMoney() + '</span><span>' + totalPrice + '</span><span><a>Смотреть</a></span></div></li>');
 			});
 			$('.js-favorite-cont').show()
 				.find('.js-favorite-items').html(html.join(''));
@@ -1604,3 +1698,9 @@ Garden.init = function() {
 $(function(){
 	Garden.init();
 });
+
+function counth(left, top) {
+	var nleft = left*16 / ($('.js-map').width() / 100);
+	var ntop = top*16 / ($('.js-map').height() / 100);
+	return 'left: ' + nleft + '%; top: ' + ntop + '%;';
+}

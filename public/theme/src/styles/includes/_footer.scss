@@ -2,25 +2,31 @@
 	border-top: 1px solid $borderColor;
 	padding: 50rem / $fs 0;
 	overflow: hidden;
-	height: 60rem / $fs;
+	//height: 60rem / $fs;
 
 	.footer__left {
 		float: left;
 		font-size: 14rem / $fs;
 		font-weight: 700;
 
+		.left__desc {
+			margin-bottom: 10rem / $fs;
+			font-size: 20rem / $fs;
+			font-weight: 500;
+			line-height: 30rem / $fs;
+		}
+
 		.left__block {
 			display: inline-block;
-			vertical-align: middle;
+			vertical-align: top;
 			line-height: 30rem / $fs;
-			margin-left: 135px;
+			margin-right: 135px;
 
-			&:first-child {
-				margin-left: 0;
+			&:last-child {
+				margin-right: 0;
 			}
 
 			.block__link {
-
 				a {
 					color: $linkColor;
 					text-decoration: none;

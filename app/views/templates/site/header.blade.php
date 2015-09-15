@@ -8,7 +8,7 @@
     <div class="header__top">
         <div class="top__big">
         @if (Request::is('/'))
-            <a class="big__logo" href="#}"></a>
+            <a class="big__logo" href="#"></a>
         @else
             <a class="big__logo" href="{{ pageurl('') }}"></a>
         @endif
