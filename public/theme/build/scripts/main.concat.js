@@ -1885,7 +1885,6 @@ Garden.overlayForms = function() {
 	    },
 	    submitHandler: function(form) {
 	    		var landObj = Dictionary.buildings[$(form).find('[name="id"]').val()];
-	    		console.log(landObj);
 	    		if(landObj) {
 	    			var landNumber = landObj.number;
 	    			dataLayer.push({'event': 'ReserveFormSend', 'landId': landNumber});
@@ -1905,6 +1904,36 @@ Garden.overlayForms = function() {
 	        return false;
 	    }
 	});
+		forms.filter('#book-form-map').validate({
+		    rules: {
+		        name: {
+	            required: true
+		        },
+		        phone: {
+		        	required: true
+		        }
+		    },
+		    submitHandler: function(form) {
+		    		var landObj = Dictionary.buildings[$(form).find('[name="id"]').val()];
+		    		if(landObj) {
+		    			var landNumber = landObj.number;
+		    			dataLayer.push({'event': 'ReserveFormSend', 'landId': landNumber});
+		    		} else {
+		    			var landNumber = 0;
+		    		}
+		        Help.ajaxSubmit(form, {
+		            success: function() {
+		            	bookSubmitEvent();
+		                $(form).slideUp();
+		                $('.js-book-success').slideDown();
+		                setTimeout(function(){
+		                	Garden.overlays.close();
+		                }, 3000);
+		            }
+		        });
+		        return false;
+		    }
+		});
 }
 Garden.contactForm = function() {
 	if(!$('.js-contact-form').length) return;
@@ -2997,10 +3026,12 @@ Garden.book = function() {
 				$('.js-book-title').show()
 					.siblings().hide();
 			}
-		} else {
-			
 		}
-		Garden.overlays.open('book');
+		if($(this).attr('data-book') == 'map') {
+			Garden.overlays.open('book-map');
+		} else {
+			Garden.overlays.open('book');
+		}
 		return false;
 	});
 }
@@ -3044,7 +3075,7 @@ Garden.stagesForm = function() {
 		}
 		parent.find('input[type="radio"]').on('change', function(){
 			stage(activeStage+1);
-			$('.js-status-dot').eq(activeStage).removeClass('disabled');
+			parent.find('.js-status-dot').eq(activeStage).removeClass('disabled');
 		});
 		parent.find('.js-status-dot').on('click', function(){
 			if($(this).hasClass('disabled')) return false;

@@ -104,6 +104,90 @@
             </div>
         </div>
     </div>
+    <div data-name="book-map" class="overlay__block block-book js-overlay-block">
+        <div class="wrapper">
+            <a href="#" class="block__close js-close-overlay"></a>
+            <div class="block-cont">
+                <div class="overlay__form">
+                    {{ Form::open(array('route'=>'request_bron','id'=>'book-form-map','class'=>'js-overlay-form')) }}
+                        {{ Form::hidden('id',NULL,array('class'=>'js-input-book-id')) }}
+                        <div class="stages-form form-book js-stages-form">
+                            <div class="form__stage js-stage">
+                                <div class="form__block block-phone">
+                                    <div class="block__title">Меня интересует</div>
+                                    <div class="stage__checks">
+                                        <span>
+                                            <input value="Участки под дачу – я хочу построить дом сам, у меня уже есть к кому обратиться" name="livetype" type="radio"
+                                                   class="js-checkbox js-set-for" autocomplete="off">
+                                            <label id="wholeyear">Участки под дачу – я хочу построить дом сам, у меня уже есть к кому обратиться</label>
+                                        </span>
+                                        <br>
+                                        <span>
+                                            <input value="Участки под дачу – я пока не знаю какой именно дом построить – мне было интересно посмотреть проекты ваших домов" name="livetype" type="radio"
+                                                   class="js-checkbox js-set-for" autocomplete="off">
+                                            <label id="summerhouse">Участки под дачу – я пока не знаю какой именно дом построить – мне было интересно посмотреть проекты ваших домов</label>
+                                        </span>
+                                        <br>
+                                        <span>
+                                            <input value="Участки с готовыми домами, я хочу максимально быстро заселиться" name="livetype" type="radio"
+                                                   class="js-checkbox js-set-for" autocomplete="off">
+                                            <label id="summerhouse">Участки с готовыми домами, я хочу максимально быстро заселиться</label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form__stage js-stage">
+                                <div class="form__block block-phone">
+                                    <div class="stage__checks">
+                                        <span>
+                                            <input value="Возможность рассрочки или ипотеки" name="technology" type="radio"
+                                                   class="js-checkbox js-set-for" autocomplete="off">
+                                            <label id="needconsult">Возможность рассрочки или ипотеки</label>
+                                        </span>
+                                        <br>
+                                        <span>
+                                            <input value="Наличие скидок при 100% оплате" name="technology" type="radio"
+                                                   class="js-checkbox js-set-for" autocomplete="off">
+                                            <label id="needinfo">Наличие скидок при 100% оплате</label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form__stage js-stage">
+                                <div class="form__block">
+                                    <div class="block__title">Имя</div>
+                                    <div class="block__input">
+                                        <input type="text" name="name" class="input__item">
+                                    </div>
+                                </div>
+                                <div class="form__block block-phone">
+                                    <div class="block__title">Ваш номер телефона</div>
+                                    <div class="block__input">
+                                        <div class="phone__number">+7</div>
+                                        <input type="text" name="phone" class="input__item">
+                                    </div>
+                                </div>
+                                <div class="form__btn">
+                                    <button type="submit" class="us-btn btn-transparent"><span>Отправить</span></button>
+                                </div>
+                                <div class="form__block">
+                                    <div class="block__response js-response-text"></div>
+                                </div>
+                            </div>
+                            <div class="stages-status">
+                                <a href="#" class="status__dot js-status-dot"></a>
+                                <span class="status__line"></span>
+                                <a href="#" class="status__dot js-status-dot disabled"></a>
+                                <span class="status__line"></span>
+                                <a href="#" class="status__dot js-status-dot disabled"></a>
+                            </div>
+                        </div>
+                    {{ Form::close() }}
+                    <div class="overlay__success js-book-success">Скоро с вами свяжутся наши специалисты<br>для уточнения информации</div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div data-name="call" class="overlay__block block-call js-overlay-block">
         <div class="wrapper"><a href="#" class="block__close js-close-overlay"></a>
             <div class="block-cont">

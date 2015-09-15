@@ -1708,7 +1708,8 @@ h2 {
   text-align: left;
   margin-top: 0.9375rem; }
   .stages-form .stage__checks label {
-    margin-top: 0.625rem; }
+    margin-top: 0.625rem;
+    text-align: left; }
   .stages-form .stage__checks .checks__title {
     font-family: 'pf_agora_slab_pro';
     font-weight: 700;
