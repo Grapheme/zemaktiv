@@ -9,6 +9,7 @@
                     <tr>
                         <th class="text-center" style="width:40px">#</th>
                         <th style="width:60%;" class="text-center">Название</th>
+                        <th style="width:20%;" class="text-center">Материал</th>
                         <th style="width:20%;" class="text-center">Цена</th>
                         <th class="width-250 text-center">Действия</th>
                     </tr>
@@ -27,6 +28,7 @@
                                 {{ $build->title }}
                             </td>
                             <td>{{ number_format($build->price, 2, '.', ' ') }} руб.</td>
+                            <td>{{ $build->material }}</td>
                             <td class="text-center" style="white-space:nowrap;">
                                 @if(Allow::action('application','edit'))
                                     <a class="btn btn-success margin-right-5"
