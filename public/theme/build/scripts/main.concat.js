@@ -3010,10 +3010,10 @@ Garden.map = function() {
 Garden.book = function() {
 	$(document).on('click', '.js-book', function(){
 		var houseId = $(this).attr('data-id');
+		var input = $('.js-input-book-id');
+		input.val(houseId);
 		if(houseId != 0) {
-			var input = $('.js-input-book-id');
 			var thisObj = Dictionary.buildings[houseId];
-			input.val(houseId);
 			$('.js-book-number').text(thisObj.number);
 			$('.js-book-line').text(thisObj.turn);
 			$('.js-book-area').text(thisObj.land_area);
