@@ -79,6 +79,8 @@
                         <div class="block__left">Номер участка:</div>
                         <div class="block__right">
                             <span>любой участок</span>
+                            <a href="{{ pageurl('choice-land') }}"
+                               class="js-gen-link">Смотреть на генплане</a>
                         </div>
                     </div>
                 @endif
