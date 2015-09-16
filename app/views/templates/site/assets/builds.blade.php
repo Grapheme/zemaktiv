@@ -91,7 +91,7 @@
                 @if(isset($build->construction_period))
                     <div class="info__block">
                         <div class="block__left">Срок строительства:</div>
-                        <div class="block__right"><span>{{ $build->construction_period }} {{ Lang::choice('день|дня|дней', $build->construction_period) }}</span></div>
+                        <div class="block__right"><span>{{ $build->construction_period }} {{ is_numeric($build->construction_period) ? Lang::choice('день|дня|дней', $build->construction_period) : '' }}</span></div>
                     </div>
                 @endif
                 <div class="info__block">
