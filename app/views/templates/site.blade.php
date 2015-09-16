@@ -143,5 +143,19 @@
 @section('scripts')
 @show
 
+<script>
+    (function(d, w) {
+        w._yatr = {
+            id: 35611
+        };
+        var y = d.createElement('script');
+        y.type = 'text/javascript';
+        y.async = true;
+        y.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'yatr.ru/s/init.js';
+        var s = d.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(y, s);
+    })(document, window);
+</script>
+
 </body>
 </html>
