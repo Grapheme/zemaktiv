@@ -27,7 +27,7 @@
                 <name>Валерий</name>
                 <phone>+7 495 407-78-87</phone>
                 <category>застройщик</category>
-                <organization>УК Земактив</organization>
+                <organization>Коттеджный посёлок Вяземские сады, УК Земактив</organization>
                 <url>{{ URL::to('/') }}/</url>
                 <email>call@zemaktiv.ru</email>
                 <photo>
