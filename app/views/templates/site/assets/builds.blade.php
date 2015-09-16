@@ -99,7 +99,7 @@
                 <div class="info__block">
                     <div class="block__left">Цена @if(!empty($build->land))с участком@endif:</div>
                     <div class="block__right">
-                        <span>{{ number_format($build->price, 0, '.', ' ') }} руб</span>
+                        <span>{{ number_format($build->price, 0, '.', ' ') }} руб.</span>
                     </div>
                 </div>
             </div>
