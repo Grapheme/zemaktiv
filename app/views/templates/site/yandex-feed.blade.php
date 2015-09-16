@@ -24,7 +24,7 @@
                 <railway-station>Шарапова Охота</railway-station>
             </location>
             <sales-agent>
-                <name>Валерий</name>
+                <name>Екатерина</name>
                 <phone>+7 495 407-78-87</phone>
                 <category>застройщик</category>
                 <organization>Коттеджный посёлок Вяземские сады, УК Земактив</organization>
