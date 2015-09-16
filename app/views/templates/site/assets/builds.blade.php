@@ -74,16 +74,24 @@
                             <span>{{ $build->land->area }} {{ Lang::choice('сотка|сотки|соток', $build->land->area) }}</span>
                         </div>
                     </div>
+                @else
+                    <div class="info__block">
+                        <div class="block__left">Номер участка:</div>
+                        <div class="block__right">
+                            <span>любой участок</span>
+                        </div>
+                    </div>
                 @endif
                 @if(isset($build->communication))
                     <div class="info__block">
                         <div class="block__left">Срок строительства:</div>
                         <div class="block__right"><span>готовый дом</span></div>
                     </div>
-                @else
+                @endif
+                @if(isset($build->construction_period))
                     <div class="info__block">
                         <div class="block__left">Срок строительства:</div>
-                        <div class="block__right"><span>построить дом</span></div>
+                        <div class="block__right"><span>{{ $build->construction_period }} {{ Lang::choice('день|дня|дней', $build->construction_period) }}</span></div>
                     </div>
                 @endif
                 <div class="info__block">
