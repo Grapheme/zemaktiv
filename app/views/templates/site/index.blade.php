@@ -167,7 +167,7 @@ endif;
                     <img src="{{ Config::get('site.theme_path') }}/images/index/list-4.png" alt="">
                     Центральная аллея
                 </div>
-                <div class="content__desc">Чтобы можно было «разъехаться», не было тесно, как это часто бывает в посёлках</div>
+                <div class="content__desc">Липовая аллея шириной 22 метра с местами для отдыха, качелями и лавочками</div>
             </div>
             <div class="benefits__block">
                 <div class="content__title">

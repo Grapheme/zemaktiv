@@ -11,7 +11,7 @@
     ?>
     <div class="done__house">
         <div class="house__title">
-            {{ $build->title }}{{ !empty($build->land)? ',<br>участок №' . $build->land->number : '' }}
+            {{ $build->title }}{{-- !empty($build->land)? ',<br>участок №' . $build->land->number : '' --}}
         </div>
         <div class="house__left">
             <div class="left__main-image">

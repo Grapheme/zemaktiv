@@ -79,8 +79,8 @@ $lands = Land::orderByRaw('number + 0')->with('recommended.recommended_land')->g
                                 <li class="list__item"><span class="js-bprice"></span> руб.</li>
                             </ul>
                             <div class="tooltip__btn js-bbtn">
-                                <a href="#" data-id class="js-book us-btn btn-white"
-                                   onclick="carrotquest.track('TELLMEMORE');"><span>Забронировать</span></a>
+                                <a href="#" data-id data-book="map" class="js-book us-btn btn-white"
+                                   onclick="carrotquest.track('TELLMEMORE');"><span>Узнать больше</span></a>
                             </div>
                         </div>
                         <div class="js-sold-block tooltip-sold">
