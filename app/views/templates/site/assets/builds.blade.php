@@ -80,7 +80,7 @@
                         <div class="block__right">
                             <span>любой участок</span>
                             <a href="{{ pageurl('choice-land') }}"
-                               class="js-gen-link">Смотреть на генплане</a>
+                               class="js-gen-link">Выбрать на генплане</a>
                         </div>
                     </div>
                 @endif
