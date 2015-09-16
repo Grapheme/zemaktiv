@@ -173,12 +173,12 @@ class ApplicationController extends BaseController {
                 $layouts = $this->layaut_filter($materials);
             endif;
             if (Input::has('house_build') || Input::has('house_all')):
-                $buildings = $buildings->where('sold', 0)->orderBy('price', 'DESC')->orderBy('area')->with('land', 'photo', 'gallery.photos')->get();
+                $buildings = $buildings->where('sold', 0)->orderBy('price')->orderBy('area')->with('land', 'photo', 'gallery.photos')->get();
                 $json_request['html'] .= View::make(Helper::layout('assets.builds'), array('buildings' => $buildings))->render();
                 $json_request['status'] = TRUE;
             endif;
             if (Input::has('house_layout') || Input::has('house_all')):
-                $layouts = $layouts->orderBy('price', 'DESC')->orderBy('area')->with('land', 'photo', 'gallery.photos')->get();
+                $layouts = $layouts->orderBy('price')->orderBy('area')->with('land', 'photo', 'gallery.photos')->get();
                 $json_request['html'] .= View::make(Helper::layout('assets.builds'), array('buildings' => $layouts))->render();
                 $json_request['status'] = TRUE;
             endif;
