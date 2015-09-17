@@ -32,7 +32,7 @@ class FeedbackController extends BaseController {
 
         if (!Request::ajax()) return App::abort(404);
         $json_request = array('status' => FALSE, 'responseText' => '', 'redirect' => FALSE);
-        $validation = Validator::make(Input::all(), array('phone' => 'required', 'request'=>'required'));
+        $validation = Validator::make(Input::all(), array('phone' => 'required'/*, 'request'=>'required'*/));
         if ($validation->passes()):
             $feedback_mail = Config::get('mail.feedback.call_address');
             Config::set('mail.sendto_mail', $feedback_mail);
