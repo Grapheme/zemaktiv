@@ -38,6 +38,18 @@
         </div>
         <div class="house__right">
             <div class="right__info">
+                <div class="info__block">
+                    <div class="block__left">Площадь:</div>
+                    <div class="block__right">
+                        <span>{{ number_format($build->area, 2, '.', ' ') }} кв. м</span>
+                    </div>
+                </div>
+                <div class="info__block">
+                    <div class="block__left">Материал:</div>
+                    <div class="block__right"><span
+                                class="right__text">{{ $build->material }}</span><!-- <span class="info-tooltip" data-tooltip="{{ LayoutHomesController::$materials_desc[$build->material] }}"></span> -->
+                    </div>
+                </div>
                 @if(isset($build->contractor_title))
                     <div class="info__block">
                         <div class="block__left">Подрядчик:</div>
@@ -47,25 +59,7 @@
                         </div>
                     </div>
                 @endif
-                <div class="info__block">
-                    <div class="block__left">Площадь:</div>
-                    <div class="block__right">
-                        <span>{{ number_format($build->area, 2, '.', ' ') }} кв.м</span>
-                    </div>
-                </div>
-                <div class="info__block">
-                    <div class="block__left">Материал:</div>
-                    <div class="block__right"><span
-                                class="right__text">{{ $build->material }}</span><!-- <span class="info-tooltip" data-tooltip="{{ LayoutHomesController::$materials_desc[$build->material] }}"></span> -->
-                    </div>
-                </div>
                 @if(!empty($build->land))
-                    <div class="info__block">
-                        <div class="block__left">Площадь участка:</div>
-                        <div class="block__right">
-                            <span>{{ $build->land->area }} {{ Lang::choice('сотка|сотки|соток', $build->land->area) }}</span>
-                        </div>
-                    </div>
                     <div class="info__block">
                         <div class="block__left">Номер участка:</div>
                         <div class="block__right">
@@ -74,17 +68,38 @@
                                class="js-gen-link">Смотреть на генплане</a>
                         </div>
                     </div>
+                    <div class="info__block">
+                        <div class="block__left">Площадь участка:</div>
+                        <div class="block__right">
+                            <span>{{ $build->land->area }} {{ Lang::choice('сотка|сотки|соток', $build->land->area) }}</span>
+                        </div>
+                    </div>
+                @else
+                    <div class="info__block">
+                        <div class="block__left">Номер участка:</div>
+                        <div class="block__right">
+                            <span>любой</span>
+                            <a href="{{ pageurl('choice-land') }}"
+                               class="js-gen-link">Выбрать на генплане</a>
+                        </div>
+                    </div>
                 @endif
                 @if(isset($build->communication))
                     <div class="info__block">
-                        <div class="block__left">Коммуникации:</div>
-                        <div class="block__right"><span>{{ $build->communication }}</span></div>
+                        <div class="block__left">Срок строительства:</div>
+                        <div class="block__right"><span>готовый дом</span></div>
+                    </div>
+                @endif
+                @if(isset($build->construction_period))
+                    <div class="info__block">
+                        <div class="block__left">Срок строительства:</div>
+                        <div class="block__right"><span>{{ $build->construction_period }} {{ is_numeric($build->construction_period) ? Lang::choice('день|дня|дней', $build->construction_period) : '' }}</span></div>
                     </div>
                 @endif
                 <div class="info__block">
                     <div class="block__left">Цена @if(!empty($build->land))с участком@endif:</div>
                     <div class="block__right">
-                        <span>{{ number_format($build->price, 2, '.', ' ') }} руб</span>
+                        <span>{{ number_format($build->price, 0, '.', ' ') }} руб.</span>
                     </div>
                 </div>
             </div>

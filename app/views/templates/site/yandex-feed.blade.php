@@ -24,10 +24,10 @@
                 <railway-station>Шарапова Охота</railway-station>
             </location>
             <sales-agent>
-                <name>Валерий</name>
+                <name>Екатерина</name>
                 <phone>+7 495 407-78-87</phone>
                 <category>застройщик</category>
-                <organization>УК Земактив</organization>
+                <organization>Коттеджный посёлок Вяземские сады, УК Земактив</organization>
                 <url>{{ URL::to('/') }}/</url>
                 <email>call@zemaktiv.ru</email>
                 <photo>
@@ -40,10 +40,17 @@
             </price>
             <mortgage>1</mortgage>
             <image>@if(!empty($land->photo)) {{ $land->photo->name }} @else {{ asset('uploads/galleries/1438850036_1591.jpg') }} @endif</image>
+            <image>@if(!empty($land->photo)) {{ $land->photo->name }} @else {{ asset('uploads/galleries/1438098174_1481.jpg') }} @endif</image>
+            <image>@if(!empty($land->photo)) {{ $land->photo->name }} @else {{ asset('uploads/galleries/1438850036_1666.jpg') }} @endif</image>
+            <image>@if(!empty($land->photo)) {{ $land->photo->name }} @else {{ asset('uploads/galleries/1438687337_1237.jpg') }} @endif</image>
             <description>
                 Симферопольское шоссе, 69 км от МКАД. Участки без подряда и готовые дома в окружении леса с действующими
                 коммуникациями от 699 000 рублей. Охраняемый коттеджный посёлок с детскими площадками и зонами отдыха.
+                Газ, электричество, водопровод входят в стоимость земельного участка.
+                Полностью асфальтированный подъезд.
                 От застройщика.
+                Посредников просим не беспокоить.
+                Подробная информация — на сайте УК Земактив.
             </description>
             <lot-area>
                 <value>{{ number_format($land->area, 2, '.', '') }}</value>
