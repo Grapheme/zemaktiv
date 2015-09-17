@@ -28,7 +28,7 @@
                 <phone>+7 495 407-78-87</phone>
                 <category>застройщик</category>
                 <organization>Коттеджный посёлок Вяземские сады, УК Земактив</organization>
-                <url>{{ URL::to('/') }}/</url>
+                <url>{{ URL::to('/?utm_source=yarealty_db') }}/</url>
                 <email>call@zemaktiv.ru</email>
                 <photo>
                     {{ asset(Config::get('site.theme_path').'/images/header/logo_big.png') }}
@@ -51,6 +51,7 @@
                 От застройщика.
                 Посредников просим не беспокоить.
                 Подробная информация — на сайте УК Земактив.
+                Участок №"{{ $land->number }}"
             </description>
             <lot-area>
                 <value>{{ number_format($land->area, 2, '.', '') }}</value>
