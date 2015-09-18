@@ -2925,17 +2925,17 @@ h2 {
         -webkit-transform: rotate(45deg);
             -ms-transform: rotate(45deg);
                 transform: rotate(45deg); }
+  .overlay .book__title > span {
+    display: inline-block;
+    vertical-align: top;
+    font-family: 'pf_agora_slab_pro';
+    font-weight: 800;
+    font-size: 1.5rem;
+    background: #d49f33;
+    padding: 0 1.25rem;
+    line-height: 3.125rem; }
   .overlay .block-book {
     background: #e9b344; }
-    .overlay .block-book .book__title > span {
-      display: inline-block;
-      vertical-align: top;
-      font-family: 'pf_agora_slab_pro';
-      font-weight: 800;
-      font-size: 1.5rem;
-      background: #d49f33;
-      padding: 0 1.25rem;
-      line-height: 3.125rem; }
     .overlay .block-book .overlay__form {
       margin-top: 3.4375rem; }
       .overlay .block-book .overlay__form .input__item {
@@ -2944,9 +2944,32 @@ h2 {
     background: #42b974; }
     .overlay .block-call .overlay__form .input__item {
       background: #50de8c; }
+  .overlay .block-poll {
+    background: rgba(66, 185, 116, 0.95); }
+    .overlay .block-poll .book__title > span {
+      background: #349d60; }
+    .overlay .block-poll .overlay__form .form__stage {
+      margin-top: 3.125rem; }
+    .overlay .block-poll .overlay__form .form__block {
+      width: 55rem; }
+      .overlay .block-poll .overlay__form .form__block .block__input .input__item {
+        background: #50de8c;
+        width: 20.3125rem; }
+    .overlay .block-poll .overlay__form .form-mortgage {
+      height: 18.75rem; }
+      .overlay .block-poll .overlay__form .form-mortgage .stages-status {
+        padding-top: 20.3125rem; }
   .overlay .overlay__form .form__block {
     width: 33rem;
     margin: 1.25rem auto 0; }
+    .overlay .overlay__form .form__block .block-half {
+      display: inline-block;
+      vertical-align: top;
+      width: 16.875rem;
+      margin-right: 0.9375rem;
+      text-align: left; }
+      .overlay .overlay__form .form__block .block-half:last-child {
+        margin-right: 0; }
     .overlay .overlay__form .form__block .block__title {
       font-size: 1.25rem;
       font-weight: 500; }
@@ -3001,6 +3024,12 @@ h2 {
       height: 3.125rem;
       line-height: 2.75rem;
       padding: 0 1.875rem; }
+  .overlay .overlay__form .form__btn-desc {
+    margin-top: 0.9375rem; }
+    .overlay .overlay__form .form__btn-desc a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid; }
   .overlay .overlay__form .block__response {
     display: none;
     font-size: 1.125rem; }
@@ -3012,3 +3041,5 @@ h2 {
     font-size: 1.5rem; }
     .overlay .overlay__success a {
       color: inherit; }
+  .overlay #email-error {
+    display: block; }

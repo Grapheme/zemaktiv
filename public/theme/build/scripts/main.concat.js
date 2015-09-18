@@ -1891,6 +1891,36 @@ Garden.overlayForms = function() {
 	        return false;
 	    }
 	});
+	forms.filter('#form-main-poll').find('input').on('change', function(){
+		if($('#form-main-poll input:checked').length == 6) {
+			$.cookie('pollShowed', 'on', {
+				path: '/'
+			});
+			Help.ajaxSubmit(forms.filter('#form-main-poll'), {
+				success: function() {},
+			});
+		}
+	});
+	forms.filter('#form-price').validate({
+	    rules: {
+	        email: {
+	            required: true
+	        }
+	    },
+	    submitHandler: function(form) {
+	        Help.ajaxSubmit(form, {
+	            success: function() {
+	                $(form).parent().slideUp();
+	                $('.js-poll-mail-success').slideDown();
+	                dataLayer.push({'event': 'PriceSend'});
+	                setTimeout(function(){
+	                	Garden.overlays.close();
+	                }, 1500);
+	            }
+	        });
+	        return false;
+	    }
+	});
 	forms.filter('#book-form').validate({
 	    rules: {
 	        name: {
@@ -3085,14 +3115,34 @@ Garden.stagesForm = function() {
 		var activeStage = 0;
 		var stage = function(n) {
 			activeStage = n;
-			parent.find('.js-stage').eq(n).addClass('active')
-				.siblings().removeClass('active');
+			var thisStage = parent.find('.js-stage').eq(n);
+			thisStage.addClass('active');
+			parent.find('.js-stage').not(thisStage).removeClass('active');
 			parent.find('.js-status-dot').eq(n).addClass('active')
 				.siblings().removeClass('active');
 		}
 		parent.find('input[type="radio"]').on('change', function(){
-			stage(activeStage+1);
-			parent.find('.js-status-dot').eq(activeStage).removeClass('disabled');
+			var inputCount = 0;
+			var nameArray = [];
+			var thisStage = $(this).parents('.js-stage');
+			var inputs = thisStage.find('input');
+			inputs.each(function(){
+				var thisName = $(this).attr('name');
+				var nameExists = false;
+				$.each(nameArray, function(i, v){
+					if(v == thisName) {
+						nameExists = true;
+					}
+				});
+				if(!nameExists) {
+					inputCount++;
+					nameArray.push(thisName);
+				}
+			});
+			if(inputs.filter(':checked').length == inputCount) {
+				stage(activeStage+1);
+				parent.find('.js-status-dot').eq(activeStage).removeClass('disabled');
+			}
 		});
 		parent.find('.js-status-dot').on('click', function(){
 			if($(this).hasClass('disabled')) return false;
@@ -3358,6 +3408,9 @@ Garden.init = function() {
 	this.favorite.init();
 	//this.speedUp();
 	//this.smartHover();
+	if(!$.cookie('pollShowed')) {
+		Garden.overlays.open('main-poll');
+	}
 }
 $(function(){
 	Garden.init();
