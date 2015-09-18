@@ -258,6 +258,23 @@ Garden.overlayForms = function() {
 	        return false;
 	    }
 	});
+	forms.filter('#form-poll').validate({
+	    rules: {
+	        email: {
+	            required: true
+	        }
+	    },
+	    submitHandler: function(form) {
+	        Help.ajaxSubmit(form, {
+	            success: function() {
+	                $(form).slideUp();
+	                $('.js-poll-success').slideDown();
+	                dataLayer.push({'event': 'PollSend'});
+	            }
+	        });
+	        return false;
+	    }
+	});
 	forms.filter('#book-form').validate({
 	    rules: {
 	        name: {

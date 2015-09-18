@@ -6,7 +6,6 @@
 	left: 0;
 	right: 0;
 	z-index: 9999;
-	overflow: auto;
 
 	.overlay__block {
 		display: none;
@@ -17,6 +16,7 @@
 		right: 0;
 		color: #fff;
 		text-align: center;
+		overflow: auto;
 
 		.wrapper {
 			position: relative;
@@ -35,6 +35,7 @@
 			display: inline-block;
 			vertical-align: middle;
 			width: 90%;
+			padding: 75px 0;
 		}
 
 		.block__close {
@@ -123,6 +124,21 @@
 					width: 100%;
 					box-sizing: border-box;
 				}
+
+				textarea {
+					border: none;
+					padding: 15px;
+					background: #f5c664;
+					height: 120px;
+					width: 480px;
+					resize: none;
+					outline: none;
+
+					@include placeholder {
+						color: #CC982D;
+						font-weight: 900;
+					}
+				}
 			}
 
 			&.block-phone {
@@ -173,5 +189,9 @@
 	.overlay__success {
 		display: none;
 		font-size: 24rem / $fs;
+
+		a {
+			color: inherit;
+		}
 	}
 }

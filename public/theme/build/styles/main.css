@@ -2876,8 +2876,7 @@ h2 {
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 9999;
-  overflow: auto; }
+  z-index: 9999; }
   .overlay .overlay__block {
     display: none;
     position: absolute;
@@ -2886,7 +2885,8 @@ h2 {
     left: 0;
     right: 0;
     color: #fff;
-    text-align: center; }
+    text-align: center;
+    overflow: auto; }
     .overlay .overlay__block .wrapper {
       position: relative;
       height: 100%; }
@@ -2899,7 +2899,8 @@ h2 {
     .overlay .overlay__block .block-cont {
       display: inline-block;
       vertical-align: middle;
-      width: 90%; }
+      width: 90%;
+      padding: 75px 0; }
     .overlay .overlay__block .block__close {
       position: absolute;
       display: inline-block;
@@ -2959,6 +2960,26 @@ h2 {
         outline: none;
         width: 100%;
         box-sizing: border-box; }
+      .overlay .overlay__form .form__block .block__input textarea {
+        border: none;
+        padding: 15px;
+        background: #f5c664;
+        height: 120px;
+        width: 480px;
+        resize: none;
+        outline: none; }
+        .overlay .overlay__form .form__block .block__input textarea::-webkit-input-placeholder {
+          color: #CC982D;
+          font-weight: 900; }
+        .overlay .overlay__form .form__block .block__input textarea:-moz-placeholder {
+          color: #CC982D;
+          font-weight: 900; }
+        .overlay .overlay__form .form__block .block__input textarea::-moz-placeholder {
+          color: #CC982D;
+          font-weight: 900; }
+        .overlay .overlay__form .form__block .block__input textarea:-ms-input-placeholder {
+          color: #CC982D;
+          font-weight: 900; }
     .overlay .overlay__form .form__block.block-phone .block__input {
       overflow: hidden; }
       .overlay .overlay__form .form__block.block-phone .block__input .phone__number {
@@ -2989,3 +3010,5 @@ h2 {
   .overlay .overlay__success {
     display: none;
     font-size: 1.5rem; }
+    .overlay .overlay__success a {
+      color: inherit; }

@@ -188,6 +188,56 @@
             </div>
         </div>
     </div>
+    <div data-name="poll" class="overlay__block block-book js-overlay-block">
+        <div class="wrapper">
+            <a href="#" class="block__close js-close-overlay"></a>
+            <div class="block-cont">
+                <div class="book__title js-book-title-with-house">
+                    <span>
+                        Сделайте поселок лучше
+                    </span>
+                </div>
+                <div class="overlay__form">
+                    {{ Form::open(array('id'=>'form-poll','class'=>'js-overlay-form')) }}
+                        <div class="form__block">
+                            <div class="block__title">Работа охраны</div>
+                            <div class="block__input">
+                                <textarea name="security" placeholder="Предложите идею, сообщите о проблеме или задайте вопрос"></textarea>
+                            </div> 
+                        </div>
+                        <div class="form__block">
+                            <div class="block__title">Работа коммуникаций</div>
+                            <div class="block__input">
+                                <textarea name="communications" placeholder="Предложите идею, сообщите о проблеме или задайте вопрос"></textarea>
+                            </div> 
+                        </div>
+                        <div class="form__block">
+                            <div class="block__title">Состояние детских площадок и общих зон</div>
+                            <div class="block__input">
+                                <textarea name="rest" placeholder="Предложите идею, сообщите о проблеме или задайте вопрос"></textarea>
+                            </div> 
+                        </div>
+                        <div class="form__block">
+                            <div class="block__title">Состояние дорого в послеке</div>
+                            <div class="block__input">
+                                <textarea name="roads" placeholder="Предложите идею, сообщите о проблеме или задайте вопрос"></textarea>
+                            </div> 
+                        </div>
+                        <div class="form__block">
+                            <div class="block__title">Ваш email</div>
+                            <div class="block__input">
+                                <input type="text" name="email" class="input__item">
+                            </div>
+                        </div>
+                        <div class="form__btn">
+                            <button type="submit" class="us-btn btn-transparent"><span>Отправить</span></button>
+                        </div>
+                    {{ Form::close() }}
+                    <div class="overlay__success js-poll-success">Спасибо!<br>Перейти на <a href="{{ URL::to('/') }}">главную</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div data-name="call" class="overlay__block block-call js-overlay-block">
         <div class="wrapper"><a href="#" class="block__close js-close-overlay"></a>
             <div class="block-cont">
