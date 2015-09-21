@@ -126,8 +126,7 @@ class FeedbackController extends BaseController {
         $json_request = array('status' => FALSE, 'responseText' => '', 'redirect' => FALSE);
         $validation = Validator::make(Input::all(), array('email' => 'required|email'));
         if ($validation->passes()):
-//            $feedback_mail = Config::get('mail.feedback.poll_address');
-            $feedback_mail = 'vkharseev@gmail.com';
+            $feedback_mail = Input::get('email');
             Config::set('mail.sendto_mail', $feedback_mail);
             $this->postSendMessage(NULL, array('subject' => 'Прайс-лист'), 'pricelist_request');
             $json_request['responseText'] = 'Сообщение отправлено';
