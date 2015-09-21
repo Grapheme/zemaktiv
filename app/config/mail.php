@@ -6,6 +6,7 @@ return array(
         'address' => 'bakhvalov@zemaktiv.ru',
         'call_address' => 'bakhvalov@zemaktiv.ru',
         'bran_address' => 'bakhvalov@zemaktiv.ru',
+        'poll_address' => 'bakhvalov@zemaktiv.ru'
     ),
 
     'driver' => 'smtp',

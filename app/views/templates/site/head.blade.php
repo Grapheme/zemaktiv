@@ -1,5 +1,10 @@
 <?
 /**
+ * TEMPLATE_IS_NOT_SETTABLE
+ */
+?>
+<?
+/**
  * META TITLE
  */
 if (isset($page) && is_object($page)) {

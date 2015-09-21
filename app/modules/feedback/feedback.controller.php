@@ -13,7 +13,7 @@ class FeedbackController extends BaseController {
         Route::post("/contacts/feedback", array('as' => 'contact_feedback', 'uses' => $class . "@postContactFeedback"));
         Route::post("/request/call", array('as' => 'request_call', 'uses' => $class . "@requestCall"));
         Route::post("/request/bron", array('as' => 'request_bron', 'uses' => $class . "@requestBron"));
-
+        Route::post("/request/poll", array('as' => 'request_poll', 'uses' => $class . "@requestPoll"));
     }
 
     /****************************************************************************/
@@ -36,8 +36,8 @@ class FeedbackController extends BaseController {
         if ($validation->passes()):
             $feedback_mail = Config::get('mail.feedback.call_address');
             Config::set('mail.sendto_mail', $feedback_mail);
-            Config::set('mail.sendto_mail_copy.first','smth.special@gmail.com');
-            Config::set('mail.sendto_mail_copy.second','call@zemaktiv.ru');
+            Config::set('mail.sendto_mail_copy.first', 'smth.special@gmail.com');
+            Config::set('mail.sendto_mail_copy.second', 'call@zemaktiv.ru');
             $this->postSendMessage(NULL, array('subject' => 'Заказ звонка',
                 'phone' => Input::get('phone'), 'request' => Input::get('request')), 'call_request');
             $json_request['responseText'] = 'Сообщение отправлено';
@@ -53,7 +53,8 @@ class FeedbackController extends BaseController {
 
         if (!Request::ajax()) return App::abort(404);
         $json_request = array('status' => FALSE, 'responseText' => '', 'redirect' => FALSE);
-        $validation = Validator::make(Input::all(), array('id' => 'required', 'name' => 'required', 'phone' => 'required'));
+        $validation = Validator::make(Input::all(), array('id' => 'required', 'name' => 'required',
+            'phone' => 'required'));
         if ($validation->passes()):
             $feedback_mail = Config::get('mail.feedback.bran_address');
             Config::set('mail.sendto_mail', $feedback_mail);
@@ -64,6 +65,32 @@ class FeedbackController extends BaseController {
                 'livetype' => Input::get('livetype'),
                 'technology' => Input::get('technology')
             ), 'bron_request');
+            $json_request['responseText'] = 'Сообщение отправлено';
+            $json_request['status'] = TRUE;
+        else:
+            $json_request['responseText'] = 'Неверно заполнены поля';
+            $json_request['responseErrorText'] = implode($validation->messages()->all(), '<br />');
+        endif;
+        return Response::json($json_request, 200);
+    }
+
+    public function requestPoll() {
+
+        if (!Request::ajax()) return App::abort(404);
+        $json_request = array('status' => FALSE, 'responseText' => '', 'redirect' => FALSE);
+        $validation = Validator::make(Input::all(), array('security' => '', 'communications' => '', 'rest' => '',
+            'roads' => '', 'email' => 'required|email'));
+        if ($validation->passes()):
+//            $feedback_mail = Config::get('mail.feedback.poll_address');
+            $feedback_mail = 'vkharseev@gmail.com';
+            Config::set('mail.sendto_mail', $feedback_mail);
+            $this->postSendMessage(NULL, array('subject' => 'Опрос',
+                'security' => Input::get('security'),
+                'communications' => Input::get('communications'),
+                'rest' => Input::get('rest'),
+                'roads' => Input::get('roads'),
+                'email' => Input::get('email')
+            ), 'poll_request');
             $json_request['responseText'] = 'Сообщение отправлено';
             $json_request['status'] = TRUE;
         else:
