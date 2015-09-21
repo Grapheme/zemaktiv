@@ -87,7 +87,7 @@ endif;
                     <div class="item__image">
                         <img src="{{ Config::get('site.theme_path') }}/images/index/top-1.png" alt="">
                     </div>
-                    <div class="item__title">224 участков<br>уже нашли хозяина</div>
+                    <div class="item__title">224 участка<br>уже нашли хозяина</div>
                 </li>
                 <li class="list__item">
                     <div class="item__image">

@@ -2996,7 +2996,6 @@ Garden.map = function() {
 			} else {
 				$('.js-table-head').removeClass('active');
 			}
-			console.log($('.js-choise-filter').scrollTop());
 		}
 		show();
 		$('.js-choise-filter').on('scroll', show);

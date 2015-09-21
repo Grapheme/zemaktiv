@@ -565,6 +565,12 @@
 				.ui-button-text-only .ui-button-text {
 					padding: 0;
 				}
+
+				.ui-state-active {
+					span {
+						background: #C3C3C3;
+					}
+				}
 			}
 
 			.form__left {

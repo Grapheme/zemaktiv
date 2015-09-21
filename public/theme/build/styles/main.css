@@ -2639,6 +2639,8 @@ h2 {
           pointer-events: none; }
         .wrapper-choise .choise-filter .filter__form .left__check .ui-button-text-only .ui-button-text {
           padding: 0; }
+        .wrapper-choise .choise-filter .filter__form .left__check .ui-state-active span {
+          background: #C3C3C3; }
       .wrapper-choise .choise-filter .filter__form .form__left {
         float: left;
         width: 35%; }

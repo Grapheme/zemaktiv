@@ -308,7 +308,6 @@
             </div>
         </div>
     </div>
-    @if(0)
     <div data-name="main-poll" class="overlay__block block-poll js-overlay-block">
         <div class="wrapper">
             <div class="block-cont">
@@ -480,5 +479,4 @@
             </div>
         </div>
     </div>
-    @endif
 </div>
