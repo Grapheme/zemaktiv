@@ -475,32 +475,32 @@
                             </div>
                         </div>
                         {{ Form::close() }}
-                        <form action="/theme/build/json/form.json" class="js-overlay-form" id="form-price">
-                            <div class="form__stage js-stage">
-                                <div class="form__block">
-                                    <div class="block__title">Ваш email</div>
-                                    <div class="block__input">
-                                        <input type="text" name="email" class="input__item item-email">
-                                    </div>
-                                </div>
-                                <div class="form__btn">
-                                    <button type="submit" class="us-btn btn-transparent">
-                                        <span>Получить прайслист</span></button>
-                                </div>
-                                <div class="form__btn-desc">
-                                    Или перейти к <a href="#" class="js-close-overlay">сайту</a>
+                        {{ Form::open(array('route'=>'request_pricelist','id'=>'form-price','class'=>'js-overlay-form')) }}
+                        <div class="form__stage js-stage">
+                            <div class="form__block">
+                                <div class="block__title">Ваш email</div>
+                                <div class="block__input">
+                                    <input type="text" name="email" class="input__item item-email">
                                 </div>
                             </div>
-                            <div class="stages-status">
-                                <a href="#" class="status__dot js-status-dot"></a>
-                                <span class="status__line"></span>
-                                <a href="#" class="status__dot js-status-dot disabled"></a>
-                                <span class="status__line"></span>
-                                <a href="#" class="status__dot js-status-dot disabled"></a>
-                                <span class="status__line"></span>
-                                <a href="#" class="status__dot js-status-dot disabled"></a>
+                            <div class="form__btn">
+                                <button type="submit" class="us-btn btn-transparent">
+                                    <span>Получить прайслист</span></button>
                             </div>
-                        </form>
+                            <div class="form__btn-desc">
+                                Или перейти к <a href="#" class="js-close-overlay">сайту</a>
+                            </div>
+                        </div>
+                        <div class="stages-status">
+                            <a href="#" class="status__dot js-status-dot"></a>
+                            <span class="status__line"></span>
+                            <a href="#" class="status__dot js-status-dot disabled"></a>
+                            <span class="status__line"></span>
+                            <a href="#" class="status__dot js-status-dot disabled"></a>
+                            <span class="status__line"></span>
+                            <a href="#" class="status__dot js-status-dot disabled"></a>
+                        </div>
+                        {{ Form::close() }}
                     </div>
                     <div class="form__stage overlay__success js-poll-mail-success">Прайслист отправлен на ваш
                         email
