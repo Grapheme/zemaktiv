@@ -343,168 +343,167 @@
                         <br>с действующими коммуникациями
                         <br>от 699 000 рублей
                     </span>
-                    </div>
-                    <div class="overlay__form">
-                        <div class="stages-form form-mortgage js-stages-form">
-                            {{ Form::open(array('id'=>'form-main-poll','class'=>'js-overlay-form')) }}
-                            <div class="form__stage js-stage">
-                                <div class="form__block block-phone">
-                                    <div class="block__title">Я ищу:</div>
+                </div>
+                <div class="overlay__form">
+                    <div class="stages-form form-mortgage js-stages-form">
+                        {{ Form::open(array('id'=>'form-main-poll','class'=>'js-overlay-form')) }}
+                        <div class="form__stage js-stage">
+                            <div class="form__block block-phone">
+                                <div class="block__title">Я ищу:</div>
+                                <div class="stage__checks">
+                                    <input value="0" name="area-type" id="poll9" type="radio"
+                                           class="js-checkbox">
+                                    <label for="poll9">Участок без подряда в хорошем поселке с коммуникацией</label>
+                                    <br>
+                                    <input value="1" name="area-type" id="poll10" type="radio"
+                                           class="js-checkbox">
+                                    <label for="poll10">Участок в коттеджном поселке – построить дом по
+                                        индивидуальному проекту<br>или выбрать понравившийся вариант проекта</label>
+                                    <br>
+                                    <input value="2" name="area-type" id="poll11" type="radio"
+                                           class="js-checkbox">
+                                    <label for="poll11">Уже готовый дом с участком, чтоб все было готово</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form__stage js-stage">
+                            <div class="form__block block-phone">
+                                <div class="block-half">
+                                    <div class="block__title">Цена участка, руб</div>
                                     <div class="stage__checks">
-                                        <input value="0" name="area-type" id="poll9" type="radio"
+                                        <input value="0" name="price" id="poll12" type="radio"
                                                class="js-checkbox">
-                                        <label for="poll9">Участок без подряда в хорошем поселке с коммуникацией</label>
+                                        <label for="poll12">до 700 000 рублей</label>
                                         <br>
-                                        <input value="1" name="area-type" id="poll10" type="radio"
+                                        <input value="1" name="price" id="poll13" type="radio"
                                                class="js-checkbox">
-                                        <label for="poll10">Участок в коттеджном поселке – построить дом по
-                                            индивидуальному проекту<br>или выбрать понравившийся вариант проекта</label>
+                                        <label for="poll13">до 1 млн рублей</label>
                                         <br>
-                                        <input value="2" name="area-type" id="poll11" type="radio"
+                                        <input value="2" name="price" id="poll14" type="radio"
                                                class="js-checkbox">
-                                        <label for="poll11">Уже готовый дом с участком, чтоб все было готово</label>
+                                        <label for="poll14">до 1,5 млн рублей</label>
+                                        <br>
+                                        <input value="3" name="price" id="poll15" type="radio"
+                                               class="js-checkbox">
+                                        <label for="poll15">до 2 млн рублей</label>
+                                        <br>
+                                        <input value="4" name="price" id="poll16" type="radio"
+                                               class="js-checkbox">
+                                        <label for="poll16">любая цена</label>
+                                    </div>
+                                </div>
+                                <div class="block-half">
+                                    <div class="block__title">Площадь участка</div>
+                                    <div class="stage__checks">
+                                        <input value="0" name="land" id="poll17" type="radio"
+                                               class="js-checkbox">
+                                        <label for="poll17">6-7 соток</label>
+                                        <br>
+                                        <input value="1" name="land" id="poll18" type="radio"
+                                               class="js-checkbox">
+                                        <label for="poll18">8-10 соток</label>
+                                        <br>
+                                        <input value="2" name="land" id="poll19" type="radio"
+                                               class="js-checkbox">
+                                        <label for="poll19">11-15 соток</label>
+                                        <br>
+                                        <input value="3" name="land" id="poll20" type="radio"
+                                               class="js-checkbox">
+                                        <label for="poll20">15 соток</label>
+                                        <br>
+                                        <input value="4" name="land" id="poll21" type="radio"
+                                               class="js-checkbox">
+                                        <label for="poll21">любая плошадь</label>
+                                    </div>
+                                </div>
+                                <div class="block-half">
+                                    <div class="block__title">Окружение</div>
+                                    <div class="stage__checks">
+                                        <input value="0" name="env" id="poll22" type="radio"
+                                               class="js-checkbox">
+                                        <label for="poll22">в лесу</label>
+                                        <br>
+                                        <input value="1" name="env" id="poll23" type="radio"
+                                               class="js-checkbox">
+                                        <label for="poll23">не важно</label>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form__stage js-stage">
-                                <div class="form__block block-phone">
-                                    <div class="block-half">
-                                        <div class="block__title">Цена участка, руб</div>
-                                        <div class="stage__checks">
-                                            <input value="0" name="price" id="poll12" type="radio"
-                                                   class="js-checkbox">
-                                            <label for="poll12">до 700 000 рублей</label>
-                                            <br>
-                                            <input value="1" name="price" id="poll13" type="radio"
-                                                   class="js-checkbox">
-                                            <label for="poll13">до 1 млн рублей</label>
-                                            <br>
-                                            <input value="2" name="price" id="poll14" type="radio"
-                                                   class="js-checkbox">
-                                            <label for="poll14">до 1,5 млн рублей</label>
-                                            <br>
-                                            <input value="3" name="price" id="poll15" type="radio"
-                                                   class="js-checkbox">
-                                            <label for="poll15">до 2 млн рублей</label>
-                                            <br>
-                                            <input value="4" name="price" id="poll16" type="radio"
-                                                   class="js-checkbox">
-                                            <label for="poll16">любая цена</label>
-                                        </div>
-                                    </div>
-                                    <div class="block-half">
-                                        <div class="block__title">Площадь участка</div>
-                                        <div class="stage__checks">
-                                            <input value="0" name="land" id="poll17" type="radio"
-                                                   class="js-checkbox">
-                                            <label for="poll17">6-7 соток</label>
-                                            <br>
-                                            <input value="1" name="land" id="poll18" type="radio"
-                                                   class="js-checkbox">
-                                            <label for="poll18">8-10 соток</label>
-                                            <br>
-                                            <input value="2" name="land" id="poll19" type="radio"
-                                                   class="js-checkbox">
-                                            <label for="poll19">11-15 соток</label>
-                                            <br>
-                                            <input value="3" name="land" id="poll20" type="radio"
-                                                   class="js-checkbox">
-                                            <label for="poll20">15 соток</label>
-                                            <br>
-                                            <input value="4" name="land" id="poll21" type="radio"
-                                                   class="js-checkbox">
-                                            <label for="poll21">любая плошадь</label>
-                                        </div>
-                                    </div>
-                                    <div class="block-half">
-                                        <div class="block__title">Окружение</div>
-                                        <div class="stage__checks">
-                                            <input value="0" name="env" id="poll22" type="radio"
-                                                   class="js-checkbox">
-                                            <label for="poll22">в лесу</label>
-                                            <br>
-                                            <input value="1" name="env" id="poll23" type="radio"
-                                                   class="js-checkbox">
-                                            <label for="poll23">не важно</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form__stage js-stage">
-                                <div class="form__block block-phone">
-                                    <div class="block-half">
-                                        <div class="block__title">Площадь дома, кв. м:</div>
-                                        <div class="stage__checks">
-                                            <input value="0" name="area" id="poll1" type="radio"
-                                                   class="js-checkbox">
-                                            <label for="poll1">До 150 кв. м</label>
-                                            <br>
-                                            <input value="1" name="area" id="poll2" type="radio"
-                                                   class="js-checkbox">
-                                            <label for="poll2">50-180 кв. м</label>
-                                            <br>
-                                            <input value="2" name="area" id="poll3" type="radio"
-                                                   class="js-checkbox">
-                                            <label for="poll3">180 кв. м</label>
-                                            <br>
-                                            <input value="3" name="area" id="poll4" type="radio"
-                                                   class="js-checkbox">
-                                            <label for="poll4">Любая площадь</label>
-                                        </div>
-                                    </div>
-                                    <div class="block-half">
-                                        <div class="block__title">Технология строительства</div>
-                                        <div class="stage__checks">
-                                            <input value="0" name="technology" id="poll5" type="radio"
-                                                   class="js-checkbox">
-                                            <label for="poll5">Каркасный дом</label>
-                                            <br>
-                                            <input value="1" name="technology" id="poll6" type="radio"
-                                                   class="js-checkbox">
-                                            <label for="poll6">Дом из газобетонных блоков</label>
-                                            <br>
-                                            <input value="2" name="technology" id="poll7" type="radio"
-                                                   class="js-checkbox">
-                                            <label for="poll7">Оцилиндрованное бревно</label>
-                                            <br>
-                                            <input value="3" name="technology" id="poll8" type="radio"
-                                                   class="js-checkbox">
-                                            <label for="poll8">Все технологии, я еще не определился</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {{ Form::close() }}
-                            <form action="/theme/build/json/form.json" class="js-overlay-form" id="form-price">
-                                <div class="form__stage js-stage">
-                                    <div class="form__block">
-                                        <div class="block__title">Ваш email</div>
-                                        <div class="block__input">
-                                            <input type="text" name="email" class="input__item item-email">
-                                        </div>
-                                    </div>
-                                    <div class="form__btn">
-                                        <button type="submit" class="us-btn btn-transparent">
-                                            <span>Получить прайслист</span></button>
-                                    </div>
-                                    <div class="form__btn-desc">
-                                        Или перейти к <a href="#" class="js-close-overlay">сайту</a>
-                                    </div>
-                                </div>
-                                <div class="stages-status">
-                                    <a href="#" class="status__dot js-status-dot"></a>
-                                    <span class="status__line"></span>
-                                    <a href="#" class="status__dot js-status-dot disabled"></a>
-                                    <span class="status__line"></span>
-                                    <a href="#" class="status__dot js-status-dot disabled"></a>
-                                    <span class="status__line"></span>
-                                    <a href="#" class="status__dot js-status-dot disabled"></a>
-                                </div>
-                            </form>
                         </div>
-                        <div class="form__stage overlay__success js-poll-mail-success">Прайслист отправлен на ваш
-                            email
+                        <div class="form__stage js-stage">
+                            <div class="form__block block-phone">
+                                <div class="block-half">
+                                    <div class="block__title">Площадь дома, кв. м:</div>
+                                    <div class="stage__checks">
+                                        <input value="0" name="area" id="poll1" type="radio"
+                                               class="js-checkbox">
+                                        <label for="poll1">До 150 кв. м</label>
+                                        <br>
+                                        <input value="1" name="area" id="poll2" type="radio"
+                                               class="js-checkbox">
+                                        <label for="poll2">50-180 кв. м</label>
+                                        <br>
+                                        <input value="2" name="area" id="poll3" type="radio"
+                                               class="js-checkbox">
+                                        <label for="poll3">180 кв. м</label>
+                                        <br>
+                                        <input value="3" name="area" id="poll4" type="radio"
+                                               class="js-checkbox">
+                                        <label for="poll4">Любая площадь</label>
+                                    </div>
+                                </div>
+                                <div class="block-half">
+                                    <div class="block__title">Технология строительства</div>
+                                    <div class="stage__checks">
+                                        <input value="0" name="technology" id="poll5" type="radio"
+                                               class="js-checkbox">
+                                        <label for="poll5">Каркасный дом</label>
+                                        <br>
+                                        <input value="1" name="technology" id="poll6" type="radio"
+                                               class="js-checkbox">
+                                        <label for="poll6">Дом из газобетонных блоков</label>
+                                        <br>
+                                        <input value="2" name="technology" id="poll7" type="radio"
+                                               class="js-checkbox">
+                                        <label for="poll7">Оцилиндрованное бревно</label>
+                                        <br>
+                                        <input value="3" name="technology" id="poll8" type="radio"
+                                               class="js-checkbox">
+                                        <label for="poll8">Все технологии, я еще не определился</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        {{ Form::close() }}
+                        <form action="/theme/build/json/form.json" class="js-overlay-form" id="form-price">
+                            <div class="form__stage js-stage">
+                                <div class="form__block">
+                                    <div class="block__title">Ваш email</div>
+                                    <div class="block__input">
+                                        <input type="text" name="email" class="input__item item-email">
+                                    </div>
+                                </div>
+                                <div class="form__btn">
+                                    <button type="submit" class="us-btn btn-transparent">
+                                        <span>Получить прайслист</span></button>
+                                </div>
+                                <div class="form__btn-desc">
+                                    Или перейти к <a href="#" class="js-close-overlay">сайту</a>
+                                </div>
+                            </div>
+                            <div class="stages-status">
+                                <a href="#" class="status__dot js-status-dot"></a>
+                                <span class="status__line"></span>
+                                <a href="#" class="status__dot js-status-dot disabled"></a>
+                                <span class="status__line"></span>
+                                <a href="#" class="status__dot js-status-dot disabled"></a>
+                                <span class="status__line"></span>
+                                <a href="#" class="status__dot js-status-dot disabled"></a>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="form__stage overlay__success js-poll-mail-success">Прайслист отправлен на ваш
+                        email
                     </div>
                 </div>
             </div>
