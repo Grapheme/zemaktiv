@@ -83,8 +83,7 @@ class FeedbackController extends BaseController {
         $validation = Validator::make(Input::all(), array('security' => '', 'communications' => '', 'rest' => '',
             'roads' => '', 'email' => 'required|email'));
         if ($validation->passes()):
-//            $feedback_mail = Config::get('mail.feedback.poll_address');
-            $feedback_mail = 'vkharseev@gmail.com';
+            $feedback_mail = Config::get('mail.feedback.poll_address');
             Config::set('mail.sendto_mail', $feedback_mail);
             $this->postSendMessage(NULL, array('subject' => 'Опрос',
                 'security' => Input::get('security'),
@@ -109,8 +108,7 @@ class FeedbackController extends BaseController {
         $validation = Validator::make(Input::all(), array('area' => '', 'area-type' => '', 'env' => '',
             'land' => '', 'price' => '', 'technology' => ''));
         if ($validation->passes()):
-//            $feedback_mail = Config::get('mail.feedback.poll_address');
-            $feedback_mail = 'vkharseev@gmail.com';
+            $feedback_mail = Config::get('mail.feedback.poll_address');
             Config::set('mail.sendto_mail', $feedback_mail);
             $this->postSendMessage(NULL, array('subject' => 'Статистика'), 'main_poll_request');
             $json_request['responseText'] = 'Сообщение отправлено';
