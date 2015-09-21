@@ -1114,15 +1114,16 @@ Garden.map = function() {
 			}
 			filterParams[iArray[0]] = iArray[1] || false;
 		});
+		console.log(filterParams);
 		suitedArray = {};
 		var params = filterParams;
 		$.each(Dictionary.buildings, function(i, v){
 			var suited = true;
 			if(!(	
-				(params.housetype == 'withhouse' && v.status == 2)||
-				(params.housetype == 'withpod' && v.status == 1)||
-				(params.housetype == 'withoutpod' && v.status == 0)||
-				(params.housetype == 'housesall'))) {
+				(params.landtype == 'withhouse' && v.status == 2)||
+				(params.landtype == 'withpod' && v.status == 1)||
+				(params.landtype == 'withoutpod' && v.status == 0)||
+				(params.landtype == 'housesall'))) {
 				suited = false;
 			}
 			if(v.price < params.pricefrom || v.price > params.priceto) {
@@ -1215,10 +1216,10 @@ Garden.map = function() {
 		$.each(Dictionary.buildings, function(i, v){
 			var suited = true;
 			if(!(	
-				(params.housetype == 'withhouse' && v.status == 2)||
-				(params.housetype == 'withpod' && v.status == 1)||
-				(params.housetype == 'withoutpod' && v.status == 0)||
-				(params.housetype == 'housesall'))) {
+				(params.landtype == 'withhouse' && v.status == 2)||
+				(params.landtype == 'withpod' && v.status == 1)||
+				(params.landtype == 'withoutpod' && v.status == 0)||
+				(params.landtype == 'housesall'))) {
 				suited = false;
 			}
 			if(v.price < $('#range-price').slider('values', 0) || v.price > $('#range-price').slider('values', 1)) {
@@ -1245,10 +1246,10 @@ Garden.map = function() {
 		$.each(Dictionary.buildings, function(i, v){
 			var suited = true;
 			if(!(	
-				(params.housetype == 'withhouse' && v.status == 2)||
-				(params.housetype == 'withpod' && v.status == 1)||
-				(params.housetype == 'withoutpod' && v.status == 0)||
-				(params.housetype == 'housesall'))) {
+				(params.landtype == 'withhouse' && v.status == 2)||
+				(params.landtype == 'withpod' && v.status == 1)||
+				(params.landtype == 'withoutpod' && v.status == 0)||
+				(params.landtype == 'housesall'))) {
 				suited = false;
 			}
 			if(v.land_area < $('#range-area').slider('values', 0) || v.land_area > $('#range-area').slider('values', 1)) {
@@ -1275,10 +1276,10 @@ Garden.map = function() {
 		$.each(Dictionary.buildings, function(i, v){
 			var suited = true;
 			if(!(	
-				(params.housetype == 'withhouse' && v.status == 2)||
-				(params.housetype == 'withpod' && v.status == 1)||
-				(params.housetype == 'withoutpod' && v.status == 0)||
-				(params.housetype == 'housesall'))) {
+				(params.landtype == 'withhouse' && v.status == 2)||
+				(params.landtype == 'withpod' && v.status == 1)||
+				(params.landtype == 'withoutpod' && v.status == 0)||
+				(params.landtype == 'housesall'))) {
 				suited = false;
 			}
 			if(v.sold == 1) {
