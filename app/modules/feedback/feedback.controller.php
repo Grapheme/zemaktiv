@@ -58,8 +58,11 @@ class FeedbackController extends BaseController {
         $validation = Validator::make(Input::all(), array('id' => 'required', 'name' => 'required',
             'phone' => 'required'));
         if ($validation->passes()):
-            $feedback_mail = Config::get('mail.feedback.bran_address');
+            #$feedback_mail = Config::get('mail.feedback.bran_address');
+            $feedback_mail = 'vkharseev@gmail.com';
             Config::set('mail.sendto_mail', $feedback_mail);
+//            Config::set('mail.sendto_mail_copy.first', 'smth.special@gmail.com');
+//            Config::set('mail.sendto_mail_copy.second', 'call@zemaktiv.ru');
             $this->postSendMessage(NULL, array('subject' => 'Бронирование участка',
                 'land_id' => Input::get('id'),
                 'name' => Input::get('name'),

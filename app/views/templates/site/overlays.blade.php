@@ -126,26 +126,29 @@
                                 <div class="block__title">Меня интересует</div>
                                 <div class="stage__checks">
                                         <span>
-                                            <input value="Участки под дачу – я хочу построить дом сам, у меня уже есть к кому обратиться"
+                                            <input value="0"
                                                    name="livetype" type="radio"
                                                    class="js-checkbox js-set-for" autocomplete="off">
-                                            <label id="bookmap01bezpodryada">Участки под дачу – я хочу построить дом сам, у меня
+                                            <label id="bookmap01bezpodryada">Участки под дачу – я хочу построить дом
+                                                сам, у меня
                                                 уже есть к кому обратиться</label>
                                         </span>
                                     <br>
                                         <span>
-                                            <input value="Участки под дачу – я пока не знаю какой именно дом построить – мне было интересно посмотреть проекты ваших домов"
+                                            <input value="1"
                                                    name="livetype" type="radio"
                                                    class="js-checkbox js-set-for" autocomplete="off">
-                                            <label id="bookmap01showprojects">Участки под дачу – я пока не знаю какой именно дом
+                                            <label id="bookmap01showprojects">Участки под дачу – я пока не знаю какой
+                                                именно дом
                                                 построить – мне было интересно посмотреть проекты ваших домов</label>
                                         </span>
                                     <br>
                                         <span>
-                                            <input value="Участки с готовыми домами, я хочу максимально быстро заселиться"
+                                            <input value="2"
                                                    name="livetype" type="radio"
                                                    class="js-checkbox js-set-for" autocomplete="off">
-                                            <label id="bookmap01ready">Участки с готовыми домами, я хочу максимально быстро
+                                            <label id="bookmap01ready">Участки с готовыми домами, я хочу максимально
+                                                быстро
                                                 заселиться</label>
                                         </span>
                                 </div>
@@ -155,15 +158,14 @@
                             <div class="form__block block-phone">
                                 <div class="stage__checks">
                                         <span>
-                                            <input value="Возможность рассрочки или ипотеки" name="technology"
-                                                   type="radio"
-                                                   class="js-checkbox js-set-for" autocomplete="off">
+                                            <input value="0" name="price" type="radio" class="js-checkbox js-set-for"
+                                                   autocomplete="off">
                                             <label id="bookmap02payment">Возможность рассрочки или ипотеки</label>
                                         </span>
                                     <br>
                                         <span>
-                                            <input value="Наличие скидок при 100% оплате" name="technology" type="radio"
-                                                   class="js-checkbox js-set-for" autocomplete="off">
+                                            <input value="1" name="price" type="radio" class="js-checkbox js-set-for"
+                                                   autocomplete="off">
                                             <label id="bookmap02sale">Наличие скидок при 100% оплате</label>
                                         </span>
                                 </div>
@@ -186,7 +188,7 @@
                             <div class="form__btn">
                                 <span id="bookmap03Send">
                                     <button type="submit" class="us-btn btn-transparent"><span>Отправить</span></button>
-                                </spam>
+                                    </spam>
                             </div>
                             <div class="form__block">
                                 <div class="block__response js-response-text"></div>
@@ -320,7 +322,8 @@
                             </div>
                             <div class="form__btn">
                                 <span id="callbackmortgagebtn">
-                                    <button type="submit" class="us-btn btn-transparent"><span>Обратный звонок</span></button>
+                                    <button type="submit" class="us-btn btn-transparent"><span>Обратный звонок</span>
+                                    </button>
                                 </span>
                             </div>
                             <div class="form__block">
