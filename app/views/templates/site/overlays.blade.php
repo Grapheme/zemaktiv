@@ -334,18 +334,10 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
     <div data-name="main-poll" class="overlay__block block-poll js-overlay-block">
         <div class="wrapper">
             <div class="block-cont">
                 <div class="book__title">
-=======
-    @if(0)
-        <div data-name="main-poll" class="overlay__block block-poll js-overlay-block">
-            <div class="wrapper">
-                <div class="block-cont">
-                    <div class="book__title">
->>>>>>> 6c9d8a9dcc1aa7d642dd5028915beb958cf1f9e5
                     <span>
                         Участки без подряда и готовые дома в окружении леса
                         <br>с действующими коммуникациями
@@ -517,9 +509,5 @@
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
     </div>
-=======
-    @endif
->>>>>>> 6c9d8a9dcc1aa7d642dd5028915beb958cf1f9e5
 </div>
