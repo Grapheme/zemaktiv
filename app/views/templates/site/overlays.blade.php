@@ -276,7 +276,9 @@
                         </div>
                     </div>
                     <div class="form__btn">
-                        <button type="submit" class="us-btn btn-transparent"><span>Обратный звонок</span></button>
+                        <span id="callbackbtn">
+                            <button type="submit" class="us-btn btn-transparent"><span>Обратный звонок</span></button>
+                        </span>
                     </div>
                     <div class="form__block">
                         <div class="block__response js-response-text">Сообщение</div>
@@ -317,8 +319,9 @@
                                 </div>
                             </div>
                             <div class="form__btn">
-                                <button type="submit" class="us-btn btn-transparent"><span>Обратный звонок</span>
-                                </button>
+                                <span id="callbackmortgagebtn">
+                                    <button type="submit" class="us-btn btn-transparent"><span>Обратный звонок</span></button>
+                                </span>
                             </div>
                             <div class="form__block">
                                 <div class="block__response js-response-text">Сообщение</div>
