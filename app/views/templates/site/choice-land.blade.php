@@ -106,26 +106,26 @@ $lands = Land::orderByRaw('number + 0')->with('recommended.recommended_land')->g
                                 <div class="form__left">
                                     <div class="form__title">Участки</div>
                                     <div class="left__check">
-                                        <input value="0" name="withoutpod" id="withoutpod" type="radio"
+                                        <input value="withoutpod" name="landtype" id="withoutpod" type="radio"
                                                class="js-checkbox">
                                         <label for="withoutpod">Без подряда <span class="info-tooltip" data-tooltip="«Без подряда» — земельный участок без обязательства покупателя строить дом подряжая только определенные строительные компании. Газ, электричество и водопровод входят в стоимость участка."></span></label>
                                     </div>
                                     <div class="left__check">
-                                        <input value="1" name="withpod" id="withpod" type="radio"
+                                        <input value="withpod" name="landtype" id="withpod" type="radio"
                                                class="js-checkbox">
                                         <label for="withpod">С подрядом</label>
                                     </div>
                                     <div class="left__check">
-                                        <input value="2" name="withhouse" id="withhouse" type="radio"
+                                        <input value="withhouse" name="landtype" id="withhouse" type="radio"
                                                class="js-checkbox">
                                         <label for="withhouse">С готовым домом</label>
                                     </div>
-                                    <!-- <div class="left__check">
-                                        <input value="3" name="withhouse" id="housesall" type="radio"
+                                    <div class="left__check">
+                                        <input value="housesall" name="landtype" id="housesall" type="radio"
                                                checked="checked"
                                                class="js-checkbox">
-                                        <label for="housesall">С готовым домом</label>
-                                    </div> -->
+                                        <label for="housesall">Все участки</label>
+                                    </div>
                                 </div>
                                 <div class="form__right">
                                     <div class="right__block">

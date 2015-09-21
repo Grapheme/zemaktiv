@@ -282,6 +282,7 @@
 .info-overlay {
 	display: none;
 	position: absolute;
+	z-index: 9999;
 	top: 0;
 	left: 0;
 	padding: 12rem / $fs;
