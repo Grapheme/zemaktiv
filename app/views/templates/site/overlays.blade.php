@@ -129,7 +129,7 @@
                                             <input value="Участки под дачу – я хочу построить дом сам, у меня уже есть к кому обратиться"
                                                    name="livetype" type="radio"
                                                    class="js-checkbox js-set-for" autocomplete="off">
-                                            <label id="wholeyear">Участки под дачу – я хочу построить дом сам, у меня
+                                            <label id="bookmap01bezpodryada">Участки под дачу – я хочу построить дом сам, у меня
                                                 уже есть к кому обратиться</label>
                                         </span>
                                     <br>
@@ -137,7 +137,7 @@
                                             <input value="Участки под дачу – я пока не знаю какой именно дом построить – мне было интересно посмотреть проекты ваших домов"
                                                    name="livetype" type="radio"
                                                    class="js-checkbox js-set-for" autocomplete="off">
-                                            <label id="summerhouse">Участки под дачу – я пока не знаю какой именно дом
+                                            <label id="bookmap01showprojects">Участки под дачу – я пока не знаю какой именно дом
                                                 построить – мне было интересно посмотреть проекты ваших домов</label>
                                         </span>
                                     <br>
@@ -145,7 +145,7 @@
                                             <input value="Участки с готовыми домами, я хочу максимально быстро заселиться"
                                                    name="livetype" type="radio"
                                                    class="js-checkbox js-set-for" autocomplete="off">
-                                            <label id="summerhouse">Участки с готовыми домами, я хочу максимально быстро
+                                            <label id="bookmap01ready">Участки с готовыми домами, я хочу максимально быстро
                                                 заселиться</label>
                                         </span>
                                 </div>
@@ -158,13 +158,13 @@
                                             <input value="Возможность рассрочки или ипотеки" name="technology"
                                                    type="radio"
                                                    class="js-checkbox js-set-for" autocomplete="off">
-                                            <label id="needconsult">Возможность рассрочки или ипотеки</label>
+                                            <label id="bookmap02payment">Возможность рассрочки или ипотеки</label>
                                         </span>
                                     <br>
                                         <span>
                                             <input value="Наличие скидок при 100% оплате" name="technology" type="radio"
                                                    class="js-checkbox js-set-for" autocomplete="off">
-                                            <label id="needinfo">Наличие скидок при 100% оплате</label>
+                                            <label id="bookmap02sale">Наличие скидок при 100% оплате</label>
                                         </span>
                                 </div>
                             </div>
@@ -173,18 +173,20 @@
                             <div class="form__block">
                                 <div class="block__title">Имя</div>
                                 <div class="block__input">
-                                    <input type="text" name="name" class="input__item">
+                                    <input id="bookmap03Name" type="text" name="name" class="input__item">
                                 </div>
                             </div>
                             <div class="form__block block-phone">
                                 <div class="block__title">Ваш номер телефона</div>
                                 <div class="block__input">
                                     <div class="phone__number">+7</div>
-                                    <input type="text" name="phone" class="input__item">
+                                    <input id="bookmap03Tel" type="text" name="phone" class="input__item">
                                 </div>
                             </div>
                             <div class="form__btn">
-                                <button type="submit" class="us-btn btn-transparent"><span>Отправить</span></button>
+                                <span id="bookmap03Send">
+                                    <button type="submit" class="us-btn btn-transparent"><span>Отправить</span></button>
+                                </spam>
                             </div>
                             <div class="form__block">
                                 <div class="block__response js-response-text"></div>
@@ -238,7 +240,7 @@
                         </div>
                     </div>
                     <div class="form__block">
-                        <div class="block__title">Состояние дорого в послеке</div>
+                        <div class="block__title">Состояние дорог в поселке</div>
                         <div class="block__input">
                             <textarea name="roads"
                                       placeholder="Предложите идею, сообщите о проблеме или задайте вопрос"></textarea>
@@ -274,7 +276,9 @@
                         </div>
                     </div>
                     <div class="form__btn">
-                        <button type="submit" class="us-btn btn-transparent"><span>Обратный звонок</span></button>
+                        <span id="callbackbtn">
+                            <button type="submit" class="us-btn btn-transparent"><span>Обратный звонок</span></button>
+                        </span>
                     </div>
                     <div class="form__block">
                         <div class="block__response js-response-text">Сообщение</div>
@@ -315,8 +319,9 @@
                                 </div>
                             </div>
                             <div class="form__btn">
-                                <button type="submit" class="us-btn btn-transparent"><span>Обратный звонок</span>
-                                </button>
+                                <span id="callbackmortgagebtn">
+                                    <button type="submit" class="us-btn btn-transparent"><span>Обратный звонок</span></button>
+                                </span>
                             </div>
                             <div class="form__block">
                                 <div class="block__response js-response-text">Сообщение</div>

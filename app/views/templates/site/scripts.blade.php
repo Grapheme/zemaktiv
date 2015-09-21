@@ -7,6 +7,13 @@
 {{ HTML::scriptmod(Config::get('site.theme_path').'/scripts/main.concat.js') }}
 
 <!-- Solovei -->
+@if(Config::get('app.settings.main.poll_enabled') == 1)
+    <script>
+        if(!$.cookie('pollShowed')) {
+            Garden.overlays.open('main-poll');
+        }
+    </script>
+@endif
 <script type="text/javascript">
     (function (h) {
         function k() {

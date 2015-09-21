@@ -2730,7 +2730,6 @@ Garden.map = function() {
 			}
 			filterParams[iArray[0]] = iArray[1] || false;
 		});
-		console.log(filterParams);
 		suitedArray = {};
 		var params = filterParams;
 		$.each(Dictionary.buildings, function(i, v){
@@ -3412,9 +3411,6 @@ Garden.init = function() {
 	this.favorite.init();
 	//this.speedUp();
 	//this.smartHover();
-	if(!$.cookie('pollShowed')) {
-		Garden.overlays.open('main-poll');
-	}
 }
 $(function(){
 	Garden.init();
