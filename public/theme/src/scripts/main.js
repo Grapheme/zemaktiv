@@ -1795,9 +1795,6 @@ Garden.init = function() {
 	this.favorite.init();
 	//this.speedUp();
 	//this.smartHover();
-	if(!$.cookie('pollShowed')) {
-		Garden.overlays.open('main-poll');
-	}
 }
 $(function(){
 	Garden.init();
