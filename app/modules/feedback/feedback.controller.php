@@ -14,6 +14,7 @@ class FeedbackController extends BaseController {
         Route::post("/request/call", array('as' => 'request_call', 'uses' => $class . "@requestCall"));
         Route::post("/request/bron", array('as' => 'request_bron', 'uses' => $class . "@requestBron"));
         Route::post("/request/poll", array('as' => 'request_poll', 'uses' => $class . "@requestPoll"));
+        Route::post("/request/main-poll", array('as' => 'request_main_poll', 'uses' => $class . "@requestMainPoll"));
     }
 
     /****************************************************************************/
@@ -91,6 +92,26 @@ class FeedbackController extends BaseController {
                 'roads' => Input::get('roads'),
                 'email' => Input::get('email')
             ), 'poll_request');
+            $json_request['responseText'] = 'Сообщение отправлено';
+            $json_request['status'] = TRUE;
+        else:
+            $json_request['responseText'] = 'Неверно заполнены поля';
+            $json_request['responseErrorText'] = implode($validation->messages()->all(), '<br />');
+        endif;
+        return Response::json($json_request, 200);
+    }
+
+    public function requestMainPoll() {
+
+        if (!Request::ajax()) return App::abort(404);
+        $json_request = array('status' => FALSE, 'responseText' => '', 'redirect' => FALSE);
+        $validation = Validator::make(Input::all(), array('area' => '', 'area-type' => '', 'env' => '',
+            'land' => '', 'price' => '', 'technology' => ''));
+        if ($validation->passes()):
+//            $feedback_mail = Config::get('mail.feedback.poll_address');
+            $feedback_mail = 'vkharseev@gmail.com';
+            Config::set('mail.sendto_mail', $feedback_mail);
+            $this->postSendMessage(NULL, array('subject' => 'Статистика'), 'main_poll_request');
             $json_request['responseText'] = 'Сообщение отправлено';
             $json_request['status'] = TRUE;
         else:

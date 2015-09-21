@@ -346,7 +346,7 @@
                 </div>
                 <div class="overlay__form">
                     <div class="stages-form form-mortgage js-stages-form">
-                        {{ Form::open(array('id'=>'form-main-poll','class'=>'js-overlay-form')) }}
+                        {{ Form::open(array('route'=>'request_main_poll','id'=>'form-main-poll','class'=>'js-overlay-form')) }}
                         <div class="form__stage js-stage">
                             <div class="form__block block-phone">
                                 <div class="block__title">Я ищу:</div>
@@ -441,7 +441,7 @@
                                         <br>
                                         <input value="1" name="area" id="poll2" type="radio"
                                                class="js-checkbox">
-                                        <label for="poll2">50-180 кв. м</label>
+                                        <label for="poll2">150-180 кв. м</label>
                                         <br>
                                         <input value="2" name="area" id="poll3" type="radio"
                                                class="js-checkbox">
