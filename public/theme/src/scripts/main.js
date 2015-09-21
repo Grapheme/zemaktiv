@@ -1114,7 +1114,6 @@ Garden.map = function() {
 			}
 			filterParams[iArray[0]] = iArray[1] || false;
 		});
-		console.log(filterParams);
 		suitedArray = {};
 		var params = filterParams;
 		$.each(Dictionary.buildings, function(i, v){
